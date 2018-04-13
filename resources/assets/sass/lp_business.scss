@@ -1,0 +1,365 @@
+@import "variables";
+ul.breadcrumb {
+  list-style: none
+}
+
+ul.breadcrumb{
+  margin: 20px auto;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+  width: 1020px;
+}
+
+ul.breadcrumb li {
+  display: inline;
+  padding-right: 5px;
+  text-align: left;
+}
+
+ul.breadcrumb li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.contentsArea {
+  text-align: left;
+}
+
+.panelArea {
+  background-color: #EEF1F6;
+  position: relative;
+}
+
+.panelArea .base {
+  width: 1230px;
+  height: 427px;
+  margin: 0 auto;
+  background: url("/images/lp_business/img_panel_dairiten.png") left bottom no-repeat;
+}
+
+.panelArea .txtArea {
+  position: absolute;
+  right: 15%;
+  top: 20%;
+  display: inline-block;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+
+.panelArea .txtArea .catch {
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.panelArea .txtArea .text {
+  font-weight: bold;
+}
+
+.panelArea .txtArea .text span {
+  display: block;
+}
+
+.panelArea .txtArea .btnArea {
+  margin-top: 20px;
+}
+
+.panelArea .txtArea .btnArea a {
+  display: inline-block;
+  line-height: 1;
+  padding: 15px 50px;
+  color: #fff;
+  font-size: 15px;
+  background: url("/images/lp_business/icn_arrow_right.png") right 15px center no-repeat #F15A24;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+}
+
+.panelArea .txtArea .btnArea a:hover {
+  background-color: #f47e54;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .panelArea .base {
+    width: 100%;
+    height: auto;
+    background: none;
+  }
+  .panelArea .base:before {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 250px;
+    background: url("/images/lp_business/img_panel_dairiten.png") left bottom no-repeat;
+    background-size: contain;
+  }
+  .panelArea .txtArea {
+    position: static;
+    padding: 40px 30px;
+    text-align: center;
+  }
+  .panelArea .txtArea .catch {
+    font-size: 40px;
+  }
+  .panelArea .txtArea .text {
+    font-size: 13px;
+  }
+}
+
+.recruitmentArea {
+  background: url("/images/lp_business/img_big.jpg") left top no-repeat;
+  background-size: cover;
+  color: #fff;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.recruitmentArea .base {
+  width: 1020px;
+  margin: 0 auto;
+}
+
+.recruitmentArea .catch {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.recruitmentArea .catch span {
+  display: inline-block;
+}
+
+.recruitmentArea .txt {
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.recruitmentArea .txt span {
+  display: block;
+}
+
+.recruitmentArea .txt p + p {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .recruitmentArea {
+    padding: 0;
+    background-position: left center;
+  }
+  .recruitmentArea .base {
+    width: 100%;
+    padding: 40px 30px;
+  }
+  .recruitmentArea .catch {
+    font-size: 28px;
+  }
+  .recruitmentArea .txt {
+    text-align: left;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .recruitmentArea .txt span {
+    display: inline;
+  }
+}
+
+.MeritArea {
+  margin-top: 55px;
+}
+
+.MeritArea .base {
+  width: 1030px;
+  margin: 0 auto;
+}
+
+.MeritArea .meritUnit {
+  width: 490px;
+  height: 419px;
+  display: inline-block;
+  background: #f2f2f2;
+  padding: 60px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.MeritArea .meritUnit + .meritUnit {
+  margin-left: 40px;
+}
+
+.MeritArea .meritUnit .catch {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.MeritArea .meritUnit .img {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.MeritArea .meritUnit .txt {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 768px) {
+  .MeritArea {
+    padding: 15px;
+    margin-top: 0;
+  }
+  .MeritArea .base {
+    width: 100%;
+  }
+  .MeritArea .meritUnit {
+    width: 100%;
+    height: auto;
+    padding: 40px 20px;
+  }
+  .MeritArea .meritUnit + .meritUnit {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+  .MeritArea .meritUnit + .meritUnit .img {
+    text-align: center;
+  }
+  .MeritArea .meritUnit + .meritUnit .img img {
+    width: 40%;
+    display: inline-block;
+  }
+}
+
+.cvArea {
+  margin-top: 60px;
+  background: #F15A24;
+  text-align: center;
+}
+
+.cvArea .base {
+  width: 1020px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.cvArea .catch {
+  font-size: 27px;
+  line-height: 1.3;
+  color: #fff;
+  font-weight: bold;
+}
+
+.cvArea .txt {
+  margin-top: 20px;
+  color: #fff;
+}
+
+.cvArea .btnArea {
+  margin-top: 30px;
+}
+
+.cvArea .btnArea a {
+  display: inline-block;
+  line-height: 1;
+  padding: 20px 100px;
+  font-weight: bold;
+  color: #F15A24;
+  font-size: 19px;
+  background: url("/images/lp_business/icn_arrow_right_color.png") right 30px center no-repeat #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+}
+
+.cvArea .btnArea a:hover {
+  opacity: .8;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .cvArea {
+    margin-top: 0;
+  }
+  .cvArea .base {
+    width: 100%;
+    padding: 60px 15px;
+  }
+  .cvArea .catch {
+    font-size: 20px;
+  }
+  .cvArea .btnArea {
+    margin-top: 20px;
+  }
+  .cvArea .btnArea a {
+    font-size: 15px;
+    padding: 20px 0;
+    display: block;
+  }
+}
+
+.menu_home_page {
+  background: white;
+  border-top: 1px #eee solid;
+  .area {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+
+    ol {
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      height: 49px;
+      width: 1020px;
+
+      li {
+        float: left;
+        list-style: none;
+        width: 14%;
+        border-left: 1px solid #ccc;
+        height: 50px;
+        padding-top: 5px;
+
+        a {
+          display: block;
+          height: 30px;
+          margin: 0px;
+          padding: 5px 0 0 0;
+          text-decoration: none;
+          &:before {
+            font-family: icomoon;
+            content: "\e902";
+            color: $red;
+            font-size: 23px;
+            padding-top: 31px;
+            top: 4px;
+            position: relative;
+          }
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+        &.active {
+          background-color: $orange;
+          font-weight: bolder;
+          font-size: 15px;
+          a {
+            text-decoration: none;
+            color: white;
+            &:before {
+              font-family: icomoon;
+              content: "\e902";
+              color: white;
+              font-size: 23px;
+              padding-top: 31px;
+              top: 4px;
+              position: relative;
+            }
+          }
+        }
+        &:last-child {
+          border-right: 1px solid #ccc;
+        }
+      }
+    }
+  }
+}

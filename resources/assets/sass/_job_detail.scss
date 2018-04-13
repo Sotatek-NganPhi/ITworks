@@ -1,0 +1,479 @@
+#job_detail{
+  [v-cloak] {
+    display: none;
+  }
+  .detail_item{
+    margin: 0px auto 30px auto;
+    border: 1px solid #ccc;
+    width: $width-web;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+    .title{
+      display: block;
+      text-align: left;
+      width: 100%;
+      h2{
+        color: #ffffff;
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        padding: 10px 0px 10px 10px;
+        background: $gray-bold;
+        letter-spacing: 0px;
+        font-size: 20px;
+        font-weight: bolder;
+        a{
+          color: #ffffff;
+          text-decoration: none;
+        }
+      }
+      .list-btn{
+        text-align: right;
+        margin: 5px;
+        @media screen and (max-width: 768px) {
+          text-align: left;
+          width: 98%;
+          margin: auto;
+          padding: 5px 0px;
+        }
+        .btn{
+          background: white;
+          padding: 0px;
+          @media screen and (max-width: 768px) {
+            width: 32%;
+            font-size: 13px;
+          }
+          a{
+            display: block;
+            float: right;
+            width: 150px;
+            height: 30px;
+            padding: 0;
+            text-decoration: none;
+            text-align: center;
+            padding-top: 5px;
+            font-weight: bold;
+            color: #fff;
+            background: $orange;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            &:hover{
+              opacity: 0.5;
+            }
+            @media screen and (max-width: 768px) {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .__description{
+      display: block;
+      float: left;
+      width: 100%;
+      background: #f6f6f6;
+      .salary{
+        float: left;
+        text-align: left;
+        display: block;
+        padding: 1%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        &.salary-detail{
+          overflow: inherit;
+          white-space: normal;
+        }
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          word-break: break-word;
+        }
+      }
+      .company{
+        display: block;
+        padding: 1%;
+        width: 45%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        float: right;
+        text-align: right;
+      }
+    }
+    .__sub_title{
+      float: left;
+      width: 100%;
+      h3{
+        color: #F2C469;
+        width: 96%;
+        margin: 15px auto;
+        border-bottom: 2px solid #F2C469;
+        clear: both;
+        text-align: left;
+        font-size: 18px;
+        letter-spacing: -1px;
+        cursor: default;
+        font-weight: 500;
+      }
+    }
+    .job_summary{
+      display: flex;
+      width: 100%;
+      float: left;
+      padding: 0 20px;
+      @media screen and (max-width: 768px) {
+        display: block;
+      }
+      .main_img_job{
+        float: left;
+        width: 30%;
+        margin: 2%;
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
+        img{
+          width: 100%;
+        }
+      }
+      .req_job {
+        width: 70%;
+        float: left;
+        margin: 2% 0;
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          background: white;
+        }
+        .pr{
+          width: 100%;
+          border: none;
+          background: white;
+          padding: 2.5% 5% 2% 10%;
+          text-align: left;
+          border-radius: 6px;
+          -webkit-border-radius: 6px;
+          -moz-border-radius: 6px;
+          min-height: 50px;
+          @media screen and (max-width: 768px) {
+            min-height: 60px;
+            padding: 5% 5% 2% 17%;
+          }
+        }
+      }
+    }
+    .other_img_job{
+      margin: 1% 5%;
+      display: block;
+      width: 90%;
+      float: left;
+      img, p{
+        float: left;
+        width: 31%;
+        height: auto;
+        margin: 1%;
+        text-align: left;
+      }
+    }
+    .send_mail_box{
+      height: auto;
+      display: flex;
+      clear: both;
+    }
+    .btn_send_mail{
+      padding: 0 0 10px 0;
+      margin: 10px auto;
+      clear: both;
+      text-align: center;
+      width: 30%;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+      h5.mail{
+        a{
+          background: 50% 50% no-repeat #333;
+          width: 96%;
+          display: block;
+          height: 70px;
+          float: left;
+          margin: 0 2%;
+          margin-bottom: 20px;
+          color: white;
+          font-size: 21px;
+          padding-top: 21px;
+          font-weight: bold;
+          position: relative;
+          padding-left: 87px;
+          text-decoration: none;
+          span{
+            font-size: 31px;
+            margin-right: 40px;
+            position: absolute;
+            left: 79px;
+            top: 13px;
+          }
+        }
+      }
+    }
+    table{
+      margin: 5px auto;
+      width: 90%;
+      clear: both;
+      border-collapse: collapse;
+      th, td{
+        border: 1px #cccccc solid;
+        padding: 1%;
+      }
+      th{
+        width: 22%;
+        background-color: $white-background;
+        text-align: center;
+        font-weight: 400;
+      }
+      td{
+        width: 80%;
+        text-align: left;
+      }
+      th.__title{
+        background-color: $_gray;
+        letter-spacing: 10px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .recommend-jobs {
+      margin: 5px auto;
+      width: 90%;
+      @media screen and (max-width: 768px) {
+      }
+      .recent-viewed-jobs, .similar-jobs {
+        display: inline-block;
+        width: 48%;
+        border: 1px solid #ccc;
+        border-top: solid #E51213 5px;
+        background: #f9f9f9;
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
+        .title {
+          width: 100%;
+          height: 40px;
+          text-align: left;
+          text-indent: 8px;
+          padding-bottom: 5px;
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 40px !important;
+          @media screen and (max-width: 768px) {
+            height: auto;
+          }
+        }
+        .recent-viewed-carousel {
+          padding: 10px 15px;
+          .big-slider, .small-slider {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            .slick-prev:before, .slick-next:before{
+              color:black;
+            }
+            .slick-prev {
+              left: 5px;
+              z-index: 2;
+            }
+            .slick-next {
+              right: 5px;
+              z-index: 2;
+            }
+            .slide {
+              margin-right: 10px;
+              width: 145px;
+              height: 230px;
+              padding: 10px;
+              background: #FFFFFF;
+              border: 1px #ccc solid;
+              overflow: hidden;
+              .img{
+                img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+              .job-list-detail {
+                text-align: left;
+                .catch {
+                  width: 100%;
+                  overflow: hidden;
+                  height: 40px;
+                  font-size: 13px;
+                  font-weight: bold;
+                  a {
+                    text-decoration: none;
+                    color: black;
+                  }
+                  a:visited {
+                    text-decoration: none;
+                    color: black;
+                  }
+                }
+                .area, .station, .wage {
+                  font-size: 10px;
+                  border-top: dotted 1px #ccc;
+                  overflow: hidden;
+                  max-height: 40px;
+                  margin: 0;
+                  padding: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .similar-jobs {
+        margin-left: 2%;
+        @media screen and (max-width: 768px) {
+          margin-left: 0px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .mobile-job-list {
+      display: none;
+      @media screen and (max-width: 768px) {
+        .title {
+          border: 1px solid #ccc;
+          border-left: solid #E51213 3px;
+          background-color: #F4F4F3;
+          font-weight: bold;
+          padding: 3px;
+        }
+        .job {
+          border: 1px solid #ccc;
+          position: relative;
+          min-height: 70px;
+          .img {
+            position: absolute;
+            width: 20%;
+            height: auto;
+            margin: 1%;
+          }
+          .job-detail {
+            display: inline-block;
+            width: 100%;
+            padding-left: 22%;
+            background: url("/images/arrow.gif") right center no-repeat;
+            div {
+              display: block;
+              width: 93%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis
+            }
+            .sub-item {
+              font-size: 11px;
+            }
+            .description {
+              font-size: 12px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+._form{
+  margin: 0px auto 30px auto;
+  border: 1px solid #ccc;
+  padding-bottom: 30px;
+  h4 {
+    display: block;
+    width: 100%;
+    background: #B3B3B3;
+    color: white;
+    margin: 0 auto;
+    font-size: 20px;
+    padding: 10px 0;
+  }
+  h5 {
+    background-color: #f6f6f8;
+    font-size: 13px;
+    text-align: left;
+    padding: 10px 20px;
+  }
+  ._form_action{
+    .btn-form{
+      background: $red;
+      padding: 7px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      height: auto;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      color: #fff;
+      letter-spacing: 1px;
+      -webkit-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+      font-family: inherit;
+      &:hover{
+        opacity: 0.5;
+      }
+    }
+    label.area{
+      @media screen and (max-width: 768px) {
+        float: right;
+        margin-right: 8%;
+      }
+    }
+    .input-form{
+      vertical-align: middle;
+      padding: 5px;
+      border: solid 1px #ccc;
+      margin: 5px;
+    }
+  }
+  .btn_login{
+    background: #F15A24;
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    height: auto;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    letter-spacing: 1px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    font-family: inherit;
+  }
+  .btn_register{
+    @extend .btn_login;
+    margin-top: 20px;
+    display: inline-block;
+  }
+  a{
+    color: $black;
+  }
+  .errors {
+    font-weight: bold;
+    color: red;
+    padding-left: 3%;
+    background: url(/images/cancel.gif) no-repeat center left;
+    margin: 0 auto;
+    text-align: left;
+    width: 95%;
+    list-style: none;
+    padding-top: 6px;
+  }
+}

@@ -1,0 +1,389 @@
+article {
+    margin: 0;
+    padding: 0;
+    h2 {
+        font-size: 32px;
+        margin: auto auto 20px;
+        line-height: 1.4;
+        color: #fff;
+    }
+}
+.interview {
+    width: 100%;
+    padding: 40px 0;
+    overflow: hidden;
+    text-align: center;
+    background: #eee;
+    border-bottom: 1px solid #d6d6d6;
+    border-top: 1px solid #d6d6d6;
+    h2:before {
+        font-family: 'icon-font';
+        display: inline-block;
+        position: relative;
+    }
+    .inner {
+        h2 {
+            color: #E51213;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #c8c8c8;
+            width: 1050px;
+            @media screen and (max-width: 768px) {
+                width: 92%;
+                margin: auto;
+            }
+            span {
+                display: block;
+                color: #666666;
+                font-size: 0.5em;
+                margin-top: 10px;
+                @media screen and (max-width: 768px) {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+        h2:before {
+            content: "\e903";
+            margin-right: 20px;
+        }
+        ul {
+            display: block;
+            padding: 0;
+            margin: 30px auto;
+            width: 1050px;
+            @media screen and (max-width: 768px) {
+                padding: 0 4%;
+                width: 100%;
+            }
+            li {
+                display: inline-block;
+                width: 335px;
+                height: auto;
+                margin: auto 20px auto auto;
+                float: left;
+                text-align: center;
+                @media screen and (max-width: 768px) {
+                    width: 32%;
+                    margin: auto 2% auto auto;
+                    float: left;
+                }
+                @media screen and (max-width: 699px) {
+                    width: 100%;
+                    margin: auto auto 60px;
+                    height: auto !important;
+                    float: none;
+                    display: block;
+                }
+                a {
+                    display: block;
+                    color: #333;
+                    text-decoration: none;
+                    img {
+                        text-decoration: none;
+                        -webkit-transition: all 0.3s ease;
+                        -moz-transition: all 0.3s ease;
+                        -o-transition: all 0.3s ease;
+                        transition: all 0.3s ease;
+                        @media screen and (max-width: 768px) {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                        @media screen and (max-width: 699px) {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+                a:hover {
+                    opacity: 0.5;
+                }
+                p.cat {
+                    text-align: center;
+                    padding: 15px 0;
+                }
+                .title {
+                    text-align: center;
+                    padding: 15px 0;
+                    border-top: 1px solid #E51213;
+                    line-height: 1.5;
+                    @media screen and (max-width: 699px) {
+                        display: inline-block;
+                    }
+                }
+                p {
+                    text-align: left;
+                    line-height: 1.8;
+                    text-align: left;
+                }
+                .more {
+                    display: inline-block;
+                    border: 1px solid #333;
+                    padding: 5px 40px;
+                    margin: 20px auto auto;
+                }
+                .more:before {
+                    content: "\f138";
+                    font-family: FontAwesome;
+                    display: inline-block;
+                    margin-right: 5px;
+                    color: #E51213;
+                }
+            }
+            li:nth-of-type(even) {
+                .title {
+                    border-color: #9c9c9c;
+                }
+            }
+            li:nth-of-type(3),
+            li:nth-of-type(6),
+            li:nth-of-type(9),
+            li:nth-of-type(12) {
+                margin: auto auto auto;
+                @media screen and (max-width: 699px) {
+                    margin: auto auto 60px auto;
+                }
+                @media screen and (max-width: 768px) {
+                    margin: auto auto 60px auto;
+                }
+            }
+        }
+    }
+}
+.content-interview {
+    height: auto;
+    @media screen and (max-width: 768px) {
+        margin-top: 0;
+    }
+    .breadcrumbs {
+        width: 100%;
+        margin: auto auto;
+        display: block;
+        background: #F2F2F2;
+        div {
+            width: 1020px;
+            height: auto;
+            padding: 15px 0;
+            font-size: 0.8em;
+            text-align: left;
+            margin: 0 auto;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+                padding: 15px 4%;
+                font-size: 11px;
+            }
+        }
+        span {
+            @media screen and (max-width: 768px) {
+                font-size: 11px;
+            }
+            font-size: 14px;
+        }
+        a {
+            color: #333;
+        }
+        a:hover {
+            opacity: 0.5;
+        }
+    }
+}
+#main {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 0;
+    position: relative;
+    article {
+        background:#fff;
+        margin: auto;
+        section {
+            width: 1050px;
+            padding: 30px 0;
+            margin: auto;
+            display: block;
+            @media screen and (max-width: 768px) {
+                width: 100%;
+                padding: 0 4%;
+            }
+            h1 {
+                width: 100%;
+                padding: 0 0 10px 40px;
+                margin: auto auto 20px;
+                border-bottom: 1px solid #E51213;
+                font-size: 1.7em;
+                position: relative;
+                text-align: start;
+                span {
+                    font-size: 0.6em;
+                    display: block;
+                    margin: 0 0 10px;
+                }
+            }
+            h1:before {
+                content: "\e903";
+            }
+            h1:before {
+                font-family: 'icon-font';
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: 6px;
+                font-size: 1.5em;
+                color: #E51213;
+            }
+            .edit {
+                margin: 20px auto 50px;
+            }
+            figure {
+                position: relative;
+                width: 100%;
+                height: auto;
+                text-align: right;
+                padding: 0 0 50px;
+                margin: 50px auto 70px;
+                img {
+                    max-width: 100%;
+                    vertical-align: top;
+                    @media screen and (max-width: 768px) {
+                        max-width: 100%;
+                        height: auto;
+                        float: none;
+                        text-align: center;
+                        display: block;
+                        margin: 10px auto;
+                    }
+                }
+                .text {
+                    position: absolute;
+                    width: 40%;
+                    left: 0;
+                    bottom: -30px;
+                    color: #fff;
+                    background: #E51213;
+                    padding: 30px;
+                    text-align: left;
+                    @media screen and (max-width: 768px) {
+                        position: static;
+                        width: 100%;
+                    }
+                    time {
+                        margin: 0 0 5px;
+                        display: block;
+                    }
+                }
+            }
+            .clearfix:after {
+                content: " ";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+            img {
+                max-width: 100%;
+            }
+            p {
+                margin: 0;
+                padding: 0;
+                line-height: 1.8;
+                text-align: start;
+            }
+            .company_inner {
+                border: 1px solid #333;
+                background: #f2f2f2;
+                padding: 30px;
+                overflow: hidden;
+                @media screen and (max-width: 768px) {
+                    text-align: center;
+                }
+                h2 {
+                    background: #E51213;
+                    color: #fff;
+                    display: inline-block;
+                    float: left;
+                    padding: 20px;
+                    text-align: center;
+                    border: 0px;
+                    @media screen and (max-width: 768px) {
+                        float: none;
+                        padding: 20px;
+                    }
+                }
+                .text {
+                    width: 80%;
+                    float: right;
+                    text-align: start;
+                    @media screen and (max-width: 768px) {
+                        width: 100%;
+                        float: none;
+                        text-align: left;
+                    }
+                    p {
+                        margin: auto auto 10px;
+                        font-size: 1.8rem;
+                        line-height: 2 !important;
+                        @media screen and (max-width: 768px) {
+                            font-size: 15px;
+                        }
+                    }
+                    a {
+                        text-decoration: underline;
+                        color: #333;
+                    }
+                    a:hover {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
+    .archive {
+        h1 {
+            width: 1050px;
+            padding: 0 0 10px 40px;
+            margin: 50px auto 20px;
+            border-bottom: 1px solid #E51213;
+            font-size: 1.7em;
+            position: relative;
+            text-align: start;
+            @media screen and (max-width: 768px) {
+                width: 92%;
+            }
+        }
+        h1:before {
+            content: "\e903";
+            font-family: 'icon-font';
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 1.6em;
+            color: #E51213;
+        }
+    }
+    .paginations {
+        display: inline-block !important;
+        padding-left: 0 !important;
+        margin: 20px 0 !important;
+        border-radius: 4px !important;
+        @media screen and (max-width: 768px) {
+            padding: 0;
+            width: 100%;
+        }
+        >li {
+            width: auto !important;
+            height: auto;
+            margin: 5px !important;
+            float: none !important;
+            text-align: center;
+            display: inherit;
+            @media screen and (max-width: 768px) {
+                font-size: 11px;
+            }
+            a {
+                color: #333;
+            }
+            span {
+                color: #999999;
+            }
+        }
+    }
+}
