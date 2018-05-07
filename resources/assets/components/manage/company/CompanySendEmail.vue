@@ -8,15 +8,6 @@
                     <input class="form-control" id="input-company_name" type="text" v-model="record.name" />
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="id" class="col-sm-2 control-label">{{ $t("company.name_phonetic") }}</label>
-                <div class="col-sm-10">
-                    <input class="form-control" id="input-name_phonetic" type="name_phonetic"
-                           v-model="record.name_phonetic" />
-                </div>
-            </div>
-
             <div class="form-group">
                 <label for="id" class="col-sm-2 control-label">{{ $t("common_field.phone_number") }}</label>
                 <div class="col-sm-10">
@@ -77,7 +68,6 @@
                 },
                 record: {
                     name:'',
-                    name_phonetic:'',
                     phone_number:'',
                     expire_date:'',
                     email:'',

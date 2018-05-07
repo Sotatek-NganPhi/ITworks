@@ -4,12 +4,10 @@ export default {
 
 export const jobNavigators = [
   { link: '/job/list', text: 'sub_menu.job.job_list', sub: 'job' },
-  { link: '/job/job_import', text: 'sub_menu.job.import', sub: 'job' },
 ];
 
 export const companyNavigators = [
   { link: '/company/list', text: 'sub_menu.company.company', sub: 'company' },
-  { link: '/agency/list', text: 'sub_menu.company.agency',  sub: 'company' },
   { link: '/admin/list', text: 'sub_menu.company.admin', sub: 'company' },
 ];
 

@@ -1,5 +1,5 @@
 export default {
-  'app_name': 'GOEN',
+  'app_name': 'IT Works',
   'menu': {
     'job': 'Job',
     'company': 'Company',

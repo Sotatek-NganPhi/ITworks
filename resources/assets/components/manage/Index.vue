@@ -5,9 +5,9 @@
         <div class="col-lg-6">
           <div>
             <div class="title">
-              <h4>現在の状況</h4>
+              <h4>Tình hình hiện tại</h4>
             </div>
-            <h5>現在の登録原稿数: {{totalJob}} 件</h5>
+            <h5>Số lượng công việc đã đăng ký: {{totalJob}} công việc</h5>
             <div>
               <table class="border">
                 <tbody>

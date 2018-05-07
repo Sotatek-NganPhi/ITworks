@@ -13,13 +13,13 @@ return [
     |
     */
 
-    'failed' => 'ログインできませんでした。',
-    'throttle' => '一定回数以上のログインを失敗しました。:seconds後にお試しください。',
-    'manage' => 'このページにはアクセスできません。',
+    'failed' => 'Đăng nhập không thành công',
+    'throttle' => 'Đăng nhập thất bại nhiều hơn một số lần nhất định. : Vui lòng thử lại sau.',
+    'manage' => 'Bạn không thể truy cập trang này.',
     'register' => [
-        'complete' => '登録ありがとうございます。メールボックスを確認してください。',
-        'verified' => 'アカウントが確認されました。',
-        'resend_verification' => '確認メールが届いていない場合は、こちらをクリックして再送信してください。',
+        'complete' => 'Cảm ơn bạn đã đăng ký. Vui lòng kiểm tra hộp thư.',
+        'verified' => 'Tài khoản của bạn đã được xác nhận.',
+        'resend_verification' => 'Nếu bạn không nhận được email xác nhận, vui lòng nhấp vào đây và gửi lại.',
     ],
-    'application' => '応募が完了しました。<br />担当者から追ってご連絡を差し上げますのでしばらくお待ち下さい。',
+    'application' => 'Bạn đã nhập thành công.<br />Vui lòng đợi một lát, chúng tôi sẽ liên hệ với bạn sớm nhất có thể.',
 ];

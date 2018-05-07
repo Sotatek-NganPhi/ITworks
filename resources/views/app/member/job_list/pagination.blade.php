@@ -1,13 +1,11 @@
 <div class="control">
     <div class="pagination">
         <p>
-            全{{$jobs->currentPage()}}件/ {{$jobs->lastPage()}}　
-
             @if($jobs->currentPage() < 2)
-                <span class="disable">&lt;&lt;前の1ページ</span>
+                <span class="disable">&lt;&lt;Trang trước</span>
             @else
                 <span class="active"><a
-                            href="{{$jobs->previousPageUrl()}}">&lt;&lt;前の1ページ</a></span>
+                            href="{{$jobs->previousPageUrl()}}">&lt;&lt;Trang trước</a></span>
             @endif
             @if($jobs->lastPage() > 10)
                 @if($jobs->currentPage() < $jobs->lastPage() - 9)
@@ -31,10 +29,10 @@
                 @endfor
             @endif
             @if($jobs->currentPage() == $jobs->lastPage())
-                <span class="disable">次の1ページ&gt;&gt;</span>
+                <span class="disable">Trang tiếp theo &gt;&gt;</span>
             @else
                 <span class="active"><a
-                            href="{{$jobs->nextPageUrl()}}">次の1ページ&gt;&gt;</a></span>
+                            href="{{$jobs->nextPageUrl()}}">Trang tiếp theo &gt;&gt;</a></span>
             @endif
         </p>
     </div>

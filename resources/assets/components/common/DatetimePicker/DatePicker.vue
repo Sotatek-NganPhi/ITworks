@@ -35,9 +35,9 @@
         month: '',
         day: '',
         year: '',
-        dayPlaceholder: '--日--',
-        monthPlaceholder: '--月--',
-        yearPlaceholder: '年',
+        dayPlaceholder: '--Ngày--',
+        monthPlaceholder: '--Tháng--',
+        yearPlaceholder: 'Năm',
       };
     },
     watch: {

@@ -22,7 +22,7 @@
 @section('page_content')
     <div id="home">
         <div class="menu_home_page">
-        <div class="area">
+        <!-- <div class="area">
             <ol>
                 @foreach($regions as $region)
                     <li class="{{ preg_match('/' . $region->key .'/i', Request::url()) ? 'active' : '' }}"
@@ -32,7 +32,7 @@
                     </li>
                 @endforeach
             </ol>
-        </div>
+        </div> -->
         </div>
         <div class="bannerArea">
             <div id="bannerImage" class="bannerImage">
@@ -64,16 +64,6 @@
                             @include('app.home.special')
                         </div>
                         @endif
-                        @if($campaign)
-                            <div class="campaign">
-                                    <a href="/campaign/{{ $campaign->id }}">
-                                        <img src="{{ $campaign->banner_path }}" alt="" width="100%" height="168">
-                                    </a>
-                            </div>
-                        @endif
-                        <div class="searching_panel search_area">
-                            @include('app.home.searching_panel')
-                        </div>
                     </div>
                 </div>
                 <div class="side">
@@ -99,18 +89,6 @@
                 @include('app.home.attention')
             </div>
         </div>
-        @endif
-        @if(count($videos))
-        <div class="body-bottom body-odd">
-            <div class="video">
-                @include('app.home.video')
-            </div>
-        </div>
-        @endif
-        @if(count($interviewHome))
-            <article class="sec3 interview">
-                @include('app.home.interview')
-            </article>
         @endif
         @if (!$expos->isEmpty())
         <div class="body-bottom body-expo">

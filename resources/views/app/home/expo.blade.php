@@ -1,7 +1,7 @@
 @if(count($expos))
     <div class="__selection_area">
         <div class="kakko">
-            <h3>説明会情報</h3>
+            <h3>Sự kiện</h3>
         </div>
         <p class="title"><span>Event</span></p>
     </div>

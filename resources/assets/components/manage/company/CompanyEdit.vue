@@ -10,9 +10,6 @@
       <form-group :label="getDisplayName('name')" :is-required="isFieldRequired('name')">
         <input data-vv-name="name" class="form-control" type="text" v-model="record.name" />
       </form-group>
-      <form-group :label="getDisplayName('name_phonetic')" :is-required="isFieldRequired('name_phonetic')">
-        <input class="form-control" data-vv-name="name_phonetic" type="text" v-model="record.name_phonetic" />
-      </form-group>
       <form-group :label="getDisplayName('street_address')" :is-required="isFieldRequired('street_address')">
         <input class="form-control" data-vv-name="street_address" type="text" v-model="record.street_address" />
       </form-group>
@@ -20,31 +17,10 @@
         <input class="form-control" data-vv-name="contact_name" type="text" v-model="record.contact_name" />
       </form-group>
       <form-group :label="getDisplayName('phone_number')" :is-required="isFieldRequired('phone_number')">
-        <phone-input  data-vv-name="phone_number" v-model="record.phone_number" ></phone-input>
+        <input class="form-control" data-vv-name="phone_number" v-model="record.phone_number" ></input>
       </form-group>
       <form-group :label="getDisplayName('short_description')" :is-required="isFieldRequired('short_description')">
         <input class="form-control" data-vv-name="short_description"  type="text" v-model="record.short_description" />
-      </form-group>
-      <form-group :label="getDisplayName('company_hp')" :is-required="isFieldRequired('company_hp')">
-        <input class="form-control" data-vv-name="company_hp"  type="text" v-model="record.company_hp" />
-      </form-group>
-      <form-group :label="getDisplayName('expire_date')" :is-required="isFieldRequired('expire_date')">
-        <date-picker data-vv-name="expire_date" v-model="record.expire_date" format="YYYY-MM-DD" locale="ja" required></date-picker>
-      </form-group>
-      <form-group :label="getDisplayName('is_active')" :is-required="isFieldRequired('is_active')">
-        <radio-group inline="true" data-vv-name="is_active" v-model="record.is_active" :options="isActiveOptions"/>
-      </form-group>
-      <form-group :label="$t('company.manager')">
-        <multiselect
-                v-model="selectedManagers"
-                :placeholder= "$t('common_action.pick')"
-                label="name"
-                track-by="id"
-                :options="managers"
-                :multiple="true"
-                :close-on-select="false"
-                :clear-on-select="false"
-                :hide-selected="true"/>
       </form-group>
     </validation-form>
     <div class="text-center">
@@ -72,7 +48,6 @@ import Multiselect from 'vue-multiselect';
 
 const defaultRecord = {
   name: '',
-  name_phonetic: '',
   street_address: '',
   contact_name: '',
   phone_number: '',
@@ -100,7 +75,7 @@ export default {
       selectedManagers: [],
       isActiveOptions: Utils.getYesNoOptions(),
       isShowModal: false,
-      messageModal: "あなたはいなかった変更内容を保存しますか?",
+      messageModal: "Bạn có muốn lưu thay đổi không?",
     }
   },
 

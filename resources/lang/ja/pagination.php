@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'previous' => '前',
-    'next' => '次',
+    'previous' => 'Trang trước',
+    'next' => 'Trang tiếp theo',
 
 ];

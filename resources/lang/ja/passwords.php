@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'password' => 'パスワードは、6文字以上で入力してください。',
-    'reset' => 'パスワードがリセットされました。',
-    'sent' => 'パスワードリセットのメールを送信しました。',
-    'token' => 'このリンクは有効期限がきれています。',
-    'user' => "このメールアドレスは登録されていません。",
+    'password' => 'Mật khẩu phải có ít nhất 6 ký tự.',
+    'reset' => 'Mật khẩu của bạn đã được đặt lại.',
+    'sent' => 'Chúng tôi đã gửi email đặt lại mật khẩu.',
+    'token' => 'Liên kết này đã hết hạn.',
+    'user' => "Địa chỉ email này chưa được đăng ký.",
 
 ];

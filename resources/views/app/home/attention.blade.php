@@ -1,7 +1,7 @@
 @if(count($attentionJobs))
     <div class="__selection_area">
         <div class="kakko">
-            <h3>あなたにオススメの求人</h3>
+            <h3>Các công việc được gợi ý cho bạn</h3>
         </div>
         <p class="title"><span>RECOMMENDATION</span></p>
     </div>
@@ -17,6 +17,6 @@
         </div>
     @endforeach
     <div class="button_wrap">
-        <a href="job?sort=hot" class="button"><p>注目のお仕事をもっと見る</p></a>
+        <a href="job?sort=hot" class="button"><p>Xem thêm</p></a>
     </div>
 @endif

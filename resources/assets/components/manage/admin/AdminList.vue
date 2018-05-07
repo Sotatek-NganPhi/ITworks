@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="text-center">
       <button type="button" class="btn btn-success btn-sm" @click="openEditPage()">
         <span class="glyphicon glyphicon-plus"></span> {{ $t("common_action.new") }}
@@ -88,7 +87,7 @@ export default {
       subNavigators,
       typeManagerOptions: Utils.getTypeManagers(),
       isShowModal: false,
-      messageModal: "あなたは、このデータをしません削除したいです?",
+      messageModal: "Bạn có muốn xóa không?",
       paramsModal: null,
     }
   },

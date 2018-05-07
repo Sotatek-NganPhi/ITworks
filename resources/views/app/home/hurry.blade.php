@@ -1,7 +1,7 @@
 @if(count($urgentJobs))
     <div class="__selection_area">
         <div class="kakko">
-            <h3>積極採用企業の求人情報（急募)</h3>
+            <h3>Thông tin việc làm nổi bật</h3>
         </div>
         <p class="title"><span>CONSCRIPTION</span></p>
     </div>

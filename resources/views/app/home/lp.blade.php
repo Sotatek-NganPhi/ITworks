@@ -8,7 +8,7 @@
     <meta name="masterdata-version" content="{{ $dataVersion }}">
     <meta name="description" content="{{ $configs['pc_meta_description'] }}">
     <meta name="keywords" content="{{ $configs['pc_meta_keywords'] }}">
-    <title>代理店募集</title>
+    <title>Công việc mong muốn</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <meta name="viewport"
           content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
@@ -46,10 +46,10 @@
         <!-- Panel -->
         <div class="panelArea">
             <div class="txtArea">
-                <h1 class="logo"><img src="/images/head_logo.svg" alt="50歳からの求人サイト はたらくご縁job"></h1>
-                <div class="text">生涯現役 いつまでも働ける環境を<br>~週1日勤務や短期求人多数~</div>
-                <div class="btnArea"><a href="/register">無料会員登録はコチラ</a></div>
-                <div class="link"><a href="/login">既に会員の方はコチラ</a></div>
+                <h1 class="logo"><img src="/images/head_logo.svg" alt="ITworks"></h1>
+                <div class="text">Fulltime<br>~Parttime~</div>
+                <div class="btnArea"><a href="/register">Đăng ký thành viên</a></div>
+                <div class="link"><a href="/login">Login</a></div>
             </div>
         </div>
         <!-- /Panel -->
@@ -58,7 +58,7 @@
         <div class="aboutArea">
             <div class="about">
                 <div class="textArea">
-                    <h2 class="catch">50歳からの求人サイト<br>はたらくご縁とは？</h2>
+                    <h2 class="catch">Trang web tìm việc cho sinh viên IT mới ra trường<br>là gì？</h2>
                     <div class="txt">
                         <p>少子高齢化の日本の「働く」を変える！<br>皆様のこれまで培ってきた「ご経験」「技術」「ノウハウ」等を活かして、<br>日本を盛り上げていきたい！</p>
                         <p>そのような想いを「はたらくご縁」は実現します。</p>

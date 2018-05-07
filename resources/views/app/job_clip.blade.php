@@ -1,6 +1,6 @@
 @extends('app.layout')
 
-@section('title', $job->description . '（ID：'. $job->id . '）｜ホーム')
+@section('title', $job->description . '（ID：'. $job->id . ')')
 
 @section('page_content')
     <div id="search">
@@ -9,56 +9,34 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <a><span>求人詳細</span></a>　≫
+                <a><span>Chi tiết công việc</span></a>　≫
             </li>
             <li>
-                <span>携帯に送る</span>
+                <span>Lưu việc làm</span>
             </li>
         </ul>
         <div class="list-job">
             <div class="job-view">
                 <div class="list_title">
                     <h2><a href="/job/{{$job->id}}">{{$job->description}}</a></h2>
-                    <div class="detail"><a href="/job/{{$job->id}}">詳細</a></div>
-                </div>
-                <div class="__description">
-                    <div class="salary">{{$job->salary}}</div>
-                    <div class="company">&nbsp;</div>
+                    <div class="detail"><a href="/job/{{$job->id}}">Chi tiết</a></div>
                 </div>
                 <div class="__sub_title">
                     <h3>{{$job->company_name}}</h3>
-                </div>
-                <div class="main-photo">
-                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->main_image}}"
-                                                      alt="{{$job->main_caption}}"></a>
                 </div>
                 <div class="spec">
                     <table border="0" cellpadding="0" cellspacing="0">
                         <tbody>
                         <tr>
-                            <th>応募条件</th>
+                            <th>Điều kiện ứng tuyển</th>
                             <td>{{$job->application_condition}}</td>
                         </tr>
                         <tr>
-                            <th>掲載期間</th>
+                            <th>Thời gian nhận hồ sơ</th>
                             <td>{{$job->post_start_date}} - {{$job->post_end_date}}</td>
                         </tr>
                         </tbody>
                     </table>
-                    <div class="list-photo-other">
-                        @if(isset($job->sub_image1))
-                            <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image1}}"
-                                                              alt="{{$job->sub_caption1}}"></a>
-                        @endif
-                        @if(isset($job->sub_image2))
-                            <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image2}}"
-                                                              alt="{{$job->sub_caption2}}"></a>
-                        @endif
-                        @if(isset($job->sub_image3))
-                            <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image3}}"
-                                                              alt="{{$job->sub_caption3}}"></a>
-                        @endif
-                    </div>
                 </div>
                 <div class="clear-both"></div>
             </div>
@@ -66,17 +44,17 @@
 
         @if(Auth::check())
             <div class="_form">
-                <h4>上記のお仕事をクリップします。</h4>
-                <h5>クリップした仕事は『クリップボード』よりご参照いただけます。</h5><br>
+                <h4>Công việc đã lưu</h4>
+                <h5>Công việc này sẽ được lưu vào hồ sơ cá nhân</h5><br>
                 <form name="form_login" method="post" action="{{route('add_job_clips', $job->id)}}">
                     {{ csrf_field() }}
-                    <input type="submit" class="btn_login" name="Submit" value="クリップする">
+                    <input type="submit" class="btn_login" name="Submit" value="Lưu">
                 </form>
             </div>
         @else
             <div class="_form">
-                <h4>上記のお仕事をクリップします。</h4>
-                <h5>すでにご登録の方は、このお仕事情報をクリップして、一発検索！</h5>
+                <h4>Công việc đã lưu</h4>
+                <h5>Nếu bạn đã là thành viên, vui lòng đăng nhập !</h5>
                 <div class="_form_action">
                     <form name="form_login" method="post" action="{{ route('login') }}">
                         {{ csrf_field() }}
@@ -85,18 +63,18 @@
                                 {{ session('messages') }}
                             </div>
                         @endif
-                        <label for="email" class="area">メールアドレス：
+                        <label for="email" class="area">Email：
                             <input name="email" type="email" maxlength="255"
                                    class="input-form {{ $errors->has('email') ? ' has-error' : '' }}" size="20">
                         </label>
-                        <label for="password" class="area">パスワード：
+                        <label for="password" class="area">Password：
                             <input name="password" type="password"
                                    class="input-form {{ $errors->has('password') ? ' has-error' : '' }}"
                                    maxlength="255" size="20">
                         </label>
                         <input type="submit" name="Submit" class="btn_login"
-                               value="ログイン">
-                        <a href="#">&gt;&gt;パスワードを忘れた方</a>
+                               value="Đăng nhập">
+                        <a href="#">&gt;&gt;Quên mật khẩu</a>
                         @if (count($errors) > 0)
                             <div>
                                 <ul class="errors">
@@ -108,12 +86,11 @@
                         @endif
                     </form>
                 </div>
-                <h5>まだサイト登録していない方は？</h5>
+                <h5>Nếu bạn chưa đăng ký?</h5>
                 <div class="regist_box">
-                    にご登録いただくと、ご応募いただいたお仕事情報をストックしたり、あらかじめ履歴書を作成しておくことができます！<br>
-                    まだ登録がお済みでない方は、是非この機会にご利用下さい！<br>
+                    Nếu bạn đăng ký, bạn có thể lưu trữ thông tin công việc bạn quan tâm hoặc bạn có thể tạo trong hồ sơ cá nhân trước!<br>
                     <p class="center __btn">
-                        <a class="btn_register" href="{{ route('register') }}">新規会員登録（無料）</a>
+                        <a class="btn_register" href="{{ route('register') }}">Đăng ký thành viên</a>
                     </p>
                 </div>
             </div>
@@ -123,10 +100,10 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <a><span>求人詳細</span></a>　≫
+                <a><span>Chi tiết công việc</span></a>　≫
             </li>
             <li>
-                <span>携帯に送る</span>
+                <span>Lưu việc làm</span>
             </li>
         </ul>
     </div>

@@ -14,7 +14,7 @@ if (php_sapi_name() != 'cli') {
 
 $client = getClient();
 $service = new Google_Service_Sheets($client);
-$spreadsheetId = '1eHGvod4h6GeE98_xoDoneKheY3aQ92ecBLN6sxgs6fM';
+$spreadsheetId = '1Mm5PeVYa8fjAbCv4Enf4fmM1eRTsZF_5rfJwFppYFtg';
 $range = 'meta!A1:100';
 $metadata = $service->spreadsheets_values->get($spreadsheetId, $range)->getValues();
 

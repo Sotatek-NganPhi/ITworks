@@ -1,6 +1,6 @@
 @extends('app.layout')
 
-@section('title', $job->description . '（ID：'. $job->id . '）｜ホーム')
+@section('title', $job->description . '（ID：'. $job->id . ')')
 
 @section('page_content')
     <div id="search">
@@ -9,17 +9,17 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <a><span>求人詳細</span></a>　≫
+                <a><span>Chi tiết công việc</span></a>　≫
             </li>
             <li>
-                <span>携帯に送る</span>
+                <span>Lưu việc làm</span>
             </li>
         </ul>
 
         <div class="_form">
-            <h4>クリップ完了</h4>
-            <h5>クリップした情報はマイページからご覧いただけます！</h5><br>
-            <a class="btn_login" href="{{route('member_clip_list')}}">マイページを見る</a>
+            <h4>Hoàn tất việc lưu công việc</h4>
+            <h5>Bạn có thể xem thông tin tại My page!</h5><br>
+            <a class="btn_login" href="{{route('member_clip_list')}}">Xem My page</a>
         </div>
 
         <ul class="breadcrumb">
@@ -27,10 +27,10 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <a><span>求人詳細</span></a>　≫
+                <a><span>Chi tiết công việc</span></a>　≫
             </li>
             <li>
-                <span>携帯に送る</span>
+                <span>Lưu việc làm</span>
             </li>
         </ul>
     </div>

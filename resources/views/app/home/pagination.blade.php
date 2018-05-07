@@ -3,9 +3,9 @@
         <ul class="paginations">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="disabled"><span>&laquo;前の1ページ</span></li>
+                <li class="disabled"><span>&laquo;Trang trước</span></li>
             @else
-                <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;前の1ページ</a></li>
+                <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">&laquo;Trang trước</a></li>
             @endif
 
             @foreach ($elements as $element)
@@ -26,9 +26,9 @@
             @endforeach
 
             @if ($paginator->hasMorePages())
-                <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">>次の1ページ&raquo;</a></li>
+                <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">>Trang tiếp theo&raquo;</a></li>
             @else
-                <li class="disabled"><span>次の1ページ&raquo;</span></li>
+                <li class="disabled"><span>Trang tiếp theo&raquo;</span></li>
             @endif
         </ul>
     </nav>

@@ -1,7 +1,7 @@
 @extends('app.layout')
 
 @section('title')
-    パスワード再設定｜{{$configs["pc_site_title"]}}
+    Đặt lại mật khẩu｜{{$configs["pc_site_title"]}}
 @endsection
 
 @section('page_content')
@@ -11,28 +11,27 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <span>パスワード再設定</span>
+                <span>Đặt lại mật khẩu</span>
             </li>
         </ul>
         <div id="__component">
-            <h3>パスワード再設定</h3>
+            <h3>Đặt lại mật khẩu</h3>
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
             @endif
-            <h5>ログインIDの確認および、パスワードの再設定を行います。</h5>
+            <h5>Xác nhận ID đăng nhập và đặt lại mật khẩu.</h5>
             <br>
             <p class="col-md-10 col-md-offset-1">
-            以下のメールアドレス入力欄に、{{$configs["site_name"]}}に登録しているメールアドレスをご入力の上、【送信する】をクリックしてください。<br />
-            メールアドレスの確認後、そのメールアドレス宛に以下を記載したメールが自動送信されます。<br />
-            ・パスワード再設定用URL<br />
+            Vui lòng nhập địa chỉ email đăng ký trong {{$configs["site_name"]}} trong hộp email và click Submit.<br />
+            Một email có chứ URL đặt lại mật khẩu sẽ được gửi đến email đó.<br />
             </p>
             <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    <label for="email" class="col-md-4 control-label">登録時のメールアドレス：</label>
+                    <label for="email" class="col-md-4 control-label">Email đăng ký :</label>
 
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -48,7 +47,7 @@
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
                         <button type="submit" class="btn btn-primary bg_orange">
-                            送信する
+                            Submit
                         </button>
                     </div>
                 </div>
@@ -61,7 +60,7 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <span>パスワード再設定</span>
+                <span>Đặt lại mật khẩu</span>
             </li>
         </ul>
 
