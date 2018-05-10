@@ -21,6 +21,7 @@ class CreateConfigsTables extends Migration
             $table->string('display_name');
             $table->string('description')->nullable();
             $table->integer('input_type')->default(1);
+            $table->boolean('is_hidden')->default(false);
             $table->timestamps();
 
             $table->unique(['group', 'display_name']);

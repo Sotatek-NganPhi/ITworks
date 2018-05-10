@@ -27,6 +27,12 @@ class CreateMessagesTable extends Migration
             $table->tinyInteger('is_favorite')->default(0);
             $table->timestamps();
         });
+
+        Schema::table('messages', function($table) {
+           $table->foreign('applicant_id')->references('id')->on('applicants');
+           $table->foreign('manager_id')->references('id')->on('managers');
+           $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**

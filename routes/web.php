@@ -61,11 +61,11 @@ Route::group(['middleware' => ['candidate.register']], function () {
     });
 
     Route::get('/', function () {
-        return redirect()->route('home', 'kanto');
+        return redirect()->route('home', 'hanoi');
     })->name('index');
 
     Route::get('/home', function () {
-        return redirect()->route('home', 'kanto');
+        return redirect()->route('home', 'hanoi');
     })->name('home.index');
 
     Route::get('/homepage', function () {

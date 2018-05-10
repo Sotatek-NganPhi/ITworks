@@ -64,12 +64,6 @@ class JobAPIController extends AppBaseController
             return $this->sendResponse($jobs->toArray(), trans('message.retrieve'));
         }
         $manager = Auth::guard(Consts::GUARD_MANAGER)->user();
-        if($manager->type != Consts::TYPE_SYS_ADMIN) {
-            if($manager->agency_id == 0) {
-                return $this->sendResponse(null, trans('message.retrieve'));
-            }
-            $request->merge(['agency' => $manager->agency_id]);
-        }
         $jobs = $this->jobRepository->paginate($request->input('limit'));
         return $this->sendResponse($jobs->toArray(), trans('message.retrieve'));
     }
@@ -166,18 +160,11 @@ class JobAPIController extends AppBaseController
         // TODO: refactor this using BaseRepository?
         $result = $job->toArray();
         $result['company'] = $job->company()->value('id');
-        $result['categoryLevel3s'] = $job->categoryLevel3s()->pluck('category_level3_id');
-        $result['currentSituations'] = $job->currentSituations()->pluck('current_situation_id');
-        $result['merits'] = $job->merits()->pluck('merit_id');
         $result['salaries'] = $job->salaries()->pluck('salary_id');
-        $result['employmentModes'] = $job->employmentModes()->pluck('employment_mode_id');
         $result['prefectures'] = $job->prefectures()->pluck('prefecture_id');
-        $result['wards'] = $job->wards()->pluck('ward_id');
-        $result['workingShifts'] = $job->workingShifts()->pluck('working_shift_id');
         $result['workingDays'] = $job->workingDays()->pluck('working_day_id');
         $result['workingHours'] = $job->workingHours()->pluck('working_hour_id');
         $result['workingPeriods'] = $job->workingPeriods()->pluck('working_period_id');
-        $result['routes'] = $job->routes()->pluck('line_station_id');
 
 
         return $this->sendResponse($result, trans('message.retrieve'));
@@ -227,19 +214,13 @@ class JobAPIController extends AppBaseController
         if (empty($job)) {
             return $this->sendError(trans('message.unfound'));
         }
-        $job->categoryLevel3s()->delete();
         $job->counters()->delete();
-        $job->currentSituations()->delete();
-        $job->employmentModes()->delete();
-        $job->merits()->delete();
         $job->prefectures()->delete();
         $job->routes()->delete();
         $job->salaries()->delete();
-        $job->wards()->delete();
         $job->workingDays()->delete();
         $job->workingHours()->delete();
         $job->workingPeriods()->delete();
-        $job->workingShifts()->delete();
         $job->applicants()->delete();
         $job->specialPromotions()->delete();
         $job->delete();
@@ -299,10 +280,9 @@ class JobAPIController extends AppBaseController
         $regionIds = $request->input('regionIds');
         if (!count($regionIds)) return $this->sendResponse([], trans('message.update'));
         $prefectures = Prefecture::findWhereIn('region_id', $regionIds)->keyBy('id');
-        $jobs = Job::select('jobs.id as id','work_no','platform_urgent')
+        $jobs = Job::select('jobs.id as id')
           ->join('job_prefecture', 'jobs.id', '=', 'job_prefecture.job_id')
           ->whereIn('job_prefecture.prefecture_id', $prefectures->keys())
-          ->where('work_no', 'like', '%'.$querySearch.'%')
           ->with('prefectures')
           ->distinct()
           ->limit(50)
@@ -314,28 +294,10 @@ class JobAPIController extends AppBaseController
         return ($jobs);
     }
 
-    public function updateUrgentJobs(Request $request)
-    {
-        $add_job_ids = $request['add_job_ids'];
-        $del_job_ids = $request['del_job_ids'];
-
-        if (count($add_job_ids) > 0) {
-            Job::whereIn('id', $add_job_ids)
-                ->update(['platform_urgent' =>  Consts::JOB_URGENT_VALID ]);
-        }
-
-        if (count($del_job_ids) > 0) {
-            Job::whereIn('id', $del_job_ids)
-                ->update(['platform_urgent' => Consts::JOB_URGENT_INVALID]);
-        }
-
-        return $this->sendResponse(true, trans('message.update'));
-    }
-
     public function getUrgentJobs(Request $request) {
         $regionId = $request->input('regionId');
         $prefectureIds = Prefecture::findWhere('region_id', $regionId)->pluck('id');
-        $jobs = Job::selectRaw('jobs.id as id, work_no, platform_urgent')
+        $jobs = Job::selectRaw('jobs.id as id')
           ->join('job_prefecture', 'jobs.id', '=', 'job_prefecture.job_id')
           ->whereIn('job_prefecture.prefecture_id', $prefectureIds)
           ->distinct()
@@ -345,7 +307,7 @@ class JobAPIController extends AppBaseController
 
     public function getJobsWithIds(Request $request) {
         $listId = $request->all();
-        $jobs = Job::select('jobs.id as id','work_no','platform_urgent')
+        $jobs = Job::select('jobs.id as id')
           ->whereIn('jobs.id',$listId)
           ->with('prefectures')
           ->get()->transform(function ($job) {

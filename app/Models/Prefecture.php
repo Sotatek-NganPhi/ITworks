@@ -44,7 +44,7 @@ class Prefecture extends VersionedModel
      */
     public static $rules = [
         'name' => 'required',
-        'wards' => 'required|exists:wards,id'
+        // 'wards' => 'required|exists:wards,id'
     ];
 
     public function region()
@@ -52,26 +52,26 @@ class Prefecture extends VersionedModel
         return $this->belongsTo(Region::class);
     }
 
-    public function wards()
-    {
-        return $this->hasMany(Ward::class);
-    }
+    // public function wards()
+    // {
+    //     return $this->hasMany(Ward::class);
+    // }
 
-    public function customUpdate(UpdateMasterdataAPIRequest $request)
-    {
-        $prefectureId = $this->id;
-        if(!$request->has('wards')) {
-            return [
-                'success' => false,
-                'message' => 'Update failed',
-            ];
-        }
-        $wardIds = $request->input('wards');
-        Ward::where('prefecture_id', $prefectureId)->update(['prefecture_id' => 0]);
-        Ward::whereIn('id', $wardIds)->update(['prefecture_id' => $prefectureId]);
-        $this->update($request->all());
-        return ['success' => true];
-    }
+    // public function customUpdate(UpdateMasterdataAPIRequest $request)
+    // {
+    //     $prefectureId = $this->id;
+    //     if(!$request->has('wards')) {
+    //         return [
+    //             'success' => false,
+    //             'message' => 'Update failed',
+    //         ];
+    //     }
+    //     $wardIds = $request->input('wards');
+    //     Ward::where('prefecture_id', $prefectureId)->update(['prefecture_id' => 0]);
+    //     Ward::whereIn('id', $wardIds)->update(['prefecture_id' => $prefectureId]);
+    //     $this->update($request->all());
+    //     return ['success' => true];
+    // }
 
     public static function getPrefecturesWithRegionKey()
     {

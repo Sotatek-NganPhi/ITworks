@@ -21,9 +21,6 @@ import App from '../../../../components/manage/AppAdmin.vue';
 import Index from '../../../../components/manage/Index.vue';
 import JobList from '../../../../components/manage/job/JobList.vue';
 import JobEdit from '../../../../components/manage/job/JobEdit.vue';
-import JobImport from '../../../../components/manage/job/JobImport.vue';
-import JobImportCsv from '../../../../components/manage/job/JobImportCsv.vue';
-import JobInfoCsv from '../../../../components/manage/job/JobInfoCsv.vue';
 import CompanyList from '../../../../components/manage/company/CompanyList.vue';
 import CompanyEdit from '../../../../components/manage/company/CompanyEdit.vue';
 import AgencyList from '../../../../components/manage/agencies/AgencyList.vue';
@@ -144,9 +141,6 @@ export var router = new VueRouter({
     { path: '/', component: Index },
     { path: '/job/list', component: JobList },
     { path: '/job/edit', component: JobEdit },
-    { path: '/job/job_import', component: JobImport },
-    { path: '/job/import_csv', component: JobImportCsv },
-    { path: '/job/job-info', component: JobInfoCsv },
     { path: '/company/list', component: CompanyList },
     { path: '/company/edit', component: CompanyEdit },
     { path: '/agency/list', component: AgencyList },

@@ -15,16 +15,8 @@
         <input data-vv-name="user.name" class="form-control" type="text" v-model="record.user.name"/>
       </form-group>
 
-      <form-group :label="$t('candidate.name_phonetic')" :is-required="isFieldRequired('user.name_phonetic')">
-        <input data-vv-name="user.name_phonetic" class="form-control" type="text" v-model="record.user.name_phonetic"/>
-      </form-group>
-
       <form-group :label="$t('common_field.birthday')" :is-required="isFieldRequired('user.birthday')">
         <date-picker data-vv-name="user.birthday" v-model="record.user.birthday" format="YYYY-MM-DD" locale="ja"/>
-      </form-group>
-
-      <form-group :label="$t('common_field.postal_code')" :is-required="isFieldRequired('user.postal_code')">
-        <postal-code data-vv-name="user.postal_code" v-model="record.user.postal_code"></postal-code>
       </form-group>
 
       <form-group :label="$t('common_field.address')" :is-required="isFieldRequired('user.address')">
@@ -91,40 +83,6 @@
         <radio-group data-vv-name="is_married" inline="true" v-model="record.is_married" :options="maritalStatusOptions"/>
       </form-group>
       <!-- ADDITIONAL INFORMATION - END -->
-
-      <!-- COMPANY INFORMATION - START -->
-      <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>{{$t('candidate_list.current')}}</span></div>
-
-      <form-group :label="getDisplayName('worked_companies_number')" :is-required="isFieldRequired('worked_companies_number')">
-        <input data-vv-name="worked_companies_number" class="form-control" type="number" v-model="record.worked_companies_number"/>
-
-      </form-group>
-
-      <form-group :label="getDisplayName('lastest_company_name')" :is-required="isFieldRequired('lastest_company_name')">
-        <input data-vv-name="lastest_company_name" class="form-control" type="text" v-model="record.lastest_company_name"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('lastest_employment_mode_id')" :is-required="isFieldRequired('lastest_employment_mode_id')">
-        <radio-group  data-vv-name="lastest_employment_mode_id" inline="true" label="description" v-model="record.lastest_employment_mode_id" :options="masterdata.employment_modes"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('lastest_industry_id')" :is-required="isFieldRequired('lastest_industry_id')">
-        <radio-group  data-vv-name="lastest_industry_id" inline="true" label="name" v-model="record.lastest_industry_id" :options="masterdata.industries"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('lastest_annual_income')" :is-required="isFieldRequired('lastest_annual_income')">
-        <input data-vv-name="lastest_annual_income" class="form-control" type="number" v-model="record.lastest_annual_income"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('lastest_company_size_id')" :is-required="isFieldRequired('lastest_company_size_id')">
-        <radio-group  data-vv-name="lastest_company_size_id" inline="true" label="description" v-model="record.lastest_company_size_id" :options="masterdata.company_sizes"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('lastest_position_id')" :is-required="isFieldRequired('lastest_position_id')">
-        <radio-group  data-vv-name="lastest_position_id" inline="true" label="name" v-model="record.lastest_position_id" :options="masterdata.positions"/>
-      </form-group>
-      <!-- COMPANY INFORMATION - END -->
-
       <!-- EXPECTATION - START -->
       <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>{{$t('candidate_list.expect')}}</span></div>
 

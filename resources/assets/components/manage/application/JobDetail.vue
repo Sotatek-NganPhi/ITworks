@@ -5,12 +5,7 @@
       <form-group :label="$t('applicant.job.id')">
         <span>{{ record.id }}</span>
       </form-group>
-
-      <form-group :label="$t('applicant.job.work_no')">
-        <span>{{ record.work_no }}</span>
-      </form-group>
-
-      <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>TOP見出し部分</span></div>
+      <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>TOP</span></div>
 
       <form-group :label="$t('applicant.job.description')">
         <span>{{ record.description }}</span>

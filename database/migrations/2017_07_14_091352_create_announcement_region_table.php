@@ -24,6 +24,11 @@ class CreateAnnouncementRegionTable extends Migration
             $table->index('region_id');
             $table->unique(['announcement_id', 'region_id']);
         });
+
+        Schema::table('announcement_region', function($table) {
+           $table->foreign('announcement_id')->references('id')->on('announcements');
+           $table->foreign('region_id')->references('id')->on('regions');
+        });
     }
 
     /**

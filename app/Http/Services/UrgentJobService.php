@@ -24,7 +24,6 @@ class UrgentJobService
 
         $jobs = Job::select('jobs.id', 'jobs.description', 'jobs.created_at')
             ->where('jobs.is_active', Consts::TRUE)
-            ->where('jobs.platform_urgent', Consts::JOB_URGENT_VALID )
             ->join('job_prefecture', 'job_prefecture.job_id', '=', 'jobs.id')
             ->whereIn('job_prefecture.prefecture_id', $prefectureIds)
             ->distinct()

@@ -17,7 +17,7 @@ class InterviewService
 
     public function getListInterview($limit, $regionKey)
     {
-        $interviews = Interview::select('interviews.id', 'interviews.title', 'interviews.sub_content', 'interviews.thumbnail', 'category_interviews.title as cat_title')
+        $interviews = Interview::select('interviews.id', 'interviews.title', 'interviews.sub_content', 'category_interviews.title as cat_title')
                                 ->join('interview_region', 'interview_region.interview_id', '=', 'interviews.id')
                                 ->join('regions', 'interview_region.region_id', '=', 'regions.id')
                                 ->join('category_interviews', 'category_interviews.id', '=', 'interviews.category_interview_id')
@@ -41,7 +41,7 @@ class InterviewService
     public function getListByCategory($categoryInterviewId, $limit, $regionKey)
     {
         $interviews = Interview::with(['categoryInterview'])
-                                ->select('interviews.id', 'interviews.title', 'interviews.sub_content', 'interviews.thumbnail', 'category_interviews.title as cat_title')
+                                ->select('interviews.id', 'interviews.title', 'interviews.sub_content', 'category_interviews.title as cat_title')
                                 ->join('interview_region', 'interview_region.interview_id', '=', 'interviews.id')
                                 ->join('regions', 'interview_region.region_id', '=', 'regions.id')
                                 ->join('category_interviews', 'category_interviews.id', '=', 'interviews.category_interview_id')

@@ -28,7 +28,6 @@ class SendMailContactRequest extends FormRequest
         return [
             'name' => 'required',
             'mail_address' => 'required|email',
-            'content_inquiry' => 'required',
             'privacy_policy' => 'accepted',
         ];
     }
@@ -56,7 +55,6 @@ class SendMailContactRequest extends FormRequest
         return [
             'name' => 'ご担当者名',
             'mail_address' => 'メールアドレス',
-            'content_inquiry' => 'お問い合わせ',
         ];
     }
 }

@@ -20,6 +20,11 @@ class CreateInterviewRegionTable extends Migration
             $table->unique(['interview_id', 'region_id']);
             $table->timestamps();
         });
+
+        Schema::table('interview_region', function($table) {
+           $table->foreign('interview_id')->references('id')->on('interview');
+           $table->foreign('region_id')->references('id')->on('regions');
+        });
     }
 
     /**

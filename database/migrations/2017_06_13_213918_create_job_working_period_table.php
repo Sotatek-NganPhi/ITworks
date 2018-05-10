@@ -24,6 +24,11 @@ class CreateJobWorkingPeriodTable extends Migration
             $table->index('working_period_id');
             $table->unique(['job_id', 'working_period_id']);
         });
+
+        Schema::table('job_working_period', function($table) {
+           $table->foreign('job_id')->references('id')->on('jobs');
+           $table->foreign('working_period_id')->references('id')->on('working_periods');
+        });
     }
 
     /**

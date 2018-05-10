@@ -24,6 +24,11 @@ class CreateJobWorkingHourTable extends Migration
             $table->index('working_hour_id');
             $table->unique(['job_id', 'working_hour_id']);
         });
+
+        Schema::table('job_working_hour', function($table) {
+           $table->foreign('job_id')->references('id')->on('jobs');
+           $table->foreign('working_hour_id')->references('id')->on('working_hours');
+        });
     }
 
     /**

@@ -24,6 +24,11 @@ class CreateJobPrefectureTable extends Migration
             $table->index('prefecture_id');
             $table->unique(['job_id', 'prefecture_id']);
         });
+
+        Schema::table('job_prefecture', function($table) {
+           $table->foreign('job_id')->references('id')->on('jobs');
+           $table->foreign('prefecture_id')->references('id')->on('prefectures');
+        });
     }
 
     /**

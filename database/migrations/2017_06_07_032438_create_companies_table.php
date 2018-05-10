@@ -15,24 +15,17 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('agency_id');
             $table->string('name');
-            $table->string('name_phonetic')->nullable();
             $table->string('street_address')->nullable();
             $table->string('contact_name')->nullable();
             $table->string('phone_number')->nullable();
             $table->text('short_description')->nullable();
-            $table->text('option_first_company')->nullable();
-            $table->text('option_second_company')->nullable();
-            $table->text('option_third_company')->nullable();
             $table->text('business_content')->nullable();
-            $table->string('company_hp')->nullable();
             $table->datetime('expire_date');
+            $table->string('username')->nullable()->unique();
+            $table->string('password')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-
-            // Create indexes
-            $table->index('agency_id');
         });
     }
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateWardsTable extends Migration
+class CreatePrefecturesTable extends Migration
 {
 
     /**
@@ -13,15 +13,19 @@ class CreateWardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wards', function (Blueprint $table) {
+        Schema::create('prefectures', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('prefecture_id');
+            $table->integer('region_id');
             $table->string('name');
             $table->string('description')->nullable();
             $table->timestamps();
 
             // Create indexes
-            $table->index('prefecture_id');
+            $table->index('region_id');
+        });
+
+        Schema::table('prefectures', function($table) {
+           $table->foreign('region_id')->references('id')->on('regions');
         });
     }
 
@@ -32,6 +36,6 @@ class CreateWardsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('wards');
+        Schema::drop('prefectures');
     }
 }

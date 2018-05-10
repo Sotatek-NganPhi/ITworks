@@ -18,7 +18,7 @@ class Station extends VersionedModel
 
     public $fillable = [
         'name',
-        'ward_id'
+        // 'ward_id'
     ];
 
     /**

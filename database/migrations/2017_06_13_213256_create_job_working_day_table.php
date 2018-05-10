@@ -24,6 +24,11 @@ class CreateJobWorkingDayTable extends Migration
             $table->index('working_day_id');
             $table->unique(['job_id', 'working_day_id']);
         });
+
+        Schema::table('job_working_day', function($table) {
+           $table->foreign('job_id')->references('id')->on('jobs');
+           $table->foreign('working_day_id')->references('id')->on('working_days');
+        });
     }
 
     /**

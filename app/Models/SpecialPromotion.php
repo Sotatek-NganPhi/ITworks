@@ -16,10 +16,8 @@ class SpecialPromotion extends Model
     public $fillable = [
         'id',
         'name',
-        'platform',
         'image',
         'image_pc',
-        'image_mobile',
         'start_date',
         'end_date',
         'is_active'
@@ -32,9 +30,7 @@ class SpecialPromotion extends Model
      */
     protected $casts = [
         'name' => 'string',
-        'platform' => 'integer',
         'image_pc' => 'string',
-        'image_mobile' => 'string',
         'is_active' => 'integer'
     ];
 

@@ -11,10 +11,6 @@
       <input class="form-control" type="text" v-model="searchParams.name"/>
     </form-group>
 
-    <form-group :label="$t('candidate.name_phonetic')">
-      <input class="form-control" type="text" v-model="searchParams.namePhonetic"/>
-    </form-group>
-
     <form-group :label="$t('common_field.birthday')">
       <date-picker v-model="searchParams.birthday" format="YYYY-MM-DD" locale="ja"/>
     </form-group>
@@ -49,21 +45,14 @@
     <div class="text-center">
       <button type="button" class="btn btn-primary" @click="search">{{ $t("form_action.search") }}</button>
       <button type="button" class="btn btn-primary" @click="clear()">{{ $t("form_action.clear") }}</button>
-      <!--<button type="button" class="btn btn-primary" @click="downloadCsv">{{ $t("form_action.download_csv") }}</button>-->
     </div>
 
   </validation-form>
 
   <data-table :getData="getData" ref="datatable" class="table-candidate-list" :title="$t('candidate.list_title')">
-    <!--<template slot="actions" scope="props">-->
-      <!--<button type="button" class="btn btn-default btn-sm" :class="props.enablity" @click="">-->
-        <!--<span class="glyphicon glyphicon-envelope"></span> {{$t("candidate.sendmail")}}-->
-      <!--</button>-->
-    <!--</template>-->
     <th><dt-list-items-chekbox/></th>
     <th data-sort-field="id" style="width: 4%">{{ $t("common_field.id") }}</th>
     <th data-sort-field="users.name" style="width: 14%">{{ $t("candidate.name") }}</th>
-    <th data-sort-field="users.name_phonetic" style="width: 12%">{{ $t("candidate.name_phonetic") }}</th>
     <th data-sort-field="users.birthday" style="width: 12%">{{ $t("common_field.birthday") }}</th>
     <th data-sort-field="users.email" style="width: 20%">{{ $t("common_field.email") }}</th>
     <th data-sort-field="candidates.created_at" style="width: 11%">{{ $t("candidate.registed_date") }}</th>
@@ -74,7 +63,6 @@
         <td><dt-item-chekbox :value="props.item"/></td>
         <td style="width: 4%">{{ props.item.id }}</td>
         <td style="width: 14%">{{ props.item.name }}</td>
-        <td style="width: 12%">{{ props.item.name_phonetic }}</td>
         <td style="width: 12%">{{ props.item.birthday }}</td>
         <td style="width: 20%">{{ props.item.email }}</td>
         <td style="width: 11%">{{ props.item.created_at }}</td>
@@ -107,7 +95,6 @@
         searchParams: {
           id: '',
           name: '',
-          namePhonetic: '',
           email: '',
           gender: '',
           birthday: '',
@@ -150,7 +137,6 @@
         this.searchParams = Object.assign({}, {
           id: '',
           name: '',
-          namePhonetic: '',
           email: '',
           gender: '',
           birthday: '',
@@ -164,7 +150,6 @@
         const searchParams = {
           'id': this.searchParams.id,
           'user.name': this.searchParams.name,
-          'user.name_phonetic': this.searchParams.namePhonetic,
           'user.email': this.searchParams.email,
           'user.gender': this.searchParams.gender,
           'user.birthday': [this.searchParams.birthday, 'like'],
@@ -191,10 +176,6 @@
         this.$refs.datatable.$emit('DataTable:filter', this.buildSearchQuery());
         this.$refs.searchForm.$emit('FORM_ERRORS_CLEAR');
       },
-      downloadCsv() {
-        const query = this.buildSearchQuery();
-        window.location.href = '/manage/candidates/csv?' + queryString.stringify(query);
-      }
     },
     mounted() {
       this.$emit('EVENT_PAGE_CHANGE', this);

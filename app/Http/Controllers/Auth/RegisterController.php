@@ -132,7 +132,6 @@ class RegisterController extends Controller
         $data['confirmation_code'] = str_random(30);
         $data['password']          = bcrypt($data['password']);
         $data['name']              = join(' ', [$data['first_name'], $data['last_name']]);
-        $data['name_phonetic']     = join(' ', [$data['first_name_phonetic'], $data['last_name_phonetic']]);
 
         return User::create($data);
     }

@@ -1,7 +1,7 @@
 @if(count($attentionJobs))
     <div class="__selection_area">
         <div class="kakko">
-            <h3>Các công việc được gợi ý cho bạn</h3>
+            <h3>Các công việc được gợi ý</h3>
         </div>
         <p class="title"><span>RECOMMENDATION</span></p>
     </div>

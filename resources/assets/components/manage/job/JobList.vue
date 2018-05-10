@@ -20,12 +20,12 @@
           </select>
         </form-group>
         <form-group :label="getDisplayName('post_start_date')">
-          <date-picker ref="post_start_date" v-model="searchParams.post_start_date" format="YYYY-MM-DD" locale="ja"
+          <date-picker ref="post_start_date" v-model="searchParams.post_start_date" format="YYYY-MM-DD" locale="en"
                        required></date-picker>
         </form-group>
         <form-group :label="getDisplayName('post_end_date')">
           <date-picker ref="post_end_date" v-model="searchParams.post_end_date" format="YYYY-MM-DD"
-                       locale="ja"></date-picker>
+                       locale="en"></date-picker>
         </form-group>
         <form-group :label="getDisplayName('salary')">
           <input class="form-control" type="text" v-model="searchParams.salary"/>

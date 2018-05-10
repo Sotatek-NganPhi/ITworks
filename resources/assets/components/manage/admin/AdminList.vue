@@ -93,8 +93,8 @@ export default {
   },
   filters: {
     managerType(type) {
-      if (type == 1) return '運営元管理者';
-      else if (type == 2) return '掲載企業管理者';
+      if (type == 1) return 'Quản trị hệ thống';
+      else if (type == 2) return 'Quản trị viên công ty';
     },
   },
   methods: {

@@ -20,6 +20,11 @@ class CreateApplicantCertificateTable extends Migration
             $table->unique(['applicant_id', 'certificate_id']);
             $table->timestamps();
         });
+
+        Schema::table('applicant_certificate', function($table) {
+           $table->foreign('certificate_id')->references('id')->on('certificates');
+           $table->foreign('applicant_id')->references('id')->on('applicants');
+        });
     }
 
     /**

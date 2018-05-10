@@ -24,6 +24,11 @@ class CreateCandidateWorkingHourTable extends Migration
             $table->index('working_hour_id');
             $table->unique(['candidate_id', 'working_hour_id']);
         });
+
+        Schema::table('candidate_working_hour', function($table) {
+           $table->foreign('candidate_id')->references('id')->on('candidates');
+           $table->foreign('working_hour_id')->references('id')->on('working_hours');
+        });
     }
 
     /**

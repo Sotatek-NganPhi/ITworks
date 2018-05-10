@@ -16,19 +16,21 @@ class CreateInterviewTable extends Migration
         Schema::create('interviews', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('picture');
-            $table->string('thumbnail');
             $table->longText('content');
             $table->string('sub_content');
             $table->date('post_start_date');
             $table->date('post_end_date');
             $table->date('date');
-            $table->string('interviewer');
+            $table->increments('company_id');
             $table->string('company_name');
             $table->longText('company_description');
-            $table->string('company_url');
             $table->integer('category_interview_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('interviews', function($table) {
+           $table->foreign('category_interview_id')->references('id')->on('category_interview');
+           $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

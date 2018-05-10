@@ -2,9 +2,6 @@
   <div>
     <h2>{{ $t("job_list.search_title") }}</h2>
     <validation-form style="margin-bottom: 70px">
-      <form-group :label=" $t('job_list.work_no') ">
-        <input class="form-control" type="text" v-model="searchParams.work_no" />
-      </form-group>
 
       <form-group :label=" $t('applicant.company_posting') ">
         <select class="form-control" type="text" v-model="searchParams.company_id">
@@ -44,13 +41,6 @@
         <input class="form-control" id="input-applicant_name" type="text" v-model="searchParams.salary"/>
       </form-group>
 
-      <form-group :label="$t('job_list.job_category')">
-        <select v-model="category_level_2" class="form-control">
-          <option value="">---</option>
-          <option :value="item.id" v-for="item in masterdata.category_level2s" :key="item.id">{{item.name}}</option>
-        </select>
-      </form-group>
-
     </validation-form>
     <div class="text-center">
       <button type="button" class="btn btn-primary" @click="search()"> {{ $t("form_action.search") }} </button>
@@ -66,7 +56,6 @@
     <th data-sort-field="company_id" style="width: 8%">{{ getDisplayName('company_id') }}</th>
     <th data-sort-field="company_name" style="width: 30%">{{ getDisplayName('company_name') }}</th>
     <th style="width: 15%">{{ $t("applicant.posting") }}</th>
-    <th data-sort-field= "original_state" style="width: 11%">{{ getDisplayName('original_state') }}</th>
     <th data-sort-field="applicants_count" style="width: 10%">{{ $t("applicant.count") }}</th>
     <th data-sort-field="views" style="width: 6%">{{ $t("form_action.search") }}</th>
     <th style="width: 13%"></th>
@@ -76,7 +65,6 @@
         <td style="width: 8%"> {{ props.item.company.name }}</td>
         <td style="width: 30%"> {{ props.item.company_name }} </td>
         <td style="width: 15%"> {{ props.item.post_start_date | date }} to {{ props.item.post_start_date | date}}</td>
-        <td style="width: 11%"> {{ props.item.original_state | state }}</td>
         <td style="width: 10%"> {{ props.item.applicants_count | number }} / {{ props.item.max_applicant | number }}</td>
         <td style="width: 6%"> {{ props.item.views | number }} </td>
 
@@ -102,12 +90,10 @@ import QueryBuilder from '../../../js/lib/QueryBuilder';
 import Multiselect from 'vue-multiselect';
 
 const searchParams = {
-  work_no: '',
   company_id:'',
   company_name: '',
   post_start_date: '',
   post_end_date: '',
-  original_state: '',
 };
 
 export default {
@@ -121,7 +107,6 @@ export default {
       searchParams,
       companies: [],
       items:{},
-      category_level_2:'',
       searchJobsHaveEntriesOnly: false,
       masterdata: Utils.getMasterdataSkel(),
     };

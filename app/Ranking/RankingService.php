@@ -4,7 +4,6 @@ namespace App\Ranking;
 use DB;
 
 use App\Models\Job;
-use App\Models\Merit;
 use App\Models\Candidate;
 use App\Models\CandidateJobRanking;
 use Illuminate\Support\Facades\Log;
@@ -14,18 +13,13 @@ class RankingService
     const BULK_SIZE = 1000;
 
     protected $criteria = [
-        'category_level3',
-        'current_situation',
-        'employment_mode',
         'prefecture',
         'salary',
         'working_day',
         'working_hour',
         'working_period',
-        'working_shift',
     ];
 
-    protected $meritRatio = 0;
 
     public function updateCandidates($candidates)
     {
@@ -44,7 +38,6 @@ class RankingService
         $candidates = CandidateJobRanking::where('job_id', $jobId)->delete();
         $bulk = [];
 
-        $this->meritRatio = 1/Merit::count();
 
         foreach ($candidates as $candidate) {
             Log::info("Delete ranking of candidate {$candidate->id} and job {$jobId}... \n");
@@ -65,7 +58,6 @@ class RankingService
         CandidateJobRanking::whereIn('candidate_id', $candidateId)->delete();
         $bulk = [];
 
-        $this->meritRatio = 1/Merit::count();
 
         foreach (Job::all() as $job) {
             Log::info("Update ranking of candidate {$candidateId} and job {$job->id}... \n");
@@ -101,8 +93,6 @@ class RankingService
     {
         $bulk = [];
 
-        $this->meritRatio = 1/Merit::count();
-
         foreach ($candidates as $candidate) {
             foreach ($jobs as $job) {
                 Log::info("Update ranking of candidate {$candidate->id} and job {$job->id}... \n");
@@ -124,8 +114,6 @@ class RankingService
         $total = collect($this->criteria)->reduce(function ($carry, $criterion) use ($candidateId, $jobId) {
             return $carry + min(count($this->matchedCriterion($candidateId, $jobId, $criterion)), 1);
         }, 0);
-
-        $total += (count($this->matchedCriterion($candidateId, $jobId, 'merit')) * $this->meritRatio);
         return $total;
     }
 

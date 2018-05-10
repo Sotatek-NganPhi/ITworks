@@ -24,6 +24,11 @@ class CreateCandidatePrefectureTable extends Migration
             $table->index('prefecture_id');
             $table->unique(['candidate_id', 'prefecture_id']);
         });
+
+        Schema::table('candidate_prefecture', function($table) {
+           $table->foreign('candidate_id')->references('id')->on('candidates');
+           $table->foreign('prefecture_id')->references('id')->on('prefectures');
+        });
     }
 
     /**

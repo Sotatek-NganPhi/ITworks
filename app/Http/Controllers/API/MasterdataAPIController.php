@@ -19,35 +19,20 @@ use Response;
 use Validator;
 use App\Consts;
 
-use App\Repositories\CategoryLevel1Repository;
-use App\Repositories\CategoryLevel2Repository;
-use App\Repositories\CategoryLevel3Repository;
-use App\Repositories\CompanySizeRepository;
 use App\Repositories\ConfigRepository;
-use App\Repositories\CurrentSituationRepository;
-use App\Repositories\DriverLicenseRepository;
 use App\Repositories\EducationRepository;
-use App\Repositories\EmploymentModeRepository;
 use App\Repositories\FieldSettingRepository;
-use App\Repositories\IndustryRepository;
-use App\Repositories\JumpingConditionRepository;
-use App\Repositories\JumpingDateRepository;
 use App\Repositories\LanguageConversationLevelRepository;
 use App\Repositories\LanguageExperienceRepository;
-use App\Repositories\LineStationRepository;
-use App\Repositories\MeritGroupRepository;
-use App\Repositories\MeritRepository;
 use App\Repositories\PositionRepository;
 use App\Repositories\PrefectureRepository;
 use App\Repositories\RailwayLineRepository;
 use App\Repositories\RegionRepository;
 use App\Repositories\SalaryRepository;
-use App\Repositories\StationRepository;
 use App\Repositories\WardRepository;
 use App\Repositories\WorkingDayRepository;
 use App\Repositories\WorkingHourRepository;
 use App\Repositories\WorkingPeriodRepository;
-use App\Repositories\WorkingShiftRepository;
 use App\Repositories\CertificateRepository;
 use App\Repositories\CertificateGroupRepository;
 use InfyOm\Generator\Utils\ResponseUtil;
@@ -62,72 +47,38 @@ class MasterdataAPIController extends AppBaseController
     private $repos;
 
     public function __construct(
-        CategoryLevel1Repository                $catLevel1Repo,
-        CategoryLevel2Repository                $catLevel2Repo,
-        CategoryLevel3Repository                $catLevel3Repo,
-        CompanySizeRepository                   $companySizeRepos,
         ConfigRepository                        $configRepo,
-        CurrentSituationRepository              $currentSituationRepo,
-        DriverLicenseRepository                 $driverLicenseRepo,
         EducationRepository                     $educationRepo,
-        EmploymentModeRepository                $employmentModeRepo,
         FieldSettingRepository                  $fieldSettingRepo,
-        IndustryRepository                      $industryRepo,
-        JumpingConditionRepository              $jumpingConditionRepo,
-        JumpingDateRepository                   $jumpingDateRepo,
         LanguageConversationLevelRepository     $languageConversationLevelRepo,
         LanguageExperienceRepository            $languageExperienceRepo,
-        LineStationRepository                   $lineStationRepo,
-        MeritGroupRepository                    $meritGroupRepo,
-        MeritRepository                         $meritRepo,
         PositionRepository                      $positionRepo,
         PrefectureRepository                    $prefectureRepo,
-        RailwayLineRepository                   $railwayLineRepo,
         RegionRepository                        $regionRepo,
         SalaryRepository                        $salaryRepo,
-        StationRepository                       $stationRepo,
         WardRepository                          $wardRepo,
         WorkingDayRepository                    $workingDayRepo,
         WorkingHourRepository                   $workingHourRepo,
         WorkingPeriodRepository                 $workingPeriodRepo,
-        WorkingShiftRepository                  $workingShiftRepo,
         CertificateRepository                   $certificateRepo,
         CertificateGroupRepository              $certificateGroupRepo,
-        ReferralAgencyRepository                $referralAgencyRepo)
     {
         $this->repos = [
-            'category_level1s' => $catLevel1Repo,
-            'category_level2s' => $catLevel2Repo,
-            'category_level3s' => $catLevel3Repo,
-            'company_sizes' => $companySizeRepos,
             'configs' => $configRepo,
-            'current_situations' => $currentSituationRepo,
-            'driver_licenses' => $driverLicenseRepo,
             'educations' => $educationRepo,
-            'employment_modes' => $employmentModeRepo,
             'field_settings' => $fieldSettingRepo,
-            'industries' => $industryRepo,
-            'jumping_conditions' => $jumpingConditionRepo,
-            'jumping_dates' => $jumpingDateRepo,
             'language_conversation_levels' => $languageConversationLevelRepo,
             'language_experiences' => $languageExperienceRepo,
-            'line_stations' => $lineStationRepo,
-            'merit_groups' => $meritGroupRepo,
-            'merits' => $meritRepo,
             'positions' => $positionRepo,
             'prefectures' => $prefectureRepo,
-            'railway_lines' => $railwayLineRepo,
             'regions' => $regionRepo,
             'salaries' => $salaryRepo,
             'stations' => $stationRepo,
-            'wards' => $wardRepo,
             'working_days' => $workingDayRepo,
             'working_hours' => $workingHourRepo,
             'working_periods' => $workingPeriodRepo,
-            'working_shifts' => $workingShiftRepo,
             'certificates' => $certificateRepo,
             'certificate_groups' => $certificateGroupRepo,
-            'referral_agencies' => $referralAgencyRepo
         ];
     }
 
@@ -148,16 +99,6 @@ class MasterdataAPIController extends AppBaseController
         $result = $repos->all();
 
         return $this->sendResponse($result->toArray(), 'OK');
-    }
-
-    public function getMasterDataSearchPanel()
-    {
-        $data = [];
-        $data['category_level3s'] = MasterdataService::getOneTable('category_level3s');
-        $data['merits'] = MasterdataService::getOneTable('merits');
-        $data['merit_groups'] = MasterdataService::getOneTable('merit_groups');
-        $data['employment_modes'] = MasterdataService::getOneTable('employment_modes');
-        return $this->sendResponse($data, 'OK');
     }
 
     public function store(CreateMasterdataAPIRequest $request)

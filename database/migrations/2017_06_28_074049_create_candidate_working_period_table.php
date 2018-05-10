@@ -24,6 +24,11 @@ class CreateCandidateWorkingPeriodTable extends Migration
             $table->index('working_period_id');
             $table->unique(['candidate_id', 'working_period_id']);
         });
+
+        Schema::table('candidate_working_period', function($table) {
+           $table->foreign('candidate_id')->references('id')->on('candidates');
+           $table->foreign('working_period_id')->references('id')->on('working_periods');
+        });
     }
 
     /**

@@ -70,9 +70,9 @@
 
       formatDate(date) {
         return moment(date).calendar(null, {
-          sameDay: '[今日] HH:mm:ss',
-          lastDay: '[昨日] HH:mm:ss',
-          lastWeek: '[前] dddd',
+          sameDay: '[Hôm nay] HH:mm:ss',
+          lastDay: '[Hôm qua] HH:mm:ss',
+          lastWeek: 'dddd',
           sameElse: 'YYYY-MM-DD'
         });
       },

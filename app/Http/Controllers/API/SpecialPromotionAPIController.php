@@ -140,18 +140,6 @@ class SpecialPromotionAPIController extends AppBaseController
 
         $specialPromotion->regions = $promotionRegions->pluck('region_id');
 
-        //Platform
-        $platform_list = [];
-        $platform_value = $specialPromotion->platform;
-        if ((pow(2, Consts::PLATFORM_PC) & $platform_value) > 0) {
-            array_push($platform_list, Consts::PLATFORM_PC);
-        }
-
-        if ((pow(2, Consts::PLATFORM_MOBILE) & $platform_value) > 0) {
-            array_push($platform_list, Consts::PLATFORM_MOBILE);
-        }
-        $specialPromotion->platforms = $platform_list;
-
         //Jobs
         $promotionJobs = DB::table('job_special')
                             ->where('special_promotion_id', $specialPromotion->id)

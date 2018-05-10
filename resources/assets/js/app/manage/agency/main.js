@@ -20,9 +20,6 @@ import date from '../../../../filters/date';
 import App from '../../../../components/manage/AppAgency.vue';
 import JobList from '../../../../components/manage/job/JobList.vue';
 import JobEdit from '../../../../components/manage/job/JobEdit.vue';
-import JobImport from '../../../../components/manage/job/JobImport.vue';
-import JobImportCsv from '../../../../components/manage/job/JobImportCsv.vue';
-import JobInfoCsv from '../../../../components/manage/job/JobInfoCsv.vue';
 import RequestFactory from '../../../lib/RequestFactory';
 Vue.component('form-group', require('../../../../components/common/FormGroup.vue'));
 Vue.component('radio-group', require('../../../../components/common/RadioGroup.vue'));
@@ -75,9 +72,6 @@ export var router = new VueRouter({
     { path: '/', redirect: '/job/list' },
     { path: '/job/list', component: JobList },
     { path: '/job/edit', component: JobEdit },
-    { path: '/job/job_import', component: JobImport },
-    { path: '/job/import_csv', component: JobImportCsv },
-    { path: '/job/job-info', component: JobInfoCsv },
   ]
 });
 

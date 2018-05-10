@@ -54,7 +54,6 @@
     <data-table :getData="getManagingCompanies" ref="datatable" v-show="record.type == 2">
       <th data-sort-field="id">{{ getDatatableName('id')}}</th>
       <th data-sort-field="name">{{ getDatatableName('name')}}</th>
-      <th data-sort-field="name_phonetic">{{ getDatatableName('name_phonetic')}}</th>
       <th data-sort-field="phone_number">{{ getDatatableName('phone_number')}}</th>
       <th data-sort-field="is_active">{{ getDatatableName('is_active')}}</th>
       <th data-sort-field="expire_date">{{ getDatatableName('expire_date')}}</th>
@@ -64,7 +63,6 @@
         <tr>
           <td>{{ props.item.id }}</td>
           <td>{{ props.item.name }}</td>
-          <td>{{ props.item.name_phonetic }}</td>
           <td>{{ props.item.phone_number }}</td>
           <td>{{ props.item.is_active | state }}</td>
           <td>{{ props.item.expire_date | date }}</td>
@@ -135,10 +133,10 @@ export default {
       typeManagerOptions: Utils.getTypeManagers(),
       isActiveOptions: Utils.getYesNoOptions(),
       isEditModal: false,
-      messageEditModal: "あなたはいなかった変更内容を保存しますか?",
+      messageEditModal: "Bạn có muốn lưu thay đổi?",
 
       isDeleteModal: false,
-      messageDeleteModal: "あなたは、このデータをしません削除したいです?",
+      messageDeleteModal: "Bạn có muốn xóa?",
       paramsDeleteModal: null,
     }
   },

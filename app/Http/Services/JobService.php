@@ -4,20 +4,13 @@ namespace App\Http\Services;
 
 use App\Consts;
 use App\Models\Campaign;
-use App\Models\CategoryLevel2;
-use App\Models\CategoryLevel3;
 use App\Models\Company;
 use App\Models\Config;
-use App\Models\EmploymentMode;
 use App\Models\Job;
-use App\Models\Merit;
-use App\Models\MeritGroup;
 use App\Models\Prefecture;
 use App\Models\RailwayLine;
 use App\Models\Region;
 use App\Models\SpecialPromotion;
-use App\Models\LineStation;
-use App\Models\Station;
 use App\Models\Salary;
 use App\Models\Ward;
 use Carbon\Carbon;
@@ -185,37 +178,11 @@ class JobService
         $query->whereIn("job_prefecture.prefecture_id", $prefectureIds);
         if (isset($params["prefecture_id"]) && !is_null($params["prefecture_id"])) {
             $query->where("job_prefecture.prefecture_id", $params["prefecture_id"]);
-
-            if (isset($params["ward_id"]) && !is_null($params["ward_id"])) {
-                $query->join("job_ward", "job_ward.job_id", "job_prefecture.job_id")
-                    ->where("job_ward.ward_id", $params["ward_id"]);
-            }
-
-            if (isset($params["line_id"]) && !is_null($params["line_id"])) {
-                $query->join("job_routes", "job_routes.job_id", "job_prefecture.job_id")
-                    ->join('line_stations', 'job_routes.line_station_id', 'line_stations.id')
-                    ->where("line_stations.line_id", $params["line_id"]);
-
-                if (isset($params["station_id"]) && !is_null($params["station_id"])) {
-                    $query->where("line_stations.station_id", $params["station_id"]);
-                }
-            }
         }
 
         if (isset($params["category_id"]) && !is_null($params["category_id"])) {
             $query->join("job_category_level3", "job_category_level3.job_id", "job_prefecture.job_id")
                 ->where("job_category_level3.category_level3_id", $params["category_id"]);
-        }
-
-        if (isset($params["employment_mode_id"]) && !is_null($params["employment_mode_id"])) {
-            $query->join("job_employment_mode", "job_employment_mode.job_id", "job_prefecture.job_id")
-                ->where("job_employment_mode.employment_mode_id", $params["employment_mode_id"]);
-        }
-
-        if (isset($params["merits"]) && !is_null($params["merits"])) {
-            $merits = explode(",", urldecode($params["merits"]));
-            $query->join("job_merit", "job_merit.job_id", "job_prefecture.job_id")
-                ->whereIn("job_merit.merit_id", $merits);
         }
 
         $query->join('jobs', 'jobs.id', 'job_prefecture.job_id');
@@ -270,55 +237,10 @@ class JobService
         if (isset($inputs["prefecture_id"]) && !is_null($inputs["prefecture_id"])) {
             $prefecture = Prefecture::findOneById($inputs["prefecture_id"]);
             $text = [$prefecture->name];
-            if (isset($inputs["ward_id"]) && !is_null($inputs["ward_id"])) {
-                $ward = Ward::findOneById($inputs["ward_id"]);
-                array_push($text, $ward->name);
-            }
             $conditions[] = [
                 "key" => "municipality",
                 "display" => "市区町村",
                 "text" => $text,
-            ];
-        }
-
-        if (isset($inputs["employment_mode_id"]) && !is_null($inputs["employment_mode_id"])) {
-            $employmentMode = EmploymentMode::findOneById($inputs["employment_mode_id"]);
-            $conditions[] = [
-                "key" => "conditions",
-                "display" => "条件",
-                "text" => [$employmentMode->description],
-            ];
-        }
-
-
-        if (isset($inputs["line_id"]) && !is_null($inputs["line_id"])) {
-            $railwayLine = RailwayLine::findOneById($inputs["line_id"]);
-            $text = [$railwayLine->name];
-            if (isset($inputs["station_id"]) && !is_null($inputs["station_id"])) {
-                $station = Station::findOneById($inputs["station_id"]);
-                array_push($text, $station->name);
-            }
-            $conditions[] = [
-                "key" => "routeStation",
-                "display" => "路線・最寄駅",
-                "text" => $text,
-            ];
-        }
-
-        if (isset($inputs["merits"]) && !is_null($inputs["merits"])) {
-            $meritIds = explode(",", urldecode($inputs["merits"]));
-            $merits = Merit::findWhereIn('id', $meritIds);
-            $text = "";
-            foreach ($merits as $merit) {
-                if ($text) {
-                    $text .= '・';
-                }
-                $text .= $merit->name;
-            }
-            $conditions[] = [
-                "key" => "merits",
-                "display" => "希望のメリット",
-                "text" => [$text],
             ];
         }
 
@@ -345,37 +267,20 @@ class JobService
             ->whereIn('job_id', $jobIds)
             ->get();
 
-        $merits = DB::table('job_merit')
-            ->select('job_id', 'merit_id')
-            ->whereIn('job_id', $jobIds)
-            ->get();
-
-//        $routes = DB::table('job_routes')
-//            ->select('job_id', 'line_station_id')
-//            ->whereIn('job_id', $jobIds)
-//            ->get();
-
         $relatedInfo = [
             'prefectures' => $prefectures->groupBy('job_id')->toArray(),
             'categories' => $categories->groupBy('job_id')->toArray(),
             'salaries' => $salaries->groupBy('job_id')->toArray(),
-            'merits' => $merits->groupBy('job_id')->toArray(),
-            // 'routes'        => $routes->groupBy('job_id')->toArray(),
         ];
 
         $prefectures = MasterdataService::getOneTable('prefectures');
         $salaries = MasterdataService::getOneTable('salaries');
-        $merits = MasterdataService::getOneTable('merits');
         $category_level3s = MasterdataService::getOneTable('category_level3s');
-        // $line_stations = MasterdataService::getOneTable('line_stations');
-        // $stations = MasterdataService::getOneTable('stations');
 
         foreach ($jobs as $job) {
             $job->prefectures = [];
-            $job->stations = [];
             $job->categories = [];
             $job->salaries = [];
-            $job->merits = [];
 
             if (isset($relatedInfo['prefectures'][$job->id])) {
                 $prefectureIds = collect($relatedInfo['prefectures'][$job->id])->slice(0, 2)->pluck('prefecture_id')->toArray();
@@ -391,19 +296,6 @@ class JobService
                 $salaryIds = collect($relatedInfo['salaries'][$job->id])->slice(0, 2)->pluck('salary_id')->toArray();
                 $job->salaries = $salaries->whereIn('id', $salaryIds);
             }
-
-            if (isset($relatedInfo['merits'][$job->id])) {
-                $meritIds = collect($relatedInfo['merits'][$job->id])->slice(0, 2)->pluck('merit_id')->toArray();
-                $job->merits = $merits->whereIn('id', $meritIds);
-            }
-
-            // Temporary disable part that slow down the web
-            // TODO: maybe render this in client side.
-            // if (isset($relatedInfo['routes'][$job->id])) {
-            //     $lineStationIds = collect($relatedInfo['routes'][$job->id])->slice(0, 2)->pluck('line_station_id')->toArray();
-            //     $stationIds = $line_stations->whereIn('id', $lineStationIds)->pluck('station_id')->toArray();
-            //     $job->stations = $stations->whereIn('id', $stationIds);
-            // }
         }
 
         return $jobs;
@@ -489,7 +381,6 @@ class JobService
         if (is_null($job)) {
             return null;
         }
-        $job["employment_modes"] = $job->employmentModes()->get();
         $job["company"] = Company::find($job->company_id);
         return $job;
     }
@@ -537,65 +428,9 @@ class JobService
         }
 
         $result = [];
-        // $result = array_merge($result, $this->getJobCountsByCategories($keyRegion, $prefectureIds));
-        // $result = array_merge($result, $this->getJobCountsByEmploymentModes($keyRegion, $prefectureIds));
-        $result = array_merge($result, $this->getJobCountsByMerits($keyRegion, $prefectureIds));
-        // $result = array_merge($result, $this->getJobCountsByPrefectures($keyRegion, $prefectureIds));
 
         Cache::put($CACHE_KEY, $result, $CACHE_DURATION);
         return $result;
-    }
-
-    public function getJobCountsByCategories($keyRegion, $prefectureIds, $limit = 6)
-    {
-        $results = [];
-        $jobCounts = CategoryLevel3::select('category_level3s.id as category_id', DB::raw('count(distinct job_category_level3.job_id) as count'))
-            ->leftJoin('job_category_level3', 'job_category_level3.category_level3_id', 'category_level3s.id')
-            ->leftJoin('job_prefecture', 'job_prefecture.job_id', '=', 'job_category_level3.job_id')
-            ->whereIn('job_prefecture.prefecture_id', $prefectureIds)
-            ->groupBy('category_level3s.id')
-            ->orderBy('count', 'desc')
-            ->limit($limit)
-            ->get();
-
-        $categories = CategoryLevel3::getAll()->groupBy('id')->toArray();
-        foreach ($jobCounts as $jobCount) {
-            $categoryId = $jobCount['category_id'];
-            $category = (array)($categories[$categoryId][0]);
-            array_push($results, [
-                'name' => $category['name'],
-                'jobCount' => $jobCount['count'],
-                'link' => route('search', $keyRegion) . '?category_id=' . $categoryId
-            ]);
-        }
-
-        return ['職種で探す' => $results];
-    }
-
-    public function getJobCountsByEmploymentModes($keyRegion, $prefectureIds, $limit = 6)
-    {
-        $results = [];
-        $jobCounts = EmploymentMode::select("employment_modes.id as mode_id", DB::raw("count(distinct job_employment_mode.job_id) as count"))
-            ->leftJoin("job_employment_mode", "job_employment_mode.employment_mode_id", "employment_modes.id")
-            ->leftJoin('job_prefecture', 'job_prefecture.job_id', '=', 'job_employment_mode.job_id')
-            ->whereIn('job_prefecture.prefecture_id', $prefectureIds)
-            ->groupBy("employment_modes.id")
-            ->orderBy("count", "desc")
-            ->limit($limit)
-            ->get();
-
-        $modes = EmploymentMode::getAll()->groupBy('id')->toArray();
-        foreach ($jobCounts as $jobCount) {
-            $modeId = $jobCount['mode_id'];
-            $mode = (array)($modes[$modeId][0]);
-            array_push($results, [
-                'name' => $mode['description'],
-                'jobCount' => $jobCount['count'],
-                'link' => route('search', $keyRegion) . '?employment_mode_id=' . $modeId
-            ]);
-        }
-
-        return ['雇用形態で探す' => $results];
     }
 
     public function getJobCountsByPrefectures($keyRegion, $prefectureIds, $limit = 6)
@@ -623,38 +458,6 @@ class JobService
         return ['都道府県で探す' => $results];
     }
 
-    public function getJobCountsByMerits($keyRegion, $prefectureIds)
-    {
-        $results = [];
-        $jobCounts = Merit::select('merits.id as merit_id', DB::raw('count(distinct job_merit.job_id) as count'))
-            ->leftJoin('job_merit', 'job_merit.merit_id', 'merits.id')
-            ->leftJoin('job_prefecture', 'job_prefecture.job_id', '=', 'job_merit.job_id')
-            ->whereIn('job_prefecture.prefecture_id', $prefectureIds)
-            ->groupBy('merits.id')
-            ->orderBy('count', 'desc')
-            ->get()
-            ->toArray();
-
-        $meritGroups = MeritGroup::getAll()->groupBy('id')->toArray();
-        $merits = Merit::getAll()->groupBy('id')->toArray();
-        foreach ($jobCounts as $jobCount) {
-            $meritId = $jobCount['merit_id'];
-            $merit = (array)($merits[$meritId][0]);
-            $meritGroupId = $merit['merit_group_id'];
-            $meritGroup = (array)($meritGroups[$meritGroupId][0]);
-            if (!isset($results[$meritGroup['name']])) {
-                $results[$meritGroup['name']] = [];
-            }
-
-            array_push($results[$meritGroup['name']], [
-                'name' => $merit['name'],
-                'jobCount' => $jobCount['count'],
-                'link' => route('search', $keyRegion) . '?merits=' . $meritId
-            ]);
-        }
-
-        return $results;
-    }
 
     public static function getStatisticalJob()
     {
@@ -668,73 +471,6 @@ class JobService
     public function getTotalJobNewInDay()
     {
         return Job::whereDate('created_at', Carbon::now(Consts::TIME_ZONE_JAPAN)->toDateString())->count();
-    }
-
-    public function searchJobByWard(Request $request, $prefecture, $wardSelected = [])
-    {
-        $query = $this->buildQuerySearchJob($request);
-        if (empty($wardSelected)) {
-            $query->join('job_prefecture', 'job_prefecture.job_id', 'jobs.id')
-                ->where('job_prefecture.prefecture_id', $prefecture->id);
-        } else {
-            $query->join('job_ward', 'job_ward.job_id', 'jobs.id')
-                ->join('wards', 'wards.id', 'job_ward.ward_id')
-                ->where('wards.prefecture_id', $prefecture->id);
-            if (is_array($wardSelected)) {
-                $query->whereIn('wards.name_en', $wardSelected);
-            } else {
-                $query->where('wards.name_en', $wardSelected);
-            }
-        }
-        $jobs = $this->addRelatedInfo($this->execQuerySearchJob($request, $query), [$prefecture->id]);
-        return $jobs;
-    }
-
-    public function searchJobByLine(Request $request, $prefecture, $lineSelected = null, $stationSelected = [])
-    {
-        $query = $this->buildQuerySearchJob($request);
-
-        if (empty($lineSelected)) {
-            $query->join('job_prefecture', 'job_prefecture.job_id', 'jobs.id')
-                ->where('job_prefecture.prefecture_id', $prefecture->id);
-        } else {
-            $query->join('job_routes', 'job_routes.job_id', 'jobs.id')
-                ->join('line_stations', 'line_stations.id', 'job_routes.line_station_id')
-                ->join('railway_lines', 'railway_lines.id', 'line_stations.line_id')
-                ->join('stations', 'stations.id', 'line_stations.station_id')
-                ->where('stations.prefecture_id', $prefecture->id);
-            if (is_array($lineSelected)) {
-                $query->whereIn('railway_lines.name_en', $lineSelected);
-            } else {
-                $query->where('railway_lines.name_en', $lineSelected);
-            }
-            if (count($stationSelected) > 0) {
-                $query->whereIn('stations.name_en', $stationSelected);
-            }
-        }
-        $jobs = $this->addRelatedInfo($this->execQuerySearchJob($request, $query), [$prefecture->id]);
-        return $jobs;
-    }
-
-    public function searchJobByStation(Request $request, $prefecture, $lineSelected, $stationSelected = null)
-    {
-        $query = $this->buildQuerySearchJob($request);
-        $query->join('job_routes', 'job_routes.job_id', 'jobs.id')
-            ->join('line_stations', 'line_stations.id', 'job_routes.line_station_id')
-            ->join('railway_lines', 'railway_lines.id', 'line_stations.line_id')
-            ->join('stations', 'stations.id', 'line_stations.station_id')
-            ->where('stations.prefecture_id', $prefecture->id)
-            ->where('railway_lines.name_en', $lineSelected);
-        if (!empty($stationSelected)) {
-            if (is_array($stationSelected)) {
-                $query->whereIn('stations.name_en', $stationSelected);
-            } else {
-                $query->where('stations.name_en', $stationSelected);
-            }
-        }
-
-        $jobs = $this->addRelatedInfo($this->execQuerySearchJob($request, $query), [$prefecture->id]);
-        return $jobs;
     }
 
     protected function execQuerySearchJob(Request $request, $query)
@@ -765,15 +501,6 @@ class JobService
         $query = DB::table("jobs");
         if (!empty($request->input('category'))) {
             $query->join( DB::raw("(select * from job_category_level3 where job_category_level3.category_level3_id = '{$request->input('category')}') as category_level3"), "category_level3.job_id", "jobs.id");
-        }
-
-        if (!empty($request->input('employment_mode'))) {
-            $query->join( DB::raw("(select * from job_employment_mode where job_employment_mode.employment_mode_id = '{$request->input('employment_mode')}') as employment_mode"), "employment_mode.job_id", "jobs.id");
-        }
-
-        if (!empty($request->input('merits'))) {
-            $merits = urldecode($request->input('merits'));
-            $query->join( DB::raw("(select * from job_merit where job_merit.merit_id  in '{$merits}') as merits"), "merits.job_id", "jobs.id");
         }
 
         if (!empty($request->input('free_word'))) {

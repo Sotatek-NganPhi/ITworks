@@ -22,7 +22,7 @@
 @section('page_content')
     <div id="home">
         <div class="menu_home_page">
-        <!-- <div class="area">
+        <div class="area">
             <ol>
                 @foreach($regions as $region)
                     <li class="{{ preg_match('/' . $region->key .'/i', Request::url()) ? 'active' : '' }}"
@@ -32,7 +32,7 @@
                     </li>
                 @endforeach
             </ol>
-        </div> -->
+        </div>
         </div>
         <div class="bannerArea">
             <div id="bannerImage" class="bannerImage">
@@ -64,16 +64,18 @@
                             @include('app.home.special')
                         </div>
                         @endif
+                        @if($campaign)
+                            <div class="campaign">
+                                    <a href="/campaign/{{ $campaign->id }}">
+                                        <img src="{{ $campaign->banner_path }}" alt="" width="100%" height="168">
+                                    </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="side">
                     @include('app.home.side')
                 </div>
-                @if(count($pickups))
-                <div class="pickup">
-                    @include('app.home.pickup_panel')
-                </div>
-                @endif
             </div>
         </div>
         @if(count($urgentJobs))
@@ -87,13 +89,6 @@
          <div class="body-bottom body-even">
             <div class="recommendation">
                 @include('app.home.attention')
-            </div>
-        </div>
-        @endif
-        @if (!$expos->isEmpty())
-        <div class="body-bottom body-expo">
-            <div class="event">
-                @include('app.home.expo')
             </div>
         </div>
         @endif

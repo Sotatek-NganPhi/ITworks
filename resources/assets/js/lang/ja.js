@@ -4,6 +4,11 @@ export default {
     'job': 'Job',
     'company': 'Company',
     'candidate': 'Candidate',
+    'content_settings': 'Content Settings',
+    'analysis': 'Analysis',
+    'field_settings': 'Fields Settings',
+    'search_keys': 'Search Keys',
+    'metadata': 'Metadata',
     'logout' : 'Logout'
   },
   'sub_menu' : {
@@ -24,35 +29,86 @@ export default {
         'mail_setting' : 'Mail Setting',
         'inbox' : 'Inbox'
       },
-    },
+      'content' : {
+        'special' : 'Special Promotion',
+        'link' : 'Link',
+        'urgen' : 'Urgen Jobs',
+        'pickup' : 'Pickup',
+        'expo' : 'Expo',
+        'campaign' : 'Campaign',
+        'announcement' : 'Announcement',
+        'video' : 'Video',
+        'interview' : 'Interview'
+      },
+      'analysis' : {
+        'overal' : 'Analysis Overal',
+        'search' : 'Analysis Search',
+        'merit' : 'Analysis Merit',
+        'type' : 'Analysis Job Type',
+        'rank' : 'Access Ranking'
+      },
+      'field_settings' : {
+        'job' : 'Job',
+        'company' : 'Company',
+        'applicant' : 'Applicant',
+        'managers' : 'Managers'
+      },
+  },
 
   'utils_choice' : {
     'gender' : {
       'male' : 'male',
       'female' : 'female'
     },
+    'manager' : {
+      'system' : 'System Admin',
+      'company' : 'Company Admin'
+    },
+    'booleans' : {
+      'yes' : 'yes',
+      'no' : 'no',
+      'not_specified' : 'Not specified'
+    },
+    'status' : {
+      'effectiveness' : 'Effectiveness',
+      'invalid' : 'Invalid'
+    },
     'yes_no_option' : {
       'yes' : 'yes',
       'no' : 'no'
     },
+    'item_to_use' : {
+      'not_specified' : ' Not Specified',
+      'merit' : 'Merit',
+      'job_category' : 'Job Category'
+    },
+  },
+  'field_setting' : {
+    'list_title': 'List',
+    'search_title': 'Search'
   },
   'job_list' : {
     'use' : 'use',
     'not_use' : 'not use',
     'list_title': 'Jobs List',
     'search_title': 'Search',
+    'work_no': 'Work No',
+    'agency_name': 'Agency Name',
     'company_name': 'Company Name',
+    'posting_situation': 'Posting situation',
     'salary' : 'Salary',
+    'job_category': 'Job category',
+    'original_state': 'Original state',
     'post_start_date': 'Post Start Date',
     'post_end_date': 'Post End Date',
     'outside': 'Outside the posting period',
     'all': 'All',
     'posting': 'Posting',
-    'add_new_route': 'Add a new route',
-    'job_list_title' : 'Job List',
+    'add_new_route': 'Add a new route'
   },
   'company': {
     'name': 'Company Name',
+    'name_phonetic': 'Phonetic name',
     'street_address': 'Street Address',
     'short_description': 'Short Description',
     'company_hp': 'Company HP',
@@ -115,14 +171,6 @@ export default {
     'clear': 'Clear',
     'download_csv': 'Download CSV'
   },
-  'special_promotion': {
-    'name': 'Promotion Name',
-    'platform': 'Platform',
-    'start': 'Start Date',
-    'end': 'End Date',
-    'list_title': 'Special Promotion list',
-    'search_title': 'Search',
-  },
   'admin_list' : {
     'id' : 'ID', 
     'list_title': 'Admins List',
@@ -139,9 +187,13 @@ export default {
     'name':'Name',
     'first_name':'First Name',
     'last_name':'Last Name',
+    'name_phonetic':'Name Phonetic',
+    'first_name_phonetic':'First Name Phonetic',
+    'last_name_phonetic':'Last Name Phonetic',
     'username': 'User Name',
     'registed_date': 'Registed Date',
     'mail_receivable': 'Receive Mail From Us',
+    'platform': 'Platform',
     'sendmail':'Send Mail',
     'search_title':'Candidate Search',
     'list_title':'Candidate List',
@@ -263,6 +315,10 @@ export default {
     'required': 'The {field} is required.',
     'size': 'The {field} must be less than {arg_1st} KB.',
     'url': 'The {field} is not a valid URL.'
+  },
+  'announcement_list' : {
+    'search_title' :'Announcement Search',
+    'list_title' : 'Announcement List'
   },
   'job_edit' : {
     'routes' : 'Routes',

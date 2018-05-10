@@ -12,7 +12,7 @@ class CategoryInterviewSeeder extends Seeder
     public function run()
     {
         DB::table('category_interviews')->truncate();
-        $data = [['title' => '企業×シニアインタビュー'], ['title' => '企業インタビュー']];
+        $data = [['title' => 'Công ty phỏng vấn'], ['title' => 'Công ty phỏng vấn']];
         foreach ($data as $value) {
             DB::table('category_interviews')->insert($value);
         }

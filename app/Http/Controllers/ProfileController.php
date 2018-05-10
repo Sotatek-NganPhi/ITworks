@@ -27,18 +27,13 @@ class ProfileController extends AppBaseController
             $inputs = $request->all();
             $user = $request->user();
             $user->name = join(' ', [$inputs['first_name'], $inputs['last_name']]);
-            $user->name_phonetic = join(' ', [$inputs['first_name_phonetic'], $inputs['last_name_phonetic']]);
             if(!is_null($inputs["password"])) {
                 $user->password = bcrypt($inputs["password"]);
             }
             $user->first_name = $inputs["first_name"];
             $user->last_name = $inputs["last_name"];
-            $user->first_name_phonetic = $inputs["first_name_phonetic"];
-            $user->last_name_phonetic = $inputs["last_name_phonetic"];
-            $user->postal_code = $inputs["postal_code"];
             $user->address = $inputs["address"];
             $user->phone_number = $inputs["phone_number"];
-            $user->line_id = $inputs["line_id"];
             $user->gender = $inputs["gender"];
             $user->birthday =  $inputs["birthday"];
             $user->mail_receivable = $inputs["mail_receivable"];

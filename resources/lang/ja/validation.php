@@ -15,8 +15,8 @@ return [
 
     'accepted'             => ':attribute không đồng ý',
     'active_url'           => ':attribute URL không hợp lệ',
-    'after'                => ':attribute : Vui lòng nhập ngày sau :date',
-    'after_or_equal'       => ':attribute : Vui lòng nhập ngày sau :date',
+    'after'                => 'Vui lòng nhập ngày sau :date',
+    'after_or_equal'       => 'Vui lòng nhập ngày sau :date',
     'alpha'                => ':attribute chỉ có thể sử dụng bảng chữ cái.',
     'alpha_dash'           => ':attribute bạn không thể sử dụng bảng chữ cái. Vui lòng nhập số và "-".',
     'alpha_num'            => ':attribute chỉ có thể sử dụng bảng chữ cái và số.',

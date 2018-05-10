@@ -16,7 +16,6 @@ use Illuminate\Http\Request;
 
 // Masterdata APIs
 Route::get('masterdata', 'MasterdataAPIController@index');
-Route::get('masterdata/search-panel', 'MasterdataAPIController@getMasterDataSearchPanel');
 
 Route::group(['middleware' => 'manage.auth'], function () {
     Route::put('bulk_update/{table}', 'MasterdataAPIController@bulkUpdate')->name('api.masterdata.bulk_update');

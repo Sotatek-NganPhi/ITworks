@@ -20,14 +20,6 @@
                 <input class="form-control" type="text" v-model="searchParams.last_name"/>
             </form-group>
 
-            <form-group :label=" $t('applicant.first_name_phonetic') ">
-                <input class="form-control" type="text" v-model="searchParams.first_name_phonetic"/>
-            </form-group>
-
-            <form-group :label=" $t('applicant.last_name_phonetic') ">
-                <input class="form-control" type="text" v-model="searchParams.last_name_phonetic"/>
-            </form-group>
-
             <form-group :label=" $t('applicant.address') ">
                 <input class="form-control" type="text" v-model="searchParams.address"/>
             </form-group>
@@ -47,11 +39,7 @@
                 </label>
             </form-group>
 
-            <form-group :label=" $t('applicant.postal_code') ">
-                <input class="form-control" type="text" v-model="searchParams.postal_code"/>
-            </form-group>
-
-            <form-group :label=" $t('applicant.age') ">
+           <!--  <form-group :label=" $t('applicant.age') ">
                 <div class="col-sm-4">
                     <select v-model="ageFrom" class="col-sm-4 form-control">
                         <option value="">---</option>
@@ -67,7 +55,7 @@
                 </form-group>
                 <label class="col-sm-1"><strong>歳まで</strong></label>
 
-            </form-group>
+            </form-group> -->
 
             <form-group :label=" $t('applicant.mail') ">
                 <input class="form-control" type="text" v-model="searchParams.email"/>
@@ -91,24 +79,6 @@
                 </select>
             </form-group>
 
-            <form-group :label=" $t('applicant.lastest_industry_id') ">
-                <select v-model="searchParams.lastest_industry_id" class="form-control">
-                    <option value="">---</option>
-                    <option :value="item.id" v-for="item in masterdata.industries" :key="item.id">
-                        {{item.name}}
-                    </option>
-                </select>
-            </form-group>
-
-            <form-group :label=" $t('applicant.lastest_position_id') ">
-                <select v-model="searchParams.lastest_position_id" class="form-control">
-                    <option value="">---</option>
-                    <option :value="item.id" v-for="item in masterdata.positions" :key="item.id">
-                        {{item.name}}
-                    </option>
-                </select>
-            </form-group>
-
             <form-group :label=" $t('applicant.language_conversation_level_id') ">
                 <select v-model="searchParams.language_conversation_level_id" class="form-control">
                     <option value="">---</option>
@@ -123,15 +93,6 @@
                     <option value="">---</option>
                     <option :value="item.id" v-for="item in masterdata.language_experiences" :key="item.id">
                         {{item.description}}
-                    </option>
-                </select>
-            </form-group>
-
-            <form-group :label=" $t('applicant.driver_license_id') ">
-                <select v-model="searchParams.driver_license_id" class="form-control">
-                    <option value="">---</option>
-                    <option :value="item.id" v-for="item in masterdata.current_situations" :key="item.id">
-                        {{item.name}}
                     </option>
                 </select>
             </form-group>
@@ -194,17 +155,11 @@
     job_id: '',
     first_name: '',
     last_name: '',
-    first_name_phonetic: '',
-    last_name_phonetic: '',
     phone_number: '',
-    postal_code: '',
     current_situation_id: '',
     education_id: '',
-    lastest_industry_id: '',
-    lastest_position_id: '',
     language_conversation_level_id: '',
     language_experience_id: '',
-    driver_license_id: '',
   }
 
   export default {

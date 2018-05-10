@@ -8,7 +8,6 @@
         <div>
             <p><b>Name:</b> {{ $contact["name"] }}</p>
             <p><b>Email:</b> {{ $contact["mail_address"] }}</p>
-            <p><b>Content:</b> {{ $contact["content_inquiry"] }}</p>
         </div>
 
     </body>

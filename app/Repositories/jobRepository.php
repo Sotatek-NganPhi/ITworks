@@ -16,10 +16,8 @@ class JobRepository extends AppBaseRepository
         'id',
         'company_id',
         'applicants.COUNT()' => '>=',
-        'work_no'            => 'like',
         'company_id',
         'applicants_count',
-        'categoryLevel3s.category_level3_id',
         'prefectures.region_id',
         'original_state',
         'company_name'       => 'like',
@@ -63,7 +61,7 @@ class JobRepository extends AppBaseRepository
             'application_condition' => 'required',
             'categoryLevel3s'       => 'required',
             'prefectures'           => 'required',
-            'wards'                 => 'required'
+            // 'wards'                 => 'required'
         ];
     }
 }

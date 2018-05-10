@@ -5,12 +5,6 @@ namespace App;
 class Consts
 {
     const DEFAULT_SQL_LIMIT = 10;
-    const PLATFORM_PC = 0;
-    const PLATFORM_MOBILE = 1;
-    const PICKUP_CONDITION_NOT_SPECIFIED= 0;
-    const PICKUP_CONDITION_MERIT = 1;
-    const PICKUP_CONDITION_CATEGORY = 2;
-
     const FIELD_TYPE_SYSTEM = 0;
     const FIELD_TYPE_FOREIGN_ID = 1;
     const FIELD_TYPE_CUSTOM = 100;
@@ -34,10 +28,6 @@ class Consts
     const TIME_ZONE_JAPAN = "Asia/Tokyo";
 
     const SAMPLE_CSV_PATH_JOB_LIST = "/app/sample/JobList.csv";
-
-    const MERIT_GROUP_RECRUITMENT_CONDITION = 1;
-    const MERIT_GROUP_ENVIRONMENT_CONDITION = 2;
-    const MERIT_GROUP_TREATMENT = 4;
 
     const BINARY_BASE = 2;
 

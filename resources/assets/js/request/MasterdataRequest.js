@@ -35,44 +35,6 @@ export default class MasterdataRequest extends BaseRequest {
     }
   }
 
-  getMasterdataSearchPanel(){
-    const masterdata = localStorage.getItem('masterdata');
-    if(masterdata) {
-      try {
-        const buf = buffer.Buffer.from(masterdata, 'base64');
-        const unzipData = zlib.unzipSync(buf).toString();
-        return Promise.resolve(JSON.parse(unzipData));
-      }
-      catch(err) {
-        console.error(err);
-      }
-    }
-    let url = '/masterdata/search-panel';
-    return new Promise((resolve, reject) => {
-      request
-        .get(Utils.getAppEndpoint() + url)
-        .end((err, res) => {
-          if (err) {
-            return this._errorHandler(reject, this._getErrorMsg(err));
-          }
-
-          if (!res.body) {
-            return this._errorHandler(reject, res.text);
-          }
-
-          let masterdata = res.body.data;
-          try {
-            let zipData = zlib.gzipSync(JSON.stringify(masterdata)).toString('base64');
-            localStorage.setItem('masterdata', zipData);
-          } catch(err) {
-            window.EventBus.$emit('EVENT_COMMON_ERROR', err);
-          }
-
-          return resolve(masterdata);
-        });
-    });
-  }
-
   getOne(table, id) {
     return new Promise((resolve, reject) => {
       this.getAll()

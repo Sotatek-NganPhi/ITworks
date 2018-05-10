@@ -17,8 +17,7 @@ class CreateSpecialPromotionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('platform');
-            $table->string('image_pc');
-            $table->string('image_mobile');
+            $table->string('image');
             $table->datetime('start_date');
             $table->datetime('end_date');
             $table->boolean('is_active')->default(true);

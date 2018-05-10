@@ -45,8 +45,6 @@
                                value="{{ isset($inputs['name']) ? $inputs['name'] : '' }}">
                         <input hidden name="mail_address"
                                value="{{ isset($inputs['mail_address']) ? $inputs['mail_address'] : ''}}">
-                        <input hidden name="content_inquiry"
-                               value="{{ isset($inputs['content_inquiry']) ? $inputs['content_inquiry'] : ''}}">
                         <input hidden name="privacy_policy"
                                value="{{ isset($inputs['privacy_policy']) ? $inputs['privacy_policy'] : ''}}">
                     @endif
@@ -62,10 +60,6 @@
                                 <tr>
                                     <th class="required">メールアドレス</th>
                                     <td>{{ $inputs['mail_address'] }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="required">お問い合わせ内容</th>
-                                    <td>{{ $inputs['content_inquiry'] }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -102,13 +96,6 @@
                             <th class="required">メールアドレス</th>
                             <td>
                                 <input name="mail_address"  value="{{ old('mail_address') }}">　(半角)
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="required">お問い合わせ内容</th>
-                            <td>
-                                <textarea name="content_inquiry" rows="3"
-                                          cols="40">{{ old('content_inquiry') }}</textarea>
                             </td>
                         </tr>
                         <tr>

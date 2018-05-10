@@ -16,14 +16,3 @@
         <p class="__btn"><a href="{{route('login')}}">Đăng nhập</a></p>
     </div>
 @endif
-<div class="banner">
-    <ul>
-        @foreach($links as $link)
-            <li>
-                <a href="{{$link['url']}}" target="_blank">
-                    <img id="li1;" src="{{$link['image']}}" alt=""/>
-                </a>
-            </li>
-        @endforeach
-    </ul>
-</div>

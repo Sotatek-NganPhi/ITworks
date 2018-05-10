@@ -20,12 +20,10 @@ class Company extends Model
 
     public $fillable = [
         'name',
-        'name_phonetic',
         'street_address',
         'contact_name',
         'phone_number',
         'short_description',
-        'company_hp',
         'expire_date',
         'is_active',
         'password',
@@ -40,12 +38,10 @@ class Company extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'name_phonetic' => 'string',
         'street_address' => 'string',
         'contact_name' => 'string',
         'phone_number' => 'string',
         'short_description' => 'string',
-        'company_hp' => 'string',
         'is_active' => 'integer'
     ];
 
@@ -58,12 +54,10 @@ class Company extends Model
         'username' => 'required|unique:managers,username',
         'password' => 'required',
         'name' => 'string',
-        'name_phonetic' => '',
         'street_address' => '',
         'contact_name' => '',
         'phone_number' => 'regex:/([0-9]{3}-[0-9]{4}-[0-9]{4})/u',
         'short_description' => '',
-        'company_hp' => '',
         'expire_date' => 'date',
         'is_active' => 'boolean'
     ];

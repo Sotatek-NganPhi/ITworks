@@ -43,14 +43,14 @@
       second: 'Second',
     },
     ja: {
-      hour: '時',
-      minute: '分',
-      second: '秒',
+      hour: 'Hour',
+      minute: 'Minute',
+      second: 'Second',
     },
     ch: {
-      hour: '時',
-      minute: '分',
-      second: '秒',
+      hour: 'Hour',
+      minute: 'Minute',
+      second: 'Second',
     },
   };
 

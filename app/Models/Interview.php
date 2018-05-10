@@ -22,17 +22,13 @@ class Interview extends Model
 
     public $fillable = [
         'title',
-        'picture',
-        'thumbnail',
         'content',
         'sub_content',
         'date',
         'post_start_date',
         'post_end_date',
-        'interviewer',
         'company_name',
         'company_description',
-        'company_url',
         'category_interview_id'
     ];
 

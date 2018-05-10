@@ -13,7 +13,7 @@ class InterviewSeeder extends Seeder
     public function run()
     {
         DB::table('interviews')->truncate();
-        $titles = ['株式会社ウェブクルー　中村様', 'JCVN　難波様', 'フジ産業株式会社　伊谷様'];
+        $titles = ['Công ty FPT'];
         $data = [];
         $subContents = [
             'ご縁取締役出原(以下、出原)　いつも大手スーパーや駅で御社の「保険見直し本舗」お見かけします。',
@@ -23,8 +23,6 @@ class InterviewSeeder extends Seeder
         for ($i=0; $i < rand(0, 10); $i++) {
             $data[] = [
                         'title' => $titles[rand(0, 2)],
-                        'picture' => 'http://www.5en.co.jp/wp-content/uploads/2017/06/JCVN2-1-335x230.jpg',
-                        'thumbnail' => 'http://www.5en.co.jp/wp-content/uploads/2017/06/JCVN1.jpg',
                         'content' => 'ご縁取締役　出原(以下、出原)
                             治験のボランティア会との事ですが、 あまり治験について知らず、治験とはなにか詳しく教えて頂けますか？
                             代表取締役　難波様(以下、敬称略)
@@ -69,10 +67,8 @@ class InterviewSeeder extends Seeder
                         'date' => '2017/10/11',
                         'post_start_date' => '2017/07/11',
                         'post_end_date' => '2017/11/11',
-                        'interviewer' => 'Mr. Nakamura',
                         'company_name' => '株式会社ウェブクルー',
                         'company_description' => '「保険」「引越し」「自動車」「シニア」「広告」など多様な分野でサービスを提供しています。',
-                        'company_url' => 'http://www.webcrew.co.jp/',
                         'category_interview_id' => rand(1,2),
             ];
         }

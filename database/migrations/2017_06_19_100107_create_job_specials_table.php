@@ -24,6 +24,11 @@ class CreateJobSpecialsTable extends Migration
             $table->index('special_promotion_id');
             $table->unique(['job_id', 'special_promotion_id']);
         });
+
+        Schema::table('job_special', function($table) {
+           $table->foreign('job_id')->references('id')->on('jobs');
+           $table->foreign('special_promotion_id')->references('id')->on('special_promotions');
+        });
     }
 
     /**

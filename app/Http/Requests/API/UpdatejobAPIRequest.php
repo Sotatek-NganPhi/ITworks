@@ -38,7 +38,7 @@ class UpdatejobAPIRequest extends BaseRequest
             'application_condition'       => '求める人材・経験・資格',
             'email_receive_applicant'     => '応募先メールアドレス ',
             'categoryLevel3s'            => '職種',
-            'wards'                       => '市区町村',
+            // 'wards'                       => '市区町村',
      
         ];
     }

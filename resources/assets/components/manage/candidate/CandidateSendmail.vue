@@ -7,13 +7,6 @@
       <form-group :label="$t('candidate.last_name')">
         <input class="form-control" type="text" v-model="record.last_name" readonly/>
       </form-group>
-      <form-group :label="$t('candidate.first_name_phonetic')">
-        <input class="form-control" type="text" v-model="record.first_name_phonetic" readonly/>
-      </form-group>
-      <form-group :label="$t('candidate.last_name_phonetic')">
-        <input class="form-control" type="text" v-model="record.last_name_phonetic" readonly/>
-      </form-group>
-
       <form-group :label="$t('common_field.email')">
         <input class="form-control" data-vv-name="email" type="text" v-model="record.email" readonly />
       </form-group>
@@ -66,8 +59,6 @@ export default {
       record: {
         firstName: '',
         lastName:'',
-        firstNamePhonetic:'',
-        lastNamePhonetic:'',
         email:'',
         content: '',
         subject: '',

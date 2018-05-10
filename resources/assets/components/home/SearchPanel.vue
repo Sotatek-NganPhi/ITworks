@@ -101,12 +101,6 @@
         return reg.exec(url)[1];
       },
 
-      getMasterDataSearchPanel(){
-        rf.getRequest('MasterdataRequest').getMasterdataSearchPanel().then(res => {
-          this.masterdata = res;
-        });
-      },
-
       where: function (table, attr, val) {
         return _.filter(table, function (row) {
           return row[attr] == val;
@@ -115,7 +109,6 @@
     },
 
     mounted(){
-      this.getMasterDataSearchPanel();
       this.employment_mode = this.getParam(this.url, 'employment_mode');
       this.free_word = decodeURI(this.getParam(this.url, 'free_word'));
       this.category = this.getParam(this.url, 'category');

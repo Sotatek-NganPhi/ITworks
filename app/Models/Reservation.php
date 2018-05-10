@@ -12,21 +12,15 @@ use Eloquent as Model;
 class Reservation extends Model
 {
 
-    public $table = 'expo_reservations';
-
     public $fillable = [
-        'expo_id',
         'surname',
         'name',
         'surname_phonetic',
-        'name_phonetic',
         'gender',
         'email',
-        'current_situation_id',
         'phone_number',
         'agreed_to_policy',
         'full_name',
-        'full_name_phonetic'
     ];
 
     /**
@@ -36,18 +30,14 @@ class Reservation extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'expo_id' => 'integer',
         'surname' => 'string',
         'name' => 'string',
         'surname_phonetic' => 'string',
-        'name_phonetic' => 'string',
         'gender' => 'integer',
         'email' => 'string',
-        'current_situation_id' => 'integer',
         'phone_number' => 'string',
         'agreed_to_policy' => 'boolean',
         'full_name' => 'string',
-        'full_name_phonetic' => 'string'
     ];
 
     /**
@@ -58,9 +48,4 @@ class Reservation extends Model
     public static $rules = [
 
     ];
-
-    public function currentSituation()
-    {
-        return $this->belongsTo('App\Models\CurrentSituation');
-    }
 }

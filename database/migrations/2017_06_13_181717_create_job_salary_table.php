@@ -24,6 +24,11 @@ class CreateJobSalaryTable extends Migration
             $table->index('salary_id');
             $table->unique(['job_id', 'salary_id']);
         });
+
+        Schema::table('job_salary', function($table) {
+           $table->foreign('job_id')->references('id')->on('jobs');
+           $table->foreign('salary_id')->references('id')->on('salaries');
+        });
     }
 
     /**

@@ -9,7 +9,6 @@ use App\User;
 use App\Models\CandidateJobRanking;
 use App\Models\Candidate;
 use App\Models\Job;
-use App\Models\Merit;
 
 class ResetRanking extends Command
 {

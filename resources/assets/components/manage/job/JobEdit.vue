@@ -74,6 +74,12 @@
             <textarea class="form-control" data-vv-name="interns_start_time"
                       v-model="record.interns_start_time"></textarea>
           </form-group>
+          <form-group :label="getDisplayName('images')">
+            <file-upload v-model="record.main_image" accept="image/*"></file-upload>
+            <file-upload v-model="record.sub_image1" accept="image/*"></file-upload>
+            <file-upload v-model="record.sub_image2" accept="image/*"></file-upload>
+            <file-upload v-model="record.sub_image3" accept="image/*"></file-upload>
+          </form-group>
           <div>
             <span class="glyphicon glyphicon-triangle-bottom"></span>
             <span>{{$t('job_edit.group_5')}}</span>

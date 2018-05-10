@@ -15,13 +15,14 @@ class CreateManagersTable extends Migration
     {
         Schema::create('managers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username', 30)->unique();
+            $table->string('username')->nullable();
             $table->string('password');
             $table->tinyInteger('type');
             $table->string('name')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->integer('company_id')->default(0);
             $table->tinyInteger("is_active")->default(1);
             $table->rememberToken();
             $table->timestamps();

@@ -16,19 +16,18 @@ class CreateSearchConditionsTable extends Migration
         Schema::create('search_conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->integer('employment_mode_id')->nullable();
-            $table->integer('category_id')->nullable();
             $table->integer('prefecture_id')->nullable();
-            $table->integer('ward_id')->nullable();
-            $table->integer('route_id')->nullable();
-            $table->integer('station_id')->nullable();
-            $table->string('free_work')->nullable();
-            $table->string('merits')->nullable();
+            $table->string('free_word')->nullable();
             $table->string('key_region')->nullable();
             $table->timestamps();
 
             // Create indexes
             $table->index('user_id');
+        });
+
+        Schema::table('search_conditions', function($table) {
+           $table->foreign('user_id')->references('id')->on('users');
+           $table->foreign('prefecture_id')->references('id')->on('prefectures');
         });
     }
 

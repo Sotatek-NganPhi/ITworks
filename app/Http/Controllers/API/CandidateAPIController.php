@@ -55,7 +55,7 @@ class CandidateAPIController extends AppBaseController
     {
         $this->candidateRepository->with(['user'])->joinUsers()->pushCriteria(new BaseCriteria($request));
         $this->candidateRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $candidates = $this->candidateRepository->paginate($request->input('limit'), ['candidates.id', 'users.name', 'users.name_phonetic', 'users.birthday', 'users.email', 'candidates.created_at', 'users.mail_receivable']);
+        $candidates = $this->candidateRepository->paginate($request->input('limit'), ['candidates.id', 'users.name', 'users.birthday', 'users.email', 'candidates.created_at', 'users.mail_receivable']);
 
         return $this->sendResponse($candidates->toArray(), trans('message.retrieve'));
     }
@@ -106,19 +106,12 @@ class CandidateAPIController extends AppBaseController
         $result = $candidate->toArray();
 
         $result['salaries'] = $this->getRelationIds($candidate, 'salary');
-        $result['employmentModes'] = $this->getRelationIds($candidate, 'employment_mode');
         $result['prefectures'] = $this->getRelationIds($candidate, 'prefecture');
-        $result['workingShifts'] = $this->getRelationIds($candidate, 'working_shift');
         $result['workingDays'] = $this->getRelationIds($candidate, 'working_day');
         $result['workingHours'] = $this->getRelationIds($candidate, 'working_hour');
         $result['certificates'] = $this->getRelationIds($candidate, 'certificate');
         $result['certificateGroups'] = $this->getRelationIds($candidate, 'certificate');
         $result['workingPeriods'] = $this->getRelationIds($candidate, 'working_period');
-        $result['categoryLevel2s'] = $this->getRelationIds($candidate, 'category_level2');
-        $result['categoryLevel3s'] = $this->getRelationIds($candidate, 'category_level3');
-        $result['currentSituations'] = $this->getRelationIds($candidate, 'current_situation');
-        $result['industries'] = $this->getRelationIds($candidate, 'industry');
-        $result['companySizes'] = $this->getRelationIds($candidate, 'company_size');
 
         return $this->sendResponse($result, trans('message.retrieve'));
     }

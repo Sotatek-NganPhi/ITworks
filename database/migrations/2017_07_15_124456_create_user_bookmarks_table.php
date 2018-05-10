@@ -19,6 +19,11 @@ class CreateUserBookmarksTable extends Migration
             $table->unsignedInteger('job_id');
             $table->timestamps();
         });
+
+        Schema::table('user_bookmarks', function($table) {
+           $table->foreign('user_id')->references('id')->on('users');
+           $table->foreign('job_id')->references('id')->on('jobs');
+        });
     }
 
     /**

@@ -13,10 +13,8 @@ class SpecialPromotionRepository extends BaseRepository
     protected $fieldSearchable = [
         'id',
         'name' => 'like',
-        'platform',
         'image',
         'image_pc',
-        'image_mobile',
         'start_date' => '>=',
         'end_date' => '<=',
         'is_active'

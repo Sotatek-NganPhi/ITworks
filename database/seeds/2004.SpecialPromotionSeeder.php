@@ -29,10 +29,8 @@ class SpecialPromotionSeeder extends Seeder
             $specials[] = [
                 'id'            => $specialId,
                 'name'          => $faker->sentence,
-                'platform'      => rand(1, 3),
                 'image'      => $faker->imageUrl(700,150),
                 'image_pc'      => $faker->imageUrl(700,150),
-                'image_mobile'  => $faker->imageUrl(700,150),
                 'start_date'    => $faker->dateTime(),
                 'end_date'      => $faker->dateTimeBetween('now', '+5 years'),
                 'created_at'    => $faker->dateTime(),

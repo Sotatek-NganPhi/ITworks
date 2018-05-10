@@ -16,6 +16,7 @@ class CreateWorkingPeriodsTable extends Migration
         Schema::create('working_periods', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->boolean('is_active')->default(true);
             $table->string('category')->default('希望の勤務期間');
             $table->timestamps();
         });

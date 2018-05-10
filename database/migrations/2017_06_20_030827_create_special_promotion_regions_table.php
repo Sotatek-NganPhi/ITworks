@@ -18,6 +18,11 @@ class CreateSpecialPromotionRegionsTable extends Migration
             $table->integer('region_id');
             $table->timestamps();
         });
+
+        Schema::table('special_promotion_region', function($table) {
+           $table->foreign('region_id')->references('id')->on('regions');
+           $table->foreign('special_promotion_id')->references('id')->on('special_promotions');
+        });
     }
 
     /**
