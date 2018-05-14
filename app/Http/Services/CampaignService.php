@@ -22,7 +22,7 @@ class CampaignService
             return Cache::get($CACHE_KEY);
         }
 
-        $now = Carbon::now(Consts::TIME_ZONE_JAPAN)->timestamp;
+        $now = Carbon::now(Consts::TIME_ZONE_VIETNAM)->timestamp;
         $campaign = Campaign::select('id', 'banner_path')
             ->where('is_active', Consts::TRUE)
             ->where('start_at', '<', $now)

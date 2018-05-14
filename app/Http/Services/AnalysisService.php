@@ -55,7 +55,7 @@ class AnalysisService
 
     protected function appendQueryDate($query, $params)
     {
-        $dateCurrent = Carbon::now(Consts::TIME_ZONE_JAPAN);
+        $dateCurrent = Carbon::now(Consts::TIME_ZONE_VIETNAM);
         if ((($params["time"] & Consts::THIS_MONTH) > 0) && (($params["time"] & Consts::LAST_MONTH) > 0)) {
             return $query;
         } elseif (($params["time"] & Consts::THIS_MONTH) > 0) {
@@ -72,7 +72,7 @@ class AnalysisService
         $resultAnalysis = null;
         switch ($criteriaTime) {
             case "yesterday":
-                $yesterday = Carbon::yesterday(Consts::TIME_ZONE_JAPAN);
+                $yesterday = Carbon::yesterday(Consts::TIME_ZONE_VIETNAM);
                 $resultAnalysis = DB::table("job_counters")
                     ->select("jobs.*", DB::raw("(sum(views)) as sum"))
                     ->where("view_date", "=", $yesterday->toDateString())
@@ -91,7 +91,7 @@ class AnalysisService
 
     public static function getStatisticalAccessYesterday()
     {
-        $yesterday = Carbon::yesterday(Consts::TIME_ZONE_JAPAN)->toDateString();
+        $yesterday = Carbon::yesterday(Consts::TIME_ZONE_VIETNAM)->toDateString();
         $statisticalAccess = [];
         $statisticalAccess['job'] = JobCounter::select(DB::raw("sum(views) as totalViews"))
             ->where('view_date', $yesterday)->first();

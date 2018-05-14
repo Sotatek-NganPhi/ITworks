@@ -48,11 +48,11 @@
             <span>{{$t('job_edit.group_3')}}</span>
           </div>
 
-          <form-group :label="getDisplayName('company_name')"
+          <!-- <form-group :label="getDisplayName('company_name')"
                       :is-required="isFieldRequired('company_name')">
             <textarea class="form-control" data-vv-name="company_name"
                       cols="150" v-model="record.company_name"></textarea>
-          </form-group>
+          </form-group> -->
 
           <form-group :label="getDisplayName('salary')" :is-required="isFieldRequired('salary')">
             <textarea class="form-control" data-vv-name="salary" v-model="record.salary"></textarea>
@@ -76,9 +76,6 @@
           </form-group>
           <form-group :label="getDisplayName('images')">
             <file-upload v-model="record.main_image" accept="image/*"></file-upload>
-            <file-upload v-model="record.sub_image1" accept="image/*"></file-upload>
-            <file-upload v-model="record.sub_image2" accept="image/*"></file-upload>
-            <file-upload v-model="record.sub_image3" accept="image/*"></file-upload>
           </form-group>
           <div>
             <span class="glyphicon glyphicon-triangle-bottom"></span>

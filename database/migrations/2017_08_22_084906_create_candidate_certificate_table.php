@@ -15,16 +15,16 @@ class CreateCandidateCertificateTable extends Migration
     {
         Schema::create('candidate_certificate', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('certificate_id')->unsigned();
-            $table->integer('candidate_id')->unsigned();
+            $table->unsignedInteger('certificate_id')->unsigned();
+            $table->unsignedInteger('candidate_id')->unsigned();
             $table->timestamps();
             $table->unique(['candidate_id', 'certificate_id']);
         });
 
-        Schema::table('candidate_certificate', function($table) {
-           $table->foreign('certificate_id')->references('id')->on('certificates');
-           $table->foreign('candidate_id')->references('id')->on('candidates');
-        });
+        // Schema::table('candidate_certificate', function($table) {
+        //    $table->foreign('certificate_id')->references('id')->on('certificates');
+        //    $table->foreign('candidate_id')->references('id')->on('candidates');
+        // });
     }
 
     /**

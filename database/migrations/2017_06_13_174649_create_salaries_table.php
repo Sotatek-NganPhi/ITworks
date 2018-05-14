@@ -15,9 +15,9 @@ class CreateSalariesTable extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('category');
             $table->string('description');
             $table->boolean('is_active')->default(true);
-            $table->string('category')->default('Lương theo giờ');
             $table->timestamps();
         });
     }

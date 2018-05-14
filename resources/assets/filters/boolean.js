@@ -1,7 +1,7 @@
 const MESSAGES = {
-  YES: '有効',
-  NO: '無効',
-  NOT_SPECIFIED: '無指定'
+  YES: 'Yes',
+  NO: 'No',
+  NOT_SPECIFIED: 'No Specified'
 }
 
 export default (value) => {

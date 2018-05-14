@@ -29,17 +29,14 @@ class CreateJobAPIRequest extends BaseRequest
         public function attributes()
     {
         return [
-            'company'                     => '掲載企業名',
-            'post_start_date'             => '掲載開始日',
-            'post_end_date'               => '掲載終了日',
-            'description'                 => 'メインキャッチ',
-            'company_name'                => '企業名',
-            'salary'                      => '給与',
-            'application_condition'       => '求める人材・経験・資格',
-            'email_receive_applicant'     => '応募先メールアドレス ',
-            'categoryLevel3s'            => '職種',
-            // 'wards'                       => '市区町村',
-     
+            'company'                     => 'tên công ty',
+            'post_start_date'             => 'ngày đăng tuyển',
+            'post_end_date'               => 'ngày kết thúc đăng tuyển',
+            'description'                 => 'mô tả',
+            // 'company_name'                => '企業名',
+            'salary'                      => 'lương',
+            'application_condition'       => 'điều kiện ứng tuyển',
+            'email_receive_applicant'     => 'email nhận đơn ứng tuyển ',          
         ];
     }
 }

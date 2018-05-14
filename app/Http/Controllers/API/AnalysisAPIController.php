@@ -24,22 +24,22 @@ class AnalysisAPIController extends AppBaseController
         $this->analysisService = new AnalysisService();
     }
 
-        public function downloadCsv(Request $request)
-    {
-        $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
-        $csv->insertOne(Utils::utf8ToSjis('仕事詳細情報閲覧数,応募数'));
-        $csv->insertOne(Utils::utf8ToSjis('PC,スマートフォン,PC,スマートフォン'));
-        $monthAnalysis=$this->getMonthSearchAnalysis($request)->getData()->data;
-        $csv->insertOne(Utils::utf8ToSjis(get_object_vars($monthAnalysis)));
-        $csv->insertOne(Utils::utf8ToSjis('日付,PC仕事詳細情報閲覧数,スマートフォン仕事詳細情報閲覧数,PC応募数,スマートフォン応募数'));
-        $csv->insertOne('');
-        $json_string = $this->getDaySearchAnalysis($request)->getData()->data;
-        foreach ($json_string as $key => $value)
-        {
-             $csv->insertOne( Utils::utf8ToSjis(get_object_vars($value)));
-        }
-         $csv->output('analysis.csv');
-    }
+    //     public function downloadCsv(Request $request)
+    // {
+    //     $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
+    //     $csv->insertOne(Utils::utf8ToSjis('仕事詳細情報閲覧数,応募数'));
+    //     $csv->insertOne(Utils::utf8ToSjis('PC,スマートフォン,PC,スマートフォン'));
+    //     $monthAnalysis=$this->getMonthSearchAnalysis($request)->getData()->data;
+    //     $csv->insertOne(Utils::utf8ToSjis(get_object_vars($monthAnalysis)));
+    //     $csv->insertOne(Utils::utf8ToSjis('日付,PC仕事詳細情報閲覧数,スマートフォン仕事詳細情報閲覧数,PC応募数,スマートフォン応募数'));
+    //     $csv->insertOne('');
+    //     $json_string = $this->getDaySearchAnalysis($request)->getData()->data;
+    //     foreach ($json_string as $key => $value)
+    //     {
+    //          $csv->insertOne( Utils::utf8ToSjis(get_object_vars($value)));
+    //     }
+    //      $csv->output('analysis.csv');
+    // }
 
     public function criteriaAnalysis(Request $request)
     {
@@ -221,14 +221,6 @@ class AnalysisAPIController extends AppBaseController
 
             $applicantQuery = $applicantQuery->join('job_prefecture', 'applicants.job_id', '=', 'job_prefecture.job_id');
             $applicantQuery = $applicantQuery->where('job_prefecture.prefecture_id', '=', $params['prefecture_id']);
-        }
-
-        if (isset($params['category_lv3_id'])) {
-            $viewQuery = $viewQuery->join('job_category_level3', 'job_counters.job_id', '=', 'job_category_level3.job_id');
-            $viewQuery = $viewQuery->where('job_category_level3.category_level3_id', '=', $params['category_lv3_id']);
-
-            $applicantQuery = $applicantQuery->join('job_category_level3', 'applicants.job_id', '=', 'job_category_level3.job_id');
-            $applicantQuery = $applicantQuery->where('job_category_level3.category_level3_id', '=', $params['category_lv3_id']);
         }
 
         if (isset($params['company_id'])) {

@@ -16,7 +16,6 @@ class CreateSpecialPromotionsTable extends Migration
         Schema::create('special_promotions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('platform');
             $table->string('image');
             $table->datetime('start_date');
             $table->datetime('end_date');

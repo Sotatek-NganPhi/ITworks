@@ -164,8 +164,6 @@ class JobAPIController extends AppBaseController
         $result['prefectures'] = $job->prefectures()->pluck('prefecture_id');
         $result['workingDays'] = $job->workingDays()->pluck('working_day_id');
         $result['workingHours'] = $job->workingHours()->pluck('working_hour_id');
-        $result['workingPeriods'] = $job->workingPeriods()->pluck('working_period_id');
-
 
         return $this->sendResponse($result, trans('message.retrieve'));
     }
@@ -220,7 +218,6 @@ class JobAPIController extends AppBaseController
         $job->salaries()->delete();
         $job->workingDays()->delete();
         $job->workingHours()->delete();
-        $job->workingPeriods()->delete();
         $job->applicants()->delete();
         $job->specialPromotions()->delete();
         $job->delete();
@@ -331,22 +328,6 @@ class JobAPIController extends AppBaseController
         $jobIds = DB::table('jobs')
             ->select('id')
             ->whereIn('company_id', $companyIds)
-            ->limit(10)
-            ->get()
-            ->pluck('job_id')
-            ->toArray();
-        $result = array_merge($result, $jobIds);
-
-        $categoryIds = DB::table('job_category_level3')
-            ->select('category_level3_id')
-            ->whereIn('job_id', $ids)
-            ->distinct()
-            ->get()
-            ->pluck('category_level3_id')
-            ->toArray();
-        $jobIds = DB::table('job_category_level3')
-            ->select('job_id')
-            ->whereIn('category_level3_id', $categoryIds)
             ->limit(10)
             ->get()
             ->pluck('job_id')

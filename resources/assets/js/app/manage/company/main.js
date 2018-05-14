@@ -21,8 +21,6 @@ import App from '../../../../components/manage/AppCompany.vue';
 import ApplicantSendmail from '../../../../components/manage/application/ApplicantSendmail.vue';
 import ApplicantDetail from '../../../../components/manage/application/ApplicantDetail.vue';
 import JobDetail from '../../../../components/manage/application/JobDetail.vue';
-import Inbox from '../../../../components/manage/application/Inbox.vue';
-import Conversation from '../../../../components/manage/application/Conversation.vue';
 import ApplicationList from '../../../../components/manage/application/ApplicationList.vue';
 import RequestFactory from '../../../lib/RequestFactory';
 Vue.component('form-group', require('../../../../components/common/FormGroup.vue'));
@@ -78,8 +76,6 @@ export var router = new VueRouter({
     { path: '/application/applicant_sendmail', component: ApplicantSendmail },
     { path: '/application/applicant', component: ApplicantDetail },
     { path: '/application/job', component: JobDetail },
-    { path: '/candidate/inbox', component: Inbox },
-    { path: '/application/inbox/conversations', component: Conversation , props: (route) => ({ id: route.query.id }) }
   ]
 });
 

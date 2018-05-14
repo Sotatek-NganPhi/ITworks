@@ -28,7 +28,6 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
     entry: {
       'js/app/manage/admin/main': sourceDir + '/manage/admin/main.js',
       'js/app/manage/company/main': sourceDir + '/manage/company/main.js',
-      'js/app/manage/agency/main': sourceDir + '/manage/agency/main.js',
       'js/app/home/main': sourceDir + '/home/main.js',
       'js/app/home/search': sourceDir + '/home/search.js',
       'js/app/home/input_form': sourceDir + '/home/input_form.js',

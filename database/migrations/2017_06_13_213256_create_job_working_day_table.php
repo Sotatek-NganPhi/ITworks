@@ -15,8 +15,8 @@ class CreateJobWorkingDayTable extends Migration
     {
         Schema::create('job_working_day', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_id');
-            $table->integer('working_day_id');
+            $table->unsignedInteger('job_id');
+            $table->unsignedInteger('working_day_id');
             $table->timestamps();
 
             // Create indexes
@@ -25,10 +25,10 @@ class CreateJobWorkingDayTable extends Migration
             $table->unique(['job_id', 'working_day_id']);
         });
 
-        Schema::table('job_working_day', function($table) {
-           $table->foreign('job_id')->references('id')->on('jobs');
-           $table->foreign('working_day_id')->references('id')->on('working_days');
-        });
+        // Schema::table('job_working_day', function($table) {
+        //    $table->foreign('job_id')->references('id')->on('jobs');
+        //    $table->foreign('working_day_id')->references('id')->on('working_days');
+        // });
     }
 
     /**

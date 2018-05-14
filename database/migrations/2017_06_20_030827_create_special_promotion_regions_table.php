@@ -14,15 +14,15 @@ class CreateSpecialPromotionRegionsTable extends Migration
     public function up()
     {
         Schema::create('special_promotion_region', function (Blueprint $table) {
-            $table->integer('special_promotion_id');
-            $table->integer('region_id');
+            $table->unsignedInteger('special_promotion_id');
+            $table->unsignedInteger('region_id');
             $table->timestamps();
         });
 
-        Schema::table('special_promotion_region', function($table) {
-           $table->foreign('region_id')->references('id')->on('regions');
-           $table->foreign('special_promotion_id')->references('id')->on('special_promotions');
-        });
+        // Schema::table('special_promotion_region', function($table) {
+        //    $table->foreign('region_id')->references('id')->on('regions');
+        //    $table->foreign('special_promotion_id')->references('id')->on('special_promotions');
+        // });
     }
 
     /**

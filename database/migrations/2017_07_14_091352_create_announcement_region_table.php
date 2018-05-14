@@ -15,8 +15,8 @@ class CreateAnnouncementRegionTable extends Migration
     {
         Schema::create('announcement_region', function (Blueprint $table) {
           $table->increments('id');
-            $table->integer('announcement_id');
-            $table->integer('region_id');
+            $table->unsignedInteger('announcement_id');
+            $table->unsignedInteger('region_id');
             $table->timestamps();
 
             // Create indexes
@@ -25,10 +25,10 @@ class CreateAnnouncementRegionTable extends Migration
             $table->unique(['announcement_id', 'region_id']);
         });
 
-        Schema::table('announcement_region', function($table) {
-           $table->foreign('announcement_id')->references('id')->on('announcements');
-           $table->foreign('region_id')->references('id')->on('regions');
-        });
+        // Schema::table('announcement_region', function($table) {
+        //    $table->foreign('announcement_id')->references('id')->on('announcements');
+        //    $table->foreign('region_id')->references('id')->on('regions');
+        // });
     }
 
     /**

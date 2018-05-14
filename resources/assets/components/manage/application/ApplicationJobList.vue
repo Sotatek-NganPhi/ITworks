@@ -21,16 +21,7 @@
       <form-group :label=" $t('applicant.end') ">
         <date-picker class="col-sm-6" v-model="searchParams.post_end_date" format="YYYY-MM-DD" locale="ja"></date-picker>
       </form-group>
-
-      <form-group :label=" $t('applicant.state.title') ">
-        <label class="radio-inline">
-          <input type="radio" name="optradio2" value="1" v-model="searchParams.original_state" />{{ $t("applicant.state.effectiveness") }}
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="optradio2" value="0" v-model="searchParams.original_state" />{{ $t("applicant.state.invalid") }}
-        </label>
-      </form-group>
-
+      
       <form-group :label=" $t('applicant.entries.title') ">
         <label for="checkbox" style="font-weight: normal; cursor: pointer;">
           <input id="checkbox" type="checkbox" name="check" value="checked" v-model="searchJobsHaveEntriesOnly" /> {{ $t("applicant.entries.button") }}

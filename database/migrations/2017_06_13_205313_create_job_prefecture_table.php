@@ -15,8 +15,8 @@ class CreateJobPrefectureTable extends Migration
     {
         Schema::create('job_prefecture', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_id');
-            $table->integer('prefecture_id');
+            $table->unsignedInteger('job_id');
+            $table->unsignedInteger('prefecture_id');
             $table->timestamps();
 
             // Create indexes
@@ -25,10 +25,10 @@ class CreateJobPrefectureTable extends Migration
             $table->unique(['job_id', 'prefecture_id']);
         });
 
-        Schema::table('job_prefecture', function($table) {
-           $table->foreign('job_id')->references('id')->on('jobs');
-           $table->foreign('prefecture_id')->references('id')->on('prefectures');
-        });
+        // Schema::table('job_prefecture', function($table) {
+        //    $table->foreign('job_id')->references('id')->on('jobs');
+        //    $table->foreign('prefecture_id')->references('id')->on('prefectures');
+        // });
     }
 
     /**

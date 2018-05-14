@@ -36,7 +36,6 @@ class ProfileController extends AppBaseController
             $user->phone_number = $inputs["phone_number"];
             $user->gender = $inputs["gender"];
             $user->birthday =  $inputs["birthday"];
-            $user->mail_receivable = $inputs["mail_receivable"];
             $user->save();
             DB::commit();
             $request->session()->flash('messages', trans('message.update_success'));

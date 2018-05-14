@@ -50,7 +50,6 @@
   </validation-form>
 
   <data-table :getData="getData" ref="datatable" class="table-candidate-list" :title="$t('candidate.list_title')">
-    <th><dt-list-items-chekbox/></th>
     <th data-sort-field="id" style="width: 4%">{{ $t("common_field.id") }}</th>
     <th data-sort-field="users.name" style="width: 14%">{{ $t("candidate.name") }}</th>
     <th data-sort-field="users.birthday" style="width: 12%">{{ $t("common_field.birthday") }}</th>
@@ -60,7 +59,6 @@
     <th style="width: 10%"></th>
     <template slot="body" scope="props">
       <tr>
-        <td><dt-item-chekbox :value="props.item"/></td>
         <td style="width: 4%">{{ props.item.id }}</td>
         <td style="width: 14%">{{ props.item.name }}</td>
         <td style="width: 12%">{{ props.item.birthday }}</td>

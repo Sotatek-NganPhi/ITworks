@@ -45,18 +45,6 @@
                 <table>
                     <tbody>
                     <tr>
-                        <th class="required">Hiện trạng</th>
-                        <td>
-                            <select class="form-control" name="current_situation_id">
-                            @foreach($currentSituations as $currentSituation)
-                                <option value="{{$currentSituation->id}}"
-                                    {{ old('current_situation_id') == $currentSituation->id ? 'selected' : '' }}
-                                >{{$currentSituation->name}}</option>
-                            @endforeach
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
                         <th class="required">Trình độ học vấn</th>
                         <td>
                             <select class="form-control" name="education_id">

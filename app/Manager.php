@@ -12,7 +12,6 @@ class Manager extends Authenticatable
 
     const TYPE_SYS_ADMIN        = 1;
     const TYPE_COMPANY_ADMIN    = 2;
-    const TYPE_AGENCY_ADMIN     = 3;
     /**
      * The attributes that are mass assignable.
      *
@@ -80,16 +79,10 @@ class Manager extends Authenticatable
         return $this->type == Consts::TYPE_COMPANY_ADMIN;
     }
 
-    public function isAgencyAdmin()
-    {
-        return $this->type == Consts::TYPE_AGENCY_ADMIN;
-    }
-
     public function isManager()
     {
         return $this->isSysAdmin()
-            || $this->isCompanyAdmin()
-            || $this->isAgencyAdmin();
+            || $this->isCompanyAdmin();
     }
 
     public function companies()

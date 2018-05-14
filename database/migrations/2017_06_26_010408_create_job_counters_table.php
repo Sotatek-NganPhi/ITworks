@@ -16,8 +16,10 @@ class CreateJobCountersTable extends Migration
         Schema::create('job_counters', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('job_id');
-            $table->date('view_date')->nullable();;
+            $table->date('view_date')->nullable();
             $table->integer('views')->default(0);
+            $table->integer('pc_views')->default(0);
+            $table->integer('mobile_views')->default(0);
             $table->timestamps();
 
             // Create indexes
@@ -25,9 +27,9 @@ class CreateJobCountersTable extends Migration
             $table->unique(['job_id', 'view_date']);
         });
 
-        Schema::table('job_counters', function($table) {
-           $table->foreign('job_id')->references('id')->on('jobs');
-        });
+        // Schema::table('job_counters', function($table) {
+        //    $table->foreign('job_id')->references('id')->on('jobs');
+        // });
     }
 
     /**

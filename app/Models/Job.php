@@ -23,25 +23,14 @@ class Job extends Model
         'company_name',
         'post_start_date',
         'post_end_date',
-        'original_state',
         'max_applicant',
         'working_hours',
         'salary',
         'application_condition',
         'message',
         'interns_start_time',
-        'holiday_vacation',
-        'interview_place',
         'main_image',
         'main_caption',
-        'sub_image1',
-        'sub_image2',
-        'sub_image3',
-        'sub_image4',
-        'sub_caption1',
-        'sub_caption2',
-        'sub_caption3',
-        'sub_caption4',
         'email_receive_applicant',
         'email_company',
         'remarks',
@@ -59,25 +48,14 @@ class Job extends Model
         'company_name' => 'string',
         'post_start_date' => 'date',
         'post_end_date' => 'date',
-        'original_state' => 'string',
         'max_applicant' => 'string',
         'working_hours' => 'string',
         'salary' => 'string',
         'application_condition' => 'string',
         'message' => 'string',
         'interns_start_time' => 'string',
-        'holiday_vacation' => 'string',
-        'interview_place' => 'string',
         'main_image' => 'string',
         'main_caption' => 'string',
-        'sub_image1' => 'string',
-        'sub_image2' => 'string',
-        'sub_image3' => 'string',
-        'sub_image4' => 'string',
-        'sub_caption1' => 'string',
-        'sub_caption2' => 'string',
-        'sub_caption3' => 'string',
-        'sub_caption4' => 'string',
         'email_receive_applicant' => 'string',
         'email_company' => 'string',
         'remarks' => 'string',
@@ -95,13 +73,11 @@ class Job extends Model
         'description' => 'required',
         'post_start_date' => 'required|date',
         'post_end_date' => 'required|date|after:post_start_date',
-        'original_state' => 'required',
         'salary' => 'required',
         'application_condition' => 'required',
         'email_receive_applicant' => 'required|email',
         'categoryLevel3s' => 'required|array|exists:category_level3s,id',
         'prefectures' => 'required|array|exists:prefectures,id',
-        // 'wards' => 'required|array|exists:wards,id',
     ];
 
     public function company()
@@ -131,11 +107,6 @@ class Job extends Model
     public function workingHours()
     {
         return $this->belongsToMany(WorkingHour::class);
-    }
-
-    public function workingPeriods()
-    {
-        return $this->belongsToMany(WorkingPeriod::class);
     }
 
     public function counters()

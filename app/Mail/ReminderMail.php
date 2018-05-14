@@ -33,7 +33,7 @@ class ReminderMail extends Mailable
     public function build()
     {
         return $this->view('emails.reminder_mail')
-            ->subject('5円からメッセージです')
+            ->subject('ITworks')
             ->with([
                 'user' => $this->user,
                 'notify' => $this->message,

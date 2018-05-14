@@ -15,8 +15,8 @@ class CreateCandidateSalaryTable extends Migration
     {
         Schema::create('candidate_salary', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('candidate_id');
-            $table->integer('salary_id');
+            $table->unsignedInteger('candidate_id');
+            $table->unsignedInteger('salary_id');
             $table->timestamps();
 
             // Create indexes
@@ -25,10 +25,10 @@ class CreateCandidateSalaryTable extends Migration
             $table->unique(['candidate_id', 'salary_id']);
         });
 
-        Schema::table('candidate_salary', function($table) {
-           $table->foreign('candidate_id')->references('id')->on('candidates');
-           $table->foreign('salary_id')->references('id')->on('salaries');
-        });
+        // Schema::table('candidate_salary', function($table) {
+        //    $table->foreign('candidate_id')->references('id')->on('candidates');
+        //    $table->foreign('salary_id')->references('id')->on('salaries');
+        // });
     }
 
     /**

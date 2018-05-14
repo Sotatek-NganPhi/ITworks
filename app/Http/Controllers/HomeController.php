@@ -9,9 +9,7 @@ use App\Http\Services\JobService;
 use App\Http\Services\CampaignService;
 use App\Http\Services\UrgentJobService;
 use App\Http\Services\SpecialJobService;
-use App\Http\Services\InterviewService;
 use App\Mail\Contact as ContactMail;
-use App\Mail\Inquiry as InquiryMail;
 use App\Models\Campaign;
 use App\Models\Config;
 use App\Models\Prefecture;
@@ -33,18 +31,16 @@ class HomeController extends AppBaseController
     protected $urgentJobService;
     protected $specialService;
     protected $campaignService;
-    protected $interviewService;
 
     public function __construct(
         JobService $jobService, UrgentJobService $urgentJobService, SpecialJobService $specialService, AnnouncementService $announcementService,
-        CampaignService $campaignService, InterviewService $interviewService)
+        CampaignService $campaignService)
     {
         $this->jobService = $jobService;
         $this->announcementService = $announcementService;
         $this->urgentJobService = $urgentJobService;
         $this->specialService = $specialService;
         $this->campaignService = $campaignService;
-        $this->interviewService = $interviewService;
     }
 
     public function layoutHomePage($keyRegion)
@@ -60,7 +56,7 @@ class HomeController extends AppBaseController
         return view(
             'app.home.index',
             [
-                'today' => Carbon::now(Consts::TIME_ZONE_JAPAN),
+                'today' => Carbon::now(Consts::TIME_ZONE_VIETNAM),
                 'regions' => Region::getAll(),
                 'keyRegion' => $keyRegion,
                 'listPrefecture' => Region::getPrefectures($regionId),
@@ -69,8 +65,6 @@ class HomeController extends AppBaseController
                 'urgentJobs' => $this->urgentJobService->getActiveUrgentJobs($prefectureIds),
                 'attentionJobs' => $this->jobService->getAttentionJobs($prefectureIds, 6),
                 'campaign' => $this->campaignService->getActiveCampain(),
-                'interviewHome' => $this->interviewService->getListInterview(Consts::INTERVIEW_LIMIT, $keyRegion),
-//                'totalJobNew' => $this->jobService->getTotalJobNewInDay()
             ]
         );
     }
@@ -93,19 +87,9 @@ class HomeController extends AppBaseController
         ]);
     }
 
-    public function getCompany()
-    {
-        return $this->_showStaticPage('company');
-    }
-
     public function showContactPage()
     {
         return $this->_showStaticPage('contact');
-    }
-
-    public function showInquiryPage()
-    {
-        return $this->_showStaticPage('inquiry');
     }
 
     public function showPrivacyPage()
@@ -126,31 +110,6 @@ class HomeController extends AppBaseController
     public function _showStaticPage($pageName)
     {
         return view('app.' . $pageName);
-    }
-
-    public function sendMailInquiry(SendMailInquiryRequest $request)
-    {
-        $inputs = $request->all();
-        if (!isset($inputs['confirm'])) {
-            return response()->view('app.inquiry', [
-                'errors' => [],
-                'inputs' => $inputs,
-                'submitted' => true
-            ]);
-        }
-
-        $configs = Config::getConfigByKey();
-
-        Mail::to(['email' => $configs['company_email']])
-            ->queue(new InquiryMail($inputs));
-
-        Inquiry::create($inputs);
-
-        return response()->view('app.inquiry', [
-            'errors' => [],
-            'inputs' => $inputs,
-            'success' => true
-        ]);
     }
 
     public function sendMailContact(SendMailContactRequest $request)
@@ -177,41 +136,5 @@ class HomeController extends AppBaseController
             'inputs' => $inputs,
             'success' => true
         ]);
-    }
-
-    public function interviewDetail($keyRegion, $id)
-    {
-        $interviews = $this->interviewService->getInterviewById($id);
-        $regions = Region::all();
-        return view(
-            'app.interview_detail',
-            [
-                'interviews' => $interviews,
-                'regions' => $regions,
-                'keyRegion' => $keyRegion
-            ]
-        );
-    }
-    public function interviewPage($keyRegion, $categoryInterviewId)
-    {
-        $regions = Region::all();
-        $interviews = $this->interviewService->getListByCategory($categoryInterviewId, Consts::INTERVIEW_PAGE_LIMIT, $keyRegion);
-        $isAll = false;
-
-        if($categoryInterviewId === Consts::ALL_CATEGORIES)
-        {
-            $interviews = $this->interviewService->getListInterview(Consts::INTERVIEW_PAGE_LIMIT, $keyRegion);
-            $isAll = true;
-        }
-
-        return view(
-            'app.interview_page',
-            [
-                'interviewPage' => $interviews,
-                'isAll' => $isAll,
-                'regions' => $regions,
-                'keyRegion' => $keyRegion
-            ]
-        );
     }
 }

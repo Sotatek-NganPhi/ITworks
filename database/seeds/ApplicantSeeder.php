@@ -26,7 +26,6 @@ class ApplicantSeeder extends Seeder
                 'address'                        => "HANOI",
                 'phone_number'                   => "12312312312",
                 'gender'                         => "male",
-                'current_situation_id'           => "1",
                 'education_id'                   => "1",
                 'final_academic_school'          => "TEST",
                 'graduated_at'                   => Carbon::now()->toDateString(),

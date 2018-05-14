@@ -25,17 +25,12 @@ Route::group(['middleware' => 'manage.auth'], function () {
 
     // Job related
     Route::resource('jobs', 'JobAPIController');
-    Route::resource('expos', 'ExpoAPIController');
-    Route::resource('links', 'LinkAPIController');
-    Route::resource('pickups', 'PickupAPIController');
     Route::resource('campaigns', 'CampaignAPIController');
     Route::resource('reservations', 'ReservationAPIController');
     Route::resource('special_promotions', 'SpecialPromotionAPIController');
     Route::resource('certificates', 'CertificateAPIController');
-    Route::resource('videos', 'VideoAPIController');
 
     Route::get('counters', 'JobAPIController@applicantJob');
-    Route::get('job_qualified', 'JobAPIController@getJobsQualified');
     Route::get('job_getById', 'JobAPIController@getJobsWithIds');
     Route::get('job_urgents', 'JobAPIController@getUrgentJobs');
     Route::put('job_urgents', 'JobAPIController@updateUrgentJobs');
@@ -52,9 +47,6 @@ Route::group(['middleware' => 'manage.auth'], function () {
     Route::delete('candidates', 'CandidateAPIController@destroyMany');
     Route::resource('social_providers', 'SocialProviderAPIController');
     Route::put('resume/{id}', 'CandidateAPIController@updateResumeInfo');
-    Route::resource('mail_setting', 'AutoMailAPIController');
-    Route::resource('mail_logs', 'MailLogsAPIController');
-    Route::get('candidate/mail_logs/preview/{id}', 'MailLogsAPIController@showmail');
     Route::delete('candidate/{id}/remove-code', 'CandidateAPIController@removeReferralCode');
     Route::get('/candidates/apllicant_list/get_candidate/{id}','ApplicantAPIController@getApplicant');
 

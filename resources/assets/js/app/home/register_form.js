@@ -9,7 +9,6 @@ Vue.component('datetime-picker', require('../../../components/common/DatetimePic
 Vue.component('form-group', require('../../../components/common/FormGroup.vue'));
 Vue.component('validation-form', require('../../../components/common/ValidationForm.vue'));
 Vue.component('phone-input', require('../../../components/common/PhoneInput.vue'));
-Vue.component('postal-code', require('../../../components/common/PostalCode.vue'));
 
 var app = new Vue({
   el: '#register_from',

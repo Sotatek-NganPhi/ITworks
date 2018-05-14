@@ -18,7 +18,6 @@ class CreateRegionsTable extends Migration
             $table->string('key')->unique();
             $table->string('name');
             $table->integer('display_order');
-            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

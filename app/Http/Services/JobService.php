@@ -180,11 +180,6 @@ class JobService
             $query->where("job_prefecture.prefecture_id", $params["prefecture_id"]);
         }
 
-        if (isset($params["category_id"]) && !is_null($params["category_id"])) {
-            $query->join("job_category_level3", "job_category_level3.job_id", "job_prefecture.job_id")
-                ->where("job_category_level3.category_level3_id", $params["category_id"]);
-        }
-
         $query->join('jobs', 'jobs.id', 'job_prefecture.job_id');
 
         if (isset($params["free_word"]) && !is_null($params["free_word"])) {
@@ -221,7 +216,7 @@ class JobService
             $category = CategoryLevel3::findOneById($inputs["category_id"]);
             $conditions[] = [
                 "key" => "category",
-                "display" => "職種",
+                "display" => "Danh mục công việc",
                 "text" => [$category->name],
             ];
         }
@@ -229,7 +224,7 @@ class JobService
         if (isset($inputs["free_word"]) && !is_null($inputs["free_word"])) {
             $conditions[] = [
                 "key" => "free_word",
-                "display" => "フリーワード",
+                "display" => "Free_word",
                 "text" => [$inputs["free_word"]],
             ];
         }
@@ -239,7 +234,7 @@ class JobService
             $text = [$prefecture->name];
             $conditions[] = [
                 "key" => "municipality",
-                "display" => "市区町村",
+                "display" => "Tỉnh",
                 "text" => $text,
             ];
         }
@@ -257,11 +252,6 @@ class JobService
             ->whereIn('job_prefecture.prefecture_id', $prefectureIds)
             ->get();
 
-        $categories = DB::table('job_category_level3')
-            ->select('job_id', 'category_level3_id')
-            ->whereIn('job_id', $jobIds)
-            ->get();
-
         $salaries = DB::table('job_salary')
             ->select('job_id', 'salary_id')
             ->whereIn('job_id', $jobIds)
@@ -269,7 +259,6 @@ class JobService
 
         $relatedInfo = [
             'prefectures' => $prefectures->groupBy('job_id')->toArray(),
-            'categories' => $categories->groupBy('job_id')->toArray(),
             'salaries' => $salaries->groupBy('job_id')->toArray(),
         ];
 
@@ -279,17 +268,11 @@ class JobService
 
         foreach ($jobs as $job) {
             $job->prefectures = [];
-            $job->categories = [];
             $job->salaries = [];
 
             if (isset($relatedInfo['prefectures'][$job->id])) {
                 $prefectureIds = collect($relatedInfo['prefectures'][$job->id])->slice(0, 2)->pluck('prefecture_id')->toArray();
                 $job->prefectures = $prefectures->whereIn('id', $prefectureIds);
-            }
-
-            if (isset($relatedInfo['categories'][$job->id])) {
-                $categoryIds = collect($relatedInfo['categories'][$job->id])->slice(0, 2)->pluck('category_id')->toArray();
-                $job->categories = $category_level3s->whereIn('id', $categoryIds);
             }
 
             if (isset($relatedInfo['salaries'][$job->id])) {
@@ -455,22 +438,12 @@ class JobService
             ]);
         }
 
-        return ['都道府県で探す' => $results];
-    }
-
-
-    public static function getStatisticalJob()
-    {
-        $today = Carbon::now(Consts::TIME_ZONE_JAPAN)->toDateString();
-        $statisticalJob = Job::select(DB::raw("count(CASE WHEN original_state = '0' THEN 1 END) as totalInvalid"),
-            DB::raw("count(CASE WHEN post_end_date < '$today' AND  original_state = '1' THEN 1 END) as totalExpired "),
-            DB::raw("count(*) as total"))->first();
-        return $statisticalJob;
+        return ['Tìm kiếm theo tỉnh' => $results];
     }
 
     public function getTotalJobNewInDay()
     {
-        return Job::whereDate('created_at', Carbon::now(Consts::TIME_ZONE_JAPAN)->toDateString())->count();
+        return Job::whereDate('created_at', Carbon::now(Consts::TIME_ZONE_VIETNAM)->toDateString())->count();
     }
 
     protected function execQuerySearchJob(Request $request, $query)
@@ -499,9 +472,6 @@ class JobService
     protected function buildQuerySearchJob(Request $request)
     {
         $query = DB::table("jobs");
-        if (!empty($request->input('category'))) {
-            $query->join( DB::raw("(select * from job_category_level3 where job_category_level3.category_level3_id = '{$request->input('category')}') as category_level3"), "category_level3.job_id", "jobs.id");
-        }
 
         if (!empty($request->input('free_word'))) {
             $freeWord = urldecode($request->input('free_word'));

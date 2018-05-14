@@ -26,7 +26,6 @@ class User extends Authenticatable
         'phone_number',
         'gender',
         'birthday',
-        'mail_receivable',
         'confirmed',
         'confirmation_code',
     ];
@@ -64,9 +63,8 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPassword($token, $this->toArray()));
     }
-
     public function draft()
     {
-        return $this->hasOne(Draft::class);
+         return $this->hasOne(Draft::class);
     }
 }

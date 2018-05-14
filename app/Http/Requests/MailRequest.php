@@ -35,9 +35,9 @@ class MailRequest extends FormRequest
     public function attributes()
     {
         return [
-            "email"   => "電子メイル",
-            "subject" => "主題",
-            "content" => "コンテンツ"
+            "email"   => "E-mail",
+            "subject" => "Subject",
+            "content" => "Content"
         ];
     }
 

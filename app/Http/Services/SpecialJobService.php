@@ -32,6 +32,7 @@ class SpecialJobService
 
         $query["site_name"] = Config::getConfigValue("site_name");
         $query["pc_site_title"] = Config::getConfigValue("pc_site_title");
+        $query["image"] = Config::getConfigValue("image");
         return $query;
     }
 
@@ -43,7 +44,7 @@ class SpecialJobService
         if (Cache::has($CACHE_KEY)) {
             return Cache::get($CACHE_KEY);
         }
-        $now = Carbon::now(Consts::TIME_ZONE_JAPAN)->toDateString();
+        $now = Carbon::now(Consts::TIME_ZONE_VIETNAM)->toDateString();
         //get special by regions and platform and have a least 1 jobs.
         $specialPromotions = SpecialPromotion::from('special_promotions as sp')
             ->select('sp.id', 'sp.image as image', 'sp.name')

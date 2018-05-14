@@ -8,13 +8,11 @@ use App\Models\Config;
 use App\Models\Education;
 use App\Models\LanguageConversationLevel;
 use App\Models\LanguageExperience;
-use App\Models\Position;
 use App\Models\Prefecture;
 use App\Models\Region;
 use App\Models\Salary;
 use App\Models\WorkingDay;
 use App\Models\WorkingHour;
-use App\Models\WorkingPeriod;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 
@@ -73,19 +71,19 @@ class UpdateResumeInfoRequest extends FormRequest
     public function attributes()
     {
         return [
-            'first_name'                     => '姓氏名',
-            'last_name'                      => '名氏名',
-            'gender'                         => '性別',
-            'address'                        => '住所',
-            'phone_number'                   => '電話番号',
-            'birthday'                       => '生年月日',
-            'graduated_at'                   => '卒業年度',
+            'first_name'                     => 'Họ',
+            'last_name'                      => 'Tên',
+            'gender'                         => 'Giới tính',
+            'address'                        => 'Địa chỉ',
+            'phone_number'                   => 'Số điện thoại',
+            'birthday'                       => 'Ngày sinh',
+            'graduated_at'                   => 'Thời gian tốt nghiệp',
             'toeic'                          => 'TOEIC',
             'toefl'                          => 'TOEFL',
-            'final_academic_school'          => '最終学歴　学校名',
-            'language_experience_id'         => '実務経験',
-            'language_conversation_level_id' => '会話レベル',
-            'education_id'                   => '最終学歴',
+            'final_academic_school'          => 'Học tại',
+            'language_experience_id'         => 'Kinh nghiệm',
+            'language_conversation_level_id' => 'Kỹ năng giao tiếp',
+            'education_id'                   => 'Trình độ học vấn',
         ];
     }
 
@@ -106,14 +104,12 @@ class UpdateResumeInfoRequest extends FormRequest
             'submitted'                  => $submitted,
             'prefectures'                => Prefecture::getAll(),
             'educations'                 => Education::getAll(),
-            'positions'                  => Position::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
             'languageExperiences'        => LanguageExperience::getAll(),
             'languageConversationLevels' => LanguageConversationLevel::getAll(),
             'salaries'                   => Salary::getAll(),
             'workingDays'                => WorkingDay::getAll(),
             'workingHours'               => WorkingHour::getAll(),
-            'workingPeriods'             => WorkingPeriod::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
         ]);
@@ -121,7 +117,7 @@ class UpdateResumeInfoRequest extends FormRequest
 
     public function validate()
     {
-        if ($this->input('submit') === '下書き保存') {
+        if ($this->input('submit') === 'Lưu bản nháp') {
             return true;
         }
         $this->prepareForValidation();

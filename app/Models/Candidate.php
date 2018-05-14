@@ -58,19 +58,16 @@ class Candidate extends Model
         'language_conversation_level_id' => 'nullable|exists:language_conversation_levels,id',
         'education_id' => 'required',
         'working_days.*' => 'exists:working_days,id',
-        'working_periods.*' => 'exists:working_periods,id',
         'working_hours.*' => 'exists:working_hours,id',
         'certificates.*' => 'exists:certificates,id',
         'certificate_groups.*' => 'exists:certificate_groups,id',
         'prefectures' => 'required|array|exists:prefectures,id',
         'salaries.*' => 'exists:salaries,id',
         'workingDays.*' => 'exists:working_days,id',
-        'workingPeriods.*' => 'exists:working_periods,id',
         'workingHours.*' => 'exists:working_hours,id',
         'user.email' => 'sometimes|required|email',
         'user.gender' => 'sometimes|required|in:male,female',
         'user.birthday' => 'sometimes|required|date',
-        'user.mail_receivable' => 'sometimes|required|boolean',
         'user.name' => 'sometimes|required',
         'user.address' => 'sometimes|required',
         'user.phone_number' => 'sometimes|required',
@@ -106,20 +103,8 @@ class Candidate extends Model
         return $this->belongsToMany(WorkingHour::class);
     }
 
-    public function workingPeriods()
-    {
-        return $this->belongsToMany(WorkingPeriod::class);
-    }
-
     public function certificates()
     {
         return $this->belongsToMany(Certificate::class);
-    }
-
-    public function scopeMailable($query)
-    {
-        return $query->whereHas('user', function ($query) {
-            $query->where('mail_receivable', '=', 1);
-        });
     }
 }

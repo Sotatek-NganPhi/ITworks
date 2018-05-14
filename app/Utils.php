@@ -94,19 +94,11 @@ class Utils
         $data = [
             'from_search' => [
                 'key' => 'from_search',
-                'value' => 'Google、Yahooの検索'
+                'value' => 'Google'
             ],
             'from_facebook' => [
                 'key' => 'from_facebook',
-                'value' => 'Facebookページ'
-            ],
-            'from_flyer' => [
-                'key' => 'from_flyer',
-                'value' => 'チラシ'
-            ],
-            'from_friends_companies' => [
-                'key' => 'from_friends_companies',
-                'value' => 'お友達や企業からのご紹介'
+                'value' => 'Facebook'
             ],
         ];
         return $data;

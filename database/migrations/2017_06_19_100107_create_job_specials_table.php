@@ -15,8 +15,8 @@ class CreateJobSpecialsTable extends Migration
     {
         Schema::create('job_special', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_id');
-            $table->integer('special_promotion_id');
+            $table->unsignedInteger('job_id');
+            $table->unsignedInteger('special_promotion_id');
             $table->timestamps();
 
             // Create indexes
@@ -25,10 +25,10 @@ class CreateJobSpecialsTable extends Migration
             $table->unique(['job_id', 'special_promotion_id']);
         });
 
-        Schema::table('job_special', function($table) {
-           $table->foreign('job_id')->references('id')->on('jobs');
-           $table->foreign('special_promotion_id')->references('id')->on('special_promotions');
-        });
+        // Schema::table('job_special', function($table) {
+        //    $table->foreign('job_id')->references('id')->on('jobs');
+        //    $table->foreign('special_promotion_id')->references('id')->on('special_promotions');
+        // });
     }
 
     /**

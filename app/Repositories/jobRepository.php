@@ -19,7 +19,6 @@ class JobRepository extends AppBaseRepository
         'company_id',
         'applicants_count',
         'prefectures.region_id',
-        'original_state',
         'company_name'       => 'like',
         'post_start_date'    => '>=',
         'post_end_date'      => '<=',
@@ -56,12 +55,10 @@ class JobRepository extends AppBaseRepository
             'description'           => 'required',
             'post_start_date'       => 'required|date',
             'post_end_date'         => 'required|date|after:post_start_date',
-            'original_state'        => 'required',
             'salary'                => 'required',
             'application_condition' => 'required',
             'categoryLevel3s'       => 'required',
             'prefectures'           => 'required',
-            // 'wards'                 => 'required'
         ];
     }
 }

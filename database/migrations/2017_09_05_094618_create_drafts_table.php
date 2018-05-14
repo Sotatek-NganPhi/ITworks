@@ -21,10 +21,6 @@ class CreateDraftsTable extends Migration
 
             $table->index('user_id');
         });
-
-        Schema::table('drafts', function($table) {
-           $table->foreign('user_id')->references('id')->on('users');
-        });
     }
 
     /**

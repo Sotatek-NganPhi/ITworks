@@ -17,7 +17,6 @@ class RankingService
         'salary',
         'working_day',
         'working_hour',
-        'working_period',
     ];
 
 

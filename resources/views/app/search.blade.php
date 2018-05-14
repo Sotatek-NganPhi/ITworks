@@ -13,7 +13,7 @@
         })
         $('#formRegisterBtn').click(function () {
           var form = document.getElementById('form-search-panel');
-          form.action = '/register-condition';
+          form.action = '/login-condition';
           form.method = 'post';
           form._token.value = $('meta[name="csrf-token"]').attr('content');
           form.key_region.value = $('input[name="key_region"]').val();
@@ -21,7 +21,7 @@
         });
         $("#formRegisterUnspecifiedBtn").click(function () {
           var form = document.getElementById('form-search-panel');
-          form.action = '/register-condition';
+          form.action = '/login-condition';
           form.method = 'post';
           form._token.value = $('meta[name="csrf-token"]').attr('content');
           form.key_region.value = $('input[name="key_region"]').val();
@@ -56,7 +56,7 @@
         @if(preg_match("/" . $region->key .'\/job(\?)?\z$/', Request::fullUrl()))
             @include('app.common.breadcrumbs', ['crumbs' => collect([
                 ['url' => route("home", $region->key), 'name' => $configs["site_name"]],
-                ['url' => 'javascript:void(0)', 'name' => $region->name . 'の求人一覧']
+                ['url' => 'javascript:void(0)', 'name' => $region->name . 'Danh sách công việc']
             ])])
         @endif
 
@@ -67,7 +67,7 @@
                 <table>
                     <tbody>
                     <tr>
-                        <td colspan="4" class="header">検索結果</td>
+                        <td colspan="4" class="header">Kết quả tìm kiếm</td>
                     </tr>
                     @if(count($conditions) > 0)
                         @if(count($conditions) < 2)
@@ -164,35 +164,13 @@
                                 @endif
                             @endforeach
                         @endif
-                        <tr>
-                            <td colspan="4" class="footer">
-                                <template>
-                                    <a href="javascript:void(0)" class="btn_close" v-show="isFindMore"
-                                       @click="showSearchPanel">さらに詳しく検索する</a>
-                                </template>
-                                <a href="javascript:void(0)" v-show="!isFindMore"
-                                   @click="showSearchPanel">さらに詳しく検索する</a>
-                                {{--<input type="button" name="Submit3" value="この条件を登録する" id="formRegisterBtn">--}}
-                            </td>
-                        </tr>
                     </tbody>
                     @endif
                     @if(count($conditions) == 0)
                         <tbody v-if="isUnspecified">
                         <tr>
                             <td colspan="4" style="text-align:center;">
-                                <div style="padding:10px"><b>指定なし</b></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="footer">
-                                <template>
-                                    <a href="javascript:void(0)" class="btn_close" v-if="isFindMore"
-                                       @click="showSearchPanel">さらに詳しく検索する</a>
-                                </template>
-                                <a href="javascript:void(0)" class="formResearchBtn" v-if="!isFindMore"
-                                   @click="showSearchPanel">さらに詳しく検索する</a>
-                                {{--<input type="button" name="Submit3" value="この条件を登録する" id="formRegisterUnspecifiedBtn">--}}
+                                <div style="padding:10px"><b>Không xác định</b></div>
                             </td>
                         </tr>
                         </tbody>
@@ -212,20 +190,20 @@
         </template>
 
         <div class="count-result">
-            <p class="text">該当件数は<span class="count">{{$results["total"]}}</span>件です</p>
+            <p class="text">Số công việc là<span class="count">{{$results["total"]}}</span> công việc</p>
         </div>
         @if($results["total"] > 0)
             @if(preg_match("/job\z$/", $results["path"]))
                 <div class="control">
                     <div class="pagination">
                         <p>
-                            全{{$results["per_page"]}}件　{{$results["from"] ? $results["from"] : 0}}
+                            Có {{$results["per_page"]}} công việc　{{$results["from"] ? $results["from"] : 0}}
                             /{{$results["last_page"]}}　
                             @if($results["floor"] < 2)
-                                <span class="disable">&lt;&lt;前の10ページ</span>
+                                <span class="disable">&lt;&lt;10 trang trước</span>
                             @else
                                 <span class="active"><a
-                                            href="{{$results["path"] . "?page=" . $results["current_page"] . "&floor=on"}}">&lt;&lt;前の10ページ</a></span>
+                                            href="{{$results["path"] . "?page=" . $results["current_page"] . "&floor=on"}}">&lt;&lt;10 trang trước</a></span>
                             @endif
                             @for($i = $results["floor"]; $i <= $results["ceil"]; $i++)
                                 <span class="{{$results["current_page"] == $i ? 'active' : 'disable'}}"><a
@@ -233,15 +211,15 @@
                                                 class="per-page">{{$i}}</span>]</a></span>
                             @endfor
                             @if($results["last_page"] == $results["ceil"])
-                                <span class="disable">次の10ページ&gt;&gt;</span>
+                                <span class="disable">10 trang sau&gt;&gt;</span>
                             @else
                                 <span class="active"><a
-                                            href="{{$results["path"] ."?page=" . $results["current_page"] . "&ceil=on"}}">次の10ページ&gt;&gt;</a></span>
+                                            href="{{$results["path"] ."?page=" . $results["current_page"] . "&ceil=on"}}">10 trang sau&gt;&gt;</a></span>
                             @endif
                         </p>
                         <div class="choose-page-item">
                             <div id="select-item">
-                                <label for="item_page" class="label-item-page">表示件数</label>
+                                <label for="item_page" class="label-item-page">Số lượng hiển thị</label>
                                 <select name="item_page" id="item_page" class="select-item-page" v-model="limit">
                                     <option value="10">10</option>
                                     <option value="20">20</option>
@@ -253,10 +231,10 @@
                     </div>
                     <div class="filters">
                         <p class="row">
-                            <span class="text">検索結果を並び替える&nbsp;≫&nbsp;</span>
+                            <span class="text">Sắp xếp kết quả tìm kiếm&nbsp;≫&nbsp;</span>
                             <span class="btn-filters">
-                                <a href="{{preg_replace('/&sort=[^&]+(&|$)/','', $results["path"]) . "?sort=default"}}">▼初期順</a>&nbsp;
-                                <a href="{{preg_replace('/&sort=[^&]+(&|$)/','', $results["path"]) . "?sort=new"}}">▼新着順</a>&nbsp;
+                                <a href="{{preg_replace('/&sort=[^&]+(&|$)/','', $results["path"]) . "?sort=default"}}">▼Thứ tự ngẫu nhiên</a>&nbsp;
+                                <a href="{{preg_replace('/&sort=[^&]+(&|$)/','', $results["path"]) . "?sort=new"}}">▼Từ công việc mới nhất</a>&nbsp;
                                 <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=end"}}">▼もうすぐ終了順</a>
                             </span>
                         </p>
@@ -266,14 +244,14 @@
                 <div class="control">
                     <div class="pagination">
                         <p>
-                            全{{$results["per_page"]}}件　{{$results["from"] ? $results["from"] : 0}}
+                            Có {{$results["per_page"]}}công việc　{{$results["from"] ? $results["from"] : 0}}
                             /{{$results["last_page"]}}　
 
                             @if($results["floor"] < 2)
-                                <span class="disable">&lt;&lt;前の10ページ</span>
+                                <span class="disable">&lt;&lt;10 trang trước</span>
                             @else
                                 <span class="active"><a
-                                            href="{{$results["path"] . "&page=" . $results["current_page"] . "&floor=on"}}">&lt;&lt;前の10ページ</a></span>
+                                            href="{{$results["path"] . "&page=" . $results["current_page"] . "&floor=on"}}">&lt;&lt;10 trang trước</a></span>
                             @endif
                             @for($i = $results["floor"]; $i <= $results["ceil"]; $i++)
                                 <span class="{{$results["current_page"] == $i ? 'active' : 'disable'}}"><a
@@ -281,15 +259,15 @@
                                                 class="per-page">{{$i}}</span>]</a></span>
                             @endfor
                             @if($results["last_page"] == $results["ceil"])
-                                <span class="disable">次の10ページ&gt;&gt;</span>
+                                <span class="disable">10 trang sau&gt;&gt;</span>
                             @else
                                 <span class="active"><a
-                                            href="{{$results["path"] ."&page=" . $results["current_page"] . "&ceil=on"}}">次の10ページ&gt;&gt;</a></span>
+                                            href="{{$results["path"] ."&page=" . $results["current_page"] . "&ceil=on"}}">10 trang sau&gt;&gt;</a></span>
                             @endif
                         </p>
                         <div class="choose-page-item">
                             <div id="select-item">
-                                <label for="item_page" class="label-item-page">表示件数</label>
+                                <label for="item_page" class="label-item-page">Số lượng hiển thị</label>
                                 <select name="item_page" id="item_page" class="select-item-page" v-model="limit">
                                     <option value="10">10</option>
                                     <option value="20">20</option>
@@ -300,10 +278,10 @@
                         </div>
                     </div>
                     <div class="filters">
-                        <p class="row">検索結果を並び替える&nbsp;≫&nbsp;
+                        <p class="row">Sắp xếp kết quả tìm kiếm&nbsp;≫&nbsp;
 
-                            <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=default"}}">▼初期順</a>&nbsp;
-                            <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=new"}}">▼新着順</a>&nbsp;
+                            <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=default"}}">▼Thứ tự ngẫu nhiên</a>&nbsp;
+                            <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=new"}}">▼Từ công việc mới nhất</a>&nbsp;
                             <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=end"}}">▼もうすぐ終了順</a>
 
                         </p>
@@ -317,7 +295,7 @@
                 <div class="job-view">
                     <div class="list_title">
                         <h2><a href="/job/{{$job->id}}">{{$job->description}}</a></h2>
-                        <div class="detail_item"><a href="/job/{{$job->id}}">詳細</a></div>
+                        <div class="detail_item"><a href="/job/{{$job->id}}">Chi tiết</a></div>
                     </div>
                     <div class="__description">
                         <div class="salary">{{$job->salary}}</div>
@@ -336,11 +314,11 @@
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
                                 <tr>
-                                    <th>応募条件</th>
+                                    <th>Điều kiện ứng tuyển</th>
                                     <td>{{$job->application_condition}}</td>
                                 </tr>
                                 <tr>
-                                    <th>掲載期間</th>
+                                    <th>Thời gian ứng tuyển</th>
                                     <td>{{$job->post_start_date}} - {{$job->post_end_date}}</td>
                                 </tr>
                                 </tbody>
@@ -361,41 +339,26 @@
                             </div>
                         </div>
                         <div class="relation">
-                            <div>関連の求人</div>
+                            <div>Các công việc liên quan</div>
                             <ul>
                                 @foreach($job->prefectures as $prefecture)
                                     <li class="item"><a
                                                 href="{{route('search', $region->key)}}?prefecture_id={{$prefecture->id}}">{{ $prefecture->name }}
-                                            の求人</a></li>
-                                @endforeach
-                                @foreach($job->stations as $station)
-                                    <li class="item"><a
-                                                href="{{route('search', $region->key)}}?station_id={{$station->id}}">{{ $station->name }}
-                                            の求人</a></li>
-                                @endforeach
-                                @foreach($job->categories as $category)
-                                    <li class="item"><a
-                                                href="{{route('search', $region->key)}}?category_id={{$category->id}}">{{ $category->name }}
-                                            の求人</a></li>
+                                            Việc làm</a></li>
                                 @endforeach
                                 @foreach($job->salaries as $salary)
                                     <li class="item"><a
                                                 href="{{route('search', $region->key)}}?salary_id={{$salary->id}}">{{ $salary->description }}
-                                            の求人</a></li>
-                                @endforeach
-                                @foreach($job->merits as $merit)
-                                    <li class="item"><a
-                                                href="{{route('search', $region->key)}}?merits={{$merit->id}}">{{ $merit->name }}
-                                            の求人</a></li>
+                                            Việc làm</a></li>
                                 @endforeach
                             </ul>
                         </div>
                     @else
                         <div class="clear"></div>
                         <div class="blur-mask mark-{{$mark}}">
-                            <a class="button-outer" href="{{ url('register') }}">
+                            <a class="button-outer" href="{{ url('login') }}">
                                 <div class="signup-button">
-                                    会員登録をして求人情報を見る
+                                    Hãy đăng nhập để xem chi tiết công việc
                                 </div>
                               </a>
                         </div>
@@ -408,13 +371,13 @@
                 <div class="control">
                     <div class="pagination">
                         <p>
-                            全{{$results["per_page"]}}件　{{$results["from"] ? $results["from"] : 0}}
+                            Có {{$results["per_page"]}}công việc　{{$results["from"] ? $results["from"] : 0}}
                             /{{$results["last_page"]}}　
                             @if($results["floor"] < 2)
-                                <span class="disable">&lt;&lt;前の10ページ</span>
+                                <span class="disable">&lt;&lt;10 trang trước</span>
                             @else
                                 <span class="active"><a
-                                            href="{{$results["path"] . "?page=" . $results["current_page"] . "&floor=on"}}">&lt;&lt;前の10ページ</a></span>
+                                            href="{{$results["path"] . "?page=" . $results["current_page"] . "&floor=on"}}">&lt;&lt;10 trang trước</a></span>
                             @endif
                             @for($i = $results["floor"]; $i <= $results["ceil"]; $i++)
                                 <span class="{{$results["current_page"] == $i ? 'active' : 'disable'}}"><a
@@ -422,15 +385,15 @@
                                                 class="per-page">{{$i}}</span>]</a></span>
                             @endfor
                             @if($results["last_page"] == $results["ceil"])
-                                <span class="disable">次の10ページ&gt;&gt;</span>
+                                <span class="disable">10 trang sau&gt;&gt;</span>
                             @else
                                 <span class="active"><a
-                                            href="{{$results["path"] ."?page=" . $results["current_page"] . "&ceil=on"}}">次の10ページ&gt;&gt;</a></span>
+                                            href="{{$results["path"] ."?page=" . $results["current_page"] . "&ceil=on"}}">10 trang sau&gt;&gt;</a></span>
                             @endif
                         </p>
                         <div class="choose-page-item">
                             <div id="select-item">
-                                <label for="item_page" class="label-item-page">表示件数</label>
+                                <label for="item_page" class="label-item-page">Số lượng hiển thị</label>
                                 <select name="item_page" id="item_page" class="select-item-page" v-model="limit">
                                     <option value="10">10</option>
                                     <option value="20">20</option>
@@ -445,14 +408,14 @@
                 <div class="control">
                     <div class="pagination">
                         <p>
-                            全{{$results["per_page"]}}件　{{$results["from"] ? $results["from"] : 0}}
+                            Có{{$results["per_page"]}}công việc　{{$results["from"] ? $results["from"] : 0}}
                             /{{$results["last_page"]}}　
 
                             @if($results["floor"] < 2)
-                                <span class="disable">&lt;&lt;前の10ページ</span>
+                                <span class="disable">&lt;&lt;10 trang trước</span>
                             @else
                                 <span class="active"><a
-                                            href="{{$results["path"] . "&page=" . $results["current_page"] . "&floor=on"}}">&lt;&lt;前の10ページ</a></span>
+                                            href="{{$results["path"] . "&page=" . $results["current_page"] . "&floor=on"}}">&lt;&lt;10 trang trước</a></span>
                             @endif
                             @for($i = $results["floor"]; $i <= $results["ceil"]; $i++)
                                 <span class="{{$results["current_page"] == $i ? 'active' : 'disable'}}"><a
@@ -460,15 +423,15 @@
                                                 class="per-page">{{$i}}</span>]</a></span>
                             @endfor
                             @if($results["last_page"] == $results["ceil"])
-                                <span class="disable">次の10ページ&gt;&gt;</span>
+                                <span class="disable">10 trang sau&gt;&gt;</span>
                             @else
                                 <span class="active"><a
-                                            href="{{$results["path"] ."&page=" . $results["current_page"] . "&ceil=on"}}">次の10ページ&gt;&gt;</a></span>
+                                            href="{{$results["path"] ."&page=" . $results["current_page"] . "&ceil=on"}}">10 trang sau&gt;&gt;</a></span>
                             @endif
                         </p>
                         <div class="choose-page-item">
                             <div id="select-item">
-                                <label for="item_page" class="label-item-page">表示件数</label>
+                                <label for="item_page" class="label-item-page">Số lượng hiển thị</label>
                                 <select name="item_page" id="item_page" class="select-item-page" v-model="limit">
                                     <option value="10">10</option>
                                     <option value="20">20</option>
@@ -484,7 +447,7 @@
         @if(preg_match("/" . $region->key .'\/job(\?)?\z$/', Request::fullUrl()))
             @include('app.common.breadcrumbs', ['crumbs' => collect([
                 ['url' => route("home", $region->key), 'name' => $configs["site_name"]],
-                ['url' => 'javascript:void(0)', 'name' => $region->name . 'の求人一覧']
+                ['url' => 'javascript:void(0)', 'name' => $region->name . 'Danh sách công việc']
             ])])
         @endif
     </div>

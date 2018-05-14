@@ -25,7 +25,7 @@ class Consts
 
     const THIS_MONTH = 1;
     const LAST_MONTH = 2;
-    const TIME_ZONE_JAPAN = "Asia/Tokyo";
+    const TIME_ZONE_VIETNAM = "Asia/Ho_Chi_Minh";
 
     const SAMPLE_CSV_PATH_JOB_LIST = "/app/sample/JobList.csv";
 
@@ -46,7 +46,5 @@ class Consts
 
     const TYPE_SYS_ADMIN        = 1;
     const TYPE_COMPANY_ADMIN    = 2;
-    const TYPE_AGENCY_ADMIN     = 3;
-
     const GUARD_MANAGER = "manager";
 }

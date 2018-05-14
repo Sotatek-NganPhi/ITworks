@@ -15,8 +15,8 @@ class CreateCandidatePrefectureTable extends Migration
     {
         Schema::create('candidate_prefecture', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('candidate_id');
-            $table->integer('prefecture_id');
+            $table->unsignedInteger('candidate_id');
+            $table->unsignedInteger('prefecture_id');
             $table->timestamps();
 
             // Create indexes
@@ -25,10 +25,10 @@ class CreateCandidatePrefectureTable extends Migration
             $table->unique(['candidate_id', 'prefecture_id']);
         });
 
-        Schema::table('candidate_prefecture', function($table) {
-           $table->foreign('candidate_id')->references('id')->on('candidates');
-           $table->foreign('prefecture_id')->references('id')->on('prefectures');
-        });
+        // Schema::table('candidate_prefecture', function($table) {
+        //    $table->foreign('candidate_id')->references('id')->on('candidates');
+        //    $table->foreign('prefecture_id')->references('id')->on('prefectures');
+        // });
     }
 
     /**

@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="masterdata-version" content="{{ $dataVersion }}">
-    <meta name="description" content="{{ $configs['pc_meta_description'] }}">
-    <meta name="keywords" content="{{ $configs['pc_meta_keywords'] }}">
     <title>@yield('title')</title>
     <meta name="viewport"
           content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>

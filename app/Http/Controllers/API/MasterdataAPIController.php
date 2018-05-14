@@ -7,7 +7,6 @@ use App\Http\Services\MasterdataService;
 use App\Models\Prefecture;
 use App\Models\Region;
 use App\Events\MasterdataChangedEvent;
-use App\Repositories\ReferralAgencyRepository;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Illuminate\Http\Request;
@@ -24,15 +23,11 @@ use App\Repositories\EducationRepository;
 use App\Repositories\FieldSettingRepository;
 use App\Repositories\LanguageConversationLevelRepository;
 use App\Repositories\LanguageExperienceRepository;
-use App\Repositories\PositionRepository;
 use App\Repositories\PrefectureRepository;
-use App\Repositories\RailwayLineRepository;
 use App\Repositories\RegionRepository;
 use App\Repositories\SalaryRepository;
-use App\Repositories\WardRepository;
 use App\Repositories\WorkingDayRepository;
 use App\Repositories\WorkingHourRepository;
-use App\Repositories\WorkingPeriodRepository;
 use App\Repositories\CertificateRepository;
 use App\Repositories\CertificateGroupRepository;
 use InfyOm\Generator\Utils\ResponseUtil;
@@ -52,16 +47,13 @@ class MasterdataAPIController extends AppBaseController
         FieldSettingRepository                  $fieldSettingRepo,
         LanguageConversationLevelRepository     $languageConversationLevelRepo,
         LanguageExperienceRepository            $languageExperienceRepo,
-        PositionRepository                      $positionRepo,
         PrefectureRepository                    $prefectureRepo,
         RegionRepository                        $regionRepo,
         SalaryRepository                        $salaryRepo,
-        WardRepository                          $wardRepo,
         WorkingDayRepository                    $workingDayRepo,
         WorkingHourRepository                   $workingHourRepo,
-        WorkingPeriodRepository                 $workingPeriodRepo,
         CertificateRepository                   $certificateRepo,
-        CertificateGroupRepository              $certificateGroupRepo,
+        CertificateGroupRepository              $certificateGroupRepo)
     {
         $this->repos = [
             'configs' => $configRepo,
@@ -69,14 +61,11 @@ class MasterdataAPIController extends AppBaseController
             'field_settings' => $fieldSettingRepo,
             'language_conversation_levels' => $languageConversationLevelRepo,
             'language_experiences' => $languageExperienceRepo,
-            'positions' => $positionRepo,
             'prefectures' => $prefectureRepo,
             'regions' => $regionRepo,
             'salaries' => $salaryRepo,
-            'stations' => $stationRepo,
             'working_days' => $workingDayRepo,
             'working_hours' => $workingHourRepo,
-            'working_periods' => $workingPeriodRepo,
             'certificates' => $certificateRepo,
             'certificate_groups' => $certificateGroupRepo,
         ];

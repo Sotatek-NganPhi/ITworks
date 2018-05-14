@@ -15,18 +15,17 @@ class CreatePrefecturesTable extends Migration
     {
         Schema::create('prefectures', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('region_id');
+            $table->unsignedInteger('region_id');
             $table->string('name');
-            $table->string('description')->nullable();
             $table->timestamps();
 
             // Create indexes
             $table->index('region_id');
         });
 
-        Schema::table('prefectures', function($table) {
-           $table->foreign('region_id')->references('id')->on('regions');
-        });
+        // Schema::table('prefectures', function($table) {
+        //    $table->foreign('region_id')->references('id')->on('regions');
+        // });
     }
 
     /**

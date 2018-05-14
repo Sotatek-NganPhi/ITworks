@@ -15,23 +15,23 @@ class CreateCandidatesTable extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->unique();
-            $table->integer('education_id')->unsigned()->default(null)->nullable();
-            $table->string('final_academic_school')->default(null)->nullable();
-            $table->date('graduated_at')->default(null)->nullable();
+            $table->unsignedInteger('user_id')->unique();
+            $table->unsignedInteger('education_id')->nullable();
+            $table->string('final_academic_school')->nullable();
+            $table->date('graduated_at')->nullable();
             $table->float('toeic')->nullable();
             $table->float('toefl')->nullable();
-            $table->integer('language_experience_id')->unsigned()->nullable();
-            $table->integer('language_conversation_level_id')->unsigned()->nullable();
+            $table->unsignedInteger('language_experience_id')->nullable();
+            $table->unsignedInteger('language_conversation_level_id')->nullable();
             $table->timestamps();
         });
 
-        Schema::table('candidates', function($table) {
-           $table->foreign('user_id')->references('id')->on('users');
-           $table->foreign('education_id')->references('id')->on('education');
-           $table->foreign('language_experience_id')->references('id')->on('language_experiences');
-           $table->foreign('language_conversation_level_id')->references('id')->on('language_conversation_levels');
-        });
+        // Schema::table('candidates', function($table) {
+        //    $table->foreign('user_id')->references('id')->on('users');
+        //    $table->foreign('education_id')->references('id')->on('educations');
+        //    $table->foreign('language_experience_id')->references('id')->on('language_experiences');
+        //    $table->foreign('language_conversation_level_id')->references('id')->on('language_conversation_levels');
+        // });
     }
 
     /**

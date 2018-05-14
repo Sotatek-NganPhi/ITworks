@@ -17,12 +17,10 @@
     mounted(){
       this.$refs.app.subNavigators = [
         { link: '/candidate/application_list', text: 'sub_menu.candidate.applicant', sub: 'candidate' },
-        { link: '/candidate/inbox', text: 'sub_menu.candidate.inbox', sub: 'candidate' },
       ];
       this.$on("EVENT_CHANGE_SUB_NAVIGATOR", () => {
         this.$refs.app.subNavigators = [
           { link: '/candidate/application_list', text: 'sub_menu.candidate.applicant', sub: 'candidate' },
-          { link: '/candidate/inbox', text: 'sub_menu.candidate.inbox', sub: 'candidate' },
         ];
       })
     }

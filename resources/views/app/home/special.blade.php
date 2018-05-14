@@ -2,7 +2,7 @@
     <div id="special">
         <div class="__selection_area">
             <div class="kakko">
-                <h3>Special</h3>
+                <h3>特集</h3>
             </div>
             <p class="title"><span>Special</span></p>
         </div>

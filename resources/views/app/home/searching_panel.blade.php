@@ -1,6 +1,6 @@
 <div class="__selection_area">
     <div class="kakko search_panel">
-        <h3>希望の求人を検索</h3>
+        <h3>Tìm kiếm một công việc mong muốn</h3>
     </div>
     <p class="title"><span>Search</span></p>
 </div>

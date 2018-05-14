@@ -52,10 +52,6 @@ export default {
     return { [this.getKey('utils_choice.gender.male')]: 'male', [this.getKey('utils_choice.gender.female')]: 'female' }
   },
 
-  getMaritals: function () {
-    return { [this.getKey('utils_choice.maritals.married')]: 1, [this.getKey('utils_choice.maritals.unmarried')]: 0 }
-  },
-
   getTypeManagers: function () {
     return { [this.getKey('utils_choice.manager.system')]: 1, [this.getKey('utils_choice.manager.company')]: 2 }
   },
@@ -185,37 +181,17 @@ export default {
     return {
       'regions': [],
       'prefectures': [],
-      'wards': [],
-      'stations': [],
-      'railway_lines': [],
-      'line_stations': [],
       'salaries': [],
-      'employment_modes': [],
-      'working_shifts': [],
       'working_days': [],
       'working_hours': [],
-      'working_periods': [],
       'companies': [],
-      'current_situations': [],
-      'merits': [],
-      'merit_groups': [],
-      'category_level1s': [],
-      'category_level2s': [],
-      'category_level3s': [],
-      'jumping_conditions': [],
-      'jumping_dates': [],
       'educations': [],
-      'industries': [],
-      'company_sizes': [],
-      'positions': [],
       'language_experiences': [],
       'language_conversation_levels': [],
-      'driver_licenses': [],
       'configs': [],
       'field_settings': [],
       'certificate_groups' : [],
       'certificates' : [],
-      'referral_agencies' : [],
     };
   },
 };

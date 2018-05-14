@@ -14,7 +14,6 @@ class SpecialPromotionRepository extends BaseRepository
         'id',
         'name' => 'like',
         'image',
-        'image_pc',
         'start_date' => '>=',
         'end_date' => '<=',
         'is_active'

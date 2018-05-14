@@ -34,7 +34,7 @@ var app = new Vue({
         let keyRegion = "";
         let pathName = window.location.pathname.split("/");
         for (let i = 0; i< pathName.length; i++){
-          if(_.includes(["hokkaido", "kanto", "hokuriku", "tokai", "kansai", "chugoku", "kyushu"], pathName[i])){
+          if(_.includes(["hanoi ", "hochiminh", "mienbac", "mientrung", "miennam"], pathName[i])){
             keyRegion = pathName[i];
             break;
           }

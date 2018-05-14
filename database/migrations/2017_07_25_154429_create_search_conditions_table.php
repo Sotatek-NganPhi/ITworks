@@ -16,7 +16,7 @@ class CreateSearchConditionsTable extends Migration
         Schema::create('search_conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->integer('prefecture_id')->nullable();
+            $table->unsignedInteger('prefecture_id')->nullable();
             $table->string('free_word')->nullable();
             $table->string('key_region')->nullable();
             $table->timestamps();
@@ -25,10 +25,10 @@ class CreateSearchConditionsTable extends Migration
             $table->index('user_id');
         });
 
-        Schema::table('search_conditions', function($table) {
-           $table->foreign('user_id')->references('id')->on('users');
-           $table->foreign('prefecture_id')->references('id')->on('prefectures');
-        });
+        // Schema::table('search_conditions', function($table) {
+        //    $table->foreign('user_id')->references('id')->on('users');
+        //    $table->foreign('prefecture_id')->references('id')->on('prefectures');
+        // });
     }
 
     /**

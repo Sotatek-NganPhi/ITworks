@@ -14,6 +14,8 @@
         }
         .head-logo{
             margin-bottom: 10px;
+            width: 260px;
+            height: 80px;
         }
     </style>
 </head>
@@ -27,7 +29,7 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/manage/login') }}">
                         {!! csrf_field() !!}
                         <div class="text-center">
-                            <img src="/images/head_logo.svg" class="head-logo"/>
+                            <img src="/images/img_top.jpg" class="head-logo"/>
                         </div>
                         <div class="form-group{{ ($errors->has('username') || $errors->has('manage'))  ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Username</label>

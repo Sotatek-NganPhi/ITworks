@@ -20,10 +20,10 @@ class CreateUserBookmarksTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('user_bookmarks', function($table) {
-           $table->foreign('user_id')->references('id')->on('users');
-           $table->foreign('job_id')->references('id')->on('jobs');
-        });
+        // Schema::table('user_bookmarks', function($table) {
+        //    $table->foreign('user_id')->references('id')->on('users');
+        //    $table->foreign('job_id')->references('id')->on('jobs');
+        // });
     }
 
     /**

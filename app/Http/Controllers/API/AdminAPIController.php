@@ -144,9 +144,8 @@ class AdminAPIController extends AppBaseController
 
     public function getStatisticalInHomePage()
     {
-        $statisticalJob = JobService::getStatisticalJob();
         $statisticalAccess = AnalysisService::getStatisticalAccessYesterday();
-        $statistical = ["statisticalJob" => $statisticalJob, "statisticalAccess" => $statisticalAccess];
+        $statistical = ["statisticalAccess" => $statisticalAccess];
         return $this->sendResponse($statistical, trans('message.retrieve'));
     }
 }

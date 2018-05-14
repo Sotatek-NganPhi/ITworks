@@ -27,10 +27,6 @@
         <phone-input v-model="record.user.phone_number"></phone-input>
       </form-group>
 
-      <form-group :label="$t('common_field.line_id')" :is-required="isFieldRequired('user.line_id')">
-        <input data-vv-name="user.line_id" class="form-control" type="text" v-model="record.user.line_id"/>
-      </form-group>
-
       <form-group :label="$t('common_field.email')">
         <input data-vv-name="user.email" class="form-control" type="text" v-model="record.user.email" disabled/>
       </form-group>
@@ -57,16 +53,6 @@
         <span>{{$t('candidate_list.additional_info')}}</span>
       </div>
 
-      <form-group :label="getDisplayName('current_situation_id')"
-                  :is-required="isFieldRequired('current_situation_id')">
-        <radio-group data-vv-name="current_situation_id" inline="true"
-                        label="name" v-model="record.current_situation_id" :options="masterdata.current_situations"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('jumping_condition_id')" :is-required="isFieldRequired('jumping_condition_id')">
-        <radio-group data-vv-name="jumping_condition_id" inline="true" label="description" v-model="record.jumping_condition_id" :options="masterdata.jumping_conditions"/>
-      </form-group>
-
       <form-group :label="getDisplayName('education_id')" :is-required="isFieldRequired('education_id')">
         <radio-group data-vv-name="education_id" inline="true" label="name" v-model="record.education_id" :options="masterdata.educations"/>
       </form-group>
@@ -79,28 +65,9 @@
         <date-picker data-vv-name="graduated_at" v-model="record.graduated_at" format="YYYY-MM-DD"></date-picker>
       </form-group>
 
-      <form-group :label="getDisplayName('is_married')" :is-required="isFieldRequired('is_married')">
-        <radio-group data-vv-name="is_married" inline="true" v-model="record.is_married" :options="maritalStatusOptions"/>
-      </form-group>
       <!-- ADDITIONAL INFORMATION - END -->
       <!-- EXPECTATION - START -->
       <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>{{$t('candidate_list.expect')}}</span></div>
-
-      <form-group :label="getDisplayName('jumping_date_id')" :is-required="isFieldRequired('jumping_date_id')">
-        <radio-group data-vv-name="jumping_date_id" inline="true" label="description" v-model="record.jumping_date_id" :options="masterdata.jumping_dates"/>
-      </form-group>
-
-      <form-group :label="$t('candidate.employment_mode')" :is-required="isFieldRequired('employment_modes')">
-        <checkbox-group data-vv-name="employment_modes" inline="true" label="description" v-model="record.employmentModes" :options="masterdata.employment_modes"/>
-      </form-group>
-
-      <form-group :label="$t('applicant.industry')" :is-required="isFieldRequired('industries')">
-        <checkbox-group data-vv-name="industries" inline="true" label="name" v-model="record.industries" :options="masterdata.industries"/>
-      </form-group>
-
-      <form-group :label="$t('candidate.size')" :is-required="isFieldRequired('company_sizes')">
-        <checkbox-group data-vv-name="companySizes" inline="true" label="description" v-model="record.companySizes" :options="masterdata.company_sizes"/>
-      </form-group>
 
       <form-group :label="$t('candidate.salary')" :is-required="isFieldRequired('salaries')">
         <checkbox-group data-vv-name="salaries" inline="true" label="description" v-model="record.salaries" :options="masterdata.salaries"/>
@@ -112,25 +79,6 @@
 
       <form-group :label="$t('job_edit.working_hours')" :is-required="isFieldRequired('working_hours')">
         <checkbox-group data-vv-name="workingHours" inline="true" label="name" v-model="record.workingHours" :options="masterdata.working_hours"/>
-      </form-group>
-
-      <form-group :label="$t('job_edit.working_periods')" :is-required="isFieldRequired('working_periods')">
-        <checkbox-group data-vv-name="workingPeriods" inline="true" label="name" v-model="record.workingPeriods" :options="masterdata.working_periods"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('category_level3s')" :is-required="isFieldRequired('category_level3s')">
-        <multiselect
-          style="z-index: 100;"
-          data-vv-name="categoryLevel3s"
-          v-model="selectedCategoryLevel3"
-          :placeholder="$t('common_action.pick')"
-          label="name"
-          track-by="id"
-          :options="masterdata.category_level3s"
-          :multiple="true"
-          :close-on-select="false"
-          :clear-on-select="false"
-          :hide-selected="true"></multiselect>
       </form-group>
 
       <form-group :label="getDisplayName('prefectures')" :is-required="isFieldRequired('prefectures')">
@@ -165,14 +113,6 @@
 
       <form-group :label="getDisplayName('language_experience_id')" :is-required="isFieldRequired('language_experience_id')">    <radio-group  data-vv-name="language_experience_id" inline="true" label="description" v-model="record.language_experience_id" :options="masterdata.language_experiences"/>    
      </form-group>
-
-      <form-group :label="getDisplayName('driver_license_id')" :is-required="isFieldRequired('driver_license_id')">
-        <radio-group data-vv-name="driver_license_id" inline="true" label="name" v-model="record.driver_license_id" :options="masterdata.driver_licenses"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('lastest_job_description')" :is-required="isFieldRequired('lastest_job_description')">
-        <input data-vv-name="lastest_job_description" class="form-control" type="text" v-model="record.lastest_job_description"/>
-      </form-group>
 
       <form-group :label="getDisplayName('certificate')" :is-required="isFieldRequired('certificate')">
         <multiselect
@@ -220,8 +160,6 @@ import {candidateNavigators as subNavigators} from '../../../js/app/manage/route
 import QueryBuilder from '../../../js/lib/QueryBuilder';
 const masterdata = {
   prefectures: [],
-  category_level2s: [],
-  category_level3s: [],
   certificates: [],
 
 };
@@ -241,9 +179,7 @@ export default {
       selectedPrefectures: [],
       selectedCertificate: [],
       genderOptions: Utils.getGenders(),
-      maritalStatusOptions: Utils.getMaritals(),
       mailReceivableOptions: Utils.getYesNoOptions(),
-      selectedCategoryLevel3: [],
       isShowModal: false
     };
   },
@@ -258,7 +194,6 @@ export default {
       this.isShowModal = false;
       this.record.prefectures = _.map(this.selectedPrefectures, 'id');
       this.record.certificates = _.map(this.selectedCertificate, 'id');
-      this.record.categoryLevel3s = _.map(this.selectedCategoryLevel3, 'id');
       rf.getRequest('CandidateRequest')
         .updateOne(this.record.id, this.record)
         .then(res => {
@@ -280,15 +215,6 @@ export default {
       this.isShowModal = true;
     },
     resetChange() {
-      if (this.$route.query.agency) {
-        this.$router.push({
-          path: '/search_keys/agency/edit',
-          query: {
-            id: this.$route.query.agency
-          }
-        });
-        return;
-      }
       this.$router.push({
         path: '/candidate/list',
       });
@@ -298,8 +224,6 @@ export default {
         _.find(this.masterdata.prefectures, pref => pref.id === prefId));
       this.selectedCertificate = _.map(this.record.certificates, prefId =>
         _.find(this.masterdata.certificates, pref => pref.id === prefId));
-      this.selectedCategoryLevel3 = _.map(this.record.categoryLevel3s, prefId =>
-        _.find(this.masterdata.category_level3s, pref => pref.id === prefId));
     },
   },
   mounted() {

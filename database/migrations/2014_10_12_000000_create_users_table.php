@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->string('phone_number')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->dateTime('birthday')->nullable();
-            $table->boolean('mail_receivable')->default(0);
             $table->boolean('confirmed')->default(0);
             $table->string('confirmation_code')->nullable();
             $table->rememberToken();

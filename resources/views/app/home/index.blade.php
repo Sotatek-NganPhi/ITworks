@@ -1,6 +1,6 @@
 @extends('app.layout')
 
-@section('title', $configs['pc_site_title'])
+@section('title')
 
 @section('script')
     <script type="text/javascript">

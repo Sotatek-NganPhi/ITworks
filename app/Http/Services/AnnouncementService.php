@@ -22,7 +22,7 @@ class AnnouncementService
             return Cache::get($CACHE_KEY);
         }
 
-        $today = Carbon::now(Consts::TIME_ZONE_JAPAN)->toDateString();
+        $today = Carbon::now(Consts::TIME_ZONE_VIETNAM)->toDateString();
         $announcements = Announcement::from('announcements as a')
                             ->join('announcement_region as ar', 'a.id', '=', 'ar.announcement_id')
                             ->where('is_active', Consts::TRUE)

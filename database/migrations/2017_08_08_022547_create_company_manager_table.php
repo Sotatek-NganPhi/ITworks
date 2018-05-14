@@ -15,15 +15,15 @@ class CreateCompanyManagerTable extends Migration
     {
         Schema::create('company_manager', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id');
-            $table->integer('manager_id');
+            $table->unsignedInteger('company_id');
+            $table->unsignedInteger('manager_id');
             $table->timestamps();
         });
 
-        Schema::table('company_manager', function($table) {
-           $table->foreign('company_id')->references('id')->on('companies');
-           $table->foreign('manager_id')->references('id')->on('managers');
-        });
+        // Schema::table('company_manager', function($table) {
+        //    $table->foreign('company_id')->references('id')->on('companies');
+        //    $table->foreign('manager_id')->references('id')->on('managers');
+        // });
     }
 
     /**

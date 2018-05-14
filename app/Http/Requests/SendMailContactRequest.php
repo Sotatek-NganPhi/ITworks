@@ -53,8 +53,8 @@ class SendMailContactRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'ご担当者名',
-            'mail_address' => 'メールアドレス',
+            'name' => 'Name',
+            'mail_address' => 'Mail Address',
         ];
     }
 }

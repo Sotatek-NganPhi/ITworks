@@ -8,12 +8,10 @@ use App\Models\CertificateGroup;
 use App\Models\Education;
 use App\Models\LanguageConversationLevel;
 use App\Models\LanguageExperience;
-use App\Models\Position;
 use App\Models\Region;
 use App\Models\Salary;
 use App\Models\WorkingDay;
 use App\Models\WorkingHour;
-use App\Models\WorkingPeriod;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -42,13 +40,12 @@ class CandidateRequest extends FormRequest
         })->all();
 
         $rules['prefectures']             .= '|required';
-        $rules['mail_receivable']          = 'required';
         return $rules;
     }
 
     public function validate()
     {
-        if ($this->input('submit') === '下書き保存') {
+        if ($this->input('submit') === 'Lưu bản nháp') {
             return true;
         }
         $this->prepareForValidation();
@@ -77,14 +74,12 @@ class CandidateRequest extends FormRequest
             'errors'                     => $errors,
             'user'                       => Auth::user(),
             'educations'                 => Education::getAll(),
-            'positions'                  => Position::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
             'languageExperiences'        => LanguageExperience::getAll(),
             'languageConversationLevels' => LanguageConversationLevel::getAll(),
             'salaries'                   => Salary::getAll(),
             'workingDays'                => WorkingDay::getAll(),
             'workingHours'               => WorkingHour::getAll(),
-            'workingPeriods'             => WorkingPeriod::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
         ]);

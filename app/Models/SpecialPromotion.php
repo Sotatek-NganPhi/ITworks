@@ -17,7 +17,6 @@ class SpecialPromotion extends Model
         'id',
         'name',
         'image',
-        'image_pc',
         'start_date',
         'end_date',
         'is_active'
@@ -30,7 +29,6 @@ class SpecialPromotion extends Model
      */
     protected $casts = [
         'name' => 'string',
-        'image_pc' => 'string',
         'is_active' => 'integer'
     ];
 
@@ -42,7 +40,6 @@ class SpecialPromotion extends Model
     public static $rules = [
         'name' => 'string|max:200',
         'image' => 'string',
-        'image_pc' => 'string',
         'image_mobile' => 'string',
         'is_active' => 'integer',
         'start_date' => 'date',

@@ -19,6 +19,5 @@ class DatabaseSeeder extends Seeder
         $this->call(AnnouncementsSeeder::class);
         $this->call(SpecialPromotionSeeder::class);
         $this->call(ApplicantSeeder::class);
-        $this->call(CategoryInterviewSeeder::class);
     }
 }

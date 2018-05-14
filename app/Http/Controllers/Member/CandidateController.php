@@ -12,17 +12,15 @@ use App\Models\Candidate;
 use App\Models\Certificate;
 use App\Models\CertificateGroup;
 use App\Models\Config;
-use App\Models\Draft;
 use App\Models\Education;
 use App\Models\LanguageConversationLevel;
 use App\Models\LanguageExperience;
-use App\Models\Position;
 use App\Models\Prefecture;
 use App\Models\Region;
 use App\Models\Salary;
+use App\Models\Draft;
 use App\Models\WorkingDay;
 use App\Models\WorkingHour;
-use App\Models\WorkingPeriod;
 use App\User;
 use DB;
 use Exception;
@@ -131,14 +129,12 @@ class CandidateController extends AppBaseController
         return view('auth.candidate', [
             'user'                       => $user,
             'educations'                 => Education::getAll(),
-            'positions'                  => Position::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
             'languageExperiences'        => LanguageExperience::getAll(),
             'languageConversationLevels' => LanguageConversationLevel::getAll(),
             'salaries'                   => Salary::getAll(),
             'workingDays'                => WorkingDay::getAll(),
             'workingHours'               => WorkingHour::getAll(),
-            'workingPeriods'             => WorkingPeriod::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
             'configs'                    => $configs,
@@ -152,7 +148,6 @@ class CandidateController extends AppBaseController
         $changes[] = $candidate->salaries()->sync($request->get('salaries', []));
         $changes[] = $candidate->workingDays()->sync($request->get('working_days', []));
         $changes[] = $candidate->workingHours()->sync($request->get('working_hours', []));
-        $changes[] = $candidate->workingPeriods()->sync($request->get('working_periods', []));
         $changes[] = $candidate->certificates()->sync($request->get('certificates', []));
 
         $changedRecords = collect($changes)->reduce(function ($carry, $change) {
@@ -181,7 +176,6 @@ class CandidateController extends AppBaseController
             $candidate = new Candidate($input);
             $candidate->user_id = $user->id;
             $candidate->save();
-            $user->mail_receivable = $input['mail_receivable'];
             $user->save();
 
             $this->refreshCandidateDraft($request);
@@ -210,13 +204,11 @@ class CandidateController extends AppBaseController
                 'salaries'           => $candidate->salaries->pluck('id')->toArray(),
                 'working_days'       => $candidate->workingDays->pluck('id')->toArray(),
                 'working_hours'      => $candidate->workingHours->pluck('id')->toArray(),
-                'working_periods'    => $candidate->workingPeriods->pluck('id')->toArray(),
                 'certificates'       => $candidate->certificates->pluck('id')->toArray(),
             ];
 
             $request->merge($candidate->toArray());
             $request->merge($relations);
-            $request->merge(['mail_receivable' => $user->mail_receivable]);
         }
 
         $request->flash();
@@ -237,7 +229,6 @@ class CandidateController extends AppBaseController
         try {
             $candidate->update($request->all());
             $candidate->save();
-            $user->mail_receivable = $request->input('mail_receivable');
             $user->save();
             $this->syncAllRelations($request, $candidate);
 
@@ -263,7 +254,6 @@ class CandidateController extends AppBaseController
             $candidate->prefectures()->delete();
             $candidate->workingDays()->delete();
             $candidate->workingHours()->delete();
-            $candidate->workingPeriods()->delete();
             $candidate->salaries()->delete();
             $candidate->certificate()->delete();
             $candidate->delete();
@@ -304,14 +294,12 @@ class CandidateController extends AppBaseController
             'success'                    => $success,
             'prefectures'                => Prefecture::getAll(),
             'educations'                 => Education::getAll(),
-            'positions'                  => Position::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
             'languageExperiences'        => LanguageExperience::getAll(),
             'languageConversationLevels' => LanguageConversationLevel::getAll(),
             'salaries'                   => Salary::getAll(),
             'workingDays'                => WorkingDay::getAll(),
             'workingHours'               => WorkingHour::getAll(),
-            'workingPeriods'             => WorkingPeriod::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
         ]);
@@ -330,7 +318,6 @@ class CandidateController extends AppBaseController
                 'salaries',
                 'working_days',
                 'working_hours',
-                'working_periods',
                 'certificates',
             ];
             $draft = Draft::where('user_id', Auth::id())->first();

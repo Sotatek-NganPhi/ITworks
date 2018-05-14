@@ -22,8 +22,8 @@ class CreateCompaniesTable extends Migration
             $table->text('short_description')->nullable();
             $table->text('business_content')->nullable();
             $table->datetime('expire_date');
-            $table->string('username')->nullable()->unique();
-            $table->string('password')->nullable();
+            $table->string('email');
+            $table->string('password');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

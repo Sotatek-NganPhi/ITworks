@@ -10,7 +10,6 @@ use App\User;
 use App\Mail\ApplicationToCandidate;
 use App\Mail\ApplicationToEmployer;
 use App\Models\Applicant;
-use App\Models\Position;
 use App\Models\Candidate;
 use App\Models\LanguageExperience;
 use App\Models\Job;

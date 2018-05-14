@@ -20,21 +20,14 @@ class ManagersSeeder extends Seeder
                 'username' => 'admin',
                 'name' => 'Super Admin',
                 'password' => bcrypt('123'),
-                'email' => 'admin@sotatek.com'
+                'email' => 'admin@gmail.com'
             ],
             [
                 'type' => 2,
                 'username' => 'company',
                 'name' => 'Super Company',
                 'password' => bcrypt('123'),
-                'email' => 'company@sotatek.com'
-            ],
-            [
-                'type' => 3,
-                'username' => 'agency',
-                'name' => 'Super Agency',
-                'password' => bcrypt('123'),
-                'email' => 'agency@sotatek.com'
+                'email' => 'company@gmail.com'
             ]
         ]);
         $companyManager = array();

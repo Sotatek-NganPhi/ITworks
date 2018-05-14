@@ -12,13 +12,11 @@ use App\Models\Education;
 use App\Models\Job;
 use App\Models\LanguageConversationLevel;
 use App\Models\LanguageExperience;
-use App\Models\Position;
 use App\Models\Prefecture;
 use App\Models\Region;
 use App\Models\Salary;
 use App\Models\WorkingDay;
 use App\Models\WorkingHour;
-use App\Models\WorkingPeriod;
 use Illuminate\Http\Request;
 use App\Models\Applicant;
 use Illuminate\Support\Facades\Auth;
@@ -118,14 +116,12 @@ class ApplicationController extends AppBaseController
             'success'                    => $success,
             'prefectures'                => Prefecture::getAll(),
             'educations'                 => Education::getAll(),
-            'positions'                  => Position::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
             'languageExperiences'        => LanguageExperience::getAll(),
             'languageConversationLevels' => LanguageConversationLevel::getAll(),
             'salaries'                   => Salary::getAll(),
             'workingDays'                => WorkingDay::getAll(),
             'workingHours'               => WorkingHour::getAll(),
-            'workingPeriods'             => WorkingPeriod::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
         ]);

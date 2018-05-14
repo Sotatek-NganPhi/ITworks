@@ -13,7 +13,6 @@ $factory->defineAs(App\User::class, 'normal', function (Faker\Generator $faker) 
         'phone_number' => $faker->numerify("###-####-####"),
         'gender' => $faker->randomElement(['male', 'female']),
         'birthday' => Carbon\Carbon::now(),
-        'mail_receivable' => 1,
         'confirmed' => 1,
         'confirmation_code' => NULL,
     ];

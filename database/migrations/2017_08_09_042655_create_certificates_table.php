@@ -20,9 +20,9 @@ class CreateCertificatesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('certificates', function($table) {
-           $table->foreign('certificate_group_id')->references('id')->on('certificate_groups');
-        });
+        // Schema::table('certificates', function($table) {
+        //    $table->foreign('certificate_group_id')->references('id')->on('certificate_groups');
+        // });
     }
 
     /**
