@@ -1,6 +1,6 @@
 @extends('app.layout')
 
-@section('title', "キャンペーンページ｜{$configs['site_name']}")
+@section('title', "Campaign｜{$configs['site_name']}")
 
 @section('page_content')
     <div id="campaign">

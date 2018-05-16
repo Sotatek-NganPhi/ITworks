@@ -57,7 +57,7 @@ class JobsSeeder extends Seeder
                 'name'                  => $faker->company,
                 'street_address'        => $faker->streetAddress,
                 'contact_name'          => $faker->name,
-                'phone_number'          => $faker->numerify("###-####-####"),
+                'phone_number'          => $faker->numerify("###########"),
                 'short_description'     => $faker->sentence,
                 'business_content'      => $faker->paragraph,
                 'expire_date'           => $faker->dateTimeBetween('now', '+5 years'),

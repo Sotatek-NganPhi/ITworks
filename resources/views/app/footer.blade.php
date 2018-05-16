@@ -3,10 +3,8 @@
 
     <div class="menu">
         <ul>
-            <li><a href="{{route('company')}}">Nhà tuyển dụng</a></li>
             <li><a href="{{route('rules')}}">Các điều khoản</a></li>
             <li><a href="{{route('privacy')}}">Chính sách bảo vệ thông tin cá nhân</a></li>
-            <li><a href="{{route('sitemap')}}">Sơ đồ trang web</a></li>
             <li><a href="{{route('contact')}}">Liên hệ</a></li>
         </ul>
     </div>

@@ -5,36 +5,25 @@
     </head>
     <body>
         <div>
-        <p>この度は、「はたらく　ご縁」にお申し込み頂きまして誠にありがとうございます。</p>
+        <p>Cảm ơn bạn rất nhiều vì đã đăng ký thành viên.</p>
 
-        <p>お申し込み頂きましたアカウント情報は以下となります。</p>
+        <p>Thông tin tài khoản bạn đã đăng ký ở bên dưới.</p>
 
         <p>
-        メールアドレス：<b>{{ $user->email }}</b><br />
-        パスワード ：個人情報のため表示を伏せています
+        Email: <b>{{ $user->email }}</b><br />
+        Mật khẩu ：******
         </p>
 
         <p>
-        ご本人様確認のため、下記URLへ「24時間以内」にアクセスし <br />
-        アカウントの本登録を完了させて下さい。<br />
+        Để xác nhận, hãy click vào link dưới đây trong vòng 24h <br />
+        Vui lòng hoàn tất đăng ký tài khoản.<br />
         <a href="{{ URL::to('register/verify/' . $user->confirmation_code) }}">{{ URL::to('register/verify/' . $user->confirmation_code) }}</a>.
         </p>
 
         <p>
-        ※当メール送信後、24時間を超過しますと、セキュリティ保持のため有効期限切れとなります。<br />
-        　その場合は再度、最初からお手続きをお願い致します。
+        ※ Nếu bạn vượt quá 24 giờ sau khi gửi email này, nó sẽ hết hạn vì lý do bảo mật.<br />
+        Trong trường hợp đó, vui lòng bắt đầu lại từ đầu.
         </p>
-
-        <p>
-        ※当メールは送信専用メールアドレスか配信されています。<br />
-        　このままご返信いただいてもお答えできませんのでご了承ください。
-        </p>
-
-        <p>
-        ※当メールに心当たりの無い場合は、誠に恐れ入りますが <br />
-        　破棄して頂けますよう、よろしくお願い致します。
-        </p>
-
         </div>
 
     </body>

@@ -197,8 +197,6 @@
                 <div class="control">
                     <div class="pagination">
                         <p>
-                            Có {{$results["per_page"]}} công việc　{{$results["from"] ? $results["from"] : 0}}
-                            /{{$results["last_page"]}}　
                             @if($results["floor"] < 2)
                                 <span class="disable">&lt;&lt;10 trang trước</span>
                             @else
@@ -235,7 +233,7 @@
                             <span class="btn-filters">
                                 <a href="{{preg_replace('/&sort=[^&]+(&|$)/','', $results["path"]) . "?sort=default"}}">▼Thứ tự ngẫu nhiên</a>&nbsp;
                                 <a href="{{preg_replace('/&sort=[^&]+(&|$)/','', $results["path"]) . "?sort=new"}}">▼Từ công việc mới nhất</a>&nbsp;
-                                <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=end"}}">▼もうすぐ終了順</a>
+                                <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=end"}}">▼Theo thời gian kết thúc</a>
                             </span>
                         </p>
                     </div>
@@ -244,9 +242,6 @@
                 <div class="control">
                     <div class="pagination">
                         <p>
-                            Có {{$results["per_page"]}}công việc　{{$results["from"] ? $results["from"] : 0}}
-                            /{{$results["last_page"]}}　
-
                             @if($results["floor"] < 2)
                                 <span class="disable">&lt;&lt;10 trang trước</span>
                             @else
@@ -282,7 +277,7 @@
 
                             <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=default"}}">▼Thứ tự ngẫu nhiên</a>&nbsp;
                             <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=new"}}">▼Từ công việc mới nhất</a>&nbsp;
-                            <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=end"}}">▼もうすぐ終了順</a>
+                            <a href="{{preg_replace('/sort=[^&]+(&|$)/','', $results["path"]) . "&sort=end"}}">▼Theo thời gian kết thúc</a>
 
                         </p>
                     </div>
@@ -325,16 +320,13 @@
                             </table>
                             <div class="list-photo-other">
                                 @if(isset($job->sub_image1))
-                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image1}}"
-                                                                                               alt="{{$job->sub_caption1}}"></a>
+                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image1}}" lt="{{$job->sub_caption1}}"></a>
                                 @endif
                                 @if(isset($job->sub_image2))
-                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image2}}"
-                                                                                               alt="{{$job->sub_caption2}}"></a>
+                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image2}}" alt="{{$job->sub_caption2}}"></a>
                                 @endif
                                 @if(isset($job->sub_image3))
-                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image3}}"
-                                                                                               alt="{{$job->sub_caption3}}"></a>
+                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image3}}" alt="{{$job->sub_caption3}}"></a>
                                 @endif
                             </div>
                         </div>
@@ -371,8 +363,6 @@
                 <div class="control">
                     <div class="pagination">
                         <p>
-                            Có {{$results["per_page"]}}công việc　{{$results["from"] ? $results["from"] : 0}}
-                            /{{$results["last_page"]}}　
                             @if($results["floor"] < 2)
                                 <span class="disable">&lt;&lt;10 trang trước</span>
                             @else
@@ -408,9 +398,6 @@
                 <div class="control">
                     <div class="pagination">
                         <p>
-                            Có{{$results["per_page"]}}công việc　{{$results["from"] ? $results["from"] : 0}}
-                            /{{$results["last_page"]}}　
-
                             @if($results["floor"] < 2)
                                 <span class="disable">&lt;&lt;10 trang trước</span>
                             @else

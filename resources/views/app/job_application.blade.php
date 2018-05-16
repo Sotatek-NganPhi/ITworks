@@ -88,8 +88,6 @@
                                            value="{{ isset($inputs['phone_number']) ? $inputs['phone_number'] : ''}}"></input>
                                     <input hidden name="graduated_at"
                                            value="{{ isset($inputs['graduated_at']) ? $inputs['graduated_at'] : ''}}">
-                                    <input hidden name="current_situation_id"
-                                           value="{{ isset($inputs['current_situation_id']) ? $inputs['current_situation_id'] : ''}}">
                                     <input hidden name="education_id"
                                            value="{{ isset($inputs['education_id']) ? $inputs['education_id'] : ''}}">
                                     <input hidden name="final_academic_school"
@@ -153,13 +151,6 @@
                                             </td>
                                         </tr>
                                         </tbody>
-
-                                        <tr>
-                                            <th class="required">Hiện trạng</th>
-                                            <td>
-                                                {{ isset($inputs['current_situation_id']) ? \App\Models\CurrentSituation::findOneById($inputs['current_situation_id'])->name : '' }}
-                                            </td>
-                                        </tr>
                                         <tr>
                                             <th class="required">Trình độ học vấn</th>
                                             <td>
@@ -284,18 +275,6 @@
                                 <h4>Hồ sơ</h4>
                                 <table>
                                     <tbody>
-                                    <tr>
-                                        <th class="required">Hiện trạng</th>
-                                        <td>
-                                            <select class="form-control" name="current_situation_id">
-                                                @foreach($currentSituations as $currentSituation)
-                                                    <option value="{{$currentSituation->id}}"
-                                                            {{ old('current_situation_id') == $currentSituation->id ? 'selected' : '' }}
-                                                    >{{$currentSituation->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                    </tr>
                                     <tr>
                                         <th class="required">Trình độ học vấn</th>
                                         <td>

@@ -1,7 +1,7 @@
 @extends('app.layout')
 
 @section('title')
-    ページがありません｜{{$configs["pc_site_title"]}}
+    Không có trang nào｜{{$configs["pc_site_title"]}}
 @endsection
 
 @section('page_content')
@@ -11,16 +11,16 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <span>ページがありません</span>
+                <span>Không có trang nào</span>
             </li>
         </ul>
         <div id="__component">
-            <h3>ページがありません</h3>
+            <h3>Không có trang nào</h3>
             <br/>
-            <p class="text-center">このページは存在しません。</p>
-            <p class="text-center">お手数をおかけしますが、 <a href="/">ホーム</a> に戻ってから再度お試しください。</p>
+            <p class="text-center">Trang này không tồn tại.</p>
+            <p class="text-center">Xin lỗi đã làm phiền bạn, <a href="/">Trang chủ</a> Vui lòng quay lại và thử lại sau.</p>
             <br/>
-            <a href="/" class="confirm">ホームへ戻る</a>
+            <a href="/" class="confirm">Trở về trang chủ.</a>
             <p></p>
         </div>
 
@@ -29,7 +29,7 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <span>ページがありません</span>
+                <span>Không có trang nào</span>
             </li>
         </ul>
 

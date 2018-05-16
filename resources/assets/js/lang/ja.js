@@ -4,17 +4,11 @@ export default {
     'job': 'Job',
     'company': 'Company',
     'candidate': 'Candidate',
-    'content_settings': 'Content Settings',
-    'analysis': 'Analysis',
-    'field_settings': 'Fields Settings',
-    'search_keys': 'Search Keys',
-    'metadata': 'Metadata',
     'logout' : 'Logout'
   },
   'sub_menu' : {
       'job' : {
         'job_list' : 'Job List',
-        'import' : 'Import Jobs from CSV'
       },
       'company' : {
         'company' : 'Company List',
@@ -25,33 +19,6 @@ export default {
         'candidate_mail' : 'Candidate Mail',
         'applicant' : 'Applicant List',
         'company_mail' : 'Send mail to company',
-        'mail_logs' :  'Mail Logs',
-        'mail_setting' : 'Mail Setting',
-        'inbox' : 'Inbox'
-      },
-      'content' : {
-        'special' : 'Special Promotion',
-        'link' : 'Link',
-        'urgen' : 'Urgen Jobs',
-        'pickup' : 'Pickup',
-        'expo' : 'Expo',
-        'campaign' : 'Campaign',
-        'announcement' : 'Announcement',
-        'video' : 'Video',
-        'interview' : 'Interview'
-      },
-      'analysis' : {
-        'overal' : 'Analysis Overal',
-        'search' : 'Analysis Search',
-        'merit' : 'Analysis Merit',
-        'type' : 'Analysis Job Type',
-        'rank' : 'Access Ranking'
-      },
-      'field_settings' : {
-        'job' : 'Job',
-        'company' : 'Company',
-        'applicant' : 'Applicant',
-        'managers' : 'Managers'
       },
   },
 
@@ -83,10 +50,6 @@ export default {
       'job_category' : 'Job Category'
     },
   },
-  'field_setting' : {
-    'list_title': 'List',
-    'search_title': 'Search'
-  },
   'job_list' : {
     'use' : 'use',
     'not_use' : 'not use',
@@ -98,7 +61,6 @@ export default {
     'job_category': 'Job category',
     'post_start_date': 'Post Start Date',
     'post_end_date': 'Post End Date',
-    'outside': 'Outside the posting period',
     'all': 'All',
     'posting': 'Posting',
     'add_new_route': 'Add a new route',
@@ -167,7 +129,6 @@ export default {
   'form_action': {
     'search': 'Search',
     'clear': 'Clear',
-    'download_csv': 'Download CSV'
   },
   'admin_list' : {
     'id' : 'ID', 
@@ -185,9 +146,6 @@ export default {
     'name':'Name',
     'first_name':'First Name',
     'last_name':'Last Name',
-    'name_phonetic':'Name Phonetic',
-    'first_name_phonetic':'First Name Phonetic',
-    'last_name_phonetic':'Last Name Phonetic',
     'username': 'User Name',
     'registed_date': 'Registed Date',
     'mail_receivable': 'Receive Mail From Us',
@@ -198,14 +156,7 @@ export default {
     'search_info': "Search by candidate's information",
     'search_condition': "Search by candidate's condition",
     'prefecture': 'Desired City',
-    'category_level2': 'Desire Occupation (Major)',
-    'category_level3': 'Desire Occupation (Minor)',
     'salary': 'Desired Salary',
-    'working_shift': 'Desired Working Shift',
-    'employment_mode': 'Desired Employment Mode',
-    'merit': 'Desired Merit',
-    'current_situation': 'Current Situation',
-    'size': 'Company Size',
   },
 
   'applicant' :{

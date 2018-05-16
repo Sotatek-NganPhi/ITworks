@@ -10,7 +10,7 @@ $factory->defineAs(App\User::class, 'normal', function (Faker\Generator $faker) 
         'first_name' => $faker->name,
         'last_name' => $faker->name,
         'address' => $faker->address,
-        'phone_number' => $faker->numerify("###-####-####"),
+        'phone_number' => $faker->numerify("###########"),
         'gender' => $faker->randomElement(['male', 'female']),
         'birthday' => Carbon\Carbon::now(),
         'confirmed' => 1,

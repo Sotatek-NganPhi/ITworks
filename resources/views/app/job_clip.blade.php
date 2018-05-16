@@ -1,6 +1,6 @@
 @extends('app.layout')
 
-@section('title', $job->description . '（ID：'. $job->id . ')')
+@section('title', $job->description . '（ID：'. $job->id . '）')
 
 @section('page_content')
     <div id="search">

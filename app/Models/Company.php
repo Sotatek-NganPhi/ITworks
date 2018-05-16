@@ -56,7 +56,7 @@ class Company extends Model
         'name' => 'string',
         'street_address' => '',
         'contact_name' => '',
-        'phone_number' => 'regex:/([0-9]{3}-[0-9]{4}-[0-9]{4})/u',
+        'phone_number' => '',
         'short_description' => '',
         'expire_date' => 'date',
         'is_active' => 'boolean'

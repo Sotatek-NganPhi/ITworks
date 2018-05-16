@@ -5,10 +5,8 @@
 </head>
 <body>
 
-	<p>{{ $user['name'] }} 様</p>
-	<p>以下のURLをクリックして変更手続きを行ってください。</p>
+	<p>{{ $user['name'] }} thân mến,</p>
+	<p>Vui lòng nhấp vào URL sau để thay đổi mật khẩu.</p>
 	<p><a href="{{ $url }}">{{ $url }}</a></p>
-	<p>今後ともよろしくお願い申し上げます。</p>
-
 </body>
 </html>

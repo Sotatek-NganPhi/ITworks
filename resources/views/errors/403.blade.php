@@ -1,7 +1,7 @@
 @extends('app.layout')
 
 @section('title')
-    アクセス許可されてません。｜{{$configs["pc_site_title"]}}
+    I{{$configs["pc_site_title"]}}
 @endsection
 
 @section('page_content')
@@ -11,16 +11,16 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <span>アクセス許可されてません。</span>
+                <span>Truy cập không được phép.</span>
             </li>
         </ul>
         <div id="__component">
-            <h3>ページがありません</h3>
+            <h3>Không có trang nào</h3>
             <br/>
-            <p class="text-center">このページにはアクセスが許可されておりません。</p>
-            <p class="text-center">お手数をおかけしますが、 <a href="/">ホーム</a> に戻ってから再度お試しください。</p>
+            <p class="text-center">Không cho phép truy cập vào trang này.</p>
+            <p class="text-center">Xin lỗi đã làm phiền bạn, <a href="/">Trang chủ</a> Vui lòng quay lại và thử lại sau.</p>
             <br/>
-            <a href="/" class="confirm">ホームへ戻る</a>
+            <a href="/" class="confirm">Trở về trang chủ.</a>
             <p></p>
         </div>
 
@@ -29,7 +29,7 @@
                 <a href="/"><span>{{$configs["site_name"]}}</span></a>　≫
             </li>
             <li>
-                <span>アクセス許可されてません。</span>
+                <span>Truy cập không được phép.</span>
             </li>
         </ul>
 

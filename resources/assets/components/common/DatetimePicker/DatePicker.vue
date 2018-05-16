@@ -24,7 +24,7 @@
   import _ from 'lodash';
   import moment from 'moment';
   const MAXIMUM_MONTH_DAY = 31;
-  const DEFAULT_LOCALE = 'ja';
+  const DEFAULT_LOCALE = 'en';
   moment.locale(DEFAULT_LOCALE);
 
   export default {

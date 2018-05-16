@@ -3,9 +3,6 @@
         <div class="areaHeaderContent">
             <div class="logo"><a href="/"><img src="/images/img_top.jpg" width="260" height="80"></a>
             </div>
-            <div class="list_btn_header">
-                <a href="{{route("inquiry")}}" class="__lg_btn">Nhà tuyển dụng</a>
-            </div>
             <div class="nav-menu" id="nav-menu">
                 <p class="btn_xxx">
                     <a href="#" id="btn_nav">
@@ -19,7 +16,6 @@
                         @foreach($regions as $region)
                             <li class="icon"><a href="{{ URL::route('home', $region->key) }}">{{$region->name}}</a></li>
                         @endforeach
-                        <li><a href="{{route("inquiry")}}">Nhà tuyển dụng</a></li>
                     </ul>
                 </div>
 

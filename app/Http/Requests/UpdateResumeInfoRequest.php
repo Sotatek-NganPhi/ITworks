@@ -39,7 +39,7 @@ class UpdateResumeInfoRequest extends FormRequest
             'first_name'                     => 'required|string|max:255',
             'last_name'                      => 'required|string|max:255',
             'address'                        => 'required|string|max:255',
-            'phone_number'                   => 'required|regex:/([0-9]{3}-[0-9]{4}-[0-9]{4})/u',
+            'phone_number'                   => 'required',
             'gender'                         => 'required|in:male,female',
             'birthday'                       => 'required|date',
             'education_id'                   => 'required|exists:educations,id',

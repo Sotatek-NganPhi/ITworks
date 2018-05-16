@@ -1,7 +1,7 @@
 @extends('app.layout')
 
 @section('title')
-    キラキラ特集｜{{$results["site_name"]->value}}
+    Special｜{{$results["site_name"]->value}}
 @endsection
 
 @section('page_content')
@@ -23,7 +23,7 @@
                     <div class="job-view">
                         <div class="list_title">
                             <h2><a href="/job/{{$jobs['job_id']}}">{{$jobs['company_name']}}</a></h2>
-                            <div class="detail"><a href="/job/{{$jobs['job_id']}}">詳細</a></div>
+                            <div class="detail"><a href="/job/{{$jobs['job_id']}}">Chi tiết</a></div>
                         </div>
                         <div class="__description">
                             <div class="salary">{{$jobs['salary']}}</div>
@@ -41,32 +41,15 @@
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
                                 <tr>
-                                    <th>応募条件</th>
+                                    <th>ĐIều kiện ứng tuyển</th>
                                     <td>{{$jobs['application_condition']}}&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <th>掲載期間</th>
+                                    <th>Thời gian ứng tuyển</th>
                                     <td>{{$jobs['post_start_date']}} - {{$jobs['post_end_date']}}&nbsp;</td>
                                 </tr>
                                 </tbody>
                             </table>
-                            <div class="list-photo-other">
-                                @if(isset($jobs['sub_image1']))
-                                    <a href="{{route("job_detail", ["id" => $jobs['job_id']])}}"><img
-                                                src="{{$jobs['sub_image1']}}"
-                                                alt="{{$jobs['sub_caption1']}}"></a>
-                                @endif
-                                @if(isset($jobs['sub_image2']))
-                                    <a href="{{route("job_detail", ["id" => $jobs['job_id']])}}"><img
-                                                src="{{$jobs['sub_image2']}}"
-                                                alt="{{$jobs['sub_caption2']}}"></a>
-                                @endif
-                                @if(isset($jobs['sub_image3']))
-                                    <a href="{{route("job_detail", ["id" => $jobs['job_id']])}}"><img
-                                                src="{{$jobs['sub_image3']}}"
-                                                alt="{{$jobs['sub_caption3']}}"></a>
-                                @endif
-                            </div>
                         </div>
                     </div>
                 @endforeach

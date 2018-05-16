@@ -68,7 +68,7 @@ class RegisterController extends Controller
         $rules['email']    .= '|required';
         $rules['password'] .= '|required';
         $rules['birthday'] .= '|before:' . date('Y-m-d');
-        $rules['referral_code'] = 'numeric|nullable|exists:referral_agencies,code';
+        // $rules['referral_code'] = 'numeric|nullable|exists:referral_agencies,code';
 
         return Validator::make($data, $rules);
     }
@@ -76,7 +76,6 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
         $email       = $request->get('email');
         $provider    = $request->get('provider') ? : 'email';
         $provider_id = $request->get('provider_id') ? : $email;
@@ -103,8 +102,8 @@ class RegisterController extends Controller
             throw $e;
         }
 
-        event(new Registered($user));
-        $this->sendVerificationMail($user);
+        // event(new Registered($user));
+        // $this->sendVerificationMail($user);
 
         return Redirect::route('login')->with('messages', trans('auth.register.complete'));
     }

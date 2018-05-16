@@ -43,7 +43,7 @@
                                                    href="{{url('/job/' . $job->id)}}">{{$job->company_name}}</a></h2>
                                             <div class="detail">
                                                 <a style="display: block; float: right; width: 150px; height: 30px; margin: 5px; text-decoration: none; text-align: center; padding-top: 5px; font-weight: bold; color: #fff; background: #F15A24; opacity: 0.9; border-radius: 5px; -webkit-border-radius: 5px;"
-                                                   href="{{url('/job/' . $job->id)}}">詳細</a></div>
+                                                   href="{{url('/job/' . $job->id)}}">Chi tiết</a></div>
                                         </div>
                                         <div style="display: block; float: left; width: 100%; background: #f6f6f6;">
                                             <div style="display: block; padding: 1%; width: 45%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;float: left; text-align: left;">{{$job->salary}}</div>
@@ -65,39 +65,19 @@
                                                 <tbody>
                                                 <tr>
                                                     <th style="width: 30%; border: 1px #cccccc solid; background-color: #F4F2E8; padding: 1%;">
-                                                        応募条件
+                                                        Điều kiện ứng tuyển
                                                     </th>
                                                     <td style="width: 66%; border: 1px #cccccc solid; padding: 1%; text-align: left; white-space: pre-wrap;">{{$job->application_condition}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th style="width: 30%; border: 1px #cccccc solid; background-color: #F4F2E8; padding: 1%;">
-                                                        掲載期間
+                                                        Thời gian ứng tuyển
                                                     </th>
                                                     <td style="width: 66%; border: 1px #cccccc solid; padding: 1%; text-align: left; white-space: pre-wrap;">{{$job->post_start_date}}
                                                         - {{$job->post_end_date}}</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <div style="width: 95%; margin: 0 auto;">
-                                                @if(isset($job->sub_image1))
-                                                    <a href="javascript:void(0)"
-                                                       style="float: left; width: 31%; margin: 1% 2% 2% 0;">
-                                                        <img src="{{url($job->sub_image1)}}"
-                                                             alt="{{$job->sub_caption1 ? $job->sub_caption1 : ""}}"></a>
-                                                @endif
-                                                @if(isset($job->sub_image2))
-                                                    <a href="javascript:void(0)"
-                                                       style="float: left; width: 31%; margin: 1% 2% 2% 0;">
-                                                        <img src="{{url($job->sub_image2)}}"
-                                                             alt="{{$job->sub_caption2 ? $job->sub_caption2 : ""}}"></a>
-                                                @endif
-                                                @if(isset($job->sub_image3))
-                                                    <a href="javascript:void(0)"
-                                                       style="float: left; width: 31%; margin: 1% 2% 2% 0;">
-                                                        <img src="{{url($job->sub_image3)}}"
-                                                             alt="{{$job->sub_caption3 ? $job->sub_caption3 : ""}}"></a>
-                                                @endif
-                                            </div>
                                         </div>
                                     </div>
                                 </td>
