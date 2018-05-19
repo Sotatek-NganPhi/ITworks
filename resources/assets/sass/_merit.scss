@@ -1,0 +1,33 @@
+.merit{
+  float: left;
+  padding: 2px 0;
+  p.category{
+    width: 99%;
+    clear: both;
+    float: left;
+    padding: 3px 0;
+    text-indent: 5px;
+    text-align: left;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    clear: both;
+    padding-bottom: 5px;
+    li{
+      width: 25%;
+      float: left;
+      list-style: none;
+      margin: 0;
+      line-height: 150%;
+      text-align: left;
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+  }
+  label{
+    font-weight: 400;
+  }
+}

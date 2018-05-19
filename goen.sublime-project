@@ -1,0 +1,7 @@
+{
+    "folders": [{
+        "path": ".",
+        "folder_exclude_patterns": [".idea", "node_modules", "vendor"],
+        "file_exclude_patterns": []
+    }]
+}

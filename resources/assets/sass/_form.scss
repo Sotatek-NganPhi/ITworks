@@ -1,0 +1,54 @@
+.app_form{
+  table {
+    .required {
+      background-image: url(/images/must_icon.gif);
+      background-repeat: no-repeat;
+      background-position: 95% 7px;
+      padding-right: 40px !important;
+    }
+    .norequired{
+      background-repeat: no-repeat;
+      background-position: 95% 7px;
+      padding-right: 40px !important;
+    }
+    .candidate-job-description {
+      width: 100% !important;
+      min-height: 100px;
+    }
+  }
+  input{
+    vertical-align: middle;
+    padding: 5px;
+    border: solid 1px #ccc;
+    height: 37px;
+  }
+  textarea{
+    font-size: 12.4px;
+    font-weight: normal;
+    letter-spacing: 0px;
+  }
+  input[type="submit"] {
+    background: #f2c425;
+    padding: 7px 20px;
+    margin: 20px 15px;
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    height: auto;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    color: #fff;
+    letter-spacing: 1px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    font-family: inherit;
+  }
+  .draft {
+    background: $black !important;
+  }
+}

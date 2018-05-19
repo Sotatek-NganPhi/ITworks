@@ -1,0 +1,913 @@
+{
+    "certificate_groups": [
+        {
+            "id": "1",
+            "name": "C\u00f4ng ngh\u1ec7 ph\u1ea7n c\u1ee9ng"
+        },
+        {
+            "id": "2",
+            "name": "C\u00f4ng ngh\u1ec7 ph\u1ea7n m\u1ec1m"
+        },
+        {
+            "id": "3",
+            "name": "Database"
+        },
+        {
+            "id": "4",
+            "name": "M\u1ea1ng m\u00e1y t\u00ednh v\u00e0 truy\u1ec1n th\u00f4ng"
+        },
+        {
+            "id": "5",
+            "name": "An to\u00e0n th\u00f4ng tin"
+        },
+        {
+            "id": "6",
+            "name": "C\u00e1c ng\u00e0nh kh\u00e1c"
+        }
+    ],
+    "certificates": [
+        {
+            "id": "1",
+            "certificate_group_id": "1",
+            "name": "K\u1ef9 thu\u1eadt vi\u00ean m\u00e1y t\u00ednh"
+        },
+        {
+            "id": "2",
+            "certificate_group_id": "1",
+            "name": "K\u1ef9 s\u01b0 thi\u1ebft k\u1ebf m\u1ea1ch"
+        },
+        {
+            "id": "3",
+            "certificate_group_id": "2",
+            "name": "L\u1eadp tr\u00ecnh vi\u00ean"
+        },
+        {
+            "id": "4",
+            "certificate_group_id": "2",
+            "name": "Qu\u1ea3n l\u00fd d\u1ef1 \u00e1n"
+        },
+        {
+            "id": "5",
+            "certificate_group_id": "2",
+            "name": "Ki\u1ec3m th\u1eed ph\u1ea7n m\u1ec1m"
+        },
+        {
+            "id": "6",
+            "certificate_group_id": "2",
+            "name": "K\u1ef9 s\u01b0 c\u1ea7u n\u1ed1i"
+        },
+        {
+            "id": "7",
+            "certificate_group_id": "3",
+            "name": "Database Developer"
+        },
+        {
+            "id": "8",
+            "certificate_group_id": "3",
+            "name": "Ph\u00e2n t\u00edch v\u00e0 thi\u1ebft k\u1ebf c\u01a1 s\u1edf d\u1eef li\u1ec7u"
+        },
+        {
+            "id": "9",
+            "certificate_group_id": "4",
+            "name": "Qu\u1ea3n tr\u1ecb m\u1ea1ng"
+        },
+        {
+            "id": "10",
+            "certificate_group_id": "5",
+            "name": "An ninh m\u1ea1ng"
+        },
+        {
+            "id": "11",
+            "certificate_group_id": "5",
+            "name": "Qu\u1ea3n tr\u1ecb h\u1ec7 th\u1ed1ng an to\u00e0n th\u00f4ng tin"
+        },
+        {
+            "id": "12",
+            "certificate_group_id": "5",
+            "name": "Ph\u00e1t tri\u1ec3n \u1ee9ng d\u1ee5ng \u00e1n to\u00e0n th\u00f4ng tin"
+        },
+        {
+            "id": "13",
+            "certificate_group_id": "5",
+            "name": "M\u00e3 h\u00f3a an to\u00e0n th\u00f4ng tin"
+        },
+        {
+            "id": "14",
+            "certificate_group_id": "6",
+            "name": "C\u00e1c ng\u00e0nh kh\u00e1c"
+        }
+    ],
+    "configs": [
+        {
+            "group": "",
+            "key": "dataVersion",
+            "value": "20180528",
+            "display_name": "Data version",
+            "description": "",
+            "input_type": "1"
+        },
+        {
+            "group": "",
+            "key": "site_name",
+            "value": "Trang ch\u1ee7",
+            "display_name": "Site name",
+            "description": "",
+            "input_type": "1"
+        },
+        {
+            "group": "Th\u00f4ng tin c\u00f4ng ty",
+            "key": "company_name",
+            "value": "ITworks",
+            "display_name": "Company name",
+            "description": "",
+            "input_type": "1"
+        },
+        {
+            "group": "Th\u00f4ng tin c\u00f4ng ty",
+            "key": "company_address",
+            "value": "H\u00e0 N\u1ed9i",
+            "display_name": "Company address",
+            "description": "",
+            "input_type": "1"
+        },
+        {
+            "group": "Th\u00f4ng tin c\u00f4ng ty",
+            "key": "company_manager",
+            "value": "Ngan",
+            "display_name": "Company manager ",
+            "description": "",
+            "input_type": "1"
+        },
+        {
+            "group": "Th\u00f4ng tin c\u00f4ng ty",
+            "key": "business_contents",
+            "value": "IT",
+            "display_name": "Business contents",
+            "description": "",
+            "input_type": "1"
+        },
+        {
+            "group": "Th\u00f4ng tin c\u00f4ng ty",
+            "key": "company_email",
+            "value": "kimngan.stupid@gmail.com",
+            "display_name": "Company email",
+            "description": "",
+            "input_type": "1"
+        },
+        {
+            "group": "Th\u00f4ng tin c\u00f4ng ty",
+            "key": "company_web",
+            "value": "itworks",
+            "display_name": "Company web",
+            "description": "",
+            "input_type": "1"
+        },
+        {
+            "group": "Th\u00f4ng tin c\u00f4ng ty",
+            "key": "pc_site_title",
+            "value": "Trang ch\u1ee7",
+            "display_name": "Site name",
+            "description": "",
+            "input_type": "1"
+        }
+    ],
+    "educations": [
+        {
+            "id": "1",
+            "name": "Ho\u00e0n th\u00e0nh ch\u01b0\u01a1ng tr\u00ecnh ti\u1ebfn s\u1ef9"
+        },
+        {
+            "id": "2",
+            "name": "Ho\u00e0n th\u00e0nh ch\u01b0\u01a1ng tr\u00ecnh th\u1ea1c s\u1ef9"
+        },
+        {
+            "id": "3",
+            "name": "B\u1eb1ng k\u1ef9 s\u01b0"
+        },
+        {
+            "id": "4",
+            "name": "B\u1eb1ng c\u1eed nh\u00e2n"
+        },
+        {
+            "id": "5",
+            "name": "T\u1ed1t nghi\u1ec7p cao \u0111\u1eb3ng"
+        },
+        {
+            "id": "6",
+            "name": "T\u1ed1t nghi\u1ec7p trung c\u1ea5p"
+        },
+        {
+            "id": "7",
+            "name": "Kh\u00e1c"
+        }
+    ],
+    "field_settings": [
+        {
+            "table_name": "jobs",
+            "field_name": "id",
+            "display_name": "Id",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "description",
+            "display_name": "M\u00f4 t\u1ea3",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "company_name",
+            "display_name": "T\u00ean c\u00f4ng ty",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "company_id",
+            "display_name": "Company Id",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "post_type",
+            "display_name": "Post Type",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "post_start_date",
+            "display_name": "Ng\u00e0y \u0111\u0103ng tuy\u1ec3n",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "salary",
+            "display_name": "L\u01b0\u01a1ng",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "email_receive_applicant",
+            "display_name": "Email nh\u1eadn \u0111\u01a1n \u1ee9ng tuy\u1ec3n",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "post_end_date",
+            "display_name": "Ng\u00e0y k\u1ebft th\u00fac \u0111\u0103ng tuy\u1ec3n",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "max_applicant",
+            "display_name": "S\u1ed1 l\u01b0\u1ee3ng \u1ee9ng vi\u00ean c\u1ea7n tuy\u1ec3n",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "application_condition",
+            "display_name": "\u0110i\u1ec1u ki\u1ec7n \u1ee9ng tuy\u1ec3n",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "images",
+            "display_name": "Images",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "remarks",
+            "display_name": "Remarks",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "is_active",
+            "display_name": "Status",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "companies.name",
+            "display_name": "T\u00ean c\u00f4ng ty",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "prefectures.name",
+            "display_name": "T\u1ec9nh",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "id",
+            "display_name": "Id",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "username",
+            "display_name": "Username",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "password",
+            "display_name": "Password",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "name",
+            "display_name": "T\u00ean c\u00f4ng ty",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "contact_name",
+            "display_name": "T\u00ean ng\u01b0\u1eddi li\u00ean h\u1ec7",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "phone_number",
+            "display_name": "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "short_description",
+            "display_name": "M\u00f4 t\u1ea3",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "business_content",
+            "display_name": "Business Content",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "expire_date",
+            "display_name": "Ng\u00e0y h\u1ebft h\u1ea1n",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "companies",
+            "field_name": "is_active",
+            "display_name": "Status",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "id",
+            "display_name": "Id",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "job_id",
+            "display_name": "C\u00f4ng vi\u1ec7c",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "user_id",
+            "display_name": "Ng\u01b0\u1eddi d\u00f9ng",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "status",
+            "display_name": "Status",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "email",
+            "display_name": "Email",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "first_name",
+            "display_name": "H\u1ecd",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "gender",
+            "display_name": "Gi\u1edbi t\u00ednh",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "phone_number",
+            "display_name": "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "address",
+            "display_name": "\u0110\u1ecba ch\u1ec9",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "regions",
+            "field_name": "name_region",
+            "display_name": "Region Name",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "regions",
+            "field_name": "key_region",
+            "display_name": "Directory name",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "regions",
+            "field_name": "prefectures.name",
+            "display_name": "Prefecture",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "prefectures",
+            "field_name": "prefecture_name",
+            "display_name": "Prefecture Name",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "salaries",
+            "field_name": "salary_name",
+            "display_name": "Item Name",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "salaries",
+            "field_name": "salary_status",
+            "display_name": "Status",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "working_days",
+            "field_name": "name",
+            "display_name": "Item Name",
+            "is_required": "1",
+            "is_active": "0"
+        },
+        {
+            "table_name": "working_days",
+            "field_name": "status",
+            "display_name": "Status",
+            "is_required": "1",
+            "is_active": "0"
+        },
+        {
+            "table_name": "working_hours",
+            "field_name": "status",
+            "display_name": "Status",
+            "is_required": "1",
+            "is_active": "0"
+        },
+        {
+            "table_name": "working_hours",
+            "field_name": "name",
+            "display_name": "Item Name",
+            "is_required": "1",
+            "is_active": "0"
+        },
+        {
+            "table_name": "announcements",
+            "field_name": "id",
+            "display_name": "ID",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "announcements",
+            "field_name": "content",
+            "display_name": "Content",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "announcements",
+            "field_name": "start_date",
+            "display_name": "Ng\u00e0y b\u1eaft \u0111\u1ea7u",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "announcements",
+            "field_name": "end_date",
+            "display_name": "Ng\u00e0y k\u1ebft th\u00fac",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "announcements",
+            "field_name": "is_active",
+            "display_name": "Is Active",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "announcements",
+            "field_name": "regions",
+            "display_name": "Region Name",
+            "is_required": "1",
+            "is_active": "0"
+        },
+        {
+            "table_name": "certificates",
+            "field_name": "certificates.group_name",
+            "display_name": "Certificate Group Name",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "certificates",
+            "field_name": "name",
+            "display_name": "Certificate Name",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "certificates",
+            "field_name": "certificate_id",
+            "display_name": "ID",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "field_settings",
+            "field_name": "display_name",
+            "display_name": "Display Name",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "field_settings",
+            "field_name": "field_name",
+            "display_name": "Field Name",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "field_settings",
+            "field_name": "is_required",
+            "display_name": "Is required",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "field_settings",
+            "field_name": "is_active",
+            "display_name": "Is Active",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "field_settings",
+            "field_name": "table_name",
+            "display_name": "Table name",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "id",
+            "display_name": "ID",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "full_name",
+            "display_name": "T\u00ean",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "email",
+            "display_name": "\u0110\u1ecba ch\u1ec9",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "gender",
+            "display_name": "Gi\u1edbi t\u00ednh",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "phone",
+            "display_name": "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "education_id",
+            "display_name": "Tr\u00ecnh \u0111\u1ed9 h\u1ecdc v\u1ea5n",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "final_academic_school",
+            "display_name": "H\u1ecdc t\u1ea1i",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "graduated_at",
+            "display_name": "Th\u1eddi gian t\u1ed1t nghi\u1ec7p",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "toeic",
+            "display_name": "TOEIC",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "toefl",
+            "display_name": "TOEFL",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "language_experience_id",
+            "display_name": "Kinh nghi\u1ec7m l\u00e0m vi\u1ec7c",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "language_conversation_level_id",
+            "display_name": "K\u1ef9 n\u0103ng giao ti\u1ebfp",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "prefectures",
+            "display_name": "Prefecture",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "salaries",
+            "display_name": "Salaries",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "working_days",
+            "display_name": "Working Days",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "working_hours",
+            "display_name": "Working Hours",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "certificate",
+            "display_name": "Certificate",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "user.name",
+            "display_name": "T\u00ean",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "user.birthday",
+            "display_name": "Ng\u00e0y sinh",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "user.address",
+            "display_name": "\u0110\u1ecba ch\u1ec9",
+            "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "candidates",
+            "field_name": "user.phone_number",
+            "display_name": "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i",
+            "is_required": "1",
+            "is_active": "1"
+        }
+    ],
+    "language_conversation_levels": [
+        {
+            "id": "1",
+            "description": "Ch\u01b0a bi\u1ebft giao ti\u1ebfp"
+        },
+        {
+            "id": "2",
+            "description": "Giao ti\u1ebfp \u0111\u01b0\u1ee3c"
+        },
+        {
+            "id": "3",
+            "description": "Th\u00e0nh th\u1ea1o"
+        }
+    ],
+    "language_experiences": [
+        {
+            "id": "1",
+            "description": "\u0110\u1ecdc hi\u1ec3u t\u00e0i li\u1ec7u"
+        },
+        {
+            "id": "2",
+            "description": "Giao ti\u1ebfp"
+        },
+        {
+            "id": "3",
+            "description": "Phi\u00ean d\u1ecbch vi\u00ean"
+        },
+        {
+            "id": "4",
+            "description": "\u0110\u00e0m ph\u00e1n"
+        }
+    ],
+    "regions": [
+        {
+            "id": "1",
+            "key": "hanoi",
+            "name": "H\u00e0 N\u1ed9i",
+            "display_order": "1"
+        },
+        {
+            "id": "2",
+            "key": "hochiminh",
+            "name": "TP.H\u1ed3 Ch\u00ed Minh",
+            "display_order": "2"
+        },
+        {
+            "id": "3",
+            "key": "mienbac",
+            "name": "B\u1eafc B\u1ed9",
+            "display_order": "3"
+        },
+        {
+            "id": "4",
+            "key": "mientrung",
+            "name": "Trung B\u1ed9",
+            "display_order": "4"
+        },
+        {
+            "id": "5",
+            "key": "miennam",
+            "name": "Nam B\u1ed9",
+            "display_order": "5"
+        }
+    ],
+    "salaries": [
+        {
+            "id": "1001",
+            "category": "Theo gi\u1edd",
+            "description": "<10.000\/gi\u1edd"
+        },
+        {
+            "id": "1002",
+            "category": "Theo gi\u1edd",
+            "description": "T\u1eeb 10.000 \u0111\u1ebfn 50.000\/gi\u1edd"
+        },
+        {
+            "id": "1003",
+            "category": "Theo gi\u1edd",
+            "description": ">50.000\/gi\u1edd"
+        },
+        {
+            "id": "2001",
+            "category": "Theo ng\u00e0y",
+            "description": "<200.000\/ng\u00e0y"
+        },
+        {
+            "id": "2002",
+            "category": "Theo ng\u00e0y",
+            "description": "T\u1eeb 200.000 \u0111\u1ebfn 500.000\/ng\u00e0y"
+        },
+        {
+            "id": "2003",
+            "category": "Theo ng\u00e0y",
+            "description": ">500.000\/ng\u00e0y"
+        },
+        {
+            "id": "3001",
+            "category": "Theo th\u00e1ng",
+            "description": "<5 tri\u1ec7u\/th\u00e1ng"
+        },
+        {
+            "id": "3002",
+            "category": "Theo th\u00e1ng",
+            "description": "T\u1eeb 5 \u0111\u1ebfn 10 tri\u1ec7u\/th\u00e1ng"
+        },
+        {
+            "id": "4001",
+            "category": "Theo th\u00e1ng",
+            "description": ">10 tri\u1ec7u\/th\u00e1ng"
+        }
+    ],
+    "working_days": [
+        {
+            "id": "1001",
+            "name": "C\u00f4ng vi\u1ec7c b\u00e1n th\u1eddi gian"
+        },
+        {
+            "id": "1002",
+            "name": "C\u00f4ng vi\u1ec7c to\u00e0n th\u1eddi gian"
+        },
+        {
+            "id": "1003",
+            "name": "Ch\u1ec9 l\u00e0m vi\u1ec7c v\u00e0o cu\u1ed1i tu\u1ea7n"
+        },
+        {
+            "id": "1004",
+            "name": "Ch\u1ec9 l\u00e0m vi\u1ec7c v\u00e0o c\u00e1c ng\u00e0y trong tu\u1ea7n"
+        }
+    ],
+    "working_hours": [
+        {
+            "id": "1001",
+            "name": "Trong v\u00f2ng 3 gi\u1edd"
+        },
+        {
+            "id": "1002",
+            "name": "3 gi\u1edd \u0111\u1ebfn 7 gi\u1edd"
+        },
+        {
+            "id": "1003",
+            "name": "8 gi\u1edd"
+        },
+        {
+            "id": "1004",
+            "name": "12 gi\u1edd"
+        }
+    ]
+}

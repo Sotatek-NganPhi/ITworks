@@ -1,0 +1,407 @@
+#job_application {
+  [v-cloak] {
+    display: none;
+  }
+  #page_content {
+    .filled {
+      background-color: white !important;
+    }
+    a {
+      color:inherit;
+      text-decoration: none;
+    }
+    .breadcrumb {
+      a {
+        color: $black;
+      }
+    }
+    .detail_item {
+      .gray-cell {
+        background-color: #F4F2E8;
+      }
+      border: 1px solid lightgray;
+      .job-header {
+        padding: 11px;
+        background-color: $gray-bold;
+        font-size: 19px;
+        font-weight: bold;
+        color: white;
+        overflow: hidden;
+        a {
+          float: left;
+        }
+      }
+      .job-content {
+        overflow: hidden;
+        position: relative;
+        label {
+          position: absolute;
+          font-weight: bold;
+          background-color: $orange;
+          color: white;
+          font-size: 13px;
+          padding: 6px 60px 6px 60px;
+          right: 0;
+          margin: 7px 7px 15px 0;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .detail-button + input {
+          display:none;
+        }
+        .detail-button + input + * {
+
+          max-height: 0;
+          overflow:hidden;
+          transition: max-height 0.5s, overflow 0s;
+        }
+        .detail-button + input:checked + * {
+          max-height: 50em;
+          transition: max-height 0.5s, overflow 0.5s 0.5s;
+        }
+        .expandable-content {
+          margin-top: 50px;
+          .__sub_title{
+            float: left;
+            width: 100%;
+            h3{
+              color: #F2C469;
+              width: 95%;
+              margin: 15px auto;
+              border-bottom: 2px solid #F2C469;
+              clear: both;
+              text-align: left;
+              font-size: 18px;
+              letter-spacing: 0px;
+            }
+          }
+          .job-desc {
+            padding: 9px;
+            background-color: #F6F6F6;
+            div {
+              overflow:hidden;
+              white-space:nowrap;
+              text-overflow:ellipsis;
+              width:450px;
+            }
+          }
+          .company-desc {
+            color: $red;
+            font-size: 17px;
+            text-align: left;
+            p {
+              margin-left: 30px;
+              display:inline-block;
+              border-bottom: 2px solid $red;
+              font-weight: bold;
+            }
+          }
+          .job-detail {
+            margin: 30px 0 30px 0;
+            .main-photo {
+              float: left;
+              width: 30%;
+              margin: 2%;
+              img{
+                width: 100%;
+              }
+            }
+            .spec {
+              float: left;
+              width: 65%;
+              margin: 2% 0;
+              table {
+                width: 95%;
+                margin: 0px auto;
+                border-collapse: collapse;
+                display: inline-table;
+                clear: both;
+                th {
+                  width: 30%;
+                  border: 1px #cccccc solid;
+                  background-color: #F4F2E8;
+                  padding: 1%;
+                }
+                td {
+                  width: 66%;
+                  border: 1px #cccccc solid;
+                  padding: 1%;
+                  text-align: left;
+                  white-space: pre-wrap;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .application-form {
+      margin: 30px 0 30px 0;
+      border: 1px solid lightgray;
+      .phone-margin {
+        margin-right: 8px;
+      }
+      #login-failed {
+        text-align: left;
+        padding: 10px 25px 0 !important;
+        display: none;
+      }
+      .validate-failed, #login-failed {
+        color: red;
+        font-weight: bold;
+        position: relative;
+        padding-top: 0;
+        img {
+          max-height: 100%;
+          max-width: 100%;
+          width: auto;
+          height: auto;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+        }
+      }
+      .form-header {
+        padding: 10px;
+        background-color: $gray-bold;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        overflow: hidden;
+      }
+      .form-content {
+        .gray-text {
+          margin-top: 15px;
+          padding: 9px;
+          background-color: #F6F6F6;
+          text-align: left;
+          font-weight: bold;
+          padding-left: 20px;
+        }
+        #login-form {
+          .login {
+            @media screen and (max-width: 600px) {
+              .align-mobile {
+                padding-left: 30px;
+              }
+            }
+            margin: 15px 0 15px;
+            label {
+              margin-right: 15px;
+              input {
+                height: 25px;
+                width: 100px;
+              }
+            }
+            #member_login {
+              margin-right: 15px;
+              background-color: $red;
+              color: white;
+              font-size: 16px;
+              font-weight: bold;
+              border: none;
+              border-radius: 4px;
+              padding: 5px 20px;
+            }
+            a {
+              color: $orange;
+            }
+            @media screen and (max-width: 600px) {
+              label, button, a {
+                display: block;
+                margin-bottom: 5px;
+              }
+              #member_login {
+                margin: 0 auto;
+              }
+              text-align: center;
+            }
+          }
+        }
+        .application {
+          table {
+            border: 1px solid lightgray;
+            .required {
+              background-image: url(/images/must_icon.gif);
+              background-repeat: no-repeat;
+              background-position: 95% 7px;
+              padding-right: 40px !important;
+            }
+            .not-required {
+              background-image: url(/images/nomust_icon.gif);
+              background-repeat: no-repeat;
+              background-position: 95% 7px;
+              padding-right: 40px !important;
+            }
+            margin: 15px auto;
+            width: 90%;
+            clear: both;
+            border-collapse: collapse;
+            input {
+              height: 25px;
+              padding: 0 5px;
+            }
+            textarea {
+              padding: 0 5px;
+              margin: 0;
+              height: 133px;
+              width: 539px;
+            }
+            textarea[name="self_pr"] {
+              background-color: #FFEBEB;
+              border:solid 1px lightgray;
+              height: 90px;
+            }
+            select {
+              height: 20px;
+              width: 150px;
+            }
+            .required + td {
+              input,
+              select {
+                background-color: #FFEBEB;
+                border:solid 1px lightgray;
+              }
+            }
+            th {
+              border: 1px solid lightgray;
+              padding: 6px 0 0 6px;
+              vertical-align: top;
+              text-align: left;
+              width: 30%;
+              background-color: $white-background;
+            }
+            td {
+              border: 1px solid lightgray;
+              text-align: left;
+              width: 70%;
+              p {
+                margin-bottom: 0;
+              }
+            }
+            td div {
+              padding: 5px;
+            }
+            .form-cell {
+              padding: 15px;
+            }
+            @media screen and (max-width: 600px) {
+              .form-cell {
+                padding: 5px;
+              }
+            }
+            .prefrecture {
+              background-color: #F0F8FF;
+              padding: 10px 0 10px 5px;
+              width: 150px;
+              margin-bottom: 15px;
+              label > input {
+                background-color: white;
+                margin-left: 10px;
+
+              }
+              select {
+                margin-top: 10px;
+              }
+            }
+            .checkbox-inline input {
+              margin-right: 10px;
+              vertical-align: middle;
+            }
+            .review-row {
+              padding: 5px;
+            }
+            .headline {
+              background: #666666;
+              color: white;
+              font-weight: bold;
+              text-align: center;
+            }
+            .date-cell {
+              div {
+                padding: 0;
+              }
+            }
+            .birthday {
+              padding: 0;
+              input {
+                height: 37px;
+              }
+              .vue-datepicker__input-clear {
+                top: 9px;
+              }
+            }
+          }
+          @media screen and (max-width: 600px) {
+            table {
+              border: 0;
+            }
+            table tr {
+              display: block;
+              border-bottom: 3px solid #ddd;
+              margin-bottom: .625em;
+            }
+            table th {
+              max-width: 100%;
+            }
+            table td {
+              input {
+                margin: 0;
+              }
+              display: table-row;
+              max-width: 100%;
+              font-size: .8em;
+              text-align: left;
+              textarea {
+                width: 100%;
+              }
+              label, div input {
+                display: block;
+                padding-bottom: 5px;
+              }
+              .checkbox-inline {
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+      .review-button {
+        background: $black;
+        padding: 7px 20px;
+        margin: 10px 0 30px;
+        color: white;
+        font-size: 18px;
+        font-weight: bolder;
+        border: solid;
+        border-radius: 8px;
+        width: 280px;
+        height: 60px;
+      }
+      .return-button {
+        background: #cacaca;
+        padding: 7px 20px;
+        font-weight: bolder;
+        color: white;
+        border: solid;
+        font-size: 14px;
+        border-radius: 8px;
+        width: 80px;
+        height: 40px;
+        margin-right: 10px;
+      }
+    }
+    .completed {
+        width: 100%;
+        height: 350px;
+        text-align: center;
+        p {
+          padding-top: 150px;
+        };
+    }
+
+
+  }
+}

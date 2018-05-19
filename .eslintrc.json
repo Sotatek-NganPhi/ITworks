@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "standard",
+        "eslint:recommended",
+        "plugin:vue/recommended"
+    ],
+    "rules": {
+        "max-len": [
+            "error", {
+                "code": 150,
+                "ignoreComments": true,
+                "ignoreTemplateLiterals": true
+            }
+        ],
+
+        // TODO: enable these rules?
+        "vue/require-v-for-key": 0,
+        "vue/no-invalid-v-for": 0,
+        "no-irregular-whitespace": 0
+    }
+}

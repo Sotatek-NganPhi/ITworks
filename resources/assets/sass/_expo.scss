@@ -1,0 +1,178 @@
+.event{
+  clear: both;
+  padding-bottom: 45px;
+  width: $width-web;
+  margin: auto;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+  h3:before {
+    font-family: icomoon;
+    content: "\e904";
+    color: $red;
+    margin-right: 7px;
+  }
+}
+.body-expo{
+  background: url(/images/expo_bg.jpg) no-repeat center center fixed;
+  width: 100%;
+  min-height: 400px;
+  padding: 30px 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  @media screen and (max-width: 768px) {
+    background: url(/images/expo_bg.jpg) no-repeat center left;
+    width: 100%;
+    min-height: 400px;
+    padding: 30px 0;
+  }
+}
+.list-expo{
+  margin: 0 auto;
+  padding: 0;
+  clear: both;
+  width: 1050px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  ul{
+    padding: 30px 40px 40px;
+    margin: 0;
+    background-color: rgba(255,255,255,0.8);
+    list-style: none;
+    text-align: left;
+    li{
+      margin: 0px;
+      clear: both;
+      border-bottom: 1px dotted #ddd;
+      color: #333;
+      overflow: hidden;
+      padding: 15px 0;
+      a{
+        padding-left: 10px;
+        color: #333333;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+.register{
+    margin: 0px auto;
+    padding: 20px 0px;
+    clear: both;
+    width: 980px;
+  @media screen and (max-width: 768px) {
+    width: 100% !important;
+  }
+    .breadcrumb{
+        margin: 0px auto 20px auto;
+        padding: 0px;
+        overflow: hidden;
+        text-align: left;
+        width: 100%;
+        li{
+            display: inline;
+            padding-right: 5px;
+            text-align: left;
+            a{
+                white-space: nowrap;
+                color: $black;
+                text-decoration: none;
+                overflow: hidden;
+            }
+        }
+    }
+    .form{
+        margin: 0px auto 30px auto;
+        border: 1px solid #ccc;
+        width: $width-web;
+      @media screen and (max-width: 768px) {
+        width: 100% !important;
+      }
+        h4{
+            width: 100%;
+            background-color: $orange;
+            padding: 10px 0px;
+            overflow: hidden;
+            font-size: 18px;
+            text-align: center;
+            color: #fff;
+        }
+        table{
+            margin: 15px auto;
+            width: 90%;
+            clear: both;
+            border-collapse: collapse;
+            th{
+                width: 30%;
+                background-color: #F0F0F0;
+                vertical-align: top;
+                line-height: 120%;
+                border: 1px #cccccc solid;
+                padding: 1%;
+                text-align: left;
+            }
+            td{
+                width: 70%;
+                line-height: 120%;
+                border: 1px #cccccc solid;
+                padding: 1%;
+                text-align: left;
+            }
+            .required{
+                background: url('/images/must_icon.gif') no-repeat 95% 7px;
+                padding-right: 40px;
+            }
+            .hd2{
+              width: 100%;
+              background-color: #666666;
+              color: #FFFFFF;
+              text-align: center;
+            }
+            input{
+                vertical-align: middle;
+                padding: 5px;
+                border: solid 1px #ccc;
+                margin: 5px;
+            }
+            select{
+                vertical-align: middle;
+                padding: 5px;
+                border: solid 1px #ccc;
+                margin: 5px;
+            }
+            textarea{
+                width: 90%;
+                resize: none;
+            }
+        }
+        h5{
+            background-color: #f6f6f8;
+            font-size: 13px;
+            text-align: left;
+            padding: 10px 20px;
+        }
+        input[type="submit"] {
+            cursor: pointer;
+            background: #f2c425;
+            padding: 7px 20px;
+            margin: 20px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            height: auto;
+            border-radius: 4px;
+            color: #fff;
+            letter-spacing: 1px;
+            transition: 0.5s;
+            font-family: inherit;
+            vertical-align: middle;
+        }
+    }
+}

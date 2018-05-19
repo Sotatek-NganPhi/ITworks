@@ -1,0 +1,13 @@
+.recommendation {
+  width: $width-web;
+  margin: 25px auto 0px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+  h3:before {
+    font-family: icomoon;
+    content: "\e901";
+    color: $red;
+    margin-right: 7px;
+  }
+}
