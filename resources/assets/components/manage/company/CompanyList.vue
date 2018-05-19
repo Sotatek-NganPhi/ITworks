@@ -126,11 +126,6 @@ export default {
         this.$refs.datatable.$emit('DataTable:filter', this.buildSearchQuery());
       }).catch(() => {});
     },
-
-    downloadCSV() {
-      var query = this.buildSearchQuery();
-      window.location.href = "/manage/companies/csv?" + queryString.stringify(query);
-    }
   },
 
   mounted() {

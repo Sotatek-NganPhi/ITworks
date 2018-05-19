@@ -42,21 +42,9 @@
                 </td>
             </tr>
             <tr>
-                <th>Tình hình tuyển dụng</th>
-                <td>
-                    {{ getOneField(masterdata.current_situations, 'id', record.current_situation_id, 'name')}}
-                </td>
-            </tr>
-            <tr>
                 <th>Trình độ học vấn</th>
                 <td>
                     {{ getOneField(masterdata.educations, 'id', record.education_id, 'name')}}
-                </td>
-            </tr>
-            <tr>
-                <th>Trình độ học vấn</th>
-                <td>
-                    {{ record.final_academic_school }}
                 </td>
             </tr>
             <tr>
@@ -87,20 +75,6 @@
                 <th>Trình độ ngôn ngữ</th>
                 <td>
                     {{ getOneField(masterdata.language_conversation_levels, 'id', record.language_conversation_level_id, 'description')}}
-                </td>
-            </tr>
-            <tr>
-                <th>Chứng nhận</th>
-                <td>
-                    <template v-for="certificate in record.certificates">
-                        <p>{{ getOneField(masterdata.certificates, 'id', certificate, 'name')}}</p>
-                    </template>
-                </td>
-            </tr>
-            <tr>
-                <th>Mô tả công việc</th>
-                <td>
-                    {{ record.lastest_job_description }}
                 </td>
             </tr>
             </tbody>

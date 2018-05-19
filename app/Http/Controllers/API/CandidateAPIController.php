@@ -211,15 +211,6 @@ class CandidateAPIController extends AppBaseController
         return $this->sendResponse(null, trans('message.send_mail'));
     }
 
-    public function saveMailLog($view, $request)
-    {
-        $emailView = View::make($view)->with('candidate', $request->all());
-        $contents = $emailView->render();
-        DB::table('mail_logs')->insert(
-            ['sender' =>'goenjp' ,'recipient' => $request['email'], 'subject' =>'test' , 'type' =>'company','content' => $contents, 'created_at' => (Carbon::now())]
-        );
-    }
-
     public function removeReferralCode($id)
     {
         $candidate = $this->candidateRepository->find($id);

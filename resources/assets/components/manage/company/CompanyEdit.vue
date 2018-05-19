@@ -1,11 +1,9 @@
 <template>
   <div>
     <validation-form ref="companyForm" style="margin-bottom: 70px">
-      <form-group :label="getDisplayName('username')" :is-required="isFieldRequired('username')">
-        <input data-vv-name="username" class="form-control" type="text" v-model="record.username" />
+      <form-group :label="getDisplayName('email')" :is-required="isFieldRequired('email')">
+        <input data-vv-name="email" class="form-control" type="text" v-model="record.email" />
       </form-group>
-      <form-group :label="getDisplayName('password')" :is-required="isFieldRequired('password')">
-        <input data-vv-name="password" class="form-control" type="text" v-model="record.password" />
       </form-group>
       <form-group :label="getDisplayName('name')" :is-required="isFieldRequired('name')">
         <input data-vv-name="name" class="form-control" type="text" v-model="record.name" />
@@ -47,12 +45,12 @@ import {companyNavigators as subNavigators} from '../../../js/app/manage/routes'
 import Multiselect from 'vue-multiselect';
 
 const defaultRecord = {
+  email:'',
   name: '',
   street_address: '',
   contact_name: '',
   phone_number: '',
   short_description: '',
-  company_hp: '',
   expire_date: '',
   is_active: 1
 };

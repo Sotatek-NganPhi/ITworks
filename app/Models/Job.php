@@ -76,7 +76,6 @@ class Job extends Model
         'salary' => 'required',
         'application_condition' => 'required',
         'email_receive_applicant' => 'required|email',
-        'categoryLevel3s' => 'required|array|exists:category_level3s,id',
         'prefectures' => 'required|array|exists:prefectures,id',
     ];
 

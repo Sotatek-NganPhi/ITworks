@@ -39,35 +39,8 @@
                 </label>
             </form-group>
 
-           <!--  <form-group :label=" $t('applicant.age') ">
-                <div class="col-sm-4">
-                    <select v-model="ageFrom" class="col-sm-4 form-control">
-                        <option value="">---</option>
-                        <option :value="id" v-for="id in 80" :key="id">{{id}}</option>
-                    </select>
-                </div>
-                <label class="col-sm-1"><strong>歳から</strong></label>
-                <form-group class="col-sm-5">
-                    <select v-model="ageTo" class="col-sm-1 form-control">
-                        <option value="">---</option>
-                        <option :value="id" v-for="id in 80" :key="id">{{id}}</option>
-                    </select>
-                </form-group>
-                <label class="col-sm-1"><strong>歳まで</strong></label>
-
-            </form-group> -->
-
             <form-group :label=" $t('applicant.mail') ">
                 <input class="form-control" type="text" v-model="searchParams.email"/>
-            </form-group>
-
-            <form-group :label=" $t('applicant.current_situation_id') ">
-                <select v-model="searchParams.current_situation_id" class="form-control">
-                    <option value="">---</option>
-                    <option :value="item.id" v-for="item in masterdata.current_situations" :key="item.id">
-                        {{item.name}}
-                    </option>
-                </select>
             </form-group>
 
             <form-group :label=" $t('applicant.education_id') ">
@@ -101,8 +74,6 @@
         <div class="text-center">
             <button type="button" class="btn btn-primary" @click="search()">{{ $t("form_action.search") }}</button>
             <button type="button" class="btn btn-primary" @click="clear()">{{ $t("form_action.clear") }}</button>
-            <button type="button" class="btn btn-primary" @click="downloadCsv()">{{ $t("form_action.download_csv") }}
-            </button>
         </div>
         <h2>{{ $t("applicant.title.two") }}</h2>
         <template v-if="getListFieldDisplay()">
@@ -215,19 +186,12 @@
           'job_id': this.searchParams.job_id,
           'first_name': this.searchParams.first_name,
           'last_name': this.searchParams.last_name,
-          'first_name_phonetic': this.searchParams.first_name_phonetic,
-          'last_name_phonetic': this.searchParams.last_name_phonetic,
           'gender': this.searchParams.gender,
           'phone_number': this.searchParams.phone_number,
           'email': this.searchParams.email,
           'address': this.searchParams.address,
-          'postal_code': this.searchParams.postal_code,
-          'current_situation_id': this.searchParams.current_situation_id,
-          'lastest_industry_id': this.searchParams.lastest_industry_id,
-          'lastest_position_id': this.searchParams.lastest_position_id,
           'language_conversation_level_id': this.searchParams.language_conversation_level_id,
           'language_experience_id': this.searchParams.language_experience_id,
-          'driver_license_id': this.searchParams.driver_license_id,
         }
         const query = new QueryBuilder(searchParams);
         if (this.ageFrom !== '') {
@@ -254,10 +218,6 @@
         this.isSrollBottom = true
         const query = new QueryBuilder(searchParams)
         this.$refs.datatable.$emit('DataTable:filter', query)
-      },
-      downloadCsv () {
-        const query = this.buildSearchQuery()
-        window.location.href = `/manage/applicants/csv?${query}`
       },
       scrollBottom () {
         if (this.isSrollBottom) {

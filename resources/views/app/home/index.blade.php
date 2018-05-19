@@ -59,17 +59,12 @@
                                 </div>
                             </div>
                         </div>
-                        @if(count($specialPromotions))
-                        <div class="special">
-                            @include('app.home.special')
-                        </div>
-                        @endif
-                        @if($campaign)
-                            <div class="campaign">
-                                    <a href="/campaign/{{ $campaign->id }}">
-                                        <img src="{{ $campaign->banner_path }}" alt="" width="100%" height="168">
-                                    </a>
+                        @if(count($urgentJobs))
+                        <div class="body-bottom body-odd">
+                            <div class="conscription">
+                                @include('app.home.hurry')
                             </div>
+                        </div>
                         @endif
                     </div>
                 </div>
@@ -78,13 +73,6 @@
                 </div>
             </div>
         </div>
-        @if(count($urgentJobs))
-        <div class="body-bottom body-odd">
-            <div class="conscription">
-                @include('app.home.hurry')
-            </div>
-        </div>
-        @endif
         @if(count($attentionJobs))
          <div class="body-bottom body-even">
             <div class="recommendation">

@@ -57,7 +57,6 @@ class JobRepository extends AppBaseRepository
             'post_end_date'         => 'required|date|after:post_start_date',
             'salary'                => 'required',
             'application_condition' => 'required',
-            'categoryLevel3s'       => 'required',
             'prefectures'           => 'required',
         ];
     }

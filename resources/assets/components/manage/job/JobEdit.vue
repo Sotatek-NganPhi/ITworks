@@ -48,12 +48,6 @@
             <span>{{$t('job_edit.group_3')}}</span>
           </div>
 
-          <!-- <form-group :label="getDisplayName('company_name')"
-                      :is-required="isFieldRequired('company_name')">
-            <textarea class="form-control" data-vv-name="company_name"
-                      cols="150" v-model="record.company_name"></textarea>
-          </form-group> -->
-
           <form-group :label="getDisplayName('salary')" :is-required="isFieldRequired('salary')">
             <textarea class="form-control" data-vv-name="salary" v-model="record.salary"></textarea>
           </form-group>
@@ -63,19 +57,25 @@
             <textarea class="form-control" data-vv-name="application_condition"
                       v-model="record.application_condition"></textarea>
           </form-group>
-          <form-group :label="getDisplayName('message')"
-                      :is-required="isFieldRequired('message')">
-            <textarea class="form-control" data-vv-name="message"
-                      cols="150" v-model="record.message"></textarea>
-          </form-group> 
-
-          <form-group :label="getDisplayName('interns_start_time')"
-                      :is-required="isFieldRequired('interns_start_time')">
-            <textarea class="form-control" data-vv-name="interns_start_time"
-                      v-model="record.interns_start_time"></textarea>
-          </form-group>
           <form-group :label="getDisplayName('images')">
             <file-upload v-model="record.main_image" accept="image/*"></file-upload>
+          </form-group>
+          <form-group :label="getDisplayName('prefectures.name')"
+                      :is-required="isFieldRequired('prefectures.name')">
+            <div class="form-control-multiselect form-control">
+              <multiselect
+                      v-model="selectedPrefectures"
+                      :placeholder="$t('common_action.pick')"
+                      label="name"
+                      track-by="id"
+                      :options="masterdata.prefectures"
+                      :multiple="true"
+                      :close-on-select="false"
+                      :clear-on-select="false"
+                      :hide-selected="true"
+                      data-vv-name="prefectures"
+              ></multiselect>
+            </div>
           </form-group>
           <div>
             <span class="glyphicon glyphicon-triangle-bottom"></span>
@@ -125,8 +125,8 @@
     company_name: '',
     max_applicant: '',
     salary: '',
+    prefectures: [],
     application_condition: '',
-    message: '',
     email_receive_applicant: '',
   };
 
@@ -143,47 +143,10 @@
         record: {},
         oldRecord: {},
         companies: [],
-        agencies: [],
         masterdata: Utils.getMasterdataSkel(),
+        selectedPrefectures: [],
         isShowModal: false
       };
-    },
-
-    computed: {
-
-      filteredWards() {
-        let selectedPrefectureIds = _.map(this.selectedPrefectures, 'id');
-        return _.chain(this.masterdata.wards)
-            .filter(ward => {
-              return _.includes(selectedPrefectureIds, ward.prefecture_id);
-            })
-            .value();
-      },
-
-      selectedWards: {
-        get () {
-          let keyedWards = _.keyBy(this.masterdata.wards, 'id');
-          let selectedPrefectureIds = _.map(this.selectedPrefectures, 'id');
-          return _.chain(this.record.wards)
-              .filter(wardId => {
-                let ward = keyedWards[wardId];
-                return _.includes(selectedPrefectureIds, ward.prefecture_id);
-              })
-              .map(wardId => {
-                return keyedWards[wardId];
-              })
-              .filter(ward => {
-                return _.includes(selectedPrefectureIds, ward.prefecture_id);
-              })
-              .value();
-        },
-        set (newValue) {
-          this.record.wards = _.chain(newValue)
-              .map('id')
-              .uniq()
-              .value();
-        }
-      },
     },
 
     methods: {
@@ -211,24 +174,25 @@
 
       updateChange() {
         this.isShowModal = false;
-        const jobPromise = (this.record && this.record.id)
-            ? rf.getRequest('JobRequest').updateOne(this.record.id, this.record)
-            : rf.getRequest('JobRequest').createANewOne(this.record);
+        // console.log(this.record);
+        // const jobPromise = (this.record && this.record.id)
+        //     ? rf.getRequest('JobRequest').updateOne(this.record.id, this.record)
+        //     : rf.getRequest('JobRequest').createANewOne(this.record);
 
-        jobPromise.then(res => {
-          Utils.growl('request.request_success');
-          if (!this.record.id) {
-            this.$router.push({
-              path: '/job/list',
-            });
-          }
-          this.$refs.jobEdit.$emit('FORM_ERRORS_CLEAR');
-        })
-        .catch(({ validationErrors }) => {
-          if (validationErrors) {
-            this.$refs.jobEdit.$emit('REJECT_FORM', validationErrors);
-          }
-        });
+        // jobPromise.then(res => {
+        //   Utils.growl('request.request_success');
+        //   if (!this.record.id) {
+        //     this.$router.push({
+        //       path: '/job/list',
+        //     });
+        //   }
+        //   this.$refs.jobEdit.$emit('FORM_ERRORS_CLEAR');
+        // })
+        // .catch(({ validationErrors }) => {
+        //   if (validationErrors) {
+        //     this.$refs.jobEdit.$emit('REJECT_FORM', validationErrors);
+        //   }
+        // });
       },
 
       resetChange() {
@@ -251,6 +215,7 @@
 
       localReset() {
         this.record = JSON.parse(JSON.stringify(this.oldRecord));
+        console.log(this.record);
 
         let keyedStations = _.keyBy(this.masterdata.stations, 'id');
         let keyedLineStations = _.keyBy(this.masterdata.line_stations, 'id');
@@ -266,8 +231,6 @@
 
         this.selectedPrefectures = _.map(this.record.prefectures, prefId =>
             _.find(this.masterdata.prefectures, pref => pref.id === prefId));
-        this.selectedCategoryLevel3 = _.map(this.record.categoryLevel3s, prefId =>
-            _.find(this.masterdata.category_level3s, pref => pref.id === prefId));
       },
       where: function (table, name, val) {
         return _.filter(table, function (row) {

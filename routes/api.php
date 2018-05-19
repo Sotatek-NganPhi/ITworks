@@ -25,8 +25,6 @@ Route::group(['middleware' => 'manage.auth'], function () {
 
     // Job related
     Route::resource('jobs', 'JobAPIController');
-    Route::resource('campaigns', 'CampaignAPIController');
-    Route::resource('reservations', 'ReservationAPIController');
     Route::resource('special_promotions', 'SpecialPromotionAPIController');
     Route::resource('certificates', 'CertificateAPIController');
 
@@ -60,16 +58,6 @@ Route::group(['middleware' => 'manage.auth'], function () {
     Route::post('upload-images', 'UploadFileController@uploadFile');
 
     // TODO: clean us
-    Route::resource('analysis', 'AnalysisAPIController');
-
-    Route::post('job/csv/import', 'JobAPIController@importCsv');
-    Route::get('analysis/search/month', 'AnalysisAPIController@getMonthSearchAnalysis');
-    Route::get('analysis/search/day', 'AnalysisAPIController@getDaySearchAnalysis');
-    Route::get('analysis/{year}/{month}/monthly', 'AnalysisAPIController@getMonthlyAnalysis');
-    Route::get('analysis/{year}/{month}/dayly', 'AnalysisAPIController@getDaylyAnalysis');
-    Route::post('analysis', 'AnalysisAPIController@criteriaAnalysis');
-    Route::post('analysis/time', 'AnalysisAPIController@analyzeOverTime');
-    Route::get('get-statistical-homepage', 'AdminAPIController@getStatisticalInHomePage');
     Route::get('job/load-rules', 'JobAPIController@loadRules');
     Route::get('{user}/conditions', 'ConditionAPIController@getListCondition');
     Route::delete('{user}/conditions/{id}', 'ConditionAPIController@removeCondition');
@@ -77,16 +65,6 @@ Route::group(['middleware' => 'manage.auth'], function () {
     Route::post('/update', 'AutoMailAPIController@updateMailSetting');
 
     Route::post('certificate/search', 'CertificateAPIController@searchCertificate');
-
-    Route::resource('messages', 'MessageAPIController');
-
-    Route::get('get-conversations', 'MessageAPIController@getConversations');
-
-    Route::get('get-conversation/{id}', 'MessageAPIController@getConversation');
-
-    Route::post('send-message/{id}', 'MessageAPIController@sendMessage');
 });
 
-Route::resource('interviews', 'InterviewAPIController');
 
-Route::get('category-interview', 'InterviewAPIController@getCategories');

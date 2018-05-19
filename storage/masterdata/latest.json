@@ -218,6 +218,13 @@
         },
         {
             "table_name": "jobs",
+            "field_name": "company_name",
+            "display_name": "T\u00ean c\u00f4ng ty",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
             "field_name": "company_id",
             "display_name": "Company Id",
             "is_required": "0",
@@ -235,6 +242,20 @@
             "field_name": "post_start_date",
             "display_name": "Ng\u00e0y \u0111\u0103ng tuy\u1ec3n",
             "is_required": "1",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "salary",
+            "display_name": "L\u01b0\u01a1ng",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "jobs",
+            "field_name": "email_receive_applicant",
+            "display_name": "Email nh\u1eadn \u0111\u01a1n \u1ee9ng tuy\u1ec3n",
+            "is_required": "0",
             "is_active": "1"
         },
         {
@@ -289,7 +310,7 @@
         {
             "table_name": "jobs",
             "field_name": "prefectures.name",
-            "display_name": "Prefecture",
+            "display_name": "T\u1ec9nh",
             "is_required": "1",
             "is_active": "1"
         },
@@ -338,7 +359,7 @@
         {
             "table_name": "companies",
             "field_name": "short_description",
-            "display_name": "M\u00f4 t\u1ea3 ng\u1eafn g\u1ecdn",
+            "display_name": "M\u00f4 t\u1ea3",
             "is_required": "0",
             "is_active": "1"
         },
@@ -455,13 +476,6 @@
             "is_active": "1"
         },
         {
-            "table_name": "prefectures",
-            "field_name": "prefecture_ward",
-            "display_name": "Wards",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
             "table_name": "salaries",
             "field_name": "salary_name",
             "display_name": "Item Name",
@@ -476,62 +490,6 @@
             "is_active": "1"
         },
         {
-            "table_name": "special_promotions",
-            "field_name": "name",
-            "display_name": "Promotion Name",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "special_promotions",
-            "field_name": "image",
-            "display_name": "Icon",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "special_promotions",
-            "field_name": "start_date",
-            "display_name": "Start Date",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "special_promotions",
-            "field_name": "end_date",
-            "display_name": "End Date",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "special_promotions",
-            "field_name": "is_active",
-            "display_name": "Is Active",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "special_promotions",
-            "field_name": "jobs",
-            "display_name": "Jobs",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "special_promotions",
-            "field_name": "id",
-            "display_name": "ID",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "special_promotions",
-            "field_name": "regions",
-            "display_name": "Region",
-            "is_required": "1",
-            "is_active": "0"
-        },
-        {
             "table_name": "working_days",
             "field_name": "name",
             "display_name": "Item Name",
@@ -558,55 +516,6 @@
             "display_name": "Item Name",
             "is_required": "1",
             "is_active": "0"
-        },
-        {
-            "table_name": "campaigns",
-            "field_name": "id",
-            "display_name": "Id",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "campaigns",
-            "field_name": "title",
-            "display_name": "Title",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "campaigns",
-            "field_name": "content",
-            "display_name": "Content",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "campaigns",
-            "field_name": "banner_path",
-            "display_name": "Banner",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "campaigns",
-            "field_name": "start_at",
-            "display_name": "Start At",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "campaigns",
-            "field_name": "end_at",
-            "display_name": "End At",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "campaigns",
-            "field_name": "is_active",
-            "display_name": "Is Active",
-            "is_required": "1",
-            "is_active": "1"
         },
         {
             "table_name": "announcements",
@@ -669,118 +578,6 @@
             "field_name": "certificate_id",
             "display_name": "ID",
             "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "mail_logs",
-            "field_name": "date",
-            "display_name": "Delivery Month",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "mail_logs",
-            "field_name": "type",
-            "display_name": "Mail Type",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "mail_logs",
-            "field_name": "id",
-            "display_name": "ID",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "mail_logs",
-            "field_name": "sender",
-            "display_name": "Sender",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "mail_logs",
-            "field_name": "recipient",
-            "display_name": "Recipient",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "mail_logs",
-            "field_name": "subject",
-            "display_name": "Subject",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "mail_logs",
-            "field_name": "content",
-            "display_name": "Content",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "id",
-            "display_name": "ID",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "username",
-            "display_name": "Username",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "password",
-            "display_name": "Password",
-            "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "type",
-            "display_name": "Manager Type",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "name",
-            "display_name": "Full Name",
-            "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "email",
-            "display_name": "Email",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "first_name",
-            "display_name": "First Name",
-            "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "last_name",
-            "display_name": "Last Name",
-            "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "managers",
-            "field_name": "is_active",
-            "display_name": "Is Active",
-            "is_required": "1",
             "is_active": "1"
         },
         {
@@ -940,28 +737,28 @@
         {
             "table_name": "candidates",
             "field_name": "user.name",
-            "display_name": "Name",
+            "display_name": "T\u00ean",
             "is_required": "1",
             "is_active": "1"
         },
         {
             "table_name": "candidates",
             "field_name": "user.birthday",
-            "display_name": "Birthday",
+            "display_name": "Ng\u00e0y sinh",
             "is_required": "1",
             "is_active": "1"
         },
         {
             "table_name": "candidates",
             "field_name": "user.address",
-            "display_name": "Address",
+            "display_name": "\u0110\u1ecba ch\u1ec9",
             "is_required": "1",
             "is_active": "1"
         },
         {
             "table_name": "candidates",
             "field_name": "user.phone_number",
-            "display_name": "Phone Number",
+            "display_name": "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i",
             "is_required": "1",
             "is_active": "1"
         }
@@ -996,323 +793,6 @@
         {
             "id": "4",
             "description": "\u0110\u00e0m ph\u00e1n"
-        }
-    ],
-    "prefectures": [
-        {
-            "id": "1",
-            "region_id": "1",
-            "name": "H\u00e0 N\u1ed9i"
-        },
-        {
-            "id": "2",
-            "region_id": "2",
-            "name": "TP. H\u1ed3 Ch\u00ed Minh"
-        },
-        {
-            "id": "3",
-            "region_id": "3",
-            "name": "L\u00e0o Cai"
-        },
-        {
-            "id": "4",
-            "region_id": "3",
-            "name": "Y\u00ean B\u00e1i"
-        },
-        {
-            "id": "5",
-            "region_id": "3",
-            "name": "\u0110i\u1ec7n Bi\u00ean"
-        },
-        {
-            "id": "6",
-            "region_id": "3",
-            "name": "H\u00f2a B\u00ecnh"
-        },
-        {
-            "id": "7",
-            "region_id": "3",
-            "name": "Lai Ch\u00e2u"
-        },
-        {
-            "id": "8",
-            "region_id": "3",
-            "name": "S\u01a1n La"
-        },
-        {
-            "id": "9",
-            "region_id": "3",
-            "name": "H\u00e0 Giang"
-        },
-        {
-            "id": "10",
-            "region_id": "3",
-            "name": "Cao B\u1eb1ng"
-        },
-        {
-            "id": "11",
-            "region_id": "3",
-            "name": "B\u1eafc C\u1ea1n"
-        },
-        {
-            "id": "12",
-            "region_id": "3",
-            "name": "L\u1ea1ng S\u01a1n"
-        },
-        {
-            "id": "13",
-            "region_id": "3",
-            "name": "Tuy\u00ean Quang"
-        },
-        {
-            "id": "14",
-            "region_id": "3",
-            "name": "Th\u00e1i Nguy\u00ean"
-        },
-        {
-            "id": "15",
-            "region_id": "3",
-            "name": "Ph\u00fa Th\u1ecd"
-        },
-        {
-            "id": "16",
-            "region_id": "3",
-            "name": "B\u1eafc Giang"
-        },
-        {
-            "id": "17",
-            "region_id": "3",
-            "name": "Qu\u1ea3ng Ninh"
-        },
-        {
-            "id": "18",
-            "region_id": "3",
-            "name": "B\u1eafc Ninh"
-        },
-        {
-            "id": "19",
-            "region_id": "3",
-            "name": "H\u00e0 Nam"
-        },
-        {
-            "id": "20",
-            "region_id": "3",
-            "name": "H\u1ea3i D\u01b0\u01a1ng"
-        },
-        {
-            "id": "21",
-            "region_id": "3",
-            "name": "H\u1ea3i Ph\u00f2ng"
-        },
-        {
-            "id": "22",
-            "region_id": "3",
-            "name": "H\u01b0ng Y\u00ean"
-        },
-        {
-            "id": "23",
-            "region_id": "3",
-            "name": "Nam \u0110\u1ecbnh"
-        },
-        {
-            "id": "24",
-            "region_id": "3",
-            "name": "Th\u00e1i B\u00ecnh"
-        },
-        {
-            "id": "25",
-            "region_id": "3",
-            "name": "V\u0129nh Ph\u00fac"
-        },
-        {
-            "id": "26",
-            "region_id": "3",
-            "name": "Ninh B\u00ecnh"
-        },
-        {
-            "id": "27",
-            "region_id": "4",
-            "name": "Thanh H\u00f3a"
-        },
-        {
-            "id": "28",
-            "region_id": "4",
-            "name": "Ngh\u1ec7 An"
-        },
-        {
-            "id": "29",
-            "region_id": "4",
-            "name": "H\u00e0 T\u0129nh"
-        },
-        {
-            "id": "30",
-            "region_id": "4",
-            "name": "Qu\u1ea3ng B\u00ecnh"
-        },
-        {
-            "id": "31",
-            "region_id": "4",
-            "name": "Qu\u1ea3ng Tr\u1ecb "
-        },
-        {
-            "id": "32",
-            "region_id": "4",
-            "name": "Th\u1eeba Thi\u00ean Hu\u1ebf"
-        },
-        {
-            "id": "33",
-            "region_id": "4",
-            "name": "\u0110\u00e0 N\u1eb5ng"
-        },
-        {
-            "id": "34",
-            "region_id": "4",
-            "name": "Qu\u1ea3ng Nam"
-        },
-        {
-            "id": "35",
-            "region_id": "4",
-            "name": "Qu\u1ea3ng Ng\u00e3i"
-        },
-        {
-            "id": "36",
-            "region_id": "4",
-            "name": "B\u00ecnh \u0110\u1ecbnh"
-        },
-        {
-            "id": "37",
-            "region_id": "4",
-            "name": "Ph\u00fa Y\u00ean"
-        },
-        {
-            "id": "38",
-            "region_id": "4",
-            "name": "Kh\u00e1nh H\u00f2a"
-        },
-        {
-            "id": "39",
-            "region_id": "4",
-            "name": "Ninh Thu\u1eadn"
-        },
-        {
-            "id": "40",
-            "region_id": "4",
-            "name": "B\u00ecnh Thu\u1eadn"
-        },
-        {
-            "id": "41",
-            "region_id": "4",
-            "name": "Kon Tum"
-        },
-        {
-            "id": "42",
-            "region_id": "4",
-            "name": "Gia Lai"
-        },
-        {
-            "id": "43",
-            "region_id": "4",
-            "name": "\u0110\u1eafc L\u1eafc"
-        },
-        {
-            "id": "44",
-            "region_id": "4",
-            "name": "\u0110\u1eafc N\u00f4ng"
-        },
-        {
-            "id": "45",
-            "region_id": "4",
-            "name": "L\u00e2m \u0110\u1ed3ng"
-        },
-        {
-            "id": "46",
-            "region_id": "5",
-            "name": "B\u00ecnh Ph\u01b0\u1edbc"
-        },
-        {
-            "id": "47",
-            "region_id": "5",
-            "name": "B\u00ecnh D\u01b0\u01a1ng"
-        },
-        {
-            "id": "48",
-            "region_id": "5",
-            "name": "\u0110\u1ed3ng Nai"
-        },
-        {
-            "id": "49",
-            "region_id": "5",
-            "name": "T\u00e2y Ninh"
-        },
-        {
-            "id": "50",
-            "region_id": "5",
-            "name": "B\u00e0 R\u1ecba V\u0169ng T\u00e0u"
-        },
-        {
-            "id": "51",
-            "region_id": "5",
-            "name": "Long An"
-        },
-        {
-            "id": "52",
-            "region_id": "5",
-            "name": "\u0110\u1ed3ng Th\u00e1p"
-        },
-        {
-            "id": "53",
-            "region_id": "5",
-            "name": "Ti\u1ec1n Giang"
-        },
-        {
-            "id": "54",
-            "region_id": "5",
-            "name": "An Giang"
-        },
-        {
-            "id": "55",
-            "region_id": "5",
-            "name": "B\u1ebfn Tre"
-        },
-        {
-            "id": "56",
-            "region_id": "5",
-            "name": "V\u0129nh Long"
-        },
-        {
-            "id": "57",
-            "region_id": "5",
-            "name": "Tr\u00e0 Vinh"
-        },
-        {
-            "id": "58",
-            "region_id": "5",
-            "name": "H\u1eadu Giang"
-        },
-        {
-            "id": "59",
-            "region_id": "5",
-            "name": "Ki\u00ean Giang"
-        },
-        {
-            "id": "60",
-            "region_id": "5",
-            "name": "S\u00f3c Tr\u0103ng"
-        },
-        {
-            "id": "61",
-            "region_id": "5",
-            "name": "B\u1ea1c Li\u00eau"
-        },
-        {
-            "id": "62",
-            "region_id": "5",
-            "name": "C\u00e0 Mau"
-        },
-        {
-            "id": "63",
-            "region_id": "5",
-            "name": "C\u1ea7n Th\u01a1"
         }
     ],
     "regions": [

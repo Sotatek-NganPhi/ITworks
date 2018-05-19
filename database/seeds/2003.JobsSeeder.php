@@ -52,8 +52,6 @@ class JobsSeeder extends Seeder
             $companyId++;
             $companies[] = [
                 'id'                    => $companyId,
-                'name'              => $faker->userName,
-                'password'              => '123',
                 'name'                  => $faker->company,
                 'street_address'        => $faker->streetAddress,
                 'contact_name'          => $faker->name,

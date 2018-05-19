@@ -11,18 +11,10 @@
 |
 */
 // Static pages
-Route::get('company', 'HomeController@getCompany')->name('company');
-Route::get('sitemap', 'HomeController@showSiteMapPage')->name('sitemap');
-Route::get('inquiry', 'HomeController@showInquiryPage')->name('inquiry');
 Route::get('rules', 'HomeController@showRulesPage')->name('rules');
 Route::get('privacy', 'HomeController@showPrivacyPage')->name('privacy');
 Route::get('contact', 'HomeController@showContactPage')->name('contact');
-Route::get('spec', 'HomeController@showSpecPage')->name('spec');
-
 Route::post('contact', 'HomeController@sendMailContact');
-Route::post('inquiry', 'HomeController@sendMailInquiry');
-Route::get('{region}/interview/{id}', 'HomeController@interviewDetail');
-Route::get('{region}/interview/cat/{cat}', 'HomeController@interviewPage');
 
 Auth::routes();
 
@@ -36,14 +28,6 @@ Route::get('/{region}/lp', function ($region) {
     }
 });
 
-Route::get('/{region}/lp-business', function ($region) {
-    $regions = \App\Models\Region::pluck('key')->toArray();
-    if (in_array($region, $regions)) {
-        return view('app.home.lp_business');
-    } else {
-        abort(404);
-    }
-});
 
 // TODO: Re-planning, zoning, naming, ... for routes
 
@@ -86,20 +70,6 @@ Route::group(['middleware' => ['candidate.register']], function () {
 
             Route::get('/clip-list', 'Member\BookmarkController@showBookmarkPage')->name('member_clip_list');
 
-            Route::get('/mail/mail_inbox', 'Member\MailBoxController@showMailInbox')->name('mail_inbox');
-
-            Route::get('/mail/mail_inbox/unread', 'Member\MailBoxController@showMailInboxUnread')->name('mail_inbox_unread');
-
-            Route::get('/mail/mail_inbox/favorite', 'Member\MailBoxController@showMailInboxFavorite')->name('mail_inbox_favorite');
-
-            Route::get('/mail/mail_outbox/favorite', 'Member\MailBoxController@showMailOtboxFavorite')->name('mail_outbox_favorite');
-
-            Route::get('/mail/mail_outbox', 'Member\MailBoxController@showMailOutbox')->name('mail_outbox');
-
-            Route::get('/mail/mail_box/{applicantId}', 'Member\MailBoxController@showMailBox')->name('mail_box');
-
-            Route::post('/mail/mail_box/reply', 'Member\MailBoxController@replyMessage')->name('reply_message');
-
             Route::get('/apply_manage', 'ApplicationController@showAppliedJobs')->name('member_application_list');
 
             Route::get('/resume_register', 'Member\CandidateController@candidateResume')->name('resume_register');
@@ -129,28 +99,13 @@ Route::group(['middleware' => ['candidate.register']], function () {
 
     Route::get('{region}/job', 'JobController@search')->name('search');
 
-    Route::get('{region}/videos', 'API\VideoAPIController@showVideoList')->name('video_list');
-
-    Route::get('{region}/video/{id}', 'API\VideoAPIController@showVideoDetail')->name('video');
 
     Route::get('job/{id}', 'JobController@show')->name('job_detail');
 
-    Route::get('job/{id}/send-mobile', 'JobController@showJobSendMobile')->name('show_job_send_mobile');
-
-    Route::post('job/{job}/send-mobile', 'JobController@sendJobToMailMobile')->name('send_job_send_mobile');
 
     Route::get('job/{job}/clips', 'JobController@showJobClips')->name('show_job_clips');
 
     Route::post('job/{job}/clips', 'JobController@addJobClips')->name('add_job_clips');
-
-    Route::get('/about/special/{id}', 'SpecialPromotionController@show');
-
-    Route::get('/expo/{id}/regist', 'ExpoController@getLayout')->name('regist_expo');
-
-    Route::post('/api/expos/{id}/register', 'ExpoController@veryRegister')->name('register_expo');
-    Route::post('/api/expos/{id}/register/ok', 'ExpoController@register');
-
-    Route::get('/campaign/{id}', 'HomeController@showDetailCampain');
 
     Route::get('/{region}', function ($region) {
         $regions = \App\Models\Region::pluck('key')->toArray();
@@ -161,11 +116,6 @@ Route::group(['middleware' => ['candidate.register']], function () {
         }
     });
 
-    Route::get('{region}/{prefecture}/wards/{ward?}', 'HomeController@searchJobByWard')->name('search_job:ward');
-
-    Route::get('{region}/{prefecture}/lines/{station?}', 'HomeController@searchJobByLine')->name('search_job:line');
-
-    Route::get('{region}/{prefecture}/lines/{line?}/stations/{station?}', 'HomeController@searchJobByStation')->name('search_job:station');
 });
 
 Route::get('/candidate/current', 'Member\CandidateController@getCurrentCandidate');

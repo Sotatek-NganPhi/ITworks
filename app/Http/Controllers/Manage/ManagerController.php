@@ -18,9 +18,6 @@ class ManagerController extends Controller
             case Consts::TYPE_SYS_ADMIN:
                 $view = 'manage/admin/index';
                 break;
-            case Consts::TYPE_COMPANY_ADMIN:
-                $view = 'manage/company/index';
-                break;
             default:
                 Auth::guard($this->guard)->logout();
                 return redirect()->to('manage/login');

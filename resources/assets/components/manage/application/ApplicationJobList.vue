@@ -10,10 +10,6 @@
         </select>
       </form-group>
 
-      <form-group :label=" $t('applicant.company_name') ">
-        <input class="form-control" type="text" v-model="searchParams.company_name" />
-      </form-group>
-
       <form-group :label=" $t('applicant.start') ">
         <date-picker class="col-sm-6" v-model="searchParams.post_start_date" format="YYYY-MM-DD" locale="ja"></date-picker>
       </form-group>
@@ -44,7 +40,7 @@
 
   <data-table :getData="getData" ref="datatable">
     <th data-sort-field="id" style="width: 7%">{{ getDisplayName('id') }}</th>
-    <th data-sort-field="company_id" style="width: 8%">{{ getDisplayName('company_id') }}</th>
+    <th data-sort-field="company_name" style="width: 8%">{{ getDisplayName('company_name') }}</th>
     <th data-sort-field="company_name" style="width: 30%">{{ getDisplayName('company_name') }}</th>
     <th style="width: 15%">{{ $t("applicant.posting") }}</th>
     <th data-sort-field="applicants_count" style="width: 10%">{{ $t("applicant.count") }}</th>

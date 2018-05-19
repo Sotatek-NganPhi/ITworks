@@ -6,7 +6,6 @@ use App\Consts;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\API\CreateAdminAPIRequest;
 use App\Http\Requests\API\UpdateAdminAPIRequest;
-use App\Http\Services\AnalysisService;
 use App\Http\Services\JobService;
 use App\Repositories\AdminRepository;
 use App\Repositories\Criteria\BaseCriteria;
@@ -140,12 +139,5 @@ class AdminAPIController extends AppBaseController
         $Admins = $this->AdminRepository->all();
 
         return $this->sendResponse($Admins->toArray(), trans('message.retrieve'));
-    }
-
-    public function getStatisticalInHomePage()
-    {
-        $statisticalAccess = AnalysisService::getStatisticalAccessYesterday();
-        $statistical = ["statisticalAccess" => $statisticalAccess];
-        return $this->sendResponse($statistical, trans('message.retrieve'));
     }
 }

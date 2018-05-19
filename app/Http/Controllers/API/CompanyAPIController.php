@@ -51,23 +51,6 @@ class CompanyAPIController extends AppBaseController
         return $this->sendResponse($companies->toArray(), trans('message.retrieve'));
     }
 
-    public function downloadCsv(Request $request)
-    {
-        $this->companyRepository->pushCriteria(new BaseCriteria($request));
-        $this->companyRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $companies = $this->companyRepository->all();
-
-        $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
-        $headers = \Schema::getColumnListing('companies');
-        $csv->insertOne(Utils::utf8ToSjis($headers));
-
-        foreach ($companies as $company) {
-            $csv->insertOne(Utils::utf8ToSjis($company->toArray()));
-        }
-
-        $csv->output('companies.csv');
-    }
-
     /**
      * Store a newly created Company in storage.
      * POST /companies
@@ -96,7 +79,6 @@ class CompanyAPIController extends AppBaseController
     public function show($id, Request $request)
     {
         /** @var Company $company */
-        $this->companyRepository->pushCriteria(new BaseCriteria($request));
         $company = $this->companyRepository->findWithoutFail($id);
 
         if (empty($company)) {

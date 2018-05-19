@@ -35,13 +35,6 @@ import ApplicantSendmail from '../../../../components/manage/application/Applica
 import ApplicationList from '../../../../components/manage/application/ApplicationList.vue';
 import ApplicantDetail from '../../../../components/manage/application/ApplicantDetail.vue';
 import JobDetail from '../../../../components/manage/application/JobDetail.vue';
-import AnalysisList from '../../../../components/manage/analysis/AnalysisList.vue';
-import AnalysisSearch from '../../../../components/manage/analysis/AnalysisSearch.vue';
-import FieldList from '../../../../components/manage/field_settings/FieldList.vue';
-import FieldEdit from '../../../../components/manage/field_settings/FieldEdit.vue';
-import AnalysisAccessRanking from '../../../../components/manage/analysis/AnalysisAccessRanking.vue';
-import AnalysisJobType from '../../../../components/manage/analysis/AnalysisJobType.vue';
-import AnalysisMerit from '../../../../components/manage/analysis/AnalysisMerit.vue';
 import CompanySendEmail from '../../../../components/manage/company/CompanySendEmail.vue';
 import RequestFactory from '../../../lib/RequestFactory';
 Vue.component('form-group', require('../../../../components/common/FormGroup.vue'));
@@ -111,8 +104,6 @@ export var router = new VueRouter({
     { path: '/application/applicant_sendmail', component: ApplicantSendmail },
     { path: '/application/applicant', component: ApplicantDetail },
     { path: '/application/job', component: JobDetail },
-    { path: '/field_settings/list', component: FieldList , props: (route) => ({ table: route.query.table }) },
-    { path: '/field_settings/edit', component: FieldEdit },
     { path: '/company/company_send_email', component: CompanySendEmail },
   ]
 });

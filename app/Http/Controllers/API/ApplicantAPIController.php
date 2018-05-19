@@ -160,22 +160,4 @@ class ApplicantAPIController extends AppBaseController
 
         return $this->sendResponse($id, trans('message.deletable'));
     }
-    public function downloadCsv(Request $request)
-    {
-        $this->applicantRepository->pushCriteria(new BaseCriteria($request));
-        $this->applicantRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $applicants = $this->applicantRepository->all();
-
-        $csv = \League\Csv\Writer::createFromFileObject(new \SplTempFileObject());
-        $headers = \Schema::getColumnListing('applicants');
-        $csv->insertOne($headers);
-
-        foreach ($applicants as $applicant) {
-            $row = $applicant->toArray();
-            $csv->insertOne($row);
-        }
-
-        $csv->output('applicants.csv');
-    }
-
 }

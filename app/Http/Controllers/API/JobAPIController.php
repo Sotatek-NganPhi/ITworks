@@ -85,42 +85,6 @@ class JobAPIController extends AppBaseController
         $jobs = $jobRepository->paginate($request->input('limit'));
         return $this->sendResponse($jobs->toArray(), trans('message.retrieve'));
     }
-
-    public function importCsv(Request $request)
-    {
-        $file = $request->file;
-        if (!is_file($file)) {
-            return $this->sendError(trans('message.not_file'));
-        }
-
-        $microtime = str_replace(".", "", microtime(true));
-        $fileName = $microtime . '.' . $file->getClientOriginalExtension();
-        Storage::disk('csv')->put($fileName, File::get($file));
-
-        DB::beginTransaction();
-        try {
-            $outputFolder = storage_path() . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . $microtime;
-            $uploadedImages = [];
-            $images = $request->images;
-            if (is_file($images)) {
-                $zipFileName = $microtime . '.' . $images->getClientOriginalExtension();
-                Storage::disk('csv')->put($zipFileName, File::get($images));
-                $uploadedImages = Utils::unzip(Storage::disk('csv')->url($zipFileName), $outputFolder);
-            }
-            $count = $this->jobService->importCsv($fileName, Storage::disk('public')->url($microtime) . DIRECTORY_SEPARATOR, $uploadedImages);
-            DB::commit();
-
-            if ($count == 0) {
-                $this->sendError(trans('message.import_fail'));
-            }
-
-            return $this->sendResponse($count, $count . trans('message.import'));
-        } catch (Exception $e) {
-            DB::rollback();
-            return $this->sendError($e->getMessage());
-        }
-    }
-
     /**
      * Store a newly created job in storage.
      * POST /jobs
@@ -162,8 +126,6 @@ class JobAPIController extends AppBaseController
         $result['company'] = $job->company()->value('id');
         $result['salaries'] = $job->salaries()->pluck('salary_id');
         $result['prefectures'] = $job->prefectures()->pluck('prefecture_id');
-        $result['workingDays'] = $job->workingDays()->pluck('working_day_id');
-        $result['workingHours'] = $job->workingHours()->pluck('working_hour_id');
 
         return $this->sendResponse($result, trans('message.retrieve'));
     }
@@ -223,53 +185,6 @@ class JobAPIController extends AppBaseController
         $job->delete();
 
         return $this->sendResponse($id, trans('message.deletable'));
-    }
-
-    public function downloadCsv(Request $request)
-    {
-        $fieldsEn = ['id'];
-        $fieldsJp = ['仕事ID'];
-        $rules = $this->jobService->loadRule();
-
-        $relations = [];
-        foreach ($rules as $header => $rule) {
-            $fieldsEn[] = Utils::utf8ToSjis($header);
-            $fieldsJp[] = $rule->fields_jp;
-            if ($rule->reference_table) {
-                $relations[] = $header;
-            }
-        }
-
-        $this->jobRepository->pushCriteria(new BaseCriteria($request));
-        $this->jobRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $jobs = $this->jobRepository->with($relations)->all();
-
-        $csv = Writer::createFromFileObject(new SplTempFileObject());
-        $csv->insertOne(Utils::utf8ToSjis($fieldsEn));
-        $csv->insertOne(Utils::utf8ToSjis($fieldsJp));
-
-        foreach ($jobs as $job) {
-            $row = [$job->id];
-            foreach ($rules as $header => $rule) {
-                $value = $job->$header;
-                if (!$value) {
-                    $row[] = '';
-                    continue;
-                }
-
-                if ($rule->reference_table) {
-                    if (!$value->isEmpty()) {
-                        $value = $value->pluck('id');
-                    }
-
-                    $value = implode('|', $value->toArray());
-                }
-                $row[] = Utils::utf8ToSjis($value);
-            }
-            $csv->insertOne($row);
-        }
-
-        $csv->output('jobs_to_update.csv');
     }
 
     public function getJobsQualified(Request $request) {

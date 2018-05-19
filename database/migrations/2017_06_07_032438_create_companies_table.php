@@ -23,7 +23,6 @@ class CreateCompaniesTable extends Migration
             $table->text('business_content')->nullable();
             $table->datetime('expire_date');
             $table->string('email');
-            $table->string('password');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

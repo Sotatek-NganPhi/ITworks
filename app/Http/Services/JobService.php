@@ -3,16 +3,12 @@
 namespace App\Http\Services;
 
 use App\Consts;
-use App\Models\Campaign;
 use App\Models\Company;
 use App\Models\Config;
 use App\Models\Job;
 use App\Models\Prefecture;
-use App\Models\RailwayLine;
 use App\Models\Region;
 use App\Models\SpecialPromotion;
-use App\Models\Salary;
-use App\Models\Ward;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -164,84 +160,7 @@ class JobService
         }
         return $results;
     }
-
-    public function search($request, $keyRegion)
-    {
-        $limit = 10;
-        $params = $request->all();
-        if (isset($params["limit"])) {
-            $limit = $params["limit"];
-        }
-        $query = DB::table("job_prefecture");
-        $region = Region::getRegionByKey($keyRegion);
-        $prefectureIds = Region::getPrefectureIds($region->id);
-        $query->whereIn("job_prefecture.prefecture_id", $prefectureIds);
-        if (isset($params["prefecture_id"]) && !is_null($params["prefecture_id"])) {
-            $query->where("job_prefecture.prefecture_id", $params["prefecture_id"]);
-        }
-
-        $query->join('jobs', 'jobs.id', 'job_prefecture.job_id');
-
-        if (isset($params["free_word"]) && !is_null($params["free_word"])) {
-            $query->where(function ($query) use ($params) {
-                $query->where("jobs.company_name", 'like', '%' . $params["free_word"] . '%')
-                    ->orWhere("jobs.description", 'like', '%' . $params["free_word"] . '%');
-            });
-        }
-
-        $sort = $request->sort;
-        switch ($sort) {
-            case "new":
-                $jobs = $query->select("jobs.*")->orderBy('jobs.created_at', 'desc')->distinct()->paginate($limit, ['jobs.id']);
-                break;
-            case "hot":
-                $jobs = $this->getAttentionJobs($prefectureIds, 10, true);
-                break;
-            case "end":
-                $jobs = $query->select("jobs.*")->orderBy('jobs.post_end_date', 'asc')->distinct()->paginate($limit, ['jobs.id']);
-                break;
-            default:
-                $jobs = $query->select("jobs.*")->orderBy('jobs.created_at')->distinct()->paginate($limit, ['jobs.id']);
-        }
-
-        $jobs = $this->addRelatedInfo($jobs, $prefectureIds);
-        return $this->formatPaginate($jobs, $request);
-    }
-
-    public function getInfoConditionsSearch(Request $request)
-    {
-        $inputs = $request->all();
-        $conditions = [];
-        if (isset($inputs["category_id"]) && !is_null($inputs["category_id"])) {
-            $category = CategoryLevel3::findOneById($inputs["category_id"]);
-            $conditions[] = [
-                "key" => "category",
-                "display" => "Danh mục công việc",
-                "text" => [$category->name],
-            ];
-        }
-
-        if (isset($inputs["free_word"]) && !is_null($inputs["free_word"])) {
-            $conditions[] = [
-                "key" => "free_word",
-                "display" => "Free_word",
-                "text" => [$inputs["free_word"]],
-            ];
-        }
-
-        if (isset($inputs["prefecture_id"]) && !is_null($inputs["prefecture_id"])) {
-            $prefecture = Prefecture::findOneById($inputs["prefecture_id"]);
-            $text = [$prefecture->name];
-            $conditions[] = [
-                "key" => "municipality",
-                "display" => "Tỉnh",
-                "text" => $text,
-            ];
-        }
-
-        return $conditions;
-    }
-
+    
     private function addRelatedInfo($jobs, $prefectureIds)
     {
         $jobIds = $jobs->pluck('id');
@@ -264,7 +183,6 @@ class JobService
 
         $prefectures = MasterdataService::getOneTable('prefectures');
         $salaries = MasterdataService::getOneTable('salaries');
-        $category_level3s = MasterdataService::getOneTable('category_level3s');
 
         foreach ($jobs as $job) {
             $job->prefectures = [];
@@ -415,6 +333,84 @@ class JobService
         Cache::put($CACHE_KEY, $result, $CACHE_DURATION);
         return $result;
     }
+
+    public function search($request, $keyRegion)
+    {
+        $limit = 10;
+        $params = $request->all();
+        if (isset($params["limit"])) {
+            $limit = $params["limit"];
+        }
+        $query = DB::table("job_prefecture");
+        $region = Region::getRegionByKey($keyRegion);
+        $prefectureIds = Region::getPrefectureIds($region->id);
+        $query->whereIn("job_prefecture.prefecture_id", $prefectureIds);
+        if (isset($params["prefecture_id"]) && !is_null($params["prefecture_id"])) {
+            $query->where("job_prefecture.prefecture_id", $params["prefecture_id"]);
+        }
+
+        $query->join('jobs', 'jobs.id', 'job_prefecture.job_id');
+
+        if (isset($params["free_word"]) && !is_null($params["free_word"])) {
+            $query->where(function ($query) use ($params) {
+                $query->where("jobs.company_name", 'like', '%' . $params["free_word"] . '%')
+                    ->orWhere("jobs.description", 'like', '%' . $params["free_word"] . '%');
+            });
+        }
+
+        $sort = $request->sort;
+        switch ($sort) {
+            case "new":
+                $jobs = $query->select("jobs.*")->orderBy('jobs.created_at', 'desc')->distinct()->paginate($limit, ['jobs.id']);
+                break;
+            case "hot":
+                $jobs = $this->getAttentionJobs($prefectureIds, 10, true);
+                break;
+            case "end":
+                $jobs = $query->select("jobs.*")->orderBy('jobs.post_end_date', 'asc')->distinct()->paginate($limit, ['jobs.id']);
+                break;
+            default:
+                $jobs = $query->select("jobs.*")->orderBy('jobs.created_at')->distinct()->paginate($limit, ['jobs.id']);
+        }
+
+        $jobs = $this->addRelatedInfo($jobs, $prefectureIds);
+        return $this->formatPaginate($jobs, $request);
+    }
+
+    public function getInfoConditionsSearch(Request $request)
+    {
+        $inputs = $request->all();
+        $conditions = [];
+        if (isset($inputs["category_id"]) && !is_null($inputs["category_id"])) {
+            $category = CategoryLevel3::findOneById($inputs["category_id"]);
+            $conditions[] = [
+                "key" => "category",
+                "display" => "Danh mục công việc",
+                "text" => [$category->name],
+            ];
+        }
+
+        if (isset($inputs["free_word"]) && !is_null($inputs["free_word"])) {
+            $conditions[] = [
+                "key" => "free_word",
+                "display" => "Free_word",
+                "text" => [$inputs["free_word"]],
+            ];
+        }
+
+        if (isset($inputs["prefecture_id"]) && !is_null($inputs["prefecture_id"])) {
+            $prefecture = Prefecture::findOneById($inputs["prefecture_id"]);
+            $text = [$prefecture->name];
+            $conditions[] = [
+                "key" => "municipality",
+                "display" => "Tỉnh",
+                "text" => $text,
+            ];
+        }
+
+        return $conditions;
+    }
+
 
     public function getJobCountsByPrefectures($keyRegion, $prefectureIds, $limit = 6)
     {
