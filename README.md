@@ -1,10 +1,4 @@
-# Goen
-
-We use this web site for referrence:
-Front side: http://demo.job-maker.jp/
-CMS: http://demo.job-maker.jp/manage/_Login.jsp
-ID：guest021
-PASS：guest021
+# ITworks
 
 ### Pre-requisites
 
@@ -60,29 +54,6 @@ $ npm run watch
 ```sh
 $ php artisan serve
 ```
-
-### Other commands you might find usefull
-- Create new table
-```sh
-$ php artisan make:migration create_companies_table --create=companies
-```
-
-- After add columns for generated table, you can use the following command to generate API for it
-```sh
-$ php artisan infyom:api Company --fromTable --tableName=companies
-```
-
-### Coding convention
-
-- Indentation: 2 spaces for html/js and 4 spaces for php/css
-- No trailing space
-- Defining constants inside app/Consts.php and utility functions
-
-- JS: `npm test`
-- PHP:
-  - `vendor/bin/phpcs --standard=phpcs.xml`
-  - `vendor/bin/phpmd app text phpmd.xml`
-
 ### Shortcut
 
 ```shell
