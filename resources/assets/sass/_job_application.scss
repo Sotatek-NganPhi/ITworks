@@ -224,13 +224,12 @@
           table {
             border: 1px solid lightgray;
             .required {
-              background-image: url(/images/must_icon.gif);
+              background-image: url(/images/must_icon.png);
               background-repeat: no-repeat;
               background-position: 95% 7px;
               padding-right: 40px !important;
             }
             .not-required {
-              background-image: url(/images/nomust_icon.gif);
               background-repeat: no-repeat;
               background-position: 95% 7px;
               padding-right: 40px !important;

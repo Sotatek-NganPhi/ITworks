@@ -22,12 +22,14 @@ class CreateJobsTable extends Migration
             $table->date('post_end_date')->nullable();
             $table->integer('max_applicant')->nullable();
             $table->text('salary')->nullable();
+            $table->text('education')->nullable();
+            $table->text('language')->nullable();
+            $table->text('language_level')->nullable();
             $table->text('application_condition')->nullable();
             $table->text('message')->nullable();
             $table->string('main_image')->nullable();
             $table->string('main_caption')->nullable();
             $table->string('email_receive_applicant')->nullable();
-            $table->text('remarks')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

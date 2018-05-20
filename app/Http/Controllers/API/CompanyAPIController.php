@@ -124,8 +124,6 @@ class CompanyAPIController extends AppBaseController
     public function destroy($id)
     {
         /** @var Company $company */
-
-        $job = Job::where('company_id', $id)->first();
        
         if(!isset($job)) {
             $company = $this->companyRepository->findWithoutFail($id);
@@ -133,7 +131,6 @@ class CompanyAPIController extends AppBaseController
             if (empty($company)) {
                 return $this->sendError(trans('message.unfound'));
             }
-            $company->managers()->sync([]);
             $company->delete();
 
             return $this->sendResponse($id,trans('message.deletable'));

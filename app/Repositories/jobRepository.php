@@ -23,6 +23,9 @@ class JobRepository extends AppBaseRepository
         'post_start_date'    => '>=',
         'post_end_date'      => '<=',
         'salary'             => 'like',
+        'education'          => 'like',
+        'language'           => 'like',
+        'language_level'     => 'like',
         'is_active'
     ];
 

@@ -15,9 +15,10 @@ class CandidateRepository extends BaseRepository
     protected $fieldSearchable = [
         'id',
         'final_academic_school',
+        'education',
+        'language',
+        'language_level',
         'graduated_at',
-        'toeic',
-        'toefl',
         'user.birthday',
         'user.gender',
         'user.name' => 'like',
@@ -25,7 +26,6 @@ class CandidateRepository extends BaseRepository
         'user.last_name' => 'like',
         'user.email' => 'like',
         'prefectures.prefecture_id',
-        'salaries.salary_id',
     ];
 
     /**

@@ -17,17 +17,7 @@
       <form-group :label=" $t('applicant.end') ">
         <date-picker class="col-sm-6" v-model="searchParams.post_end_date" format="YYYY-MM-DD" locale="ja"></date-picker>
       </form-group>
-      
-      <form-group :label=" $t('applicant.entries.title') ">
-        <label for="checkbox" style="font-weight: normal; cursor: pointer;">
-          <input id="checkbox" type="checkbox" name="check" value="checked" v-model="searchJobsHaveEntriesOnly" /> {{ $t("applicant.entries.button") }}
-        </label>
-      </form-group>
-
-      <form-group :label=" $t('job_list.salary') ">
-        <input class="form-control" id="input-applicant_name" type="text" v-model="searchParams.salary"/>
-      </form-group>
-
+    
     </validation-form>
     <div class="text-center">
       <button type="button" class="btn btn-primary" @click="search()"> {{ $t("form_action.search") }} </button>
@@ -44,7 +34,6 @@
     <th data-sort-field="company_name" style="width: 30%">{{ getDisplayName('company_name') }}</th>
     <th style="width: 15%">{{ $t("applicant.posting") }}</th>
     <th data-sort-field="applicants_count" style="width: 10%">{{ $t("applicant.count") }}</th>
-    <th data-sort-field="views" style="width: 6%">{{ $t("form_action.search") }}</th>
     <th style="width: 13%"></th>
     <template slot="body" scope="props">
       <tr>
@@ -53,7 +42,6 @@
         <td style="width: 30%"> {{ props.item.company_name }} </td>
         <td style="width: 15%"> {{ props.item.post_start_date | date }} to {{ props.item.post_start_date | date}}</td>
         <td style="width: 10%"> {{ props.item.applicants_count | number }} / {{ props.item.max_applicant | number }}</td>
-        <td style="width: 6%"> {{ props.item.views | number }} </td>
 
         <td @click="showApplicant(props.item.id)" style="width: 13%">
           <button type="button" class="btn btn-default btn-sm">
@@ -122,7 +110,6 @@ export default {
     },
 
     buildSearchQuery() {
-      this.searchParams['categoryLevel3s.category_level3_id'] = this.category_level_2;
       if(this.searchJobsHaveEntriesOnly) {
         this.searchParams['applicants.COUNT()'] = 1;
       }

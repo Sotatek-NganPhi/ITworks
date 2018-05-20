@@ -105,10 +105,7 @@ class CandidateAPIController extends AppBaseController
 
         $result = $candidate->toArray();
 
-        $result['salaries'] = $this->getRelationIds($candidate, 'salary');
         $result['prefectures'] = $this->getRelationIds($candidate, 'prefecture');
-        $result['workingDays'] = $this->getRelationIds($candidate, 'working_day');
-        $result['workingHours'] = $this->getRelationIds($candidate, 'working_hour');
         $result['certificates'] = $this->getRelationIds($candidate, 'certificate');
         $result['certificateGroups'] = $this->getRelationIds($candidate, 'certificate');
         return $this->sendResponse($result, trans('message.retrieve'));

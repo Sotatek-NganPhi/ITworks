@@ -19,9 +19,6 @@ class JobsSeeder extends Seeder
         $faker = Faker::create();
         DB::table('job_counters')->truncate();
         DB::table('job_prefecture')->truncate();
-        DB::table('job_salary')->truncate();
-        DB::table('job_working_day')->truncate();
-        DB::table('job_working_hour')->truncate();
         DB::table('jobs')->truncate();
         DB::table('companies')->truncate();
 
@@ -35,14 +32,8 @@ class JobsSeeder extends Seeder
         $jobCounters = [];
         $jobSituations = [];
         $jobPrefectures = [];
-        $jobSalaries = [];
-        $jobWorkingDays = [];
-        $jobWorkingHours = [];
-
+    
         $prefectureIds = App\Models\Prefecture::getAll()->pluck('id')->toArray();
-        $salaryIds = App\Models\Salary::getAll()->pluck('id')->toArray();
-        $workingDayIds = App\Models\WorkingDay::getAll()->pluck('id')->toArray();
-        $workingHourIds = App\Models\WorkingHour::getAll()->pluck('id')->toArray();
 
         $companyId = 0;
         $jobId = 0;
@@ -79,10 +70,12 @@ class JobsSeeder extends Seeder
                     'salary'                => $faker->paragraph,
                     'application_condition' => $faker->sentence,
                     'message'               => $faker->sentence,
+                    'education'             => $faker->sentence,
+                    'language'              => $faker->sentence,
+                    'language_level'        => $faker->sentence,
                     'main_image'            => $faker->imageUrl(640, 240),
                     'main_caption'          => $faker->sentence,
                     'email_receive_applicant' => $faker->email,
-                    'remarks'               => $faker->sentence,
                     'created_at'            => $faker->dateTime(),
                     'updated_at'            => $faker->dateTime(),
                 ];
@@ -104,29 +97,6 @@ class JobsSeeder extends Seeder
                 ];
             }
 
-            $sampleIds = $faker->randomElements($salaryIds, rand(2, 5));
-            foreach ($sampleIds as $key => $value) {
-                $jobSalaries[] = [
-                    'job_id'    => $jobId,
-                    'salary_id' => $value,
-                ];
-            }
-
-            $sampleIds = $faker->randomElements($workingDayIds, rand(2, min(5, count($workingDayIds))));
-            foreach ($sampleIds as $key => $value) {
-                $jobWorkingDays[] = [
-                    'job_id'            => $jobId,
-                    'working_day_id'    => $value,
-                ];
-            }
-
-            $sampleIds = $faker->randomElements($workingHourIds, rand(2, min(5, count($workingHourIds))));
-            foreach ($sampleIds as $key => $value) {
-                $jobWorkingHours[] = [
-                    'job_id'            => $jobId,
-                    'working_hour_id'   => $value,
-                ];
-            }
         }
 
         printf("    Inserting companies...\n");
@@ -148,21 +118,6 @@ class JobsSeeder extends Seeder
         printf("    Inserting job_prefecture...\n");
         foreach (array_chunk($jobPrefectures, 500) as $data){
             DB::table("job_prefecture")->insert($data);
-        }
-
-        printf("    Inserting job_salary...\n");
-        foreach (array_chunk($jobSalaries, 500) as $data){
-            DB::table("job_salary")->insert($data);
-        }
-
-        printf("    Inserting job_working_day...\n");
-        foreach (array_chunk($jobWorkingDays, 500) as $data){
-            DB::table("job_working_day")->insert($data);
-        }
-
-        printf("    Inserting job_working_hour...\n");
-        foreach (array_chunk($jobWorkingHours, 500) as $data){
-            DB::table("job_working_hour")->insert($data);
         }
     }
 }

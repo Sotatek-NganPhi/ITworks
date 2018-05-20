@@ -43,32 +43,18 @@
                 <input class="form-control" type="text" v-model="searchParams.email"/>
             </form-group>
 
-            <form-group :label=" $t('applicant.education_id') ">
-                <select v-model="searchParams.education_id" class="form-control">
-                    <option value="">---</option>
-                    <option :value="item.id" v-for="item in masterdata.educations" :key="item.id">
-                        {{item.name}}
-                    </option>
-                </select>
+            <form-group :label=" $t('applicant.education') ">
+                <input class="form-control" type="text" v-model="searchParams.education"/>
             </form-group>
 
-            <form-group :label=" $t('applicant.language_conversation_level_id') ">
-                <select v-model="searchParams.language_conversation_level_id" class="form-control">
-                    <option value="">---</option>
-                    <option :value="item.id" v-for="item in masterdata.language_conversation_levels" :key="item.id">
-                        {{item.description}}
-                    </option>
-                </select>
+            <form-group :label=" $t('applicant.language') ">
+                <input class="form-control" type="text" v-model="searchParams.language"/>
             </form-group>
 
-            <form-group :label=" $t('applicant.language_experience_id') ">
-                <select v-model="searchParams.language_experience_id" class="form-control">
-                    <option value="">---</option>
-                    <option :value="item.id" v-for="item in masterdata.language_experiences" :key="item.id">
-                        {{item.description}}
-                    </option>
-                </select>
+            <form-group :label=" $t('applicant.language_level') ">
+                <input class="form-control" type="text" v-model="searchParams.language_level"/>
             </form-group>
+
 
         </validation-form>
         <div class="text-center">
@@ -127,10 +113,9 @@
     first_name: '',
     last_name: '',
     phone_number: '',
-    current_situation_id: '',
-    education_id: '',
-    language_conversation_level_id: '',
-    language_experience_id: '',
+    education: '',
+    language_level: '',
+    language: '',
   }
 
   export default {
@@ -190,8 +175,9 @@
           'phone_number': this.searchParams.phone_number,
           'email': this.searchParams.email,
           'address': this.searchParams.address,
-          'language_conversation_level_id': this.searchParams.language_conversation_level_id,
-          'language_experience_id': this.searchParams.language_experience_id,
+          'education': this.searchParams.education,
+          'language': this.searchParams.language,
+          'language_level': this.searchParams.language_level,
         }
         const query = new QueryBuilder(searchParams);
         if (this.ageFrom !== '') {

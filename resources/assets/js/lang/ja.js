@@ -154,16 +154,16 @@ export default {
     'address': 'Địa chỉ',
     'phone_number': 'Số điện thoại',
     'mail': 'Email',
-    'education_id': 'Education',
-    'language_conversation_level_id': 'Kỹ năng ngôn ngữ',
-    'language_experience_id': 'Kỹ năng giao tiếp',
+    'education': 'Trình độ học vấn',
+    'language_level': 'Trình độ ngoại ngữ',
+    'language': 'Ngoại ngữ',
     'age': 'Tuổi',
     'company_name': 'Tên công ty',
     'male': 'Nam',
     'female':'Nữ',
     'birthday':'Ngày sinh',
     'prefecture':'Tỉnh',
-    'address':'Street Address',
+    'address':'Địa chỉ',
     'mail':'Email',
     'Phone':'Số điện thoại',
     'applicants':'Applicant',
@@ -219,6 +219,12 @@ export default {
   'announcement_list' : {
     'search_title' :'Announcement Search',
     'list_title' : 'Announcement List'
+  },
+  'special_promotion': {
+    'region' : 'Khu vực',
+  },
+  'campaign' : {
+    'content' : 'Nội dung',
   },
   'job_edit' : {
     'salary' : 'Lương',

@@ -124,8 +124,6 @@ class JobAPIController extends AppBaseController
         // TODO: refactor this using BaseRepository?
         $result = $job->toArray();
         $result['company'] = $job->company()->value('id');
-        $result['salaries'] = $job->salaries()->pluck('salary_id');
-        $result['prefectures'] = $job->prefectures()->pluck('prefecture_id');
 
         return $this->sendResponse($result, trans('message.retrieve'));
     }
@@ -176,12 +174,7 @@ class JobAPIController extends AppBaseController
         }
         $job->counters()->delete();
         $job->prefectures()->delete();
-        $job->routes()->delete();
-        $job->salaries()->delete();
-        $job->workingDays()->delete();
-        $job->workingHours()->delete();
         $job->applicants()->delete();
-        $job->specialPromotions()->delete();
         $job->delete();
 
         return $this->sendResponse($id, trans('message.deletable'));

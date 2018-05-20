@@ -2,11 +2,6 @@
   <div>
     <validation-form ref="candidateForm" style="margin-bottom: 70px">
       <!-- BASIC INFORMATION - START -->
-      <div>
-        <span class="glyphicon glyphicon-triangle-bottom"></span>
-        <span>{{$t('candidate_list.basic_info')}}</span>
-      </div>
-
       <form-group :label="$t('common_field.id')">
         <input class="form-control" id="input-id" type="text" v-model="record.id" disabled/>
       </form-group>
@@ -24,7 +19,7 @@
       </form-group>
 
       <form-group :label="$t('common_field.phone_number')" :is-required="isFieldRequired('user.phone_number')">
-        <phone-input v-model="record.user.phone_number"></phone-input>
+        <input data-vv-name="user.phone_number" class="form-control" type="text" v-model="record.user.phone_number"></input>
       </form-group>
 
       <form-group :label="$t('common_field.email')">
@@ -39,22 +34,12 @@
         <input class="form-control" type="text" v-model="record.user.created_at" locale="ja" disabled/>
       </form-group>
 
-      <form-group :label="$t('candidate.mail_receivable')">
-        <radio-group
-          inline="true"
-          v-model="record.user.mail_receivable"
-          :options="mailReceivableOptions"/>
-      </form-group>
       <!-- BASIC INFORMATION - END -->
 
       <!-- ADDITIONAL INFORMATION - START -->
-      <div>
-        <span class="glyphicon glyphicon-triangle-bottom"></span>
-        <span>{{$t('candidate_list.additional_info')}}</span>
-      </div>
 
-      <form-group :label="getDisplayName('education_id')" :is-required="isFieldRequired('education_id')">
-        <radio-group data-vv-name="education_id" inline="true" label="name" v-model="record.education_id" :options="masterdata.educations"/>
+      <form-group :label="getDisplayName('education')" :is-required="isFieldRequired('education')">
+        <input data-vv-name="education" class="form-control" type="text" v-model="record.education"/>
       </form-group>
 
       <form-group :label="getDisplayName('final_academic_school')" :is-required="isFieldRequired('final_academic_school')">
@@ -65,21 +50,18 @@
         <date-picker data-vv-name="graduated_at" v-model="record.graduated_at" format="YYYY-MM-DD"></date-picker>
       </form-group>
 
+      <form-group :label="getDisplayName('language')" :is-required="isFieldRequired('language')">
+        <input data-vv-name="language" class="form-control" type="text" v-model="record.language"/>
+      </form-group>
+
+      <form-group :label="getDisplayName('language_level')" :is-required="isFieldRequired('language_level')">
+        <input data-vv-name="language_level" class="form-control" type="text" v-model="record.language_level"/>
+      </form-group>
+
+
+
       <!-- ADDITIONAL INFORMATION - END -->
       <!-- EXPECTATION - START -->
-      <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>{{$t('candidate_list.expect')}}</span></div>
-
-      <form-group :label="$t('candidate.salary')" :is-required="isFieldRequired('salaries')">
-        <checkbox-group data-vv-name="salaries" inline="true" label="description" v-model="record.salaries" :options="masterdata.salaries"/>
-      </form-group>
-
-      <form-group :label="$t('job_edit.working_days')" :is-required="isFieldRequired('working_days')">
-        <checkbox-group data-vv-name="workingDays" inline="true" label="name" v-model="record.workingDays" :options="masterdata.working_days"/>
-      </form-group>
-
-      <form-group :label="$t('job_edit.working_hours')" :is-required="isFieldRequired('working_hours')">
-        <checkbox-group data-vv-name="workingHours" inline="true" label="name" v-model="record.workingHours" :options="masterdata.working_hours"/>
-      </form-group>
 
       <form-group :label="getDisplayName('prefectures')" :is-required="isFieldRequired('prefectures')">
         <multiselect
@@ -97,22 +79,6 @@
       <!-- EXPECTATION - END -->
 
       <!-- OTHERS - START -->
-      <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>{{$t('candidate_list.other')}}</span></div>
-
-      <form-group :label="getDisplayName('toeic')" :is-required="isFieldRequired('toeic')">
-        <input data-vv-name="toeic" class="form-control" type="number" v-model="record.toeic"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('toefl')" :is-required="isFieldRequired('toefl')">
-        <input data-vv-name="toefl" class="form-control" type="number" v-model="record.toefl"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('language_conversation_level_id')" :is-required="isFieldRequired('language_conversation_level_id')">
-        <radio-group  data-vv-name="language_conversation_level_id" inline="true" label="description" v-model="record.language_conversation_level_id" :options="masterdata.language_conversation_levels"/>
-      </form-group>
-
-      <form-group :label="getDisplayName('language_experience_id')" :is-required="isFieldRequired('language_experience_id')">    <radio-group  data-vv-name="language_experience_id" inline="true" label="description" v-model="record.language_experience_id" :options="masterdata.language_experiences"/>    
-     </form-group>
 
       <form-group :label="getDisplayName('certificate')" :is-required="isFieldRequired('certificate')">
         <multiselect
