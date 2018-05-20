@@ -21,11 +21,9 @@ class Candidate extends Model
         'user_id',
         'final_academic_school',
         'graduated_at',
-        'education_id',
-        'toeic',
-        'toefl',
-        'language_experience_id',
-        'language_conversation_level_id',
+        'education',
+        'language',
+        'language_level',
     ];
 
     /**
@@ -35,13 +33,11 @@ class Candidate extends Model
      */
     protected $casts = [
         'user_id' => 'integer',
-        'education_id' => 'integer',
-        'final_academic_school' => 'stringo',
+        'education' => 'string',
+        'final_academic_school' => 'string',
         'graduated_at' => 'datetime',
-        'toeic' => 'integer',
-        'toefl' => 'integer',
-        'language_experience_id' => 'integer',
-        'language_conversation_level_id' => 'integer',
+        'language' => 'string',
+        'language_level' => 'string',
     ];
 
     /**
@@ -52,19 +48,10 @@ class Candidate extends Model
     public static $rules = [
         'user_id' => 'exists:users,id',
         'graduated_at' => 'nullable|date_format:Y-m-d',
-        'toeic' => 'nullable|numeric|min:0',
-        'toefl' => 'nullable|numeric|min:0',
-        'language_experience_id' => 'exists:language_experiences,id',
-        'language_conversation_level_id' => 'nullable|exists:language_conversation_levels,id',
-        'education_id' => 'required',
-        'working_days.*' => 'exists:working_days,id',
-        'working_hours.*' => 'exists:working_hours,id',
+        'education' => 'required',
+        'prefectures' => 'required|array|exists:prefectures,id',
         'certificates.*' => 'exists:certificates,id',
         'certificate_groups.*' => 'exists:certificate_groups,id',
-        'prefectures' => 'required|array|exists:prefectures,id',
-        'salaries.*' => 'exists:salaries,id',
-        'workingDays.*' => 'exists:working_days,id',
-        'workingHours.*' => 'exists:working_hours,id',
         'user.email' => 'sometimes|required|email',
         'user.gender' => 'sometimes|required|in:male,female',
         'user.birthday' => 'sometimes|required|date',
@@ -83,24 +70,9 @@ class Candidate extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function salaries()
-    {
-        return $this->belongsToMany(Salary::class);
-    }
-
     public function prefectures()
     {
         return $this->belongsToMany(Prefecture::class);
-    }
-
-    public function workingDays()
-    {
-        return $this->belongsToMany(WorkingDay::class);
-    }
-
-    public function workingHours()
-    {
-        return $this->belongsToMany(WorkingHour::class);
     }
 
     public function certificates()

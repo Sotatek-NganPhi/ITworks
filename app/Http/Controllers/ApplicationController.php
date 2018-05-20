@@ -6,19 +6,13 @@ use App\Consts;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\ApplyJobRequest;
 use App\Mail\ApplicationToEmployer;
-use App\Models\Certificate;
-use App\Models\CertificateGroup;
-use App\Models\Education;
 use App\Models\Job;
-use App\Models\LanguageConversationLevel;
-use App\Models\LanguageExperience;
 use App\Models\Prefecture;
 use App\Models\Region;
-use App\Models\Salary;
-use App\Models\WorkingDay;
-use App\Models\WorkingHour;
 use Illuminate\Http\Request;
 use App\Models\Applicant;
+use App\Models\Certificate;
+use App\Models\CertificateGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -64,13 +58,11 @@ class ApplicationController extends AppBaseController
             $applicant->phone_number = $inputs['phone_number'];
             $applicant->gender = $inputs['gender'];
             $applicant->birthday = $inputs['birthday'];
-            $applicant->education_id = $inputs['education_id'];
+            $applicant->education = $inputs['education'];
             $applicant->final_academic_school = $inputs['final_academic_school'];
             $applicant->graduated_at = $inputs['graduated_at'];
-            $applicant->toeic = $inputs['toeic'];
-            $applicant->toefl = $inputs['toefl'];
-            $applicant->language_experience_id = $inputs['language_experience_id'];
-            $applicant->language_conversation_level_id = $inputs['language_conversation_level_id'];
+            $applicant->language = $inputs['language'];
+            $applicant->language_level = $inputs['language_level'];
             $applicant->status = $inputs['status'];
             $applicant->save();
 
@@ -115,13 +107,7 @@ class ApplicationController extends AppBaseController
             'submitted'                  => $submitted,
             'success'                    => $success,
             'prefectures'                => Prefecture::getAll(),
-            'educations'                 => Education::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
-            'languageExperiences'        => LanguageExperience::getAll(),
-            'languageConversationLevels' => LanguageConversationLevel::getAll(),
-            'salaries'                   => Salary::getAll(),
-            'workingDays'                => WorkingDay::getAll(),
-            'workingHours'               => WorkingHour::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
         ]);

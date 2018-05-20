@@ -88,8 +88,8 @@
                                            value="{{ isset($inputs['phone_number']) ? $inputs['phone_number'] : ''}}"></input>
                                     <input hidden name="graduated_at"
                                            value="{{ isset($inputs['graduated_at']) ? $inputs['graduated_at'] : ''}}">
-                                    <input hidden name="education_id"
-                                           value="{{ isset($inputs['education_id']) ? $inputs['education_id'] : ''}}">
+                                    <input hidden name="education"
+                                           value="{{ isset($inputs['education']) ? $inputs['education'] : ''}}">
                                     <input hidden name="final_academic_school"
                                            value="{{ isset($inputs['final_academic_school']) ? $inputs['final_academic_school'] : ''}}">
 
@@ -100,14 +100,10 @@
                                         @endforeach
                                     @endif
 
-                                    <input hidden name="language_experience_id"
-                                           value="{{ isset($inputs['language_experience_id']) ? $inputs['language_experience_id'] : ''}}">
-                                    <input hidden name="toeic"
-                                           value="{{ isset($inputs['toeic']) ? $inputs['toeic'] : ''}}">
-                                    <input hidden name="toefl"
-                                           value="{{ isset($inputs['toefl']) ? $inputs['toefl'] : ''}}">
-                                    <input hidden name="language_conversation_level_id"
-                                           value="{{ isset($inputs['language_conversation_level_id']) ? $inputs['language_conversation_level_id'] : ''}}">
+                                    <input hidden name="language"
+                                           value="{{ isset($inputs['language']) ? $inputs['language'] : ''}}">
+                                    <input hidden name="language_level"
+                                           value="{{ isset($inputs['language_level']) ? $inputs['language_level'] : ''}}">
                                 @endif
 
                                 <div>
@@ -154,7 +150,7 @@
                                         <tr>
                                             <th class="required">Trình độ học vấn</th>
                                             <td>
-                                                {{ isset($inputs['education_id']) ? \App\Models\Education::findOneById($inputs['education_id'])->name : '' }}
+                                                {{ isset($inputs['education']) ? $inputs['education'] : '' }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -170,27 +166,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th class="norequired">Kinh nghiệm làm việc</th>
+                                            <th class="norequired">Ngoại ngữ</th>
                                             <td>
-                                                {{ isset($inputs['language_experience_id']) ? \App\Models\LanguageExperience::findOneById($inputs['language_experience_id'])->description: '' }}
+                                                {{ isset($inputs['language']) ? $inputs['language'] : '' }}
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th class="norequired">TOEIC</th>
+                                            <th class="norequired">Trình độ ngoại ngữ</th>
                                             <td>
-                                                {{ isset($inputs['toeic']) ? $inputs['toeic'] : '' }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th class="norequired">TOEFL</th>
-                                            <td>
-                                                {{ isset($inputs['toefl']) ? $inputs['toefl'] : '' }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th class="norequired">Kỹ năng giao tiếp</th>
-                                            <td>
-                                                {{ isset($inputs['language_conversation_level_id']) ? \App\Models\LanguageConversationLevel::findOneById($inputs['language_conversation_level_id'])->description: '' }}
+                                                {{ isset($inputs['language_level']) ? $inputs['language_level'] : '' }}
                                             </td>
                                         </tr>
                                     </table>
@@ -278,15 +262,9 @@
                                     <tr>
                                         <th class="required">Trình độ học vấn</th>
                                         <td>
-                                            <select class="form-control" name="education_id">
-                                                <option value="">---</option>
-                                                @foreach($educations as $education)
-                                                    <option value="{{$education->id}}"
-                                                            {{ old('education_id') == $education->id ? 'selected' : '' }}
-                                                    >{{$education->name}}</option>
-                                                @endforeach
-                                            </select>
-
+                                            <input name="education"
+                                                   value="{{ old('education') }}"
+                                                   size="40"></input>
                                         </td>
                                     </tr>
                                     <tr>
@@ -307,49 +285,20 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <h4>Kỹ năng ngôn ngữ</h4>
                                 <table>
                                     <tbody>
                                     <tr>
-                                        <th class="norequired">Kinh nghiệm làm việc</th>
+                                        <th class="norequired">Ngoại ngữ</th>
                                         <td>
-                                            <select class="form-control" name="language_experience_id">
-                                                <option value="">---</option>
-                                                @foreach($languageExperiences as $languageExperience)
-                                                    <option value="{{$languageExperience->id}}"
-                                                            {{ old('language_experience_id') == $languageExperience->id ? 'selected' : '' }}
-                                                    >{{$languageExperience->description}}</option>
-                                                @endforeach
-                                            </select>
+                                            <input class="form-control" name="language"
+                                                   value="{{ old('language') }}" size="40">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th class="norequired">TOEIC</th>
+                                        <th class="norequired">Trình độ ngoại ngữ</th>
                                         <td>
-                                            <input class="form-control" type="text" name="toeic"
-                                                   value="{{ old('toeic') }}"
-                                                   size="40" maxlength="6">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="norequired">TOEFL</th>
-                                        <td>
-                                            <input class="form-control" type="text" name="toefl"
-                                                   value="{{ old('toefl') }}"
-                                                   size="40" maxlength="6">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="norequired">Kỹ năng giao tiếp</th>
-                                        <td>
-                                            <select class="form-control" name="language_conversation_level_id">
-                                                <option value="">---</option>
-                                                @foreach($languageConversationLevels as $languageConversationLevel)
-                                                    <option value="{{$languageConversationLevel->id}}"
-                                                            {{ old('language_conversation_level_id') == $languageConversationLevel->id ? 'selected' : '' }}
-                                                    >{{$languageConversationLevel->description}}</option>
-                                                @endforeach
-                                            </select>
+                                            <input class="form-control" name="language_level"
+                                                   value="{{ old('language_level') }}" size="40">
                                         </td>
                                     </tr>
                                     </tbody>

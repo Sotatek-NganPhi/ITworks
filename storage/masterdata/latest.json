@@ -171,36 +171,6 @@
             "input_type": "1"
         }
     ],
-    "educations": [
-        {
-            "id": "1",
-            "name": "Ho\u00e0n th\u00e0nh ch\u01b0\u01a1ng tr\u00ecnh ti\u1ebfn s\u1ef9"
-        },
-        {
-            "id": "2",
-            "name": "Ho\u00e0n th\u00e0nh ch\u01b0\u01a1ng tr\u00ecnh th\u1ea1c s\u1ef9"
-        },
-        {
-            "id": "3",
-            "name": "B\u1eb1ng k\u1ef9 s\u01b0"
-        },
-        {
-            "id": "4",
-            "name": "B\u1eb1ng c\u1eed nh\u00e2n"
-        },
-        {
-            "id": "5",
-            "name": "T\u1ed1t nghi\u1ec7p cao \u0111\u1eb3ng"
-        },
-        {
-            "id": "6",
-            "name": "T\u1ed1t nghi\u1ec7p trung c\u1ea5p"
-        },
-        {
-            "id": "7",
-            "name": "Kh\u00e1c"
-        }
-    ],
     "field_settings": [
         {
             "table_name": "jobs",
@@ -476,48 +446,6 @@
             "is_active": "1"
         },
         {
-            "table_name": "salaries",
-            "field_name": "salary_name",
-            "display_name": "Item Name",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "salaries",
-            "field_name": "salary_status",
-            "display_name": "Status",
-            "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "working_days",
-            "field_name": "name",
-            "display_name": "Item Name",
-            "is_required": "1",
-            "is_active": "0"
-        },
-        {
-            "table_name": "working_days",
-            "field_name": "status",
-            "display_name": "Status",
-            "is_required": "1",
-            "is_active": "0"
-        },
-        {
-            "table_name": "working_hours",
-            "field_name": "status",
-            "display_name": "Status",
-            "is_required": "1",
-            "is_active": "0"
-        },
-        {
-            "table_name": "working_hours",
-            "field_name": "name",
-            "display_name": "Item Name",
-            "is_required": "1",
-            "is_active": "0"
-        },
-        {
             "table_name": "announcements",
             "field_name": "id",
             "display_name": "ID",
@@ -652,7 +580,7 @@
         },
         {
             "table_name": "candidates",
-            "field_name": "education_id",
+            "field_name": "education",
             "display_name": "Tr\u00ecnh \u0111\u1ed9 h\u1ecdc v\u1ea5n",
             "is_required": "1",
             "is_active": "1"
@@ -673,58 +601,23 @@
         },
         {
             "table_name": "candidates",
-            "field_name": "toeic",
-            "display_name": "TOEIC",
+            "field_name": "language",
+            "display_name": "Ngo\u1ea1i ng\u1eef",
             "is_required": "0",
             "is_active": "1"
         },
         {
             "table_name": "candidates",
-            "field_name": "toefl",
-            "display_name": "TOEFL",
-            "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "candidates",
-            "field_name": "language_experience_id",
-            "display_name": "Kinh nghi\u1ec7m l\u00e0m vi\u1ec7c",
-            "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "candidates",
-            "field_name": "language_conversation_level_id",
-            "display_name": "K\u1ef9 n\u0103ng giao ti\u1ebfp",
+            "field_name": "language_level",
+            "display_name": "Tr\u00ecnh \u0111\u1ed9 ngo\u1ea1i ng\u1eef",
             "is_required": "0",
             "is_active": "1"
         },
         {
             "table_name": "candidates",
             "field_name": "prefectures",
-            "display_name": "Prefecture",
+            "display_name": "T\u1ec9nh",
             "is_required": "1",
-            "is_active": "1"
-        },
-        {
-            "table_name": "candidates",
-            "field_name": "salaries",
-            "display_name": "Salaries",
-            "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "candidates",
-            "field_name": "working_days",
-            "display_name": "Working Days",
-            "is_required": "0",
-            "is_active": "1"
-        },
-        {
-            "table_name": "candidates",
-            "field_name": "working_hours",
-            "display_name": "Working Hours",
-            "is_required": "0",
             "is_active": "1"
         },
         {
@@ -763,36 +656,321 @@
             "is_active": "1"
         }
     ],
-    "language_conversation_levels": [
+    "prefectures": [
         {
             "id": "1",
-            "description": "Ch\u01b0a bi\u1ebft giao ti\u1ebfp"
+            "region_id": "1",
+            "name": "H\u00e0 N\u1ed9i"
         },
         {
             "id": "2",
-            "description": "Giao ti\u1ebfp \u0111\u01b0\u1ee3c"
+            "region_id": "2",
+            "name": "TP. H\u1ed3 Ch\u00ed Minh"
         },
         {
             "id": "3",
-            "description": "Th\u00e0nh th\u1ea1o"
-        }
-    ],
-    "language_experiences": [
-        {
-            "id": "1",
-            "description": "\u0110\u1ecdc hi\u1ec3u t\u00e0i li\u1ec7u"
-        },
-        {
-            "id": "2",
-            "description": "Giao ti\u1ebfp"
-        },
-        {
-            "id": "3",
-            "description": "Phi\u00ean d\u1ecbch vi\u00ean"
+            "region_id": "3",
+            "name": "L\u00e0o Cai"
         },
         {
             "id": "4",
-            "description": "\u0110\u00e0m ph\u00e1n"
+            "region_id": "3",
+            "name": "Y\u00ean B\u00e1i"
+        },
+        {
+            "id": "5",
+            "region_id": "3",
+            "name": "\u0110i\u1ec7n Bi\u00ean"
+        },
+        {
+            "id": "6",
+            "region_id": "3",
+            "name": "H\u00f2a B\u00ecnh"
+        },
+        {
+            "id": "7",
+            "region_id": "3",
+            "name": "Lai Ch\u00e2u"
+        },
+        {
+            "id": "8",
+            "region_id": "3",
+            "name": "S\u01a1n La"
+        },
+        {
+            "id": "9",
+            "region_id": "3",
+            "name": "H\u00e0 Giang"
+        },
+        {
+            "id": "10",
+            "region_id": "3",
+            "name": "Cao B\u1eb1ng"
+        },
+        {
+            "id": "11",
+            "region_id": "3",
+            "name": "B\u1eafc C\u1ea1n"
+        },
+        {
+            "id": "12",
+            "region_id": "3",
+            "name": "L\u1ea1ng S\u01a1n"
+        },
+        {
+            "id": "13",
+            "region_id": "3",
+            "name": "Tuy\u00ean Quang"
+        },
+        {
+            "id": "14",
+            "region_id": "3",
+            "name": "Th\u00e1i Nguy\u00ean"
+        },
+        {
+            "id": "15",
+            "region_id": "3",
+            "name": "Ph\u00fa Th\u1ecd"
+        },
+        {
+            "id": "16",
+            "region_id": "3",
+            "name": "B\u1eafc Giang"
+        },
+        {
+            "id": "17",
+            "region_id": "3",
+            "name": "Qu\u1ea3ng Ninh"
+        },
+        {
+            "id": "18",
+            "region_id": "3",
+            "name": "B\u1eafc Ninh"
+        },
+        {
+            "id": "19",
+            "region_id": "3",
+            "name": "H\u00e0 Nam"
+        },
+        {
+            "id": "20",
+            "region_id": "3",
+            "name": "H\u1ea3i D\u01b0\u01a1ng"
+        },
+        {
+            "id": "21",
+            "region_id": "3",
+            "name": "H\u1ea3i Ph\u00f2ng"
+        },
+        {
+            "id": "22",
+            "region_id": "3",
+            "name": "H\u01b0ng Y\u00ean"
+        },
+        {
+            "id": "23",
+            "region_id": "3",
+            "name": "Nam \u0110\u1ecbnh"
+        },
+        {
+            "id": "24",
+            "region_id": "3",
+            "name": "Th\u00e1i B\u00ecnh"
+        },
+        {
+            "id": "25",
+            "region_id": "3",
+            "name": "V\u0129nh Ph\u00fac"
+        },
+        {
+            "id": "26",
+            "region_id": "3",
+            "name": "Ninh B\u00ecnh"
+        },
+        {
+            "id": "27",
+            "region_id": "4",
+            "name": "Thanh H\u00f3a"
+        },
+        {
+            "id": "28",
+            "region_id": "4",
+            "name": "Ngh\u1ec7 An"
+        },
+        {
+            "id": "29",
+            "region_id": "4",
+            "name": "H\u00e0 T\u0129nh"
+        },
+        {
+            "id": "30",
+            "region_id": "4",
+            "name": "Qu\u1ea3ng B\u00ecnh"
+        },
+        {
+            "id": "31",
+            "region_id": "4",
+            "name": "Qu\u1ea3ng Tr\u1ecb "
+        },
+        {
+            "id": "32",
+            "region_id": "4",
+            "name": "Th\u1eeba Thi\u00ean Hu\u1ebf"
+        },
+        {
+            "id": "33",
+            "region_id": "4",
+            "name": "\u0110\u00e0 N\u1eb5ng"
+        },
+        {
+            "id": "34",
+            "region_id": "4",
+            "name": "Qu\u1ea3ng Nam"
+        },
+        {
+            "id": "35",
+            "region_id": "4",
+            "name": "Qu\u1ea3ng Ng\u00e3i"
+        },
+        {
+            "id": "36",
+            "region_id": "4",
+            "name": "B\u00ecnh \u0110\u1ecbnh"
+        },
+        {
+            "id": "37",
+            "region_id": "4",
+            "name": "Ph\u00fa Y\u00ean"
+        },
+        {
+            "id": "38",
+            "region_id": "4",
+            "name": "Kh\u00e1nh H\u00f2a"
+        },
+        {
+            "id": "39",
+            "region_id": "4",
+            "name": "Ninh Thu\u1eadn"
+        },
+        {
+            "id": "40",
+            "region_id": "4",
+            "name": "B\u00ecnh Thu\u1eadn"
+        },
+        {
+            "id": "41",
+            "region_id": "4",
+            "name": "Kon Tum"
+        },
+        {
+            "id": "42",
+            "region_id": "4",
+            "name": "Gia Lai"
+        },
+        {
+            "id": "43",
+            "region_id": "4",
+            "name": "\u0110\u1eafc L\u1eafc"
+        },
+        {
+            "id": "44",
+            "region_id": "4",
+            "name": "\u0110\u1eafc N\u00f4ng"
+        },
+        {
+            "id": "45",
+            "region_id": "4",
+            "name": "L\u00e2m \u0110\u1ed3ng"
+        },
+        {
+            "id": "46",
+            "region_id": "5",
+            "name": "B\u00ecnh Ph\u01b0\u1edbc"
+        },
+        {
+            "id": "47",
+            "region_id": "5",
+            "name": "B\u00ecnh D\u01b0\u01a1ng"
+        },
+        {
+            "id": "48",
+            "region_id": "5",
+            "name": "\u0110\u1ed3ng Nai"
+        },
+        {
+            "id": "49",
+            "region_id": "5",
+            "name": "T\u00e2y Ninh"
+        },
+        {
+            "id": "50",
+            "region_id": "5",
+            "name": "B\u00e0 R\u1ecba V\u0169ng T\u00e0u"
+        },
+        {
+            "id": "51",
+            "region_id": "5",
+            "name": "Long An"
+        },
+        {
+            "id": "52",
+            "region_id": "5",
+            "name": "\u0110\u1ed3ng Th\u00e1p"
+        },
+        {
+            "id": "53",
+            "region_id": "5",
+            "name": "Ti\u1ec1n Giang"
+        },
+        {
+            "id": "54",
+            "region_id": "5",
+            "name": "An Giang"
+        },
+        {
+            "id": "55",
+            "region_id": "5",
+            "name": "B\u1ebfn Tre"
+        },
+        {
+            "id": "56",
+            "region_id": "5",
+            "name": "V\u0129nh Long"
+        },
+        {
+            "id": "57",
+            "region_id": "5",
+            "name": "Tr\u00e0 Vinh"
+        },
+        {
+            "id": "58",
+            "region_id": "5",
+            "name": "H\u1eadu Giang"
+        },
+        {
+            "id": "59",
+            "region_id": "5",
+            "name": "Ki\u00ean Giang"
+        },
+        {
+            "id": "60",
+            "region_id": "5",
+            "name": "S\u00f3c Tr\u0103ng"
+        },
+        {
+            "id": "61",
+            "region_id": "5",
+            "name": "B\u1ea1c Li\u00eau"
+        },
+        {
+            "id": "62",
+            "region_id": "5",
+            "name": "C\u00e0 Mau"
+        },
+        {
+            "id": "63",
+            "region_id": "5",
+            "name": "C\u1ea7n Th\u01a1"
         }
     ],
     "regions": [
@@ -825,89 +1003,6 @@
             "key": "miennam",
             "name": "Nam B\u1ed9",
             "display_order": "5"
-        }
-    ],
-    "salaries": [
-        {
-            "id": "1001",
-            "category": "Theo gi\u1edd",
-            "description": "<10.000\/gi\u1edd"
-        },
-        {
-            "id": "1002",
-            "category": "Theo gi\u1edd",
-            "description": "T\u1eeb 10.000 \u0111\u1ebfn 50.000\/gi\u1edd"
-        },
-        {
-            "id": "1003",
-            "category": "Theo gi\u1edd",
-            "description": ">50.000\/gi\u1edd"
-        },
-        {
-            "id": "2001",
-            "category": "Theo ng\u00e0y",
-            "description": "<200.000\/ng\u00e0y"
-        },
-        {
-            "id": "2002",
-            "category": "Theo ng\u00e0y",
-            "description": "T\u1eeb 200.000 \u0111\u1ebfn 500.000\/ng\u00e0y"
-        },
-        {
-            "id": "2003",
-            "category": "Theo ng\u00e0y",
-            "description": ">500.000\/ng\u00e0y"
-        },
-        {
-            "id": "3001",
-            "category": "Theo th\u00e1ng",
-            "description": "<5 tri\u1ec7u\/th\u00e1ng"
-        },
-        {
-            "id": "3002",
-            "category": "Theo th\u00e1ng",
-            "description": "T\u1eeb 5 \u0111\u1ebfn 10 tri\u1ec7u\/th\u00e1ng"
-        },
-        {
-            "id": "4001",
-            "category": "Theo th\u00e1ng",
-            "description": ">10 tri\u1ec7u\/th\u00e1ng"
-        }
-    ],
-    "working_days": [
-        {
-            "id": "1001",
-            "name": "C\u00f4ng vi\u1ec7c b\u00e1n th\u1eddi gian"
-        },
-        {
-            "id": "1002",
-            "name": "C\u00f4ng vi\u1ec7c to\u00e0n th\u1eddi gian"
-        },
-        {
-            "id": "1003",
-            "name": "Ch\u1ec9 l\u00e0m vi\u1ec7c v\u00e0o cu\u1ed1i tu\u1ea7n"
-        },
-        {
-            "id": "1004",
-            "name": "Ch\u1ec9 l\u00e0m vi\u1ec7c v\u00e0o c\u00e1c ng\u00e0y trong tu\u1ea7n"
-        }
-    ],
-    "working_hours": [
-        {
-            "id": "1001",
-            "name": "Trong v\u00f2ng 3 gi\u1edd"
-        },
-        {
-            "id": "1002",
-            "name": "3 gi\u1edd \u0111\u1ebfn 7 gi\u1edd"
-        },
-        {
-            "id": "1003",
-            "name": "8 gi\u1edd"
-        },
-        {
-            "id": "1004",
-            "name": "12 gi\u1edd"
         }
     ]
 }

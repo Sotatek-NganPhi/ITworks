@@ -7,20 +7,14 @@ use App\Events\CriteriaChangedEvent;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CandidateRequest;
 use App\Http\Requests\UpdateResumeInfoRequest;
-use App\Mail\RegisterCandidateSuccess;
-use App\Models\Candidate;
 use App\Models\Certificate;
 use App\Models\CertificateGroup;
+use App\Mail\RegisterCandidateSuccess;
+use App\Models\Candidate;
 use App\Models\Config;
-use App\Models\Education;
-use App\Models\LanguageConversationLevel;
-use App\Models\LanguageExperience;
 use App\Models\Prefecture;
 use App\Models\Region;
-use App\Models\Salary;
 use App\Models\Draft;
-use App\Models\WorkingDay;
-use App\Models\WorkingHour;
 use App\User;
 use DB;
 use Exception;
@@ -59,13 +53,11 @@ class CandidateController extends AppBaseController
         ]);
 
         Candidate::where('user_id', Auth::id())->update([
-            'education_id'                      => $inputs['education_id'],
+            'education'                      => $inputs['education'],
             'final_academic_school'             => $inputs['final_academic_school'],
             'graduated_at'                      => $inputs['graduated_at'],
-            'toeic'                             => $inputs['toeic'],
-            'toefl'                             => $inputs['toefl'],
-            'language_experience_id'            => $inputs['language_experience_id'],
-            'language_conversation_level_id'    => $inputs['language_conversation_level_id'],
+            'language'            => $inputs['language'],
+            'language_level'    => $inputs['language_level'],
         ]);
 
         $this->refreshCandidateDraft($request);
@@ -128,13 +120,7 @@ class CandidateController extends AppBaseController
 
         return view('auth.candidate', [
             'user'                       => $user,
-            'educations'                 => Education::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
-            'languageExperiences'        => LanguageExperience::getAll(),
-            'languageConversationLevels' => LanguageConversationLevel::getAll(),
-            'salaries'                   => Salary::getAll(),
-            'workingDays'                => WorkingDay::getAll(),
-            'workingHours'               => WorkingHour::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
             'configs'                    => $configs,
@@ -145,9 +131,6 @@ class CandidateController extends AppBaseController
     {
         $changes = [];
         $changes[] = $candidate->prefectures()->sync($request->get('prefectures', []));
-        $changes[] = $candidate->salaries()->sync($request->get('salaries', []));
-        $changes[] = $candidate->workingDays()->sync($request->get('working_days', []));
-        $changes[] = $candidate->workingHours()->sync($request->get('working_hours', []));
         $changes[] = $candidate->certificates()->sync($request->get('certificates', []));
 
         $changedRecords = collect($changes)->reduce(function ($carry, $change) {
@@ -201,9 +184,6 @@ class CandidateController extends AppBaseController
         } else {
             $relations = [
                 'prefectures'        => $candidate->prefectures->pluck('id')->toArray(),
-                'salaries'           => $candidate->salaries->pluck('id')->toArray(),
-                'working_days'       => $candidate->workingDays->pluck('id')->toArray(),
-                'working_hours'      => $candidate->workingHours->pluck('id')->toArray(),
                 'certificates'       => $candidate->certificates->pluck('id')->toArray(),
             ];
 
@@ -252,9 +232,6 @@ class CandidateController extends AppBaseController
 
             $candidate->user()->delete();
             $candidate->prefectures()->delete();
-            $candidate->workingDays()->delete();
-            $candidate->workingHours()->delete();
-            $candidate->salaries()->delete();
             $candidate->certificate()->delete();
             $candidate->delete();
             DB::commit();
@@ -293,15 +270,10 @@ class CandidateController extends AppBaseController
             'submitted'                  => $submitted,
             'success'                    => $success,
             'prefectures'                => Prefecture::getAll(),
-            'educations'                 => Education::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
-            'languageExperiences'        => LanguageExperience::getAll(),
-            'languageConversationLevels' => LanguageConversationLevel::getAll(),
-            'salaries'                   => Salary::getAll(),
-            'workingDays'                => WorkingDay::getAll(),
-            'workingHours'               => WorkingHour::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
+
         ]);
     }
 
@@ -315,9 +287,6 @@ class CandidateController extends AppBaseController
         } else {
             $candidateRelationTable = [
                 'prefectures',
-                'salaries',
-                'working_days',
-                'working_hours',
                 'certificates',
             ];
             $draft = Draft::where('user_id', Auth::id())->first();

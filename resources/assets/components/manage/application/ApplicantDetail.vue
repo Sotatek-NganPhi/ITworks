@@ -44,7 +44,7 @@
             <tr>
                 <th>Trình độ học vấn</th>
                 <td>
-                    {{ getOneField(masterdata.educations, 'id', record.education_id, 'name')}}
+                    {{ record.education}}
                 </td>
             </tr>
             <tr>
@@ -54,27 +54,15 @@
                 </td>
             </tr>
             <tr>
-                <th>Kinh nghiệm làm việc</th>
+                <th>Ngoại ngữ</th>
                 <td>
-                    {{ getOneField(masterdata.language_experiences, 'id', record.language_experience_id, 'description')}}
+                    {{ record.language }}
                 </td>
             </tr>
             <tr>
-                <th>TOEIC</th>
+                <th>Trình độ ngoại ngữ</th>
                 <td>
-                    {{ record.toeic }}
-                </td>
-            </tr>
-            <tr>
-                <th>TOEFL</th>
-                <td>
-                    {{ record.toefl }}
-                </td>
-            </tr>
-            <tr>
-                <th>Trình độ ngôn ngữ</th>
-                <td>
-                    {{ getOneField(masterdata.language_conversation_levels, 'id', record.language_conversation_level_id, 'description')}}
+                    {{ record.language_level }}
                 </td>
             </tr>
             </tbody>

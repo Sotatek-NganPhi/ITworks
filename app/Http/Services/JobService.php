@@ -171,18 +171,11 @@ class JobService
             ->whereIn('job_prefecture.prefecture_id', $prefectureIds)
             ->get();
 
-        $salaries = DB::table('job_salary')
-            ->select('job_id', 'salary_id')
-            ->whereIn('job_id', $jobIds)
-            ->get();
-
         $relatedInfo = [
             'prefectures' => $prefectures->groupBy('job_id')->toArray(),
-            'salaries' => $salaries->groupBy('job_id')->toArray(),
         ];
 
         $prefectures = MasterdataService::getOneTable('prefectures');
-        $salaries = MasterdataService::getOneTable('salaries');
 
         foreach ($jobs as $job) {
             $job->prefectures = [];
@@ -191,11 +184,6 @@ class JobService
             if (isset($relatedInfo['prefectures'][$job->id])) {
                 $prefectureIds = collect($relatedInfo['prefectures'][$job->id])->slice(0, 2)->pluck('prefecture_id')->toArray();
                 $job->prefectures = $prefectures->whereIn('id', $prefectureIds);
-            }
-
-            if (isset($relatedInfo['salaries'][$job->id])) {
-                $salaryIds = collect($relatedInfo['salaries'][$job->id])->slice(0, 2)->pluck('salary_id')->toArray();
-                $job->salaries = $salaries->whereIn('id', $salaryIds);
             }
         }
 
@@ -381,22 +369,6 @@ class JobService
     {
         $inputs = $request->all();
         $conditions = [];
-        if (isset($inputs["category_id"]) && !is_null($inputs["category_id"])) {
-            $category = CategoryLevel3::findOneById($inputs["category_id"]);
-            $conditions[] = [
-                "key" => "category",
-                "display" => "Danh mục công việc",
-                "text" => [$category->name],
-            ];
-        }
-
-        if (isset($inputs["free_word"]) && !is_null($inputs["free_word"])) {
-            $conditions[] = [
-                "key" => "free_word",
-                "display" => "Free_word",
-                "text" => [$inputs["free_word"]],
-            ];
-        }
 
         if (isset($inputs["prefecture_id"]) && !is_null($inputs["prefecture_id"])) {
             $prefecture = Prefecture::findOneById($inputs["prefecture_id"]);

@@ -26,13 +26,11 @@ class ApplicantSeeder extends Seeder
                 'address'                        => "HANOI",
                 'phone_number'                   => "12312312312",
                 'gender'                         => "male",
-                'education_id'                   => "1",
+                'education'                      => "TEST",
                 'final_academic_school'          => "TEST",
                 'graduated_at'                   => Carbon::now()->toDateString(),
-                'toeic'                          => "1",
-                'toefl'                          => "1",
-                'language_experience_id'         => "1",
-                'language_conversation_level_id' => "1",
+                'language'         => "TEST",
+                'language_level' => "TEST",
             ];
         }
         DB::table('applicants')->insert($data);

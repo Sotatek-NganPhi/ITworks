@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>{{ $t("candidate.search_title") }}</h2>
 
     <validation-form ref="searchForm">
       <form-group :label="$t('candidate.name')">
@@ -11,7 +10,6 @@
         <input name="email" v-validator="'email'" class="form-control" type="text" v-model="searchParams.email"/>
       </form-group>
 
-      <h4>{{ $t("candidate.search_condition") }}</h4>
 
       <form-group :label="$t('candidate.prefecture')">
         <select class="form-control" v-model="searchParams.prefecture">
@@ -19,14 +17,7 @@
           <option v-for="prefecture in masterdata.prefectures" :value="prefecture.id">{{ prefecture.name }}</option>
         </select>
       </form-group>
-      <form-group :label="$t('candidate.salary')">
-        <select class="form-control" v-model="searchParams.salary">
-          <option value="">---</option>
-          <option v-for="salary in masterdata.salaries" :value="salary.id">{{ salary.description }}</option>
-        </select>
-      </form-group>
-      </form-group>
-
+      
       <div class="text-center">
         <button type="button" class="btn btn-primary" @click="search">{{ $t("form_action.search") }}</button>
         <button type="button" class="btn btn-primary" @click="clear">{{ $t("form_action.clear") }}</button>
@@ -42,7 +33,6 @@
       <th data-sort-field="users.birthday" style="width: 15%">{{ $t("common_field.birthday") }}</th>
       <th data-sort-field="users.email" style="width: 20%">{{ $t("common_field.email") }}</th>
       <th data-sort-field="candidates.created_at" style="width: 14%">{{ $t("candidate.registed_date") }}</th>
-      <th data-sort-field="users.mail_receivable" style="width: 16%">{{ $t("candidate.mail_receivable") }}</th>
       <th style="width: 10%"></th>
       <template slot="body" scope="props">
         <tr>
@@ -51,7 +41,6 @@
           <td>{{ props.item.birthday }}</td>
           <td>{{ props.item.email }}</td>
           <td>{{ props.item.created_at }}</td>
-          <td>{{ props.item.mail_receivable | boolean }}</td>
           <td @click="openMailPage(props.item)">
             <button type="button" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-envelope"></span> {{$t("candidate.sendmail")}}
@@ -78,13 +67,7 @@
   const searchParams = {
     name: '',
     email: undefined,
-    current_situation: '',
     prefecture: '',
-    category_level3: '',
-    salary: '',
-    working_shift: '',
-    employment_mode: '',
-    merit: '',
   };
 
   export default {
@@ -118,7 +101,6 @@
           'user.name': this.searchParams.name,
           'user.email': this.searchParams.email,
           'prefectures.prefecture_id': this.searchParams.prefecture,
-          'salaries.salary_id': this.searchParams.salary,
         };
         const query = new QueryBuilder(searchParams);
         query.append('user.created_at', this.searchParams.registedDateFrom, '>=');

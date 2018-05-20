@@ -5,14 +5,8 @@ namespace App\Http\Requests;
 use App\Models\Certificate;
 use App\Models\CertificateGroup;
 use App\Models\Config;
-use App\Models\Education;
-use App\Models\LanguageConversationLevel;
-use App\Models\LanguageExperience;
 use App\Models\Prefecture;
 use App\Models\Region;
-use App\Models\Salary;
-use App\Models\WorkingDay;
-use App\Models\WorkingHour;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 
@@ -42,12 +36,10 @@ class UpdateResumeInfoRequest extends FormRequest
             'phone_number'                   => 'required',
             'gender'                         => 'required|in:male,female',
             'birthday'                       => 'required|date',
-            'education_id'                   => 'required|exists:educations,id',
+            'education'                      => 'required|string|max:255',
             'graduated_at'                   => 'nullable|date',
-            'toeic'                          => 'nullable|numeric|min:0',
-            'toefl'                          => 'nullable|numeric|min:0',
-            'language_experience_id'         => 'nullable|exists:language_experiences,id',
-            'language_conversation_level_id' => 'nullable|exists:language_conversation_levels,id',
+            'language'                       => 'nullable|string|max:255',
+            'language_level'                 => 'nullable|string|max:255',
         ];
     }
 
@@ -78,12 +70,10 @@ class UpdateResumeInfoRequest extends FormRequest
             'phone_number'                   => 'Số điện thoại',
             'birthday'                       => 'Ngày sinh',
             'graduated_at'                   => 'Thời gian tốt nghiệp',
-            'toeic'                          => 'TOEIC',
-            'toefl'                          => 'TOEFL',
             'final_academic_school'          => 'Học tại',
-            'language_experience_id'         => 'Kinh nghiệm',
-            'language_conversation_level_id' => 'Kỹ năng giao tiếp',
-            'education_id'                   => 'Trình độ học vấn',
+            'language'                       => 'Ngoại ngữ',
+            'language_level'                 => 'Trình độ ngoại ngữ',
+            'education'                      => 'Trình độ học vấn',
         ];
     }
 
@@ -103,13 +93,7 @@ class UpdateResumeInfoRequest extends FormRequest
             'inputs'                     => $this->all(),
             'submitted'                  => $submitted,
             'prefectures'                => Prefecture::getAll(),
-            'educations'                 => Education::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
-            'languageExperiences'        => LanguageExperience::getAll(),
-            'languageConversationLevels' => LanguageConversationLevel::getAll(),
-            'salaries'                   => Salary::getAll(),
-            'workingDays'                => WorkingDay::getAll(),
-            'workingHours'               => WorkingHour::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
         ]);

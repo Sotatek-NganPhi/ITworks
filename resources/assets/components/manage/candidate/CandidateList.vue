@@ -38,10 +38,6 @@
         locale="ja"/>
     </form-group>
 
-    <form-group :label="$t('candidate.mail_receivable')">
-      <radio-group inline="true" v-model="searchParams.mailReceivable" :options="mailReceivableOptions"/>
-    </form-group>
-
     <div class="text-center">
       <button type="button" class="btn btn-primary" @click="search">{{ $t("form_action.search") }}</button>
       <button type="button" class="btn btn-primary" @click="clear()">{{ $t("form_action.clear") }}</button>
@@ -55,7 +51,6 @@
     <th data-sort-field="users.birthday" style="width: 12%">{{ $t("common_field.birthday") }}</th>
     <th data-sort-field="users.email" style="width: 20%">{{ $t("common_field.email") }}</th>
     <th data-sort-field="candidates.created_at" style="width: 11%">{{ $t("candidate.registed_date") }}</th>
-    <th data-sort-field="users.mail_receivable" style="width: 17%">{{ $t("candidate.mail_receivable") }}</th>
     <th style="width: 10%"></th>
     <template slot="body" scope="props">
       <tr>
@@ -64,7 +59,6 @@
         <td style="width: 12%">{{ props.item.birthday }}</td>
         <td style="width: 20%">{{ props.item.email }}</td>
         <td style="width: 11%">{{ props.item.created_at }}</td>
-        <td style="width: 17%">{{ props.item.mail_receivable | boolean }}</td>
         <td @click="openEditPage(props.item)" style="width: 10%">
           <button type="button" class="btn btn-default btn-sm">
             <span class="glyphicon glyphicon-pencil"></span> {{$t("common_action.edit")}}

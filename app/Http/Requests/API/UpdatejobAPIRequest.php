@@ -33,7 +33,6 @@ class UpdatejobAPIRequest extends BaseRequest
             'post_start_date'             => 'ngày đăng tuyển',
             'post_end_date'               => 'ngày kết thúc đăng tuyển',
             'description'                 => 'mô tả',
-            'salary'                      => 'lương',
             'company_name'                => 'tên công ty',
             'salary'                      => 'lương',
             'application_condition'       => 'điều kiện ứng tuyển',

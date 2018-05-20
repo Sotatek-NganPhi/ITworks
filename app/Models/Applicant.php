@@ -24,13 +24,11 @@ class Applicant extends Model
         'phone_number',
         'gender',
         'birthday',
-        'education_id',
+        'education',
         'final_academic_school',
         'graduated_at',
-        'toeic',
-        'toefl',
-        'language_experience_id',
-        'language_conversation_level_id',
+        'language',
+        'language_level',
         'status',
     ];
 
@@ -49,13 +47,11 @@ class Applicant extends Model
         'phone_number' => 'string',
         'gender' => 'string',
         'birthday' => 'date',
-        'education_id' => 'integer',
+        'education' => 'string',
         'final_academic_school' => 'string',
         'graduated_at' => 'date',
-        'toeic' => 'float',
-        'toefl' => 'float',
-        'language_experience_id' => 'integer',
-        'language_conversation_level_id' => 'integer',
+        'language' => 'string',
+        'language_level' => 'string',
         'status' => 'integer',
     ];
 
@@ -76,4 +72,5 @@ class Applicant extends Model
     {
         return $this->belongsToMany(Certificate::class);
     }
+
 }

@@ -8,18 +8,12 @@ use App\Models\Applicant;
 use App\Models\Candidate;
 use App\Models\Certificate;
 use App\Models\CertificateGroup;
-use App\Models\Education;
 use App\Models\Config;
 use App\Models\Job;
-use App\Models\LanguageConversationLevel;
-use App\Models\LanguageExperience;
 use App\Models\Region;
 use App\Models\UserBookmark;
 use App\Models\JobCounter;
 use App\Models\Prefecture;
-use App\Models\Salary;
-use App\Models\WorkingDay;
-use App\Models\WorkingHour;
 use App\Utils;
 use Carbon\Carbon;
 use Exception;
@@ -87,13 +81,7 @@ class JobController extends AppBaseController
             return response()->view('app.job_application', [
                 'job'                        => $job,
                 'prefectures'                => Prefecture::getAll(),
-                'educations'                 => Education::getAll(),
                 'regions'                    => Region::with('prefectures')->get(),
-                'languageExperiences'        => LanguageExperience::getAll(),
-                'languageConversationLevels' => LanguageConversationLevel::getAll(),
-                'salaries'                   => Salary::getAll(),
-                'workingDays'                => WorkingDay::getAll(),
-                'workingHours'               => WorkingHour::getAll(),
                 'certificate_groups'         => CertificateGroup::getAll(),
                 'certificates'               => Certificate::getAll(),
             ]);
@@ -181,76 +169,7 @@ class JobController extends AppBaseController
         ]);
         return view('app.job_clip_success', ["job" => $job]);
     }
-
-    public function downloadSampleCsv()
-    {
-        $fieldsEn = [];
-        $fieldsJp = [];
-        $rules = $this->jobService->loadRule();
-        foreach ($rules as $header => $rule) {
-            $fieldsEn[] = Utils::utf8ToSjis($header);
-            $fieldsJp[] = Utils::utf8ToSjis($rule->fields_jp);
-        }
-
-        $csv = Writer::createFromFileObject(new SplTempFileObject());
-        $csv->insertOne($fieldsEn);
-        $csv->insertOne($fieldsJp);
-
-        $csv->output("sample_job_insert.csv");
-    }
-
-    public function downloadCsvPrefectures()
-    {
-        $headers = [
-            'prefecture_id' => Utils::utf8ToSjis('Mã tỉnh'),
-            'prefecture_name' => Utils::utf8ToSjis('Tên tỉnh'),
-        ];
-        $rows = Prefecture::select("id as prefecture_id", "name as prefecture_name")->get();
-        $data = Utils::buildContentFileExcel($rows, array_keys($headers));
-
-        return Utils::downloadCSV($headers, $data, "prefectures");
-    }
-
-    public function downloadCsvWorkingDays()
-    {
-        $headers = [
-            'working_day_id' => Utils::utf8ToSjis('Mã số ngày làm việc'),
-            'working_day_name' => Utils::utf8ToSjis('Số ngày làm việc mong muốn'),
-        ];
-        $rows = WorkingDay::select("working_days.id as working_day_id",
-            "working_days.name as working_day_name")->get();
-        $data = Utils::buildContentFileExcel($rows, array_keys($headers));
-
-        return Utils::downloadCSV($headers, $data, "working_days");
-    }
-
-    public function downloadCsvWorkingHours()
-    {
-        $headers = [
-            'working_hour_id' => Utils::utf8ToSjis('Mã giờ làm việc'),
-            'working_hour_name' => Utils::utf8ToSjis('Giờ làm việc mong muốn'),
-        ];
-        $rows = WorkingHour::select("working_hours.id as working_hour_id",
-            "working_hours.name as working_hour_name")->get();
-        $data = Utils::buildContentFileExcel($rows, array_keys($headers));
-
-        return Utils::downloadCSV($headers, $data, "working_hours");
-    }
-
-    public function downloadCsvSalaries()
-    {
-        $headers = [
-            'salary_id' => Utils::utf8ToSjis('Mã lương'),
-            'salary_category' => Utils::utf8ToSjis('Loại lương'),
-            'salary_description' => Utils::utf8ToSjis('Mức lương'),
-        ];
-        $rows = Salary::select("id as salary_id",
-            'category as salary_category',
-            "salaries.description as salary_description")->get();
-        $data = Utils::buildContentFileExcel($rows, array_keys($headers));
-        return Utils::downloadCSV($headers, $data, "salaries");
-    }
-
+    
     public function updateJobCounter($jobId)
     {
         $today = Carbon::now(Consts::TIME_ZONE_VIETNAM)->toDateString();

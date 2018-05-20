@@ -47,14 +47,7 @@
                     <tr>
                         <th class="required">Trình độ học vấn</th>
                         <td>
-                            <select class="form-control" name="education_id">
-                                <option value="">---</option>
-                            @foreach($educations as $education)
-                                <option value="{{$education->id}}"
-                                    {{ old('education_id') == $education->id ? 'selected' : '' }}
-                                >{{$education->name}}</option>
-                            @endforeach
-                            </select>
+                            <input class="form-control" name="education" value="{{ old('education') }}" size="40">
                         </td>
                     </tr>
                     <tr>
@@ -71,45 +64,38 @@
                     </tr>
                     </tbody>
                 </table>
-                <h4>Kỹ năng ngôn ngữ</h4>
                 <table>
                     <tbody>
                     <tr>
-                        <th class="norequired">Kinh nghiệm làm việc</th>
+                        <th class="norequired">Ngoại ngữ</th>
                         <td>
-                            <select class="form-control" name="language_experience_id">
-                                <option value="">---</option>
-                            @foreach($languageExperiences as $languageExperience)
-                                <option value="{{$languageExperience->id}}"
-                                    {{ old('language_experience_id') == $languageExperience->id ? 'selected' : '' }}
-                                >{{$languageExperience->description}}</option>
+                            <input class="form-control" name="language" value="{{ old('language') }}" size="40">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="norequired">Trình độ ngoại ngữ</th>
+                        <td>
+                            <input class="form-control" name="language_level" value="{{ old('language_level') }}" size="40">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="required">Tỉnh</th>
+                        <td>
+                            @foreach($regions as $region)
+                            <h4 >{{$region->name}}</h4><br>
+                                <div class="entries">
+                                @foreach($region->prefectures as $prefecture)
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox"
+                                            name="prefectures[]"
+                                            value="{{$prefecture->id}}"
+                                            {{ in_array($prefecture->id, old('prefectures', []))?  'checked' : '' }}
+                                        >
+                                        {{$prefecture->name}}
+                                    </label>
+                                @endforeach
+                                </div>
                             @endforeach
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="norequired">TOEIC</th>
-                        <td>
-                            <input class="form-control" type="text" name="toeic" value="{{ old('toeic') }}" size="40" maxlength="6">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="norequired">TOEFL</th>
-                        <td>
-                            <input class="form-control" type="text" name="toefl" value="{{ old('toefl') }}" size="40" maxlength="6">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="norequired">Kỹ năng giao tiếp</th>
-                        <td>
-                            <select class="form-control" name="language_conversation_level_id">
-                                <option value="">---</option>
-                            @foreach($languageConversationLevels as $languageConversationLevel)
-                                <option value="{{$languageConversationLevel->id}}"
-                                    {{ old('language_conversation_level_id') == $languageConversationLevel->id ? 'selected' : '' }}
-                                >{{$languageConversationLevel->description}}</option>
-                            @endforeach
-                            </select>
                         </td>
                     </tr>
                     </tbody>

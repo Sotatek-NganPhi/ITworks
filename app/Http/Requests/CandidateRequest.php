@@ -5,13 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Candidate;
 use App\Models\Certificate;
 use App\Models\CertificateGroup;
-use App\Models\Education;
-use App\Models\LanguageConversationLevel;
-use App\Models\LanguageExperience;
 use App\Models\Region;
-use App\Models\Salary;
-use App\Models\WorkingDay;
-use App\Models\WorkingHour;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -73,13 +67,7 @@ class CandidateRequest extends FormRequest
         return response()->view('auth.candidate', [
             'errors'                     => $errors,
             'user'                       => Auth::user(),
-            'educations'                 => Education::getAll(),
             'regions'                    => Region::with('prefectures')->get(),
-            'languageExperiences'        => LanguageExperience::getAll(),
-            'languageConversationLevels' => LanguageConversationLevel::getAll(),
-            'salaries'                   => Salary::getAll(),
-            'workingDays'                => WorkingDay::getAll(),
-            'workingHours'               => WorkingHour::getAll(),
             'certificate_groups'         => CertificateGroup::getAll(),
             'certificates'               => Certificate::getAll(),
         ]);
