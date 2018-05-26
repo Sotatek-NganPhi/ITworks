@@ -57,11 +57,6 @@ class Region extends VersionedModel
         return ['success' => true];
     }
 
-    public function announcements()
-    {
-        return $this->hasMany(Announcement::class);
-    }
-
     public function prefectures()
     {
         return $this->hasMany(Prefecture::class);

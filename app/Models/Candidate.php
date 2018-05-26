@@ -49,7 +49,6 @@ class Candidate extends Model
         'user_id' => 'exists:users,id',
         'graduated_at' => 'nullable|date_format:Y-m-d',
         'education' => 'required',
-        'prefectures' => 'required|array|exists:prefectures,id',
         'certificates.*' => 'exists:certificates,id',
         'certificate_groups.*' => 'exists:certificate_groups,id',
         'user.email' => 'sometimes|required|email',
@@ -68,11 +67,6 @@ class Candidate extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function prefectures()
-    {
-        return $this->belongsToMany(Prefecture::class);
     }
 
     public function certificates()

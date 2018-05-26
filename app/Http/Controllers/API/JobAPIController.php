@@ -23,6 +23,8 @@ use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use League\Csv\Writer;
 use Response;
 use SplTempFileObject;
+use Illuminate\Support\Facades\Log;
+
 
 /**
  * Class jobController
@@ -58,13 +60,22 @@ class JobAPIController extends AppBaseController
 
         $this->jobRepository->pushCriteria(new BaseCriteria($request));
         $this->jobRepository->pushCriteria(new LimitOffsetCriteria($request));
-
         if (count($jobIds) > 0) {
-            $jobs = $this->jobRepository->findWhereIn('id', $jobIds);
+            $jobs = $this->jobRepository->with('company')->findWhereIn('id', $jobIds);
             return $this->sendResponse($jobs->toArray(), trans('message.retrieve'));
         }
+        
         $manager = Auth::guard(Consts::GUARD_MANAGER)->user();
-        $jobs = $this->jobRepository->paginate($request->input('limit'));
+        
+        if($manager->type != Consts::TYPE_SYS_ADMIN) {
+            if($manager->agency_id == 0) {
+                return $this->sendResponse(null, trans('message.retrieve'));
+            }
+            $request->merge(['agency' => $manager->agency_id]);
+        }
+        
+        $jobs = $this->jobRepository->with('company')->paginate($request->input('limit'));
+        
         return $this->sendResponse($jobs->toArray(), trans('message.retrieve'));
     }
 
@@ -82,7 +93,7 @@ class JobAPIController extends AppBaseController
                 return $query->where('company_id', $manager->company_id);
             });
         }
-        $jobs = $jobRepository->paginate($request->input('limit'));
+        $jobs = $jobRepository->with('company')->paginate($request->input('limit'));
         return $this->sendResponse($jobs->toArray(), trans('message.retrieve'));
     }
     /**
@@ -257,8 +268,8 @@ class JobAPIController extends AppBaseController
             ->pluck('job_id')
             ->toArray();
         $result = array_merge($result, $jobIds);
-
         return $result;
+
     }
 
     public function loadRules()

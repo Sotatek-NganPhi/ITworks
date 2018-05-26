@@ -15,10 +15,6 @@
       <date-picker v-model="searchParams.birthday" format="YYYY-MM-DD" locale="ja"/>
     </form-group>
 
-    <form-group :label="$t('common_field.age')">
-      <input name="age" v-validator="'numeric|min:18|max:60'" class="form-control" type="text" v-model="searchParams.age"/>
-    </form-group>
-
     <form-group :label="$t('common_field.email')">
       <input name="email" v-validator="'email'" class="form-control" type="text" v-model="searchParams.email"/>
     </form-group>
@@ -90,7 +86,6 @@
           email: '',
           gender: '',
           birthday: '',
-          age: '',
           mailReceivable: '',
           registedDateFrom: '',
           registedDateTo: '',
@@ -132,7 +127,6 @@
           email: '',
           gender: '',
           birthday: '',
-          age: '',
           mailReceivable: '',
           registedDateFrom: '',
           registedDateTo: ''

@@ -7,31 +7,6 @@
         <input class="form-control" type="text" v-model="searchParams.name"/>
       </form-group>
 
-      <form-group :label="$t('special_promotion.region')">
-        <multiselect
-          v-model="filterRegions"
-          :placeholder="$t('common_action.pick')"
-          label="name"
-          track-by="id"
-          :options="localMasterdata.regions"
-          :multiple="true"
-          :close-on-select="false"
-          :clear-on-select="false"
-          :hide-selected="true"/>
-      </form-group>
-
-      <form-group :label="$t('candidate.registed_date')">
-        <date-picker class="col-sm-6" :placeholder="$t('common_field.from')"
-          name="registedFrom"
-          v-model="searchParams.registedDateFrom"
-          locale="ja"/>
-        <date-picker class="col-sm-6" :placeholder="$t('common_field.to')"
-          name="registedTo"
-          v-validator="'after:registedFrom'"
-          v-model="searchParams.registedDateTo"
-          locale="ja"/>
-      </form-group>
-
       <div class="text-center">
         <button type="button" class="btn btn-primary" @click="search">{{ $t("form_action.search") }}</button>
         <button type="button" class="btn btn-primary" @click="clear">{{ $t("form_action.clear") }}</button>
@@ -74,8 +49,6 @@ import {candidateNavigators as subNavigators} from '../../../js/app/manage/route
 
 const searchParams = {
   name: '',
-  registedDateFrom: '',
-  registedDateTo: ''
 };
 
 const localMasterdata = {
@@ -117,8 +90,6 @@ export default {
         const regions = _.map(this.filterRegions, 'id');
         query.append('prefectures.region_id', regions, '=');
       }
-      query.append('post_start_date', this.searchParams.registedDateFrom, '>=');
-      query.append('post_end_date', this.searchParams.registedDateTo, '<=');
 
       return query;
     },
@@ -126,9 +97,6 @@ export default {
     initSearchParams() {
       this.filterRegions = [];
       this.searchParams.name = '';
-      this.searchParams.registedDateFrom = '';
-      this.searchParams.registedDateTo = '';
-      $('.form-control.vue-datepicker__input').val('');
     },
 
     search() {

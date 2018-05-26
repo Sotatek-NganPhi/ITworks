@@ -33,7 +33,6 @@ class CreateJobAPIRequest extends BaseRequest
             'post_start_date'             => 'ngày đăng tuyển',
             'post_end_date'               => 'ngày kết thúc đăng tuyển',
             'description'                 => 'mô tả',
-            // 'company_name'                => '企業名',
             'salary'                      => 'lương',
             'application_condition'       => 'điều kiện ứng tuyển',
             'email_receive_applicant'     => 'email nhận đơn ứng tuyển ',          

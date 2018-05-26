@@ -29,21 +29,21 @@
     <h2>{{ $t("company_list.list_title") }}</h2>
 
     <data-table :getData="getData" ref="datatable">
-      <th data-sort-field="id" style="width: 15%">{{ getDisplayName('id') }}</th>
-      <th data-sort-field="name" style="width: 35%">{{ getDisplayName('name') }}</th>
-      <th data-sort-field="phone_number" style="width: 30%">{{ getDisplayName('phone_number') }}</th>
-      <th style="width: 15%"></th>
-      <th style="width: 15%"></th>
+      <th data-sort-field="id" style="width: 20%">{{ getDisplayName('id') }}</th>
+      <th data-sort-field="name" style="width: 40%">{{ getDisplayName('name') }}</th>
+      <th data-sort-field="phone_number" style="width: 20%">{{ getDisplayName('phone_number') }}</th>
+      <th style="width: 13%"></th>
+      <th style="width: 12%"></th>
       <template slot="body" scope="props">
         <tr>
-          <td style="width: 15%">{{ props.item.id }}</td>
-          <td style="width: 35%">{{ props.item.name }}</td>
-          <td style="width: 30%">{{ props.item.phone_number }}</td>
-          <td @click="openEditPage(props.item)" style="width: 15%">
+          <td style="width: 20%">{{ props.item.id }}</td>
+          <td style="width: 40%">{{ props.item.name }}</td>
+          <td style="width: 20%">{{ props.item.phone_number }}</td>
+          <td @click="openEditPage(props.item)" style="width: 13%">
             <button type="button" class="btn btn-default btn-sm">
             <span class="glyphicon glyphicon-pencil"></span> {{$t('common_action.edit')}}</button>
           </td>
-          <td @click="deleteRow(props.item)" style="width: 15%">
+          <td @click="deleteRow(props.item)" style="width: 12%">
             <button type="button" class="btn btn-danger btn-sm">
             <span class="glyphicon glyphicon-remove"></span> {{$t('common_action.delete')}}</button>
           </td>
@@ -72,10 +72,16 @@ const searchParams = {
   name: '',
   phone_number: '',
 };
+const expireDate = {
+  expireFrom: '',
+  expireTo: '',
+};
 export default {
   data() {
     return {
       searchParams,
+      expireDate,
+      isActiveOptions: Utils.getBooleans(),
       masterdata: Utils.getMasterdataSkel(),
       user,
       subNavigators,
@@ -115,17 +121,26 @@ export default {
       },
     initSearchParams() {
       this.searchParams = Object.assign({}, searchParams);
+      this.expireDate = Object.assign({}, expireDate);
     },
     clearSearchForm() {
       this.initSearchParams();
       this.$refs.searchForm.$emit('FORM_ERRORS_CLEAR');
       this.$refs.datatable.$emit('DataTable:filter', this.buildSearchQuery());
+
     },
+    buildSearchQuery() {
+      return new QueryBuilder(this.searchParams)
+                  .append('expire_date', this.expireDate.expireFrom, '>')
+                  .append('expire_date', this.expireDate.expireTo, '<');
+    },
+
     search() {
       this.$refs.searchForm.validate().then(() => {
         this.$refs.datatable.$emit('DataTable:filter', this.buildSearchQuery());
       }).catch(() => {});
     },
+
   },
 
   mounted() {

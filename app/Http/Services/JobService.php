@@ -179,8 +179,7 @@ class JobService
 
         foreach ($jobs as $job) {
             $job->prefectures = [];
-            $job->salaries = [];
-
+            
             if (isset($relatedInfo['prefectures'][$job->id])) {
                 $prefectureIds = collect($relatedInfo['prefectures'][$job->id])->slice(0, 2)->pluck('prefecture_id')->toArray();
                 $job->prefectures = $prefectures->whereIn('id', $prefectureIds);
@@ -339,13 +338,6 @@ class JobService
 
         $query->join('jobs', 'jobs.id', 'job_prefecture.job_id');
 
-        if (isset($params["free_word"]) && !is_null($params["free_word"])) {
-            $query->where(function ($query) use ($params) {
-                $query->where("jobs.company_name", 'like', '%' . $params["free_word"] . '%')
-                    ->orWhere("jobs.description", 'like', '%' . $params["free_word"] . '%');
-            });
-        }
-
         $sort = $request->sort;
         switch ($sort) {
             case "new":
@@ -444,8 +436,7 @@ class JobService
         if (!empty($request->input('free_word'))) {
             $freeWord = urldecode($request->input('free_word'));
             $query->where(function ($query) use ($freeWord) {
-                $query->where("jobs.company_name", 'like', '%' . $freeWord . '%')
-                    ->orWhere("jobs.description", 'like', '%' . $freeWord . '%');
+                $query->where("jobs.description", 'like', '%' . $freeWord . '%');
             });
         }
         return $query;

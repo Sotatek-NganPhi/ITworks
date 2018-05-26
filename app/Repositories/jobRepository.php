@@ -19,13 +19,9 @@ class JobRepository extends AppBaseRepository
         'company_id',
         'applicants_count',
         'prefectures.region_id',
-        'company_name'       => 'like',
         'post_start_date'    => '>=',
         'post_end_date'      => '<=',
         'salary'             => 'like',
-        'education'          => 'like',
-        'language'           => 'like',
-        'language_level'     => 'like',
         'is_active'
     ];
 
@@ -54,7 +50,6 @@ class JobRepository extends AppBaseRepository
     {
         return [
             'company_id'            => 'required|integer|exists:companies,id',
-            'company_name'          => 'required',
             'description'           => 'required',
             'post_start_date'       => 'required|date',
             'post_end_date'         => 'required|date|after:post_start_date',

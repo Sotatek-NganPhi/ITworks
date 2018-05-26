@@ -11,7 +11,6 @@ class Manager extends Authenticatable
     use Notifiable;
 
     const TYPE_SYS_ADMIN        = 1;
-    const TYPE_COMPANY_ADMIN    = 2;
     /**
      * The attributes that are mass assignable.
      *
@@ -19,14 +18,12 @@ class Manager extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'type',
         'name',
         'email',
         'password',
         'first_name',
         'last_name',
         'is_active',
-        'company_id',
     ];
 
     /**
@@ -36,7 +33,6 @@ class Manager extends Authenticatable
      */
     protected $casts = [
         'username' => 'string',
-        'type' => 'integer',
         'name' => 'string',
         'email' => 'string',
         'first_name' => 'string',
@@ -60,7 +56,6 @@ class Manager extends Authenticatable
      */
     public static $rules = [
         'username' => 'string',
-        'type' => '',
         'name' => '',
         'email' => 'email',
         'password' => 'sometimes|confirmed',
@@ -74,19 +69,8 @@ class Manager extends Authenticatable
         return $this->type == Consts::TYPE_SYS_ADMIN;
     }
 
-    public function isCompanyAdmin()
-    {
-        return $this->type == Consts::TYPE_COMPANY_ADMIN;
-    }
-
     public function isManager()
     {
-        return $this->isSysAdmin()
-            || $this->isCompanyAdmin();
-    }
-
-    public function companies()
-    {
-        return $this->belongsToMany(Company::class);
+        return $this->isSysAdmin();
     }
 }

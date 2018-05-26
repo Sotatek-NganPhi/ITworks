@@ -61,22 +61,6 @@
 
 
       <!-- ADDITIONAL INFORMATION - END -->
-      <!-- EXPECTATION - START -->
-
-      <form-group :label="getDisplayName('prefectures')" :is-required="isFieldRequired('prefectures')">
-        <multiselect
-          data-vv-name="prefectures"
-          v-model="selectedPrefectures"
-          :placeholder="$t('common_action.pick')"
-          label="name"
-          track-by="id"
-          :options="masterdata.prefectures"
-          :multiple="true"
-          :close-on-select="false"
-          :clear-on-select="false"
-          :hide-selected="true"></multiselect>
-      </form-group>
-      <!-- EXPECTATION - END -->
 
       <!-- OTHERS - START -->
 
@@ -125,7 +109,6 @@ import queryString from 'querystring';
 import {candidateNavigators as subNavigators} from '../../../js/app/manage/routes';
 import QueryBuilder from '../../../js/lib/QueryBuilder';
 const masterdata = {
-  prefectures: [],
   certificates: [],
 
 };
@@ -142,7 +125,6 @@ export default {
       subNavigators,
       masterdata,
       record: defaultCandidate,
-      selectedPrefectures: [],
       selectedCertificate: [],
       genderOptions: Utils.getGenders(),
       mailReceivableOptions: Utils.getYesNoOptions(),
@@ -158,7 +140,6 @@ export default {
     },
     updateChange() {
       this.isShowModal = false;
-      this.record.prefectures = _.map(this.selectedPrefectures, 'id');
       this.record.certificates = _.map(this.selectedCertificate, 'id');
       rf.getRequest('CandidateRequest')
         .updateOne(this.record.id, this.record)
@@ -186,8 +167,6 @@ export default {
       });
     },
     localReset() {
-      this.selectedPrefectures = _.map(this.record.prefectures, prefId =>
-        _.find(this.masterdata.prefectures, pref => pref.id === prefId));
       this.selectedCertificate = _.map(this.record.certificates, prefId =>
         _.find(this.masterdata.certificates, pref => pref.id === prefId));
     },

@@ -62,6 +62,8 @@ class JobController extends AppBaseController
             $candidate = Candidate::where('user_id', Auth::id())->first();
 
             $applicant = Applicant::firstOrNew(['user_id' => Auth::id() , 'job_id' => $id]);
+
+
             if($applicant->exists) {
                 $request->merge($applicant->toArray());
                 $relations = [
@@ -108,7 +110,6 @@ class JobController extends AppBaseController
 
             $this->updateJobCounter($id);
             $optionalFields = [
-                'company_name',
                 'application_condition',
             ];
 
@@ -219,7 +220,6 @@ class JobController extends AppBaseController
         }
         $history = explode(",", $request->input('history'));
         $data['similar_category'] = $this->getSimilarCategoryJob($jobId);
-        $data['similar_category_history'] = $this->getSimilarCategoryJobInHistory($history, $jobId);
         $data['history'] = $this->getJobOtherInHistory($history, $jobId);
 
         return $this->sendResponse($data, "Get data success");
@@ -230,7 +230,7 @@ class JobController extends AppBaseController
     {
         try {
             $jobs = Job::whereIn('jobs.id', $jobIds)
-                ->with(['prefectures', 'salaries'])->get();
+                ->with(['prefectures'])->get();
             return $jobs;
         } catch (Exception $e) {
             return [];
@@ -241,7 +241,7 @@ class JobController extends AppBaseController
     {
         return Job::whereIn('jobs.id', $history)
             ->where('jobs.id', '!=', $jobId)
-            ->with(['prefectures', 'salaries'])->get();
+            ->with(['prefectures'])->get();
     }
 
     private function getIdsOfJob($jobId)

@@ -33,7 +33,6 @@ class CandidateRequest extends FormRequest
             return [$key => "nullable|{$value}"];
         })->all();
 
-        $rules['prefectures']             .= '|required';
         return $rules;
     }
 

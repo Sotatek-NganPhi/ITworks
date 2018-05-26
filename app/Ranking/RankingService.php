@@ -14,9 +14,6 @@ class RankingService
 
     protected $criteria = [
         'prefecture',
-        'salary',
-        'working_day',
-        'working_hour',
     ];
 
 

@@ -26,6 +26,8 @@ class RegisterCandidateInformation
             if (!$user->candidate && !$isIgnore) {
                 return Redirect::route('candidate.create');
             }
+
+
             if ($user->candidate && $isIgnore) {
                 return redirect('/home');
             }

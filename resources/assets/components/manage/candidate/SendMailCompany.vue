@@ -73,7 +73,7 @@ export default {
       this.isShowModal = false;
       rf.getRequest('CandidateRequest').sendMailToCompany(this.record)
         .then(res => {
-          Utils.growl('会社にメールを送ります。');
+          Utils.growl('Gửi mail thành công');
           this.cancelSendMail();
         })
         .catch(({ validationErrors }) => {

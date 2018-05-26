@@ -16,15 +16,11 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('company_id');
-            $table->text('company_name')->nullable();
             $table->text('description')->nullable();
             $table->date('post_start_date')->nullable();
             $table->date('post_end_date')->nullable();
             $table->integer('max_applicant')->nullable();
             $table->text('salary')->nullable();
-            $table->text('education')->nullable();
-            $table->text('language')->nullable();
-            $table->text('language_level')->nullable();
             $table->text('application_condition')->nullable();
             $table->text('message')->nullable();
             $table->string('main_image')->nullable();

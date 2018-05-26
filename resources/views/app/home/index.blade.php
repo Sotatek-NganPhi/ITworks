@@ -50,9 +50,7 @@
                                     <span class="content-topic">
                                         <marquee direction="left" behavior="scroll" loop="1000">
                                             <span>
-                                            @foreach($announcements as $announcement)
-                                                    {{$announcement['content']}}
-                                                @endforeach
+                                            Chào mừng các bạn đến với trang web tìm kiếm việc làm cho sinh viên công nghệ thông tin ITworks.
                                             </span>
                                         </marquee>
                                     </span>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Consts;
 use App\Http\Requests\SendMailContactRequest;
-use App\Http\Services\AnnouncementService;
 use App\Http\Services\JobService;
 use App\Http\Services\UrgentJobService;
 use App\Mail\Contact as ContactMail;
@@ -24,15 +23,13 @@ use Exception;
 class HomeController extends AppBaseController
 {
     protected $jobService;
-    protected $announcementService;
     protected $urgentJobService;
 
     public function __construct(
-        JobService $jobService, UrgentJobService $urgentJobService, AnnouncementService $announcementService
+        JobService $jobService, UrgentJobService $urgentJobService
         )
     {
         $this->jobService = $jobService;
-        $this->announcementService = $announcementService;
         $this->urgentJobService = $urgentJobService;
     }
 
@@ -45,7 +42,7 @@ class HomeController extends AppBaseController
 
         $regionId = $region->id;
         $prefectureIds = Region::getPrefectureIds($regionId);
-
+        
         return view(
             'app.home.index',
             [
@@ -53,7 +50,6 @@ class HomeController extends AppBaseController
                 'regions' => Region::getAll(),
                 'keyRegion' => $keyRegion,
                 'listPrefecture' => Region::getPrefectures($regionId),
-                'announcements' => $this->announcementService->getActiveAnnouncements($regionId),
                 'urgentJobs' => $this->urgentJobService->getActiveUrgentJobs($prefectureIds),
                 'attentionJobs' => $this->jobService->getAttentionJobs($prefectureIds, 6),
             ]

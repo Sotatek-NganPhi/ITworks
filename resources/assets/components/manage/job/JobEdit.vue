@@ -174,25 +174,24 @@
 
       updateChange() {
         this.isShowModal = false;
-        // console.log(this.record);
-        // const jobPromise = (this.record && this.record.id)
-        //     ? rf.getRequest('JobRequest').updateOne(this.record.id, this.record)
-        //     : rf.getRequest('JobRequest').createANewOne(this.record);
+        const jobPromise = (this.record && this.record.id)
+            ? rf.getRequest('JobRequest').updateOne(this.record.id, this.record)
+            : rf.getRequest('JobRequest').createANewOne(this.record);
 
-        // jobPromise.then(res => {
-        //   Utils.growl('request.request_success');
-        //   if (!this.record.id) {
-        //     this.$router.push({
-        //       path: '/job/list',
-        //     });
-        //   }
-        //   this.$refs.jobEdit.$emit('FORM_ERRORS_CLEAR');
-        // })
-        // .catch(({ validationErrors }) => {
-        //   if (validationErrors) {
-        //     this.$refs.jobEdit.$emit('REJECT_FORM', validationErrors);
-        //   }
-        // });
+        jobPromise.then(res => {
+          Utils.growl('request.request_success');
+          if (!this.record.id) {
+            this.$router.push({
+              path: '/job/list',
+            });
+          }
+          this.$refs.jobEdit.$emit('FORM_ERRORS_CLEAR');
+        })
+        .catch(({ validationErrors }) => {
+          if (validationErrors) {
+            this.$refs.jobEdit.$emit('REJECT_FORM', validationErrors);
+          }
+        });
       },
 
       resetChange() {

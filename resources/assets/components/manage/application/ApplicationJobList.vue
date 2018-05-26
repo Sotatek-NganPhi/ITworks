@@ -30,18 +30,18 @@
 
   <data-table :getData="getData" ref="datatable">
     <th data-sort-field="id" style="width: 7%">{{ getDisplayName('id') }}</th>
-    <th data-sort-field="company_name" style="width: 8%">{{ getDisplayName('company_name') }}</th>
-    <th data-sort-field="company_name" style="width: 30%">{{ getDisplayName('company_name') }}</th>
+    <th data-sort-field="company_name" style="width: 10%">{{ getDisplayName('company_name') }}</th>
+    <th data-sort-field="description" style="width: 20%">{{ getDisplayName('description') }}</th>
     <th style="width: 15%">{{ $t("applicant.posting") }}</th>
-    <th data-sort-field="applicants_count" style="width: 10%">{{ $t("applicant.count") }}</th>
+    <th data-sort-field="applicants_count" style="width: 15%">{{ $t("applicant.count") }}</th>
     <th style="width: 13%"></th>
     <template slot="body" scope="props">
       <tr>
         <td style="width: 7%">{{ props.item.id}} </td>
-        <td style="width: 8%"> {{ props.item.company.name }}</td>
-        <td style="width: 30%"> {{ props.item.company_name }} </td>
+        <td style="width: 10%"> {{ props.item.company.name }} </td>
+        <td style="width: 20%"> {{ props.item.description }} </td>
         <td style="width: 15%"> {{ props.item.post_start_date | date }} to {{ props.item.post_start_date | date}}</td>
-        <td style="width: 10%"> {{ props.item.applicants_count | number }} / {{ props.item.max_applicant | number }}</td>
+        <td style="width: 15%"> {{ props.item.applicants_count | number }} / {{ props.item.max_applicant | number }}</td>
 
         <td @click="showApplicant(props.item.id)" style="width: 13%">
           <button type="button" class="btn btn-default btn-sm">

@@ -143,9 +143,6 @@
                     <a href="{{ route('auth.provider', 'google') }}" class="btn">
                         <i class="fa fa-google-plus"></i> Google
                     </a>
-                    <a href="{{ route('auth.provider', 'facebook') }}" class="btn">
-                        <i class="fa fa-facebook"></i> Facebook
-                    </a>
                 </div>
             </form>
         </div>
