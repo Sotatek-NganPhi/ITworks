@@ -15,14 +15,6 @@
                            v-model="record.phone_number" />
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="id" class="col-sm-2 control-label">{{ $t("company.expire_date") }}</label>
-                <div class="col-sm-10">
-                    <input class="form-control" id="input-expire_date" type="text" v-model="record.expire_date" />
-                </div>
-            </div>
-
             <div class="form-group">
                 <label for="id" class="col-sm-2 control-label">{{ $t("common_field.email") }}</label>
                 <div class="col-sm-10">
@@ -69,7 +61,6 @@
                 record: {
                     name:'',
                     phone_number:'',
-                    expire_date:'',
                     email:'',
                     content: '',
                 },

@@ -24,10 +24,8 @@ class Company extends Model
         'contact_name',
         'phone_number',
         'short_description',
-        'expire_date',
-        'is_active',
-        'password',
-        'username'
+        'business_content',
+        'email',
     ];
 
     /**
@@ -37,12 +35,13 @@ class Company extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
+        'email' => 'required|email',
+        'name' => 'required|string',
         'street_address' => 'string',
         'contact_name' => 'string',
         'phone_number' => 'string',
         'short_description' => 'string',
-        'is_active' => 'integer'
+        'business_content' => 'string',
     ];
 
     /**
@@ -51,15 +50,12 @@ class Company extends Model
      * @var array
      */
     public static $rules = [
-        'username' => 'required|unique:managers,username',
-        'password' => 'required',
         'name' => 'string',
         'street_address' => '',
         'contact_name' => '',
         'phone_number' => '',
         'short_description' => '',
-        'expire_date' => 'date',
-        'is_active' => 'boolean'
+        'email' => 'email',
     ];
 
     public function managers()

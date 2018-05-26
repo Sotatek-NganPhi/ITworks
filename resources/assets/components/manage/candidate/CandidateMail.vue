@@ -9,14 +9,6 @@
       <form-group :label="$t('common_field.email')">
         <input name="email" v-validator="'email'" class="form-control" type="text" v-model="searchParams.email"/>
       </form-group>
-
-
-      <form-group :label="$t('candidate.prefecture')">
-        <select class="form-control" v-model="searchParams.prefecture">
-          <option value="">---</option>
-          <option v-for="prefecture in masterdata.prefectures" :value="prefecture.id">{{ prefecture.name }}</option>
-        </select>
-      </form-group>
       
       <div class="text-center">
         <button type="button" class="btn btn-primary" @click="search">{{ $t("form_action.search") }}</button>
@@ -100,7 +92,6 @@
         const searchParams = {
           'user.name': this.searchParams.name,
           'user.email': this.searchParams.email,
-          'prefectures.prefecture_id': this.searchParams.prefecture,
         };
         const query = new QueryBuilder(searchParams);
         query.append('user.created_at', this.searchParams.registedDateFrom, '>=');

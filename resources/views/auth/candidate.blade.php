@@ -78,26 +78,6 @@
                             <input class="form-control" name="language_level" value="{{ old('language_level') }}" size="40">
                         </td>
                     </tr>
-                    <tr>
-                        <th class="required">Tỉnh</th>
-                        <td>
-                            @foreach($regions as $region)
-                            <h4 >{{$region->name}}</h4><br>
-                                <div class="entries">
-                                @foreach($region->prefectures as $prefecture)
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox"
-                                            name="prefectures[]"
-                                            value="{{$prefecture->id}}"
-                                            {{ in_array($prefecture->id, old('prefectures', []))?  'checked' : '' }}
-                                        >
-                                        {{$prefecture->name}}
-                                    </label>
-                                @endforeach
-                                </div>
-                            @endforeach
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
                 <input type="submit" value="Cập nhật" name="submit">

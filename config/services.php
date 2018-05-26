@@ -45,12 +45,6 @@ return [
         'client_id' => env('GOOGLE_ID'),
         'client_secret' => env('GOOGLE_SECRET'),
         'redirect' => env('GOOGLE_URL'),
-    ],
-
-    'yahoojp' => [
-        'client_id' => env('YAHOOJP_ID'),
-        'client_secret' => env('YAHOOJP_SECRET'),
-        'redirect' => env('YAHOOJP_URL'),
-    ],
+    ]
 
 ];

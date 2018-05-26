@@ -1,12 +1,9 @@
 import JobRequest from '../request/JobRequest';
 import CompanyRequest from '../request/CompanyRequest';
-import CampaignRequest from '../request/CampaignRequest';
-import AnnouncementRequest from '../request/AnnouncementRequest';
 import ReservationRequest from '../request/ReservationRequest';
 import AdminRequest from '../request/AdminRequest';
 import MasterdataRequest from '../request/MasterdataRequest';
 import HomeRequest from '../request/HomeRequest';
-import SpecialPromotionRequest from '../request/SpecialPromotionRequest';
 import UploadFile from '../request/UploadFile';
 import ApplicantRequest from '../request/ApplicantRequest';
 import AnalysisRequest from '../request/AnalysisRequest';
@@ -21,12 +18,9 @@ const requestMap = {
   JobRequest,
   AdminRequest,
   CompanyRequest,
-  CampaignRequest,
-  AnnouncementRequest,
   ReservationRequest,
   MasterdataRequest,
   HomeRequest,
-  SpecialPromotionRequest,
   UploadFile,
   ApplicantRequest,
   CandidateRequest,

@@ -296,9 +296,7 @@
                         <div class="salary">{{$job->salary}}</div>
                         <div class="company">&nbsp;</div>
                     </div>
-                    <div class="__sub_title">
-                        <h3>{{$job->company_name}}</h3>
-                    </div>
+                    
                     @if(auth::check())
                         <div class="main-photo">
                             <a href="{{route("job_detail", ["id" => $job->id])}}">
@@ -318,17 +316,6 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <div class="list-photo-other">
-                                @if(isset($job->sub_image1))
-                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image1}}" lt="{{$job->sub_caption1}}"></a>
-                                @endif
-                                @if(isset($job->sub_image2))
-                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image2}}" alt="{{$job->sub_caption2}}"></a>
-                                @endif
-                                @if(isset($job->sub_image3))
-                                    <a href="{{route("job_detail", ["id" => $job->id])}}"><img src="{{$job->sub_image3}}" alt="{{$job->sub_caption3}}"></a>
-                                @endif
-                            </div>
                         </div>
                         <div class="relation">
                             <div>Các công việc liên quan</div>

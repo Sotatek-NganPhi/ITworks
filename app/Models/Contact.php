@@ -11,6 +11,7 @@ class Contact extends Model
     public $fillable = [
         'name',
         'mail_address',
+        'content_inquiry',
     ];
 
     /**
@@ -21,6 +22,7 @@ class Contact extends Model
     protected $casts = [
         'name' => 'string',
         'mail_address' => 'string',
+        'content_inquiry' => 'string',
     ];
 
     /**

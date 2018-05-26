@@ -102,8 +102,8 @@ class RegisterController extends Controller
             throw $e;
         }
 
-        // event(new Registered($user));
-        // $this->sendVerificationMail($user);
+        event(new Registered($user));
+        $this->sendVerificationMail($user);
 
         return Redirect::route('login')->with('messages', trans('auth.register.complete'));
     }

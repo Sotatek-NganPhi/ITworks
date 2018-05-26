@@ -13,9 +13,9 @@ class ApplicantRepository extends BaseRepository
     protected $fieldSearchable = [
         'id',
         'job_id',
+        'companies.name',
         'jobs.is_active',
         'user_id',
-        'jobs.company_name',
         'status',
         'email',
         'first_name',

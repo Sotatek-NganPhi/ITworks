@@ -6,7 +6,7 @@
 <body>
 <p>{{ $applicant['last_name'] . $applicant['first_name']  }} Kính gửi,</p>
 
-<p>【{{ $job['company_name'] }}】{{ $job['description'] }} đã nộp đơn ứng tuyển.</p>
+<p>{{ $job['description'] }} đã nộp đơn ứng tuyển.</p>
 
 <p>Chi tiết công việc: <a href="{{ url('/manage#/candidate/application_list/job?id=' . $job['id']) }}">{{ url('/manage#/application/job?id='. $job['id']) }}</a></p>
 

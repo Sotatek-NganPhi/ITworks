@@ -7,6 +7,8 @@ use App\Events\CriteriaChangedEvent;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CandidateRequest;
 use App\Http\Requests\UpdateResumeInfoRequest;
+use App\Http\Services\JobService;
+use App\Http\Services\UrgentJobService;
 use App\Models\Certificate;
 use App\Models\CertificateGroup;
 use App\Mail\RegisterCandidateSuccess;
@@ -15,6 +17,7 @@ use App\Models\Config;
 use App\Models\Prefecture;
 use App\Models\Region;
 use App\Models\Draft;
+use Carbon\Carbon;
 use App\User;
 use DB;
 use Exception;
@@ -28,6 +31,17 @@ use Redirect;
 
 class CandidateController extends AppBaseController
 {
+    protected $jobService;
+    protected $urgentJobService;
+
+    public function __construct(
+        JobService $jobService, UrgentJobService $urgentJobService
+        )
+    {
+        $this->jobService = $jobService;
+        $this->urgentJobService = $urgentJobService;
+    }
+
     public function updateResumeInfo(UpdateResumeInfoRequest $request)
     {
         if ($this->isSaveCandidateDraft($request)) {
@@ -117,7 +131,7 @@ class CandidateController extends AppBaseController
 
         $request->merge(['formAction' => $formAction]);
         $request->flash();
-
+        $prefectureIds = Region::getPrefectureIds(1);
         return view('auth.candidate', [
             'user'                       => $user,
             'regions'                    => Region::with('prefectures')->get(),
@@ -130,7 +144,6 @@ class CandidateController extends AppBaseController
     public function syncAllRelations(Request $request, $candidate)
     {
         $changes = [];
-        $changes[] = $candidate->prefectures()->sync($request->get('prefectures', []));
         $changes[] = $candidate->certificates()->sync($request->get('certificates', []));
 
         $changedRecords = collect($changes)->reduce(function ($carry, $change) {

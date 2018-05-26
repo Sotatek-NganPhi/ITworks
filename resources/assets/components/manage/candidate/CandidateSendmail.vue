@@ -76,7 +76,7 @@ export default {
       this.isShowModal = false;
       rf.getRequest('CandidateRequest').sendMail(this.record)
         .then(res => {
-          Utils.growl('候補者に電子メールを正常に送信しました。。');
+          Utils.growl('Gửi mail thành công');
           this.resetChange();
         })
         .catch(({ validationErrors }) => {

@@ -51,7 +51,7 @@ class ApplicationController extends AppBaseController
                 'job_id'                         => $inputs['job_id'],
                 'email'                          => $inputs['email'],
             ]);
-
+            
             $applicant->first_name = $inputs['first_name'];
             $applicant->last_name = $inputs['last_name'];
             $applicant->address = $inputs['address'];
@@ -59,15 +59,19 @@ class ApplicationController extends AppBaseController
             $applicant->gender = $inputs['gender'];
             $applicant->birthday = $inputs['birthday'];
             $applicant->education = $inputs['education'];
+
             $applicant->final_academic_school = $inputs['final_academic_school'];
             $applicant->graduated_at = $inputs['graduated_at'];
+
             $applicant->language = $inputs['language'];
+
             $applicant->language_level = $inputs['language_level'];
-            $applicant->status = $inputs['status'];
+
+            $applicant->status = array_get($inputs, 'status', 0);
             $applicant->save();
 
             $applicant->certificates()->sync($request->get('certificates', []));
-
+        
             // TODO: do we need to send mail to candidate?
 
             Mail::to(['email' => $job['email_receive_applicant']])

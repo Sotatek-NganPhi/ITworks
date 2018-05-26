@@ -19,14 +19,10 @@ class Job extends Model
     public $fillable = [
         'id',
         'company_id',
-        'company_name',
         'description',
         'post_start_date',
         'post_end_date',
         'salary',
-        'education',
-        'language',
-        'language_level',
         'max_applicant',
         'application_condition',
         'message',
@@ -44,12 +40,8 @@ class Job extends Model
     protected $casts = [
         'company_id' => 'integer',
         'description' => 'string',
-        'company_name' => 'string',
         'post_start_date' => 'date',
         'post_end_date' => 'date',
-        'education' => 'string',
-        'language' => 'string',
-        'language_level' => 'string',
         'max_applicant' => 'string',
         'salary' => 'string',
         'application_condition' => 'string',
@@ -67,14 +59,13 @@ class Job extends Model
      */
     public static $rules = [
         'company' => 'required|integer|exists:companies,id',
-        'company_name' => 'required',
         'description' => 'required',
         'post_start_date' => 'required|date',
         'post_end_date' => 'required|date|after:post_start_date',
-        'salary' => 'required',
+        'salary' => 'nullable',
         'application_condition' => 'required',
-        'email_receive_applicant' => 'required|email',
-        'prefectures' => 'required|array|exists:prefectures,id',
+        'email_receive_applicant' => 'nullable|email',
+        'prefectures' => 'nullable|array|exists:prefectures,id',
     ];
 
     public function company()
@@ -82,37 +73,18 @@ class Job extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function salaries()
-    {
-        return $this->belongsToMany(Salary::class);
-    }
-
     public function prefectures()
     {
         return $this->belongsToMany(Prefecture::class);
     }
-
-    public function workingDays()
-    {
-        return $this->belongsToMany(WorkingDay::class);
-    }
+    
     public function applicants()
     {
         return $this->hasMany(Applicant::class);
     }
 
-    public function workingHours()
-    {
-        return $this->belongsToMany(WorkingHour::class);
-    }
-
     public function counters()
     {
         return $this->hasMany(JobCounter::class);
-    }
-    
-    public function specialPromotions()
-    {
-        return $this->belongsToMany(SpecialPromotion::class, 'job_special');
     }
 }

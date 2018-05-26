@@ -293,15 +293,15 @@
         },
         {
             "table_name": "companies",
-            "field_name": "username",
-            "display_name": "Username",
+            "field_name": "email",
+            "display_name": "Email",
             "is_required": "1",
             "is_active": "1"
         },
         {
             "table_name": "companies",
-            "field_name": "password",
-            "display_name": "Password",
+            "field_name": "street_address",
+            "display_name": "\u0110\u1ecba ch\u1ec9",
             "is_required": "1",
             "is_active": "1"
         },
@@ -407,6 +407,27 @@
             "table_name": "applicants",
             "field_name": "phone_number",
             "display_name": "S\u1ed1 \u0111i\u1ec7n tho\u1ea1i",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "education",
+            "display_name": "Tr\u00ecnh \u0111\u1ed9 h\u1ecdc v\u1ea5n",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "language",
+            "display_name": "Ngo\u1ea1i ng\u1eef",
+            "is_required": "0",
+            "is_active": "1"
+        },
+        {
+            "table_name": "applicants",
+            "field_name": "language_level",
+            "display_name": "Tr\u00ecnh \u0111\u1ed9 ngo\u1ea1i ng\u1eef",
             "is_required": "0",
             "is_active": "1"
         },

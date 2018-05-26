@@ -44,25 +44,21 @@
       <h1>{{ $t("job_list.job_list_title") }}</h1>
       <data-table :getData="getData" ref="datatable">
         <th data-sort-field="id" style="width: 60px; max-width: 60px; min-width: 60px">{{ getDisplayName('id') }}</th>
-        <th data-sort-field="company_name" style="width: 200px; max-width: 200px; min-width: 200px">{{ getDisplayName('company_name') }}</th>
+        <th data-sort-field="company_name" style="width: 100px; max-width: 100px; min-width: 100px">{{ getDisplayName('company_name') }}</th>
+        <th data-sort-field="description" style="width: 200px; max-width: 200px; min-width: 200px">{{ getDisplayName('description') }}</th>
         <th data-sort-field="post_start_date" style="width: 110px; max-width: 110px; min-width: 110px">{{ getDisplayName('post_start_date') }}</th>
         <th data-sort-field="post_end_date" style="width: 110px; max-width: 110px; min-width: 110px">{{ getDisplayName('post_end_date') }}</th>
         <th data-sort-field="email_receive_applicant" style="width: 230px; max-width: 230px; min-width: 230px">{{ getDisplayName('email_receive_applicant') }}</th>
-        <th style="width: 100px; max-width: 100px; min-width: 100px"></th>
         <th style="width: 75px; max-width: 75px; min-width: 75px"></th>
         <th style="width: 75px; max-width: 75px; min-width: 75px"></th>
         <template slot="body" scope="props">
           <tr>
             <td>{{ props.item.id }}</td>
-            <td>{{ props.item.company_name }}</td>
+            <td>{{ props.item.company.name }}</td>
+            <td>{{ props.item.description }}</td>
             <td>{{ props.item.post_start_date }}</td>
             <td>{{ props.item.post_end_date }}</td>
             <td>{{ props.item.email_receive_applicant }}</td>
-            <td @click="previewRow(props.item)">
-              <button type="button" class="btn btn-info btn-sm">
-                <span class="glyphicon glyphicon-eye-open"></span> {{$t("common_action.preview")}}
-              </button>
-            </td>
             <td @click="openEditPage(props.item)">
               <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-pencil"></span> {{$t("common_action.edit")}}
@@ -99,7 +95,7 @@
     post_start_date: '',
     post_end_date: '',
     salary: '',
-    company_id: '',
+    company_name: '',
   };
 
   export default {
@@ -168,11 +164,6 @@
           this.$refs.datatable.$emit('DataTable:refresh')
         });
       },
-
-      previewRow(row) {
-        var url = 'job/' + row.id;
-        window.open(url, '_blank', 'height=580,width=1000');
-      },
       initSearchParams() {
         this.searchParams = Object.assign({}, searchParams);
       },
@@ -181,20 +172,43 @@
           'id': this.searchParams.id,
           'is_active': this.searchParams.is_active,
           'salary': [this.searchParams.salary, 'like'],
-          'company.id': [this.searchParams.company_id, '='],
+          'company_name': [this.searchParams.company_name, '='],
         };
+        console.log(searchParams);
         const query = new QueryBuilder(searchParams);
         const now = moment().format('YYYY-MM-DD');
+        switch (this.searchParams.posting_situation) {
+          case 1:
+            if (this.searchParams.post_start_date) {
+              query.append('post_start_date', this.searchParams.post_start_date, '>');
+            }
+            query.append('post_start_date', now, '<');
+
+            if (this.searchParams.post_end_date && ((new Date(this.searchParams.post_end_date)) < (new Date(now)))) {
+              query.append('post_end_date', this.searchParams.post_end_date, '<');
+            } else {
+              query.append('post_end_date', now, '<');
+            }
+            break;
+          case 2:
+            break;
+          default:
+            if (this.searchParams.post_start_date) {
+              query.append('post_start_date', this.searchParams.post_start_date, '>=');
+            }
+            // query.append('post_start_date', now, '<=');
+
+            if (this.searchParams.post_end_date) {
+              query.append('post_end_date', this.searchParams.post_end_date, '<=');
+            }
+            // query.append('post_end_date', now, '>=');
+        }
         return query;
       },
       search() {
         this.$refs.searchForm.validate().then(() => {
           this.$refs.datatable.$emit('DataTable:filter', this.buildSearchQuery());
         }).catch(() => {});
-      },
-      downloadCsv() {
-        const query = queryString.stringify(this.buildSearchQuery());
-        window.location.href = `/manage/jobs/csv?${query}`;
       },
     },
     mounted() {

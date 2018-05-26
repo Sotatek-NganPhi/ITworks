@@ -196,7 +196,6 @@ class CandidateAPIController extends AppBaseController
     {
         Mail::to(['email' => $request['email']])
             ->queue(new \App\Mail\Candidate($request->all()));
-        $this->saveMailLog('emails.candidate', $request);
         return $this->sendResponse(null, trans('message.send_mail'));
     }
 
@@ -204,7 +203,6 @@ class CandidateAPIController extends AppBaseController
     {
         Mail::to(['email' => $request['email']])
             ->queue(new \App\Mail\SendMailToCompany($request->all()));
-        $this->saveMailLog('emails.send_to_company', $request);
         return $this->sendResponse(null, trans('message.send_mail'));
     }
 

@@ -12,14 +12,12 @@ class CompanyRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'id',
+        'email' => 'like',
         'name' => 'like',
         'street_address' => 'like',
         'contact_name' => 'like',
         'phone_number' => 'like',
         'short_description' => 'like',
-        'expire_date',
-        'is_active',
-        'managers.manager_id'
     ];
 
     /**

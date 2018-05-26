@@ -21,7 +21,6 @@ class UrgentJobService
         if (Cache::has($CACHE_KEY)) {
             return Cache::get($CACHE_KEY);
         }
-
         $jobs = Job::select('jobs.id', 'jobs.description', 'jobs.created_at')
             ->where('jobs.is_active', Consts::TRUE)
             ->join('job_prefecture', 'job_prefecture.job_id', '=', 'jobs.id')

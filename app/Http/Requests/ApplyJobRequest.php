@@ -36,10 +36,7 @@ class ApplyJobRequest extends FormRequest
             'phone_number'                   => 'required|string|max:255',
             'gender'                         => 'required|in:male,female',
             'birthday'                       => 'required|date',
-            'education'                      => 'nullable|string|max:255',
             'graduated_at'                   => 'nullable|date',
-            'language'         => 'nullable|string|max:255',
-            'language_level' => 'nullable|string|max:255',
         ];
     }
 
@@ -71,9 +68,6 @@ class ApplyJobRequest extends FormRequest
             'birthday'                       => 'Ngày sinh',
             'graduated_at'                   => 'Thời gian tốt nghiệp',
             'final_academic_school'          => 'Học tại',
-            'language'                       => 'Ngoại ngữ',
-            'language_level'                 => 'Trình độ ngoại ngữ',
-            'education'                      => 'Trình độ học vấn',
         ];
     }
 

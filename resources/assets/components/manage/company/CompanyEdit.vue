@@ -1,6 +1,11 @@
 <template>
   <div>
     <validation-form ref="companyForm" style="margin-bottom: 70px">
+      <form-group :label="getDisplayName('id')"
+                      :is-required="isFieldRequired('id')">
+            <input class="form-control" type="text" data-vv-name="id"
+                   v-model="record.id" disabled/>
+          </form-group>
       <form-group :label="getDisplayName('email')" :is-required="isFieldRequired('email')">
         <input data-vv-name="email" class="form-control" type="text" v-model="record.email" />
       </form-group>
@@ -51,8 +56,6 @@ const defaultRecord = {
   contact_name: '',
   phone_number: '',
   short_description: '',
-  expire_date: '',
-  is_active: 1
 };
 
 export default {
@@ -64,12 +67,10 @@ export default {
       user,
       subNavigators,
       record: {
-        is_active: 1,
         oldUserName:''
       },
       oldRecord: {},
       masterdata: {},
-      managers: [],
       selectedManagers: [],
       isActiveOptions: Utils.getYesNoOptions(),
       isShowModal: false,
@@ -88,8 +89,6 @@ export default {
         this.isShowModal = true;
     },
     updateChange() {
-      const managers = this.selectedManagers;
-      this.record.managers = _.map(this.selectedManagers, 'id');
       const companyPromise = (this.record && this.record.id)
         ? rf.getRequest('CompanyRequest').updateOne(this.record.id, this.record)
         : rf.getRequest('CompanyRequest').createANewOne(this.record)
@@ -102,7 +101,6 @@ export default {
           });
         }
         this.oldRecord = res;
-        this.oldRecord.managers = managers;
         this.resetChange();
       }).catch(({ validationErrors }) => {
         if (validationErrors) {
@@ -113,7 +111,6 @@ export default {
     resetChange() {
       this.record = JSON.parse(JSON.stringify(this.oldRecord));
       this.record.oldUserName = this.record.username;
-      this.selectedManagers = this.oldRecord.managers;
       this.$refs.companyForm.$emit('FORM_ERRORS_CLEAR');
     },
     cancel() {
@@ -127,16 +124,12 @@ export default {
     this.$emit('EVENT_PAGE_CHANGE', this);
     let id = this.$route.query.id;
     const companyAdminType = 2;
-    const managerPromise = rf.getRequest('AdminRequest').getManagers({
-      'search': 'type:' + companyAdminType
-    });
     const masterdataPromise = rf.getRequest('MasterdataRequest').getAll();
     const companyPromise = id
-      ? rf.getRequest('CompanyRequest').getOne(id, {'with': 'managers'})
+      ? rf.getRequest('CompanyRequest').getOne(id)
       : Promise.resolve(defaultRecord);
-    Promise.all([companyPromise, managerPromise, masterdataPromise]).then(([companies, managers, masterdata]) => {
+    Promise.all([companyPromise, masterdataPromise]).then(([companies, masterdata]) => {
       this.masterdata = masterdata;
-      this.managers = managers;
       this.oldRecord = companies;
       this.resetChange();
     });

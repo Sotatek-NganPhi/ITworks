@@ -22,7 +22,6 @@ class CreateManagersTable extends Migration
             $table->string('email')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->integer('company_id')->default(0);
             $table->tinyInteger("is_active")->default(1);
             $table->rememberToken();
             $table->timestamps();
