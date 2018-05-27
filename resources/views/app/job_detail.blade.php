@@ -50,7 +50,7 @@
                     　≫　
                 </li>
                 <li>
-                    <a href="javascript:void(0)"><span>{{ $job->company_name }} Chi tiết công việc</span></a>
+                    <a href="javascript:void(0)"><span>{{ $job->company->name }} Chi tiết công việc</span></a>
                 </li>
             </ul>
             @php ($mark = rand(1, 3))
@@ -85,19 +85,18 @@
                     <tr>
                         <th colspan="2" class="__title">Chi tiết công việc</th>
                     </tr>
-
-                    @foreach ($optionalFields as $fieldName)
-                        @if (isset($job[$fieldName]))
-                        <tr>
-                            @if (isset($fieldSettings['jobs'][$fieldName]))
-                            <th>{!! nl2br($fieldSettings['jobs'][$fieldName]->display_name) !!}</th>
-                            @else
-                            <th>{{ $fieldName }}</th>
-                            @endif
-                            <td>{!! nl2br( $job[$fieldName]) !!}</td>
-                        </tr>
-                        @endif
-                    @endforeach
+                    <tr>
+                        <th>Mô tả công việc</th>
+                        <td>{{$job->description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Điều kiện ứng tuyển</th>
+                        <td>{{$job->application_condition}}</td>
+                    </tr>
+                    <tr>
+                        <th>Mức lương</th>
+                        <td>{{$job->salary}}</td>
+                    </tr>
 
                     <tr>
                         <th>Thời gian nhận hồ sơ</th>
@@ -171,10 +170,8 @@
                                         </div>
                                         <p v-if="joinList(job.prefectures, 'name')" class="area">
                                             @{{ joinList(job.prefectures, 'name') }}</p>
-                                        <p v-if="joinList(job.routes, 'station.name')" class="station">
-                                            @{{ joinList(job.routes, 'station.name') }}</p>
-                                        <p v-if="joinList(job.salaries, 'description')" class="wage">
-                                            @{{ joinList(job.salaries, 'description') }}</p>
+                                        <p v-if="joinList(job.salary, 'description')" class="wage">
+                                            @{{ joinList(job.salary) }}</p>
                                     </div>
                                 </div>
                             </div>
