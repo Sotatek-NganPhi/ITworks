@@ -325,11 +325,6 @@
                                                 href="{{route('search', $region->key)}}?prefecture_id={{$prefecture->id}}">{{ $prefecture->name }}
                                             Việc làm</a></li>
                                 @endforeach
-                                @foreach($job->salaries as $salary)
-                                    <li class="item"><a
-                                                href="{{route('search', $region->key)}}?salary_id={{$salary->id}}">{{ $salary->description }}
-                                            Việc làm</a></li>
-                                @endforeach
                             </ul>
                         </div>
                     @else

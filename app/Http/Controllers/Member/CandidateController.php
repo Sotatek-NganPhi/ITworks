@@ -196,8 +196,8 @@ class CandidateController extends AppBaseController
             $request->merge(json_decode($draft->content, true));
         } else {
             $relations = [
-                'prefectures'        => $candidate->prefectures->pluck('id')->toArray(),
-                'certificates'       => $candidate->certificates->pluck('id')->toArray(),
+                'prefectures'        => $candidate->prefectures,
+                'certificates'       => $candidate->certificates,
             ];
 
             $request->merge($candidate->toArray());
