@@ -2,7 +2,7 @@
   <div>
     <validation-form ref="mailForm">
       <form-group :label=" $t('job.company_name') ">
-        <input class="form-control" type="text" v-model="record.company_name" readonly/>
+        <input class="form-control" type="text" v-model="record.name" readonly/>
       </form-group>
       <form-group :label=" $t('common_field.email') ">
         <input class="form-control" data-vv-name="email" type="text" v-model="record.email" readonly />
@@ -55,7 +55,7 @@ export default {
       subNavigators,
       editorOption: {},
       record: {
-        company_name: '',
+        name: '',
         email:'',
         content: '',
         subject: '',
@@ -92,8 +92,8 @@ export default {
 
     },
     resetChange() {
-      this.record.company_name = this.oldRecord.company_name;
-      this.record.email = this.oldRecord.email_receive_applicant;
+      this.record.name = this.oldRecord.name;
+      this.record.email = this.oldRecord.email;
     },
     cancelSendMail() {
       this.$router.push({
@@ -107,7 +107,7 @@ export default {
     self.$emit('EVENT_PAGE_CHANGE', self);
     let id = self.$route.query.id;
     if (!id) return;
-    rf.getRequest('JobRequest').getOne(id).then(res => {
+    rf.getRequest('CompanyRequest').getOne(id).then(res => {
         self.oldRecord = res;
         self.resetChange();
     });

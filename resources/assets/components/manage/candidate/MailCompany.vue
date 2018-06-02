@@ -16,15 +16,15 @@
     <h2>{{ $t("company.list_title") }}</h2>
 
     <data-table :getData="getData" ref="datatable">
-      <th data-sort-field="id" style="width: 10%"> {{ $t("job.id") }} </th>
-      <th data-sort-field="company_name" style="width: 53%"> {{ $t("job.company_name") }} </th>
-      <th data-sort-field="email_receive_applicant" style="width: 24%"> {{ $t("job.email_receive_applicant") }} </th>
-      <th style="width: 13%"></th>
+      <th data-sort-field="id" style="width: 20%">ID</th>
+      <th data-sort-field="name" style="width: 40%">Tên công ty</th>
+      <th data-sort-field="email" style="width: 20%">Email</th>
+      <th style="width: 12%"></th>
       <template slot="body" scope="props">
         <tr>
-          <td>{{ props.item.id }}</td>
-          <td>{{ props.item.company_name }}</td>
-          <td>{{ props.item.email_receive_applicant }}</td>
+          <td style="width: 20%">{{ props.item.id }}</td>
+          <td style="width: 40%">{{ props.item.name }}</td>
+          <td style="width: 20%">{{ props.item.email }}</td>
           <td @click="openMailPage(props.item)">
             <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-envelope"></span> {{$t("candidate.sendmail")}}
@@ -51,10 +51,6 @@ const searchParams = {
   name: '',
 };
 
-const localMasterdata = {
-  regions: []
-};
-
 export default {
   components: {
     Multiselect
@@ -64,13 +60,11 @@ export default {
       searchParams: searchParams,
       user,
       subNavigators,
-      localMasterdata: localMasterdata,
-      filterRegions: []
     }
   },
   methods: {
     getData(params) {
-      return rf.getRequest('JobRequest').getList(params);
+      return rf.getRequest('CompanyRequest').getList(params);
     },
     openMailPage(row) {
       this.$router.push({
@@ -83,13 +77,9 @@ export default {
 
     buildSearchQuery() {
       const searchParams = {
-        'company_name': this.searchParams.name
+        'name': this.searchParams.name
       };
       const query = new QueryBuilder(searchParams);
-      if(this.filterRegions.length) {
-        const regions = _.map(this.filterRegions, 'id');
-        query.append('prefectures.region_id', regions, '=');
-      }
 
       return query;
     },
@@ -111,9 +101,9 @@ export default {
   },
   mounted() {
     this.$emit('EVENT_PAGE_CHANGE', this);
-    const masterdataPromise = rf.getRequest('MasterdataRequest').getAll();
-    Promise.all([masterdataPromise]).then(([masterdata]) => {
-      this.localMasterdata = masterdata;
+    this.initSearchParams();
+    rf.getRequest('MasterdataRequest').getAll().then(res => {
+        this.masterdata = res;
     });
   }
 }

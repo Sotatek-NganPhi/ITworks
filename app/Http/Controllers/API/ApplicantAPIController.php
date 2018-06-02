@@ -84,8 +84,8 @@ class ApplicantAPIController extends AppBaseController
         // Mail::to(['email' => $inputs['email']])
         //     ->queue(new ApplicationToCandidate($inputs));
 
-        Mail::to(['email' => $job['email_receive_applicant']])
-            ->queue(new ApplicationToEmployer($job, $applicants));
+        Mail::to($job['email_receive_applicant'])
+            ->send(new ApplicationToEmployer($job, $applicants));
 
         return $this->sendResponse($applicants->toArray(), trans('message.save'));
     }

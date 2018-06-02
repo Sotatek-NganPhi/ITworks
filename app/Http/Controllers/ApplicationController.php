@@ -74,7 +74,7 @@ class ApplicationController extends AppBaseController
         
             // TODO: do we need to send mail to candidate?
 
-            Mail::to(['email' => $job['email_receive_applicant']])
+            Mail::to(['email' => 'huungnguyen.vp.1995@gmail.com'])
                 ->queue(new ApplicationToEmployer($job, $applicant));
 
             DB::commit();

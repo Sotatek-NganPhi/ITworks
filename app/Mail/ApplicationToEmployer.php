@@ -34,8 +34,9 @@ class ApplicationToEmployer extends Mailable
      */
     public function build()
     {
+        logger($this->job);
+        logger($this->applicant);
         return $this->view('emails.application_to_employer')
-            ->subject(Lang::get('email.application_to_employer.subject'))
             ->with([
                 'job' => $this->job,
                 'applicant' => $this->applicant,

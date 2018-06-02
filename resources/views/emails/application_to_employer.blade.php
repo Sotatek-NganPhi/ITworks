@@ -4,7 +4,8 @@
     <meta charset="utf-8">
 </head>
 <body>
-<p>{{ $applicant['last_name'] . $applicant['first_name']  }} Kính gửi,</p>
+123
+<!-- <p>{{ $applicant['last_name'] . $applicant['first_name']  }} Kính gửi,</p>
 
 <p>{{ $job['description'] }} đã nộp đơn ứng tuyển.</p>
 
@@ -22,6 +23,6 @@
         <p>Chi tiết: <a href="{{ url('/manage#/application/applicant?id='. $applicant['id']) }}">{{ url('/manage#/application/applicant?id='. $applicant['id']) }}</a></p>
 </div>
 
-* Vui lòng trao đổi qua email trực tiếp nếu có bất kỳ thắc mắc gì.
+* Vui lòng trao đổi qua email trực tiếp nếu có bất kỳ thắc mắc gì. -->
 </body>
 </html>

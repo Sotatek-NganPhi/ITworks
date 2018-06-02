@@ -66,13 +66,6 @@
                         <p>Nếu bạn chưa là thành viên, xin đăng ký<a href="{{ route('register') }}"> ở đây</a></p>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-9">
-                        <a href="{{ route('auth.provider', 'google') }}" class="btn">
-                            <i class="fa fa-google-plus"></i> Google
-                        </a>
-                    </div>
-                </div>
             </form>
         </div>
 

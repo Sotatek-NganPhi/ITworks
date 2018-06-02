@@ -139,11 +139,6 @@
                 <input type="hidden" name="provider" value="{{ old('provider') }}">
                 <input type="hidden" name="provider_id" value="{{ old('provider_id') }}">
                 <input type="submit" value="Gửi" name="submit">
-                <div>
-                    <a href="{{ route('auth.provider', 'google') }}" class="btn">
-                        <i class="fa fa-google-plus"></i> Google
-                    </a>
-                </div>
             </form>
         </div>
 
