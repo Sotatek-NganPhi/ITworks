@@ -179,12 +179,10 @@
             : rf.getRequest('JobRequest').createANewOne(this.record);
 
         jobPromise.then(res => {
-          Utils.growl('request.request_success');
-          if (!this.record.id) {
-            this.$router.push({
+          Utils.growl('Cập nhật thành công!');
+          this.$router.push({
               path: '/job/list',
             });
-          }
           this.$refs.jobEdit.$emit('FORM_ERRORS_CLEAR');
         })
         .catch(({ validationErrors }) => {
@@ -214,7 +212,6 @@
 
       localReset() {
         this.record = JSON.parse(JSON.stringify(this.oldRecord));
-        console.log(this.record);
 
         let keyedStations = _.keyBy(this.masterdata.stations, 'id');
         let keyedLineStations = _.keyBy(this.masterdata.line_stations, 'id');

@@ -63,6 +63,11 @@ class Company extends Model
         return $this->belongsToMany(Manager::class);
     }
 
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+
     public function sycToManager(){
         if($this->id <= 0){
             Log:error('Id company invalid: ' . $this->id);

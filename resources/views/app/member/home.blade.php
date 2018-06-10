@@ -19,7 +19,7 @@
             <div id="__component">
 
                 <div id="form">
-                    <h4 class="bg_orange">{{Auth::user()->first_name}}</h4>
+                    <h4 class="bg_orange">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h4>
                     <h5>Tại đây bạn có thể chỉnh sửa mọi thông tin của mình.</h5>
 
 

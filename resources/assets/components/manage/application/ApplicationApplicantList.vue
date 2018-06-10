@@ -42,20 +42,6 @@
             <form-group :label=" $t('applicant.mail') ">
                 <input class="form-control" type="text" v-model="searchParams.email"/>
             </form-group>
-
-            <form-group :label=" $t('applicant.education') ">
-                <input class="form-control" type="text" v-model="searchParams.education"/>
-            </form-group>
-
-            <form-group :label=" $t('applicant.language') ">
-                <input class="form-control" type="text" v-model="searchParams.language"/>
-            </form-group>
-
-            <form-group :label=" $t('applicant.language_level') ">
-                <input class="form-control" type="text" v-model="searchParams.language_level"/>
-            </form-group>
-
-
         </validation-form>
         <div class="text-center">
             <button type="button" class="btn btn-primary" @click="search()">{{ $t("form_action.search") }}</button>

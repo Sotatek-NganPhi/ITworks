@@ -1,10 +1,10 @@
 @if(Auth::check())
     <div class="logout">
         <div class="user-panel">
-            <h4>Xin chào、{{Auth::user()->first_name}}！</h4>
+            <h4>Xin chào、{{Auth::user()->first_name}} {{Auth::user()->last_name}}！</h4>
             <p class="__btn btn_member_home"><a href="{{ route('member_home') }}">Thông tin cá nhân</a></p>
+            <p class="__btn btn_logout"><a href="{{route('logout')}}">Đăng xuất</a></p>
         </div>
-         <p class="__btn btn_logout"><a href="{{route('logout')}}">Đăng xuất</a></p>
     </div>
 @else
     <div class="user-panel">

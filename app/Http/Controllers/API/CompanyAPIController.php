@@ -131,6 +131,7 @@ class CompanyAPIController extends AppBaseController
             if (empty($company)) {
                 return $this->sendError(trans('message.unfound'));
             }
+            $company->jobs()->delete();
             $company->delete();
 
             return $this->sendResponse($id,trans('message.deletable'));

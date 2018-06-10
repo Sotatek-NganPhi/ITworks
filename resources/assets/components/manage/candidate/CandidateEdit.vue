@@ -145,12 +145,10 @@ export default {
         .updateOne(this.record.id, this.record)
         .then(res => {
           this.$refs.candidateForm.$emit('FORM_ERRORS_CLEAR');
-          Utils.growl('request.request_success');
-          if(!this.record.id) {
-            this.$router.push({
-              path: '/job/list',
-            });
-          }
+          Utils.growl('Cập nhật thành công!');
+          this.$router.push({
+            path: '/candidate/list',
+          });
         })
         .catch(({ validationErrors }) => {
           if (validationErrors) {

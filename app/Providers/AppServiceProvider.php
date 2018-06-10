@@ -57,14 +57,14 @@ class AppServiceProvider extends ServiceProvider
             $view->with('dataVersion', MasterdataService::getDataVersion());
         });
 
-        DB::enableQueryLog();
-        DB::listen(function ($query) {
-            Log::debug('SQL', [
-                'sql' => $query->sql,
-                'bindings' => $query->bindings,
-                'runtime' => $query->time
-            ]);
-        });
+        // DB::enableQueryLog();
+        // DB::listen(function ($query) {
+        //     Log::debug('SQL', [
+        //         'sql' => $query->sql,
+        //         'bindings' => $query->bindings,
+        //         'runtime' => $query->time
+        //     ]);
+        // });
 
         //register model observer
         Company::observe(CompanyObserver::class);

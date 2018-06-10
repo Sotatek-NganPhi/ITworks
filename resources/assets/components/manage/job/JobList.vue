@@ -14,9 +14,9 @@
           <input v-validator="'numeric|min:0'" class="form-control" type="text" v-model="searchParams.id"/>
         </form-group>
         <form-group :label="getDisplayName('company_name')">
-          <select class="form-control" v-model="searchParams.company_name">
+          <select class="form-control" v-model="searchParams.company_id">
             <option value="">---</option>
-            <option :value="company.name" v-for="company in companies" :key="company.name">{{ company.name }}</option>
+            <option v-for="company in companies" :key="company.id" :value="company.id"> {{company.name }}</option>
           </select>
         </form-group>
         <form-group :label="getDisplayName('post_start_date')">
@@ -29,10 +29,6 @@
         </form-group>
         <form-group :label="getDisplayName('salary')">
           <input class="form-control" type="text" v-model="searchParams.salary"/>
-        </form-group>
-        <form-group :label="getDisplayName('is_active')">
-          <radio-group inline="true" v-model="searchParams.is_active"
-                       :options="getReferenceValues('is_active')"></radio-group>
         </form-group>
         <div class="text-center">
           <button type="button" class="btn btn-primary" @click="search()">{{ $t("form_action.search") }}</button>
@@ -91,7 +87,7 @@
 
   const searchParams = {
     id: '',
-    is_active: '',
+    company_id: '',
     post_start_date: '',
     post_end_date: '',
     salary: '',
@@ -172,9 +168,8 @@
           'id': this.searchParams.id,
           'is_active': this.searchParams.is_active,
           'salary': [this.searchParams.salary, 'like'],
-          'company_name': [this.searchParams.company_name, '='],
+          'company_id': [this.searchParams.company_id, '='],
         };
-        console.log(searchParams);
         const query = new QueryBuilder(searchParams);
         const now = moment().format('YYYY-MM-DD');
         switch (this.searchParams.posting_situation) {

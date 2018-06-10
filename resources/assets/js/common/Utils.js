@@ -24,6 +24,7 @@ export default {
     res.forEach(function(re) {
      message=message[re];
    });
+    console.log(message)
   
     return message;
   },

@@ -51,6 +51,7 @@ class JobAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
+       Log::info($request['search']);
         $jobIds = [];
         if ($request['ids']) {
             $jobIds = explode(",", $request['ids']);
@@ -67,12 +68,6 @@ class JobAPIController extends AppBaseController
         
         $manager = Auth::guard(Consts::GUARD_MANAGER)->user();
         
-        if($manager->type != Consts::TYPE_SYS_ADMIN) {
-            if($manager->agency_id == 0) {
-                return $this->sendResponse(null, trans('message.retrieve'));
-            }
-            $request->merge(['agency' => $manager->agency_id]);
-        }
         
         $jobs = $this->jobRepository->with('company')->paginate($request->input('limit'));
         
@@ -93,7 +88,7 @@ class JobAPIController extends AppBaseController
                 return $query->where('company_id', $manager->company_id);
             });
         }
-        $jobs = $jobRepository->with('company')->paginate($request->input('limit'));
+        $jobs = $jobRepository->with(['company'])->paginate($request->input('limit'));
         return $this->sendResponse($jobs->toArray(), trans('message.retrieve'));
     }
     /**

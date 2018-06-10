@@ -123,36 +123,7 @@ return [
     */
 
     'attributes' => [
-        'username' => 'ログイン ID',
-        'password' => 'パスワード',
-        'first_name' => '姓',
-        'last_name' => '名',
-        'first_name_phonetic' => '姓(カタカナ)',
-        'last_name_phonetic' => '名(カタカナ)',
-        'gender' => '性別',
-        'birthday' => '生年月日',
-        'postal_code' => '郵便番号',
-        'address' => '住所',
-        'phone_number' => '電話番号',
-        'email' => 'メールアドレス',
-        'line_id' => 'LINE ID',
-        'current_situation_id' => '就業状況',
-        'jumping_condition_id' => '転職意欲',
-        'education_id' => '最終学歴',
-        'final_academic_school' => '最終学歴（学校名）',
-        'graduated_at' => '最終学歴（卒業年月)',
-        'is_married' => '配偶者',
-        'worked_companies_number' => '経験社数',
-        'lastest_company_name' => '直近の社名',
-        'lastest_employment_mode_id' => '直近の雇用形態',
-        'lastest_industry_id' => '現在または直近の勤務先の業種',
-        'lastest_annual_income' => '年収',
-        'lastest_company_size_id' => '従業員数',
-        'lastest_position_id' => '役職',
-        'jumping_date_id' => '希望転職時期',
-        'prefectures' => '希望勤務地',
-        'employment_modes' => '雇用形態',
-        'mail_receivable' => '企業からのスカウトメールを受け取る',
+        
     ],
 
 ];

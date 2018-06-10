@@ -1,7 +1,6 @@
 <template>
   <div>
     <validation-form ref="jobDetailForm" style="margin-bottom: 70px">
-      <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>Basic information</span></div>
       <form-group :label="$t('applicant.job.id')">
         <span>{{ record.id }}</span>
       </form-group>
@@ -11,12 +10,6 @@
         <span>{{ record.description }}</span>
       </form-group>
 
-      <form-group :label="$t('applicant.job.seniors_hometown')">
-        <span>{{ record.seniors_hometown }}</span>
-      </form-group>
-
-      <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>Application Guidelines</span></div>
-
       <form-group :label="$t('applicant.job.company_name')">
         <span>{{ record.company_name }}</span>
       </form-group>
@@ -25,28 +18,8 @@
         <span>{{ record.salary }}</span>
       </form-group>
 
-      <form-group :label="$t('applicant.job.working_hours')">
-        <span>{{ record.working_hours }}</span>
-      </form-group>
-
       <form-group :label="$t('applicant.job.application_condition')">
         <span>{{ record.application_condition }}</span>
-      </form-group>
-
-      <form-group :label="$t('applicant.job.message')">
-        <span>{{ record.message }}</span>
-      </form-group>
-
-      <form-group :label="$t('applicant.job.holiday_vacation')">
-        <span>{{ record.holiday_vacation }}</span>
-      </form-group>
-
-      <form-group :label="$t('applicant.job.interview_place')">
-        <span>{{ record.interview_place }}</span>
-      </form-group>
-
-      <form-group :label="$t('applicant.job.receptionist')">
-        <span>{{ record.receptionist }}</span>
       </form-group>
 
       <div><span class="glyphicon glyphicon-triangle-bottom"></span> <span>Images</span></div>
@@ -56,15 +29,6 @@
         <div class="col-sm-9">
           <div class="view" v-if="record.main_image != ''">
             <img :src="record.main_image" width="200px" class="image"/>
-          </div>
-          <div class="view" v-if="record.sub_image1 != ''">
-            <img :src="record.sub_image1" width="200px" class="image"/>
-          </div>
-          <div class="view" v-if="record.sub_image2 != ''">
-            <img :src="record.sub_image2" width="200px" class="image"/>
-          </div>
-          <div class="view" v-if="record.sub_image3 != ''">
-            <img :src="record.sub_image3" width="200px" class="image"/>
           </div>
         </div>
       </div>
@@ -77,14 +41,6 @@
 
       <form-group :label="$t('applicant.job.email_company')">
         <span>{{ record.email_company }}</span>
-      </form-group>
-
-      <form-group :label="$t('applicant.job.sales_person_mail')">
-        <span>{{ record.sales_person_mail }}</span>
-      </form-group>
-
-      <form-group :label="$t('applicant.job.remarks')">
-        <span>{{ record.remarks }}</span>
       </form-group>
 
     </validation-form>

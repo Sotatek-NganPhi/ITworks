@@ -94,12 +94,10 @@ export default {
         : rf.getRequest('CompanyRequest').createANewOne(this.record)
       this.isShowModal = false;
       companyPromise.then(res => {
-        Utils.growl('request.request_success');
-        if (!this.$route.query.id) {
-          this.$router.push({
+        Utils.growl('Cập nhật thành công!');
+        this.$router.push({
             path: '/company/list'
           });
-        }
         this.oldRecord = res;
         this.resetChange();
       }).catch(({ validationErrors }) => {
